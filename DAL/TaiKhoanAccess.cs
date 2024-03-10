@@ -8,13 +8,12 @@ using System.Data.SqlClient;
 using System.Data;
 namespace DAL
 {
-    public class TaiKhoanAccess:DatabaseAccess
+    public class TaiKhoanAccess : DatabaseAccess
     {
         public string CheckLogic(TaiKhoan tk)
         {
-            string info=CheckLogicDTO(tk);
+            string info = CheckLogicDTO(tk);
             return info;
         }
-      
     }
 }

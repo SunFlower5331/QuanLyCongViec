@@ -17,7 +17,7 @@ namespace DTO
         public string email { get; set; }
         public string chucvu { get; set; }
         public string phongban { get; set; }
-        public float luong { get; set; }
+        public double luong { get; set; }
         public string trangthai { get; set; }
         public string trinhdohocvan { get; set; }
         public string loaihinh { get; set; }

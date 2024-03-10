@@ -9,20 +9,19 @@ namespace BLL
 {
     public class TaiKhoanBLL
     {
-        TaiKhoanAccess tkAccess=new TaiKhoanAccess();
+        TaiKhoanAccess tkAccess = new TaiKhoanAccess();
         public string CheckLogic(TaiKhoan tk)
         {
-            if (tk.id =="")
+            if (tk.id == "")
             {
                 return "Require_taikhoan";
             }
-            if(tk.mk.ToString()=="")
+            if (tk.mk == "")
             {
                 return "Require_matkhau";
             }
-            string info=tkAccess.CheckLogic(tk);
+            string info = tkAccess.CheckLogic(tk);
             return info;
         }
-
     }
 }

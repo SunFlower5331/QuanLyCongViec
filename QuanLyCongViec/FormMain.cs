@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -80,8 +81,22 @@ namespace QuanLyCongViec
         {
             toolStrip1.Enabled = false;
             timkiem.Enabled = true;
-            dsnv.DataSource = GetAllNhanVien();
-            dsnv.DataMenber=
+            dsnv.DataSource = DatabaseAccess.GetAllNhanVien().Tables[0];
+            dsnv.AutoGenerateColumns = false;
+            dsnv.Columns["manv"].HeaderText = "Mã nhân viên";
+            dsnv.Columns["hoten"].HeaderText = "Họ và tên";
+            dsnv.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            dsnv.Columns["gioitinh"].HeaderText = "Giới tính";
+            dsnv.Columns["diachi"].HeaderText = "Địa chỉ";
+            dsnv.Columns["didong"].HeaderText = "Đi động";
+            dsnv.Columns["email"].HeaderText = "Email";
+            dsnv.Columns["chucvu"].HeaderText = "Chức vụ";
+            dsnv.Columns["phongban"].HeaderText = "Phòng ban";
+            dsnv.Columns["luong"].HeaderText = "Lương";
+            dsnv.Columns["trangthai"].HeaderText = "Trạng thái";
+            dsnv.Columns["trinhdohocvan"].HeaderText = "Trình độ học vấn";
+            dsnv.Columns["loaihinh"].HeaderText = "Loại hình";
+            dsnv.Columns["quyenhan"].HeaderText = "Quyền hạn";
         }
  
         private void them(object sender, EventArgs e)

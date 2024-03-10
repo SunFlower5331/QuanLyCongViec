@@ -48,10 +48,10 @@ namespace DAL
             return user;
 
         }
-        DataSet GetAllNhanVien()
+        public static DataSet GetAllNhanVien()
         {
             DataSet data = new DataSet();
-            string query = "select * from NhanViien";
+            string query = "select * from NhanVien";
             SqlConnection con = SqlConnectionData.connect();
             con.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
@@ -59,6 +59,51 @@ namespace DAL
             con.Close();    
             return data;
         }
+        public static (NhanVien, TaiKhoan) layThongTin(string manv)
+        {
+            NhanVien nhanVien = null;
+            TaiKhoan tk = null;
+            string query = "SELECT NhanVien.*, TaiKhoan.* FROM NhanVien INNER JOIN TaiKhoan ON NhanVien.manv = TaiKhoan.id WHERE NhanVien.manv = @manv";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@manv", manv);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        nhanVien = new NhanVien();
+                        tk = new TaiKhoan();
+
+                        nhanVien.manv = reader["manv"].ToString();
+                        nhanVien.hoten = reader["hoten"].ToString();
+                        nhanVien.ngaysinh = (DateTime)reader["ngaysinh"];
+                        nhanVien.gioitinh = reader["gioitinh"].ToString();
+                        nhanVien.diachi = reader["diachi"].ToString();
+                        nhanVien.didong = reader["didong"].ToString();
+                        nhanVien.email = reader["email"].ToString();
+                        nhanVien.chucvu = reader["chucvu"].ToString();
+                        nhanVien.phongban = reader["phongban"].ToString();
+                        nhanVien.luong = Convert.ToDouble(reader["luong"]);
+                        nhanVien.trangthai = reader["trangthai"].ToString();
+                        nhanVien.trinhdohocvan = reader["trinhdohocvan"].ToString();
+                        nhanVien.loaihinh = reader["loaihinh"].ToString();
+                        nhanVien.quyenhan = Convert.ToInt32(reader["quyenhan"]);
+
+                        tk.id = reader["id"].ToString();
+                        tk.mk = reader["mk"].ToString();
+                        tk.loaiTK = Convert.ToInt32(reader["loaiTK"]);
+                    }
+                }
+            }
+
+            return (nhanVien,tk);
+        }
+
+
+
 
     }
 }

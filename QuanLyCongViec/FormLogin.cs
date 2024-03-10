@@ -83,6 +83,7 @@ namespace QuanLyCongViec
                     MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
                     return false;
             }
+            Program.UserID = tk.id;
             return true;
         }
 
