@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DTO;
+using System.Runtime.InteropServices;
+
+
 namespace QuanLyCongViec
 {
     public partial class FormLogin : Form
@@ -12,12 +16,23 @@ namespace QuanLyCongViec
         {
             InitializeComponent();
         }
-     
-
+        // Dùng để kéo thả cửa sổ
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            pass.UseSystemPasswordChar = true;
+            // check xem nếu checkbox đã được đánh hoặc để mặc định 
+            if (checkBoxHTMK.Checked || pass.Text == "Password")
+            {
+                pass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                pass.UseSystemPasswordChar = true;
+            }
         }
 
         private void dangnhap_Click(object sender, EventArgs e)
@@ -34,7 +49,7 @@ namespace QuanLyCongViec
 
         private void checkBoxHTMK_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxHTMK.Checked)
+            if(checkBoxHTMK.Checked || pass.Text == "Password")
             {
                 pass.UseSystemPasswordChar = false;
             }
@@ -111,6 +126,85 @@ namespace QuanLyCongViec
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void user_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void taikhoan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        // tạo event khi người dùng focus vào ô thì mấy placeholder sẽ biến mất
+        private void user_Enter(object sender, EventArgs e)
+        {
+            if (user.Text == "User ID")
+            {
+                user.Text = "";
+                user.ForeColor = Color.LightGray;
+            }
+        }
+        private void pass_Enter(object sender, EventArgs e)
+        {
+            if (pass.Text == "Password")
+            {
+                pass.Text = "";
+                pass.ForeColor = Color.LightGray;
+            }
+        }
+
+        // tạo event khi người dùng rời khỏi ô thì placeholder hiện lại
+        private void user_Leave(object sender, EventArgs e)
+        {
+            if (user.Text == "")
+            {
+                user.Text = "User ID";
+                user.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void pass_Leave(object sender, EventArgs e)
+        {
+            if (pass.Text == "")
+            {
+                pass.Text = "Password";
+                pass.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void quenPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        // Dùng để kéo thả cửa sổ
+        private void buttonOut_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
