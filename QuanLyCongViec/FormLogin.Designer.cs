@@ -35,7 +35,7 @@
             this.dangnhap = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.buttonOut = new System.Windows.Forms.PictureBox();
+            this.loginForm = new System.Windows.Forms.PictureBox();
             this.ngonngu = new System.Windows.Forms.ComboBox();
             this.underlineUser = new System.Windows.Forms.Label();
             this.underlinePass = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             this.logout = new System.Windows.Forms.PictureBox();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.quenPass = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonOut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
@@ -115,17 +115,17 @@
             this.dangnhap.UseVisualStyleBackColor = false;
             this.dangnhap.Click += new System.EventHandler(this.dangnhap_Click_1);
             // 
-            // buttonOut
+            // loginForm
             // 
-            this.buttonOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.buttonOut.Location = new System.Drawing.Point(-35, -46);
-            this.buttonOut.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOut.Name = "buttonOut";
-            this.buttonOut.Size = new System.Drawing.Size(866, 532);
-            this.buttonOut.TabIndex = 10;
-            this.buttonOut.TabStop = false;
-            this.buttonOut.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.buttonOut.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonOut_MouseDown);
+            this.loginForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.loginForm.Location = new System.Drawing.Point(-35, -46);
+            this.loginForm.Margin = new System.Windows.Forms.Padding(2);
+            this.loginForm.Name = "loginForm";
+            this.loginForm.Size = new System.Drawing.Size(866, 532);
+            this.loginForm.TabIndex = 10;
+            this.loginForm.TabStop = false;
+            this.loginForm.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.loginForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonOut_MouseDown);
             // 
             // ngonngu
             // 
@@ -165,7 +165,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
-            this.label1.Location = new System.Drawing.Point(416, 40);
+            this.label1.Location = new System.Drawing.Point(451, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 31);
             this.label1.TabIndex = 14;
@@ -178,7 +178,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(4)))), ((int)(((byte)(4)))));
-            this.label2.Location = new System.Drawing.Point(545, 49);
+            this.label2.Location = new System.Drawing.Point(580, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 15;
@@ -245,6 +245,7 @@
             // 
             // FormLogin
             // 
+            this.AcceptButton = this.dangnhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -262,7 +263,7 @@
             this.Controls.Add(this.checkBoxHTMK);
             this.Controls.Add(this.pass);
             this.Controls.Add(this.user);
-            this.Controls.Add(this.buttonOut);
+            this.Controls.Add(this.loginForm);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -272,7 +273,7 @@
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
             this.Load += new System.EventHandler(this.FormLogin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.buttonOut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
@@ -297,7 +298,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox logout;
-        private System.Windows.Forms.PictureBox buttonOut;
+        private System.Windows.Forms.PictureBox loginForm;
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.LinkLabel quenPass;
     }
