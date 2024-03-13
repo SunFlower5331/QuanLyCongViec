@@ -34,7 +34,6 @@
             this.user = new System.Windows.Forms.TextBox();
             this.pass = new System.Windows.Forms.TextBox();
             this.checkBoxHTMK = new System.Windows.Forms.CheckBox();
-            this.thoat = new System.Windows.Forms.Button();
             this.dangnhap = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
@@ -64,7 +63,6 @@
             this.matkhau.Size = new System.Drawing.Size(101, 25);
             this.matkhau.TabIndex = 1;
             this.matkhau.Text = "Mật khẩu";
-            this.matkhau.Click += new System.EventHandler(this.matkhau_Click);
             // 
             // user
             // 
@@ -95,20 +93,6 @@
             this.checkBoxHTMK.UseVisualStyleBackColor = true;
             this.checkBoxHTMK.CheckedChanged += new System.EventHandler(this.checkBoxHTMK_CheckedChanged);
             // 
-            // thoat
-            // 
-            this.thoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thoat.Image = ((System.Drawing.Image)(resources.GetObject("thoat.Image")));
-            this.thoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.thoat.Location = new System.Drawing.Point(945, 382);
-            this.thoat.Margin = new System.Windows.Forms.Padding(4);
-            this.thoat.Name = "thoat";
-            this.thoat.Size = new System.Drawing.Size(147, 40);
-            this.thoat.TabIndex = 9;
-            this.thoat.Text = "Thoát";
-            this.thoat.UseVisualStyleBackColor = true;
-            this.thoat.Click += new System.EventHandler(this.thoat_Click);
-            // 
             // dangnhap
             // 
             this.dangnhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -126,13 +110,13 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-47, -57);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1154, 655);
+            this.pictureBox1.Size = new System.Drawing.Size(1106, 591);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // ngonngu
             // 
@@ -145,7 +129,6 @@
             this.ngonngu.Name = "ngonngu";
             this.ngonngu.Size = new System.Drawing.Size(105, 24);
             this.ngonngu.TabIndex = 11;
-            this.ngonngu.SelectedIndexChanged += new System.EventHandler(this.ngonngu_SelectedIndexChanged);
             // 
             // FormLogin
             // 
@@ -154,7 +137,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1106, 591);
             this.Controls.Add(this.ngonngu);
-            this.Controls.Add(this.thoat);
             this.Controls.Add(this.dangnhap);
             this.Controls.Add(this.checkBoxHTMK);
             this.Controls.Add(this.pass);
@@ -166,7 +148,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
             this.Text = "Login";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLogin_FormClosing);
             this.Load += new System.EventHandler(this.FormLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -182,7 +164,6 @@
         private System.Windows.Forms.TextBox pass;
         private System.Windows.Forms.CheckBox checkBoxHTMK;
         private System.Windows.Forms.Button dangnhap;
-        private System.Windows.Forms.Button thoat;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.PictureBox pictureBox1;

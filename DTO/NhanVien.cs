@@ -22,5 +22,26 @@ namespace DTO
         public string trinhdohocvan { get; set; }
         public string loaihinh { get; set; }
         public int quyenhan { get; set; }
+        public NhanVien(string manv, string hoten, DateTime ngaysinh, string gioitinh, string diachi, string didong, string email, string chucvu, string phongban, double luong, string trangthai, string trinhdohocvan, string loaihinh, int quyenhan)
+        {
+            this.manv = manv;
+            this.hoten = hoten;
+            this.ngaysinh = ngaysinh;
+            this.gioitinh = gioitinh;
+            this.diachi = diachi;
+            this.didong = didong;
+            this.email = email;
+            this.chucvu = chucvu;
+            this.phongban = phongban;
+            this.luong = luong;
+            this.trangthai = trangthai;
+            this.trinhdohocvan = trinhdohocvan;
+            this.loaihinh = loaihinh;
+            this.quyenhan = quyenhan;
+        }
+        public NhanVien()
+        {
+
+        }
     }
 }

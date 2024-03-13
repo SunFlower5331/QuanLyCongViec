@@ -59,14 +59,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboloaitk = new System.Windows.Forms.ComboBox();
+            this.cboquyenhan = new System.Windows.Forms.ComboBox();
+            this.hienmk = new System.Windows.Forms.CheckBox();
             this.mk = new System.Windows.Forms.TextBox();
             this.txbtentk = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.hienmk = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -96,7 +96,6 @@
             // 
             // dtpNgaySinh
             // 
-            this.dtpNgaySinh.Enabled = false;
             this.dtpNgaySinh.Location = new System.Drawing.Point(116, 81);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(200, 22);
@@ -199,7 +198,6 @@
             // 
             this.txtTrinhDoHocVan.Location = new System.Drawing.Point(472, 121);
             this.txtTrinhDoHocVan.Name = "txtTrinhDoHocVan";
-            this.txtTrinhDoHocVan.ReadOnly = true;
             this.txtTrinhDoHocVan.Size = new System.Drawing.Size(205, 22);
             this.txtTrinhDoHocVan.TabIndex = 17;
             // 
@@ -214,10 +212,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cboquyenhan);
             this.groupBox2.Controls.Add(this.txtLoaiHinh);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtTrangThai);
             this.groupBox2.Controls.Add(this.txtPhongBan);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtTrinhDoHocVan);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label4);
@@ -235,6 +235,7 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin hợp đồng";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // txtLoaiHinh
             // 
@@ -244,8 +245,9 @@
             "Full-time Employee"});
             this.txtLoaiHinh.FormattingEnabled = true;
             this.txtLoaiHinh.Items.AddRange(new object[] {
-            "Nữ ",
-            "Nam"});
+            "Intern",
+            "Parttime",
+            "FullTime"});
             this.txtLoaiHinh.Location = new System.Drawing.Point(111, 160);
             this.txtLoaiHinh.Name = "txtLoaiHinh";
             this.txtLoaiHinh.Size = new System.Drawing.Size(205, 24);
@@ -264,8 +266,8 @@
             // 
             this.txtTrangThai.FormattingEnabled = true;
             this.txtTrangThai.Items.AddRange(new object[] {
-            "Nữ ",
-            "Nam"});
+            "Còn làm việc",
+            "Đã nghĩ việc"});
             this.txtTrangThai.Location = new System.Drawing.Point(472, 78);
             this.txtTrangThai.Name = "txtTrangThai";
             this.txtTrangThai.Size = new System.Drawing.Size(205, 24);
@@ -373,10 +375,8 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.hienmk);
-            this.groupBox3.Controls.Add(this.cboloaitk);
             this.groupBox3.Controls.Add(this.mk);
             this.groupBox3.Controls.Add(this.txbtentk);
-            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Enabled = false;
@@ -387,21 +387,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin tài khoản";
             // 
-            // cboloaitk
+            // cboquyenhan
             // 
-            this.cboloaitk.Enabled = false;
-            this.cboloaitk.FormattingEnabled = true;
-            this.cboloaitk.Items.AddRange(new object[] {
-            "1.CEO",
-            "2.Quản lý",
-            "3.Nhân viên",
+            this.cboquyenhan.FormattingEnabled = true;
+            this.cboquyenhan.Items.AddRange(new object[] {
             "1",
             "2",
             "3"});
-            this.cboloaitk.Location = new System.Drawing.Point(472, 43);
-            this.cboloaitk.Name = "cboloaitk";
-            this.cboloaitk.Size = new System.Drawing.Size(205, 24);
-            this.cboloaitk.TabIndex = 20;
+            this.cboquyenhan.Location = new System.Drawing.Point(472, 165);
+            this.cboquyenhan.Name = "cboquyenhan";
+            this.cboquyenhan.Size = new System.Drawing.Size(205, 24);
+            this.cboquyenhan.TabIndex = 22;
+            // 
+            // hienmk
+            // 
+            this.hienmk.AutoSize = true;
+            this.hienmk.Location = new System.Drawing.Point(363, 96);
+            this.hienmk.Name = "hienmk";
+            this.hienmk.Size = new System.Drawing.Size(114, 20);
+            this.hienmk.TabIndex = 21;
+            this.hienmk.Text = "Hiện mật khẩu";
+            this.hienmk.UseVisualStyleBackColor = true;
+            this.hienmk.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // mk
             // 
@@ -415,18 +422,17 @@
             // 
             this.txbtentk.Location = new System.Drawing.Point(114, 40);
             this.txbtentk.Name = "txbtentk";
-            this.txbtentk.ReadOnly = true;
             this.txbtentk.Size = new System.Drawing.Size(203, 22);
             this.txbtentk.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(360, 46);
+            this.label5.Location = new System.Drawing.Point(360, 165);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
+            this.label5.Size = new System.Drawing.Size(97, 16);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Loại tài khoản";
+            this.label5.Text = "Cấp quyền hạn";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
@@ -458,17 +464,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.sua);
             // 
-            // hienmk
-            // 
-            this.hienmk.AutoSize = true;
-            this.hienmk.Location = new System.Drawing.Point(363, 96);
-            this.hienmk.Name = "hienmk";
-            this.hienmk.Size = new System.Drawing.Size(114, 20);
-            this.hienmk.TabIndex = 21;
-            this.hienmk.Text = "Hiện mật khẩu";
-            this.hienmk.UseVisualStyleBackColor = true;
-            this.hienmk.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // FormThongTinCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -482,8 +477,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormThongTinCaNhan";
             this.Text = "Thông tin cá nhân";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormThongTinCaNhan_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormThongTinCaNhan_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_FormThongTinCaNhanClosing);
+//            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormThongTinCaNhan_FormClosed);
             this.Load += new System.EventHandler(this.FormThongTinCaNhan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -528,7 +523,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox txtLoaiHinh;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cboloaitk;
         private System.Windows.Forms.TextBox mk;
         private System.Windows.Forms.TextBox txbtentk;
         private System.Windows.Forms.Label label5;
@@ -536,5 +530,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox hienmk;
+        private System.Windows.Forms.ComboBox cboquyenhan;
     }
 }

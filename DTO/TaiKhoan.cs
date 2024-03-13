@@ -11,7 +11,6 @@ namespace DTO
     {
         public string id { get; set; }
         public string mk { get; set; }
-        public string mapq { get; set; }
         public int loaiTK { get; set; }
     }
 

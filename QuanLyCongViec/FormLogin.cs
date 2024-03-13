@@ -53,18 +53,11 @@ namespace QuanLyCongViec
                 FormMain fm=new FormMain();
                 fm.Show();
                 this.Hide();
-                fm.logout += Fm_logout;
                 
             }
             
         }
 
-        private void Fm_logout(object sender, EventArgs e)
-        {
-            (sender as FormMain).isExit = false;
-            (sender as FormMain).Close();
-            this.Show();
-        }
 
         private bool CheckLogin()
         {
@@ -87,30 +80,31 @@ namespace QuanLyCongViec
             return true;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void matkhau_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ngonngu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void FormLogin_Load(object sender, EventArgs e)
         {
             ngonngu.SelectedIndex = 0;
 
         }
-
-        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            // Kiểm tra nếu người dùng chọn đóng cửa sổ bằng nút "X" (nút đóng cửa sổ)
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Hiển thị hộp thoại xác nhận
+                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // Nếu người dùng chọn "Có", đóng chương trình
+                if (result == DialogResult.Yes)
+                {
+                    // Đóng chương trình
+                    Application.Exit();
+                }
+                else
+                {
+                    // Hủy sự kiện đóng cửa sổ
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

@@ -63,6 +63,12 @@
     <Compile Include="FormCongViec.Designer.cs">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDuLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDuLieu.Designer.cs">
+      <DependentUpon>FormDuLieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,28 +87,19 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPhongBan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPhongBan.Designer.cs">
-      <DependentUpon>FormPhongBan.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormThongTinCaNhan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormThongTinCaNhan.Designer.cs">
       <DependentUpon>FormThongTinCaNhan.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormUser.Designer.cs">
-      <DependentUpon>FormUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDuLieu.resx">
+      <DependentUpon>FormDuLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNhanVien.resx">
       <DependentUpon>FormNhanVien.cs</DependentUpon>
@@ -113,14 +110,8 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPhongBan.resx">
-      <DependentUpon>FormPhongBan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormThongTinCaNhan.resx">
       <DependentUpon>FormThongTinCaNhan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormUser.resx">
-      <DependentUpon>FormUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
