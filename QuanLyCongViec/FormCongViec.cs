@@ -143,7 +143,33 @@ namespace QuanLyCongViec
             }
         }
 
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
+            this.Hide();
 
+        }
+        private void FormCongViec_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+
+                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+                if (result == DialogResult.Yes)
+                {
+
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
         private void btnluu_Click(object sender, EventArgs e)
         {
 
@@ -247,12 +273,8 @@ namespace QuanLyCongViec
         private void btnsua_Click(object sender, EventArgs e)
         {
         }
-       
 
-        private void btnxoa_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 
 }

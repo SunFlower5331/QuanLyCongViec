@@ -56,11 +56,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dsdpc = new System.Windows.Forms.DataGridView();
             this.tongquat = new System.Windows.Forms.GroupBox();
+            this.btnhuy = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnphancong = new System.Windows.Forms.Button();
             this.btnchinhsuaphancong = new System.Windows.Forms.Button();
             this.btnluuthaydoi = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnhuy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -304,6 +304,7 @@
             this.btnthoat.TabIndex = 19;
             this.btnthoat.Text = "Thoát";
             this.btnthoat.UseVisualStyleBackColor = true;
+            this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
             // 
             // btnsua
             // 
@@ -325,7 +326,7 @@
             this.btnxoa.TabIndex = 17;
             this.btnxoa.Text = "Xóa";
             this.btnxoa.UseVisualStyleBackColor = true;
-            this.btnxoa.Click += new System.EventHandler(this.btnxoa_Click);
+            
             // 
             // btnthem
             // 
@@ -376,6 +377,27 @@
             this.tongquat.TabIndex = 22;
             this.tongquat.TabStop = false;
             // 
+            // btnhuy
+            // 
+            this.btnhuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnhuy.Location = new System.Drawing.Point(1057, 534);
+            this.btnhuy.Name = "btnhuy";
+            this.btnhuy.Size = new System.Drawing.Size(88, 30);
+            this.btnhuy.TabIndex = 26;
+            this.btnhuy.Text = "Hủy";
+            this.btnhuy.UseVisualStyleBackColor = true;
+            this.btnhuy.Click += new System.EventHandler(this.btnhuy_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(623, 276);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 30);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Thoát";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // btnphancong
             // 
             this.btnphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -411,27 +433,6 @@
             this.btnluuthaydoi.UseVisualStyleBackColor = true;
             this.btnluuthaydoi.Click += new System.EventHandler(this.btnluuthaydoi_Click);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(623, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 30);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Thoát";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnhuy
-            // 
-            this.btnhuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnhuy.Location = new System.Drawing.Point(1057, 534);
-            this.btnhuy.Name = "btnhuy";
-            this.btnhuy.Size = new System.Drawing.Size(88, 30);
-            this.btnhuy.TabIndex = 26;
-            this.btnhuy.Text = "Hủy";
-            this.btnhuy.UseVisualStyleBackColor = true;
-            this.btnhuy.Click += new System.EventHandler(this.btnhuy_Click);
-            // 
             // FormCongViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -446,6 +447,7 @@
             this.Controls.Add(this.tongquat);
             this.Name = "FormCongViec";
             this.Text = "FormCongViec";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCongViec_FormClosing);
             this.Load += new System.EventHandler(this.FormCongViec_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).EndInit();
