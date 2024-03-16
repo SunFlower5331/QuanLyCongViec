@@ -1,4 +1,7 @@
-﻿namespace QuanLyCongViec
+﻿using System;
+using System.Windows.Forms;
+
+namespace QuanLyCongViec
 {
     partial class FormLogin
     {
@@ -267,6 +270,21 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ngonngu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
