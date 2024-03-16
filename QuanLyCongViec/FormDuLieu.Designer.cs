@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDuLieu));
             this.tabDulieu = new System.Windows.Forms.TabControl();
             this.CuDan = new System.Windows.Forms.TabPage();
             this.dscudan = new System.Windows.Forms.DataGridView();
@@ -47,6 +48,9 @@
             this.btnluu = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.timkiem = new System.Windows.Forms.Button();
+            this.txbtimkiem = new System.Windows.Forms.TextBox();
             this.tabDulieu.SuspendLayout();
             this.CuDan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscudan)).BeginInit();
@@ -60,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).BeginInit();
             this.PhongBan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabDulieu
@@ -74,7 +79,7 @@
             this.tabDulieu.Location = new System.Drawing.Point(0, -2);
             this.tabDulieu.Name = "tabDulieu";
             this.tabDulieu.SelectedIndex = 0;
-            this.tabDulieu.Size = new System.Drawing.Size(1161, 562);
+            this.tabDulieu.Size = new System.Drawing.Size(1161, 538);
             this.tabDulieu.TabIndex = 0;
             // 
             // CuDan
@@ -83,20 +88,21 @@
             this.CuDan.Location = new System.Drawing.Point(4, 29);
             this.CuDan.Name = "CuDan";
             this.CuDan.Padding = new System.Windows.Forms.Padding(3);
-            this.CuDan.Size = new System.Drawing.Size(1153, 529);
+            this.CuDan.Size = new System.Drawing.Size(1153, 505);
             this.CuDan.TabIndex = 1;
             this.CuDan.Text = "Cư dân";
             this.CuDan.UseVisualStyleBackColor = true;
+            this.CuDan.Click += new System.EventHandler(this.CuDan_Click);
             // 
             // dscudan
             // 
             this.dscudan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dscudan.Location = new System.Drawing.Point(0, 0);
+            this.dscudan.Location = new System.Drawing.Point(-4, 6);
             this.dscudan.Name = "dscudan";
             this.dscudan.ReadOnly = true;
             this.dscudan.RowHeadersWidth = 51;
             this.dscudan.RowTemplate.Height = 24;
-            this.dscudan.Size = new System.Drawing.Size(1147, 523);
+            this.dscudan.Size = new System.Drawing.Size(1151, 493);
             this.dscudan.TabIndex = 0;
             // 
             // CanHo
@@ -104,7 +110,7 @@
             this.CanHo.Controls.Add(this.dsch);
             this.CanHo.Location = new System.Drawing.Point(4, 29);
             this.CanHo.Name = "CanHo";
-            this.CanHo.Size = new System.Drawing.Size(1153, 529);
+            this.CanHo.Size = new System.Drawing.Size(1153, 505);
             this.CanHo.TabIndex = 4;
             this.CanHo.Text = "Căn hộ";
             this.CanHo.UseVisualStyleBackColor = true;
@@ -124,7 +130,7 @@
             this.Quyen.Controls.Add(this.dsqh);
             this.Quyen.Location = new System.Drawing.Point(4, 29);
             this.Quyen.Name = "Quyen";
-            this.Quyen.Size = new System.Drawing.Size(1153, 529);
+            this.Quyen.Size = new System.Drawing.Size(1153, 505);
             this.Quyen.TabIndex = 5;
             this.Quyen.Text = "Quyền hạn";
             this.Quyen.UseVisualStyleBackColor = true;
@@ -144,7 +150,7 @@
             this.TaiKhoan.Controls.Add(this.dstk);
             this.TaiKhoan.Location = new System.Drawing.Point(4, 29);
             this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.Size = new System.Drawing.Size(1153, 529);
+            this.TaiKhoan.Size = new System.Drawing.Size(1153, 505);
             this.TaiKhoan.TabIndex = 3;
             this.TaiKhoan.Text = "Tài khoản";
             this.TaiKhoan.UseVisualStyleBackColor = true;
@@ -165,7 +171,7 @@
             this.NhanVien.Location = new System.Drawing.Point(4, 29);
             this.NhanVien.Name = "NhanVien";
             this.NhanVien.Padding = new System.Windows.Forms.Padding(3);
-            this.NhanVien.Size = new System.Drawing.Size(1153, 529);
+            this.NhanVien.Size = new System.Drawing.Size(1153, 505);
             this.NhanVien.TabIndex = 0;
             this.NhanVien.Text = "Nhân viên";
             this.NhanVien.UseVisualStyleBackColor = true;
@@ -186,7 +192,7 @@
             this.PhongBan.Controls.Add(this.dspb);
             this.PhongBan.Location = new System.Drawing.Point(4, 29);
             this.PhongBan.Name = "PhongBan";
-            this.PhongBan.Size = new System.Drawing.Size(1153, 529);
+            this.PhongBan.Size = new System.Drawing.Size(1153, 505);
             this.PhongBan.TabIndex = 2;
             this.PhongBan.Text = "Phòng ban";
             this.PhongBan.UseVisualStyleBackColor = true;
@@ -205,7 +211,7 @@
             // btnthem
             // 
             this.btnthem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthem.Location = new System.Drawing.Point(818, 582);
+            this.btnthem.Location = new System.Drawing.Point(856, 582);
             this.btnthem.Name = "btnthem";
             this.btnthem.Size = new System.Drawing.Size(88, 37);
             this.btnthem.TabIndex = 1;
@@ -216,7 +222,7 @@
             // btnxoa
             // 
             this.btnxoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnxoa.Location = new System.Drawing.Point(687, 582);
+            this.btnxoa.Location = new System.Drawing.Point(752, 582);
             this.btnxoa.Name = "btnxoa";
             this.btnxoa.Size = new System.Drawing.Size(88, 37);
             this.btnxoa.TabIndex = 2;
@@ -227,7 +233,7 @@
             // btnsua
             // 
             this.btnsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsua.Location = new System.Drawing.Point(550, 582);
+            this.btnsua.Location = new System.Drawing.Point(658, 582);
             this.btnsua.Name = "btnsua";
             this.btnsua.Size = new System.Drawing.Size(88, 37);
             this.btnsua.TabIndex = 3;
@@ -239,7 +245,7 @@
             // 
             this.btnluu.Enabled = false;
             this.btnluu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnluu.Location = new System.Drawing.Point(946, 582);
+            this.btnluu.Location = new System.Drawing.Point(959, 582);
             this.btnluu.Name = "btnluu";
             this.btnluu.Size = new System.Drawing.Size(88, 37);
             this.btnluu.TabIndex = 4;
@@ -262,13 +268,47 @@
             // 
             this.btnCapNhat.Enabled = false;
             this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.Location = new System.Drawing.Point(346, 582);
+            this.btnCapNhat.Location = new System.Drawing.Point(541, 582);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(169, 37);
+            this.btnCapNhat.Size = new System.Drawing.Size(111, 37);
             this.btnCapNhat.TabIndex = 6;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click_1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.timkiem);
+            this.groupBox1.Controls.Add(this.txbtimkiem);
+            this.groupBox1.Location = new System.Drawing.Point(12, 555);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(517, 73);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tìm kiếm";
+            // 
+            // timkiem
+            // 
+            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
+            this.timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.timkiem.Location = new System.Drawing.Point(361, 17);
+            this.timkiem.Name = "timkiem";
+            this.timkiem.Size = new System.Drawing.Size(117, 35);
+            this.timkiem.TabIndex = 6;
+            this.timkiem.Text = "Tìm kiếm";
+            this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.timkiem.UseVisualStyleBackColor = true;
+            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
+            // 
+            // txbtimkiem
+            // 
+            this.txbtimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbtimkiem.Location = new System.Drawing.Point(6, 24);
+            this.txbtimkiem.Name = "txbtimkiem";
+            this.txbtimkiem.Size = new System.Drawing.Size(330, 27);
+            this.txbtimkiem.TabIndex = 2;
+            this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // FormDuLieu
             // 
@@ -276,6 +316,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1173, 640);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnluu);
@@ -300,7 +341,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).EndInit();
             this.PhongBan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -325,5 +369,8 @@
         private System.Windows.Forms.DataGridView dsch;
         private System.Windows.Forms.DataGridView dsqh;
         private System.Windows.Forms.Button btnCapNhat;
+        private System.Windows.Forms.Button timkiem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txbtimkiem;
     }
 }

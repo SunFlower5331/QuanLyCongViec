@@ -15,7 +15,7 @@ namespace QuanLyCongViec
     public partial class FormThongTinCaNhan : Form
     {
         public bool isExit = true;
-        public event EventHandler logout;
+     
         public FormThongTinCaNhan()
         {
             InitializeComponent();
@@ -58,16 +58,17 @@ namespace QuanLyCongViec
                 txtTrinhDoHocVan.Text = nv.trinhdohocvan;
                 txtLoaiHinh.Text = nv.loaihinh;
                 txbmnv.Text = nv.manv;
-                cboquyenhan.SelectedItem=nv.quyenhan;
+                cboquyenhan.Text = nv.quyenhan.ToString() ;
                 txbtentk.Text = tk.id;
                 mk.Text = tk.mk;
-                cboquyenhan.SelectedItem = tk.loaiTK;
+               
 
             }
         }
 
         private void sua(object sender, EventArgs e)
         {
+            button1.Enabled=true;
             groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
             txbtentk.Enabled = false;
             cboquyenhan.Enabled=true;
@@ -122,9 +123,10 @@ namespace QuanLyCongViec
             string loaihinh = txtLoaiHinh.Text;
             string tendangnhap = txbtentk.Text;
             string matkhau = mk.Text;
+            int quyenhan=Convert.ToInt32(cboquyenhan.Text);
             int loaitaikhoan = Convert.ToInt32(cboquyenhan.Text);
             // Gọi phương thức cập nhật dữ liệu trong cơ sở dữ liệu
-            bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh);
+            bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh,quyenhan);
             bool result2 = DatabaseAccess.CapNhatThongTinTaiKhoan(tendangnhap, matkhau, loaitaikhoan);
 
             // Kiểm tra kết quả và hiển thị thông báo

@@ -14,7 +14,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=BAOHAN;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -48,6 +48,42 @@ namespace DAL
             }
             return user;
 
+        }
+        public static DataSet GetAllDscv()
+        {
+            DataSet data = new DataSet();
+            string query = "select * from DsCongViec";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetNhanVien()
+        {
+            DataSet data = new DataSet();
+            string query = "select manv,hoten,phongban from NhanVien";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetCTCV()
+        {
+            DataSet data = new DataSet();
+            string query = "" +
+                "select  DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,NV.phongban,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "from CTCV C,DsCongViec DSCV,NhanVien NV " +
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
         }
         public static DataSet GetAllNhanVien()
         {
@@ -136,7 +172,7 @@ namespace DAL
                         nhanVien = new NhanVien();
                         tk = new TaiKhoan();
 
-                        // Kiểm tra và gán giá trị cho các trường
+                
                         nhanVien.manv = reader["manv"].ToString();
                         nhanVien.hoten = reader["hoten"].ToString();
                         nhanVien.ngaysinh = reader.IsDBNull(reader.GetOrdinal("ngaysinh")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("ngaysinh"));
@@ -150,7 +186,7 @@ namespace DAL
                         nhanVien.trangthai = reader["trangthai"].ToString();
                         nhanVien.trinhdohocvan = reader["trinhdohocvan"].ToString();
                         nhanVien.loaihinh = reader["loaihinh"].ToString();
-                        nhanVien.quyenhan = reader.IsDBNull(reader.GetOrdinal("quyenhan")) ? 0 : Convert.ToInt32(reader["quyenhan"]);
+                        nhanVien.quyenhan =Convert.ToInt32(reader["quyenhan"]);
 
                         tk.id = reader["id"].ToString();
                         tk.mk = reader["mk"].ToString();
@@ -161,9 +197,9 @@ namespace DAL
 
             return (nhanVien, tk);
         }
-        public static bool CapNhatThongTinNhanVien(string manv, string hoten, DateTime ngaysinh, string gioitinh, string diachi, string didong, string email, string chucvu, string phongban, double luong, string trangthai, string trinhdohocvan, string loaihinh)
+        public static bool CapNhatThongTinNhanVien(string manv, string hoten, DateTime ngaysinh, string gioitinh, string diachi, string didong, string email, string chucvu, string phongban, double luong, string trangthai, string trinhdohocvan, string loaihinh,int quyenhan)
         {
-            string query = "UPDATE NhanVien SET hoten = @hoten, ngaysinh = @ngaysinh, gioitinh = @gioitinh, diachi = @diachi, didong = @didong, email = @email, ";
+            string query = "UPDATE NhanVien SET hoten = @hoten, ngaysinh = @ngaysinh, gioitinh = @gioitinh, diachi = @diachi, didong = @didong, email = @email,quyenhan=@quyenhan, ";
             query += "chucvu = @chucvu, phongban = @phongban, luong = @luong, trangthai = @trangthai, trinhdohocvan = @trinhdohocvan, loaihinh = @loaihinh WHERE manv = @manv";
 
             using (SqlConnection con = SqlConnectionData.connect())
@@ -183,6 +219,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@trangthai", trangthai);
                 cmd.Parameters.AddWithValue("@trinhdohocvan", trinhdohocvan);
                 cmd.Parameters.AddWithValue("@loaihinh", loaihinh);
+                cmd.Parameters.AddWithValue("@quyenhan", quyenhan);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected > 0;
@@ -209,7 +246,7 @@ namespace DAL
             string[] parameterNames = new string[columnNames.Length];
             for (int i = 0; i < columnNames.Length; i++)
             {
-                parameterNames[i] = $"@{columnNames[i]}"; // Tạo tên tham số cho mỗi cột
+                parameterNames[i] = $"@{columnNames[i]}"; 
             }
 
             string sql = $"INSERT INTO {tableName} ({string.Join(", ", columnNames)}) VALUES ({string.Join(", ", parameterNames)})";
@@ -220,7 +257,7 @@ namespace DAL
 
                 for (int i = 0; i < columnNames.Length; i++)
                 {
-                    command.Parameters.AddWithValue(parameterNames[i], values[i]); // Sử dụng tên tham số
+                    command.Parameters.AddWithValue(parameterNames[i], values[i]);
                 }
 
                 try
@@ -230,7 +267,7 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý exception tại đây
+              
                     
                     throw ex;
                 }
@@ -238,14 +275,14 @@ namespace DAL
         }
         public static void DeleteData(string tableName, string[] columnNames, object[] values)
         {
-            // Tạo điều kiện cho lệnh DELETE
+           
             string[] conditions = new string[columnNames.Length];
             for (int i = 0; i < columnNames.Length; i++)
             {
-                conditions[i] = $"{columnNames[i]} = @{columnNames[i]}"; // Tạo điều kiện cho mỗi cột
+                conditions[i] = $"{columnNames[i]} = @{columnNames[i]}"; 
             }
 
-            // Tạo câu lệnh DELETE SQL
+        
             string sql = $"DELETE FROM {tableName} WHERE {string.Join(" AND ", conditions)}";
 
             using (SqlConnection con = SqlConnectionData.connect())
@@ -254,7 +291,7 @@ namespace DAL
 
                 for (int i = 0; i < columnNames.Length; i++)
                 {
-                    command.Parameters.AddWithValue($"@{columnNames[i]}", values[i]); // Sử dụng tên tham số
+                    command.Parameters.AddWithValue($"@{columnNames[i]}", values[i]); 
                 }
 
                 try
@@ -264,7 +301,7 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý exception tại đây
+                
 
                     throw ex;
                 }
@@ -272,34 +309,33 @@ namespace DAL
         }
         public static void UpdateData(string tableName, string[] columnNames, object[] values, string[] conditionColumns, object[] conditionValues)
         {
-            // Tạo danh sách các câu lệnh SET cần cập nhật
+            
             string[] setStatements = new string[columnNames.Length];
             for (int i = 0; i < columnNames.Length; i++)
             {
-                setStatements[i] = $"{columnNames[i]} = @{columnNames[i]}"; // Tạo câu lệnh SET cho mỗi cột
+                setStatements[i] = $"{columnNames[i]} = @{columnNames[i]}";
             }
 
-            // Tạo điều kiện cho lệnh UPDATE
             string[] conditions = new string[conditionColumns.Length];
             for (int i = 0; i < conditionColumns.Length; i++)
             {
-                conditions[i] = $"{conditionColumns[i]} = @{conditionColumns[i]}"; // Tạo điều kiện cho mỗi cột
+                conditions[i] = $"{conditionColumns[i]} = @{conditionColumns[i]}";
             }
 
-            // Tạo câu lệnh SQL UPDATE hoàn chỉnh
+           
             string sql = $"UPDATE {tableName} SET {string.Join(", ", setStatements)} WHERE {string.Join(" AND ", conditions)}";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
                 SqlCommand command = new SqlCommand(sql, con);
 
-                // Thêm các tham số cho phần SET
+               
                 for (int i = 0; i < columnNames.Length; i++)
                 {
                     command.Parameters.AddWithValue($"@{columnNames[i]}", values[i]);
                 }
 
-                // Thêm các tham số cho phần WHERE (điều kiện)
+                
                 for (int i = 0; i < conditionColumns.Length; i++)
                 {
                     command.Parameters.AddWithValue($"@{conditionColumns[i]}", conditionValues[i]);
@@ -308,12 +344,12 @@ namespace DAL
                 try
                 {
                     con.Open();
-                    command.ExecuteNonQuery(); // Thực thi lệnh UPDATE
+                    command.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý exception tại đây
-                    throw ex; // Ném lại exception để xử lý ở lớp gọi phương thức
+                
+                    throw ex; 
                 }
             }
         }

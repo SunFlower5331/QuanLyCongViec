@@ -117,32 +117,32 @@ namespace QuanLyCongViec
             btnluu.Enabled = true;
             if (tabDulieu.SelectedTab == CuDan)
             {
-                // Thực hiện lưu dữ liệu của tab Cư dân
+             
                 dgv = dscudan;
             }
             else if (tabDulieu.SelectedTab == NhanVien)
             {
-                // Thực hiện lưu dữ liệu của tab Nhân viên
+             
                 dgv = dsnv;
             }
             else if (tabDulieu.SelectedTab == PhongBan)
             {
-                // Thực hiện lưu dữ liệu của tab Phòng ban
+             
                 dgv = dspb;
             }
             else if (tabDulieu.SelectedTab == TaiKhoan)
             {
-                // Thực hiện lưu dữ liệu của tab Tài khoản
+              
                 dgv = dstk;
             }
             else if (tabDulieu.SelectedTab == Quyen)
             {
-                // Thực hiện lưu dữ liệu của tab Tài khoản
+                
                 dgv = dsqh;
             }
             else if (tabDulieu.SelectedTab == CanHo)
             {
-                // Thực hiện lưu dữ liệu của tab Tài khoản
+
                 dgv = dsch;
             }
 
@@ -151,15 +151,13 @@ namespace QuanLyCongViec
                 dgv.AllowUserToAddRows = true;
                 dgv.ReadOnly = false;
 
-                // Chọn hàng cuối cùng
                 dgv.ClearSelection();
                 dgv.Rows[dgv.Rows.Count - 1].Selected = true;
 
-                // Đảm bảo rằng cột đầu tiên được chọn
                 if (dgv.Columns.Count > 0)
                     dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
 
-                // Không cho phép thêm hàng mới
+     
                 dgv.AllowUserToAddRows = false;
             }
         }
@@ -172,7 +170,7 @@ namespace QuanLyCongViec
             isDataValid &= CheckDataGridViewData(dsnv);
             isDataValid &= CheckDataGridViewData(dstk);
             isDataValid &= CheckDataGridViewData(dsqh);
-            // Kiểm tra tab đang được chọn
+          
             if (isDataValid)
             {
 
@@ -205,10 +203,8 @@ namespace QuanLyCongViec
 
         private void SaveLastRowData(DataGridView dgv, string tableName)
         {
-            // Lấy dòng cuối cùng từ DataGridView
-            DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 1]; // Lấy dòng cuối cùng trừ đi dòng dành cho việc thêm mới
-
-            // Trích xuất dữ liệu từ dòng cuối cùng
+            
+            DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 1]; 
             object[] rowData = new object[lastRow.Cells.Count];
             for (int i = 0; i < lastRow.Cells.Count; i++)
             {
@@ -217,14 +213,13 @@ namespace QuanLyCongViec
 
             try
             {
-                // Chèn dữ liệu vào cơ sở dữ liệu
                 DatabaseAccess.InsertData(tableName, dgv.Columns.Cast<DataGridViewColumn>().Select(c => c.DataPropertyName).ToArray(), rowData);
 
                 MessageBox.Show("Dữ liệu đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 2627) // Kiểm tra mã lỗi cho việc chèn giá trị trùng lặp (duplicate key)
+                if (ex.Number == 2627)
                 {
                     MessageBox.Show("Giá trị đã tồn tại trong cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -243,27 +238,27 @@ namespace QuanLyCongViec
 
         private bool CheckDataGridViewData(DataGridView dgv)
         {
-            // Kiểm tra nếu chỉnh sửa ở hàng cuối cùng
+
             if (dgv.CurrentRow != null && dgv.CurrentCell.RowIndex == dgv.Rows.Count - 1)
             {
-                // Kiểm tra các giá trị của hàng cuối cùng
+            
                 foreach (DataGridViewCell cell in dgv.Rows[dgv.CurrentCell.RowIndex].Cells)
                 {
                     if (string.IsNullOrEmpty(cell.Value?.ToString()))
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                        // Di chuyển con trỏ đến ô đầu tiên của hàng cuối cùng để người dùng nhập lại
+                    
                         dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0];
 
-                        // Dừng việc chỉnh sửa trong ô hiện tại
+                     
                         dgv.BeginEdit(true);
 
                         return false;
                     }
                 }
 
-                // Kiểm tra logic dữ liệu của bảng Cư Dân
+             
                 bool isDataValid = CheckCuDanData(dgv);
                 if (!isDataValid)
                 {
@@ -276,13 +271,11 @@ namespace QuanLyCongViec
 
         private bool CheckCuDanData(DataGridView dgv)
         {
-            // Lấy dữ liệu từ DataGridView
+        
             int maCD = Convert.ToInt32(dgv.Rows[dgv.Rows.Count - 1].Cells["maCD"].Value);
             string tenCH = dgv.Rows[dgv.Rows.Count - 1].Cells["tenCH"].Value.ToString();
             DateTime ngaySinh = Convert.ToDateTime(dgv.Rows[dgv.Rows.Count - 1].Cells["ngaySinh"].Value);
-            // Thực hiện các kiểm tra logic khác ở đây...
-
-            // Ví dụ: Kiểm tra ngày sinh không được lớn hơn ngày hiện tại
+       
             if (ngaySinh > DateTime.Now)
             {
                 MessageBox.Show("Ngày sinh không được lớn hơn ngày hiện tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -299,7 +292,7 @@ namespace QuanLyCongViec
         {
             DataGridView dgv = null;
 
-            // Chọn DataGridView tương ứng với tab hiện tại
+
             if (tabDulieu.SelectedTab == CuDan)
             {
                 dgv = dscudan;
@@ -325,10 +318,9 @@ namespace QuanLyCongViec
                 dgv = dsch;
             }
 
-            // Kiểm tra xem DataGridView có null không và có hàng nào được chọn không
             if (dgv != null && dgv.SelectedRows.Count > 0)
             {
-                // Lấy dữ liệu của hàng được chọn
+
                 DataGridViewRow selectedRow = dgv.SelectedRows[0];
                 object[] rowData = new object[selectedRow.Cells.Count];
                 for (int i = 0; i < selectedRow.Cells.Count; i++)
@@ -336,15 +328,13 @@ namespace QuanLyCongViec
                     rowData[i] = selectedRow.Cells[i].Value;
                 }
 
-                // Xác định tên cột chứa khóa chính
+
                 string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
                 try
                 {
-                    // Xóa hàng từ cơ sở dữ liệu
+  
                     DatabaseAccess.DeleteData(tabDulieu.SelectedTab.Name, new string[] { primaryKeyColumn }, new object[] { rowData[0] });
-
-                    // Cập nhật lại DataGridView
                     if (tabDulieu.SelectedTab == CuDan)
                     {
                         loadDsCuDan();
@@ -388,7 +378,6 @@ namespace QuanLyCongViec
         {
             DataGridView dgv = null;
 
-            // Chọn DataGridView tương ứng với tab hiện tại
             if (tabDulieu.SelectedTab == CuDan)
             {
                 dgv = dscudan;
@@ -414,7 +403,6 @@ namespace QuanLyCongViec
                 dgv = dsch;
             }
 
-            // Kiểm tra xem DataGridView có null không
             if (dgv != null)
             {
                 List<int> changedRowsIndexes = GetChangedRowsIndexes(dgv);
@@ -428,32 +416,32 @@ namespace QuanLyCongViec
                         rowData[i] = row.Cells[i].Value;
                     }
 
-                    // Xác định tên cột chứa khóa chính
+          
                     string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
                     try
                     {
-                        // Lấy tên bảng tương ứng với tab đang được chọn
+                   
                         string tableName = tabDulieu.SelectedTab.Name;
 
-                        // Lấy tên các cột để cập nhật và giá trị mới tương ứng
+               
                         List<string> columnNames = new List<string>();
                         List<object> values = new List<object>();
-                        for (int i = 1; i < dgv.Columns.Count; i++) // Bỏ qua cột chứa khóa chính
+                        for (int i = 1; i < dgv.Columns.Count; i++) 
                         {
                             columnNames.Add(dgv.Columns[i].DataPropertyName);
                             values.Add(rowData[i]);
                         }
 
-                        // Lấy tên cột để làm điều kiện
+                     
                         string[] conditionColumns = { primaryKeyColumn };
-                        // Lấy giá trị của cột để làm điều kiện
+               
                         object[] conditionValues = { rowData[0] };
 
-                        // Cập nhật dữ liệu trong cơ sở dữ liệu
+                
                         DatabaseAccess.UpdateData(tableName, columnNames.ToArray(), values.ToArray(), conditionColumns, conditionValues);
 
-                        // Đánh dấu hàng đã cập nhật thành công
+                    
                         row.DataGridView.UpdateCellValue(row.Cells[0].ColumnIndex, row.Index);
                     }
                     catch (Exception ex)
@@ -462,7 +450,7 @@ namespace QuanLyCongViec
                     }
                 }
 
-                // Đặt lại trạng thái ReadOnly và kích hoạt các nút điều khiển
+            
                 dgv.ReadOnly = true;
                 btnCapNhat.Enabled = false;
                 btnluu.Enabled = true;
@@ -514,7 +502,7 @@ namespace QuanLyCongViec
             btnCapNhat.Enabled=true;
             DataGridView dgv = null;
 
-            // Chọn DataGridView tương ứng với tab hiện tại
+      
             if (tabDulieu.SelectedTab == CuDan)
             {
                 dgv = dscudan;
@@ -546,15 +534,15 @@ namespace QuanLyCongViec
                 dsch.ReadOnly = false;
             }
 
-            // Kiểm tra xem DataGridView có null không và có hàng nào được chọn không
+
             if (dgv != null && dgv.SelectedRows.Count > 0)
             {
-                // Xác định tên cột chứa khóa chính
+           
                 string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
                 try
                 {
-                    // Lấy dữ liệu của hàng được chọn
+                    
                     DataGridViewRow selectedRow = dgv.SelectedRows[0];
 
                     object[] rowData = new object[selectedRow.Cells.Count];
@@ -563,14 +551,13 @@ namespace QuanLyCongViec
                         rowData[i] = selectedRow.Cells[i].Value;
                     }
 
-                    // Xác định cột điều kiện và giá trị điều kiện
+                 
                     string[] conditionColumns = new string[] { primaryKeyColumn };
                     object[] conditionValues = new object[] { rowData[0] };
 
-                    // Cập nhật dữ liệu trong cơ sở dữ liệu
+                 
                     DatabaseAccess.UpdateData(tabDulieu.SelectedTab.Name, dgv.Columns.Cast<DataGridViewColumn>().Select(x => x.DataPropertyName).ToArray(), rowData, conditionColumns, conditionValues);
 
-                    // Cập nhật lại DataGridView
                     if (tabDulieu.SelectedTab == CuDan)
                     {
                         loadDsCuDan();
@@ -617,23 +604,95 @@ namespace QuanLyCongViec
 
         private void FormDuLieu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Kiểm tra nếu người dùng chọn đóng cửa sổ bằng nút "X" (nút đóng cửa sổ)
+ 
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                // Hiển thị hộp thoại xác nhận
+         
                 DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Nếu người dùng chọn "Có", đóng chương trình
+             
                 if (result == DialogResult.Yes)
                 {
-                    // Đóng chương trình
+        
                     Application.Exit();
                 }
                 else
                 {
-                    // Hủy sự kiện đóng cửa sổ
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CuDan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timkiem_Click(object sender, EventArgs e)
+        {
+            string keyword = txbtimkiem.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DataGridView dgv = null;
+
+
+            if (tabDulieu.SelectedTab == CuDan)
+            {
+                dgv = dscudan;
+            }
+            else if (tabDulieu.SelectedTab == NhanVien)
+            {
+                dgv = dsnv;
+            }
+            else if (tabDulieu.SelectedTab == PhongBan)
+            {
+                dgv = dspb;
+            }
+            else if (tabDulieu.SelectedTab == TaiKhoan)
+            {
+                dgv = dstk;
+            }
+            else if (tabDulieu.SelectedTab == Quyen)
+            {
+                dgv = dsqh;
+            }
+            else if (tabDulieu.SelectedTab == CanHo)
+            {
+                dgv = dsch;
+            }
+
+            if (dgv != null)
+            {
+                dgv.ClearSelection();
+
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value != null && cell.Value.ToString().ToLower().Contains(keyword))
+                        {
+                            dgv.Rows[row.Index].Selected = true;
+                            dgv.FirstDisplayedScrollingRowIndex = row.Index;
+                            return;
+                        }
+                    }
+                }
+
+                MessageBox.Show("Không tìm thấy kết quả phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Không có DataGridView nào được chọn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

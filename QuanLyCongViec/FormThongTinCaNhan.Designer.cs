@@ -48,6 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtTrangThai = new System.Windows.Forms.ComboBox();
             this.txtPhongBan = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtLuong = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,14 +60,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboquyenhan = new System.Windows.Forms.ComboBox();
             this.hienmk = new System.Windows.Forms.CheckBox();
             this.mk = new System.Windows.Forms.TextBox();
             this.txbtentk = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.cboquyenhan = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -284,6 +284,16 @@
             this.txtPhongBan.Size = new System.Drawing.Size(205, 24);
             this.txtPhongBan.TabIndex = 13;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(360, 165);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 16);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Cấp quyền hạn";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -352,6 +362,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(529, 579);
             this.button1.Name = "button1";
@@ -387,18 +398,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin tài khoản";
             // 
-            // cboquyenhan
-            // 
-            this.cboquyenhan.FormattingEnabled = true;
-            this.cboquyenhan.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cboquyenhan.Location = new System.Drawing.Point(472, 165);
-            this.cboquyenhan.Name = "cboquyenhan";
-            this.cboquyenhan.Size = new System.Drawing.Size(205, 24);
-            this.cboquyenhan.TabIndex = 22;
-            // 
             // hienmk
             // 
             this.hienmk.AutoSize = true;
@@ -424,16 +423,6 @@
             this.txbtentk.Name = "txbtentk";
             this.txbtentk.Size = new System.Drawing.Size(203, 22);
             this.txbtentk.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(360, 165);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 16);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Cấp quyền hạn";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -464,6 +453,14 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.sua);
             // 
+            // cboquyenhan
+            // 
+            this.cboquyenhan.Location = new System.Drawing.Point(472, 159);
+            this.cboquyenhan.Name = "cboquyenhan";
+            this.cboquyenhan.ReadOnly = true;
+            this.cboquyenhan.Size = new System.Drawing.Size(205, 22);
+            this.cboquyenhan.TabIndex = 21;
+            // 
             // FormThongTinCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -478,7 +475,6 @@
             this.Name = "FormThongTinCaNhan";
             this.Text = "Thông tin cá nhân";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_FormThongTinCaNhanClosing);
-//            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormThongTinCaNhan_FormClosed);
             this.Load += new System.EventHandler(this.FormThongTinCaNhan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -530,6 +526,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox hienmk;
-        private System.Windows.Forms.ComboBox cboquyenhan;
+        private System.Windows.Forms.TextBox cboquyenhan;
     }
 }

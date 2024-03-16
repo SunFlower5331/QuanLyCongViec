@@ -1,4 +1,3 @@
-
 CREATE DATABASE QuanlyCongViec;
 GO
 
@@ -87,10 +86,11 @@ CREATE TABLE DVCanHo (
 );
 
 CREATE TABLE CTCV (
-    maCV INT REFERENCES DsCongViec(maCV),
+    maCV INT,
     maNV VARCHAR(255),  
     trangthai NVARCHAR(50),
     thoiGianHoanThanh DATETIME,
+	Tuychonchiase NVARCHAR(50), --PUBLIC /PRIVATE
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv)  
 );
 
