@@ -14,7 +14,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -48,6 +48,28 @@ namespace DAL
             }
             return user;
 
+        }
+        public static bool IsDuplicateData(string tableName, string[] columns, object[] values)
+        {
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                con.Open();
+                SqlCommand command = con.CreateCommand();
+                command.CommandText = $"SELECT COUNT(*) FROM {tableName} WHERE ";
+
+                // Xây dựng điều kiện truy vấn dựa trên các cột và giá trị được truyền vào
+                for (int i = 0; i < columns.Length; i++)
+                {
+                    command.CommandText += $"{columns[i]} = @param{i}";
+                    command.Parameters.AddWithValue($"@param{i}", values[i]);
+                    if (i < columns.Length - 1)
+                        command.CommandText += " AND ";
+                }
+
+                int count = (int)command.ExecuteScalar();
+
+                return count > 0; // Trả về true nếu có bản ghi trùng, ngược lại trả về false
+            }
         }
         public static DataSet GetAllDscv()
         {
@@ -246,7 +268,7 @@ namespace DAL
             string[] parameterNames = new string[columnNames.Length];
             for (int i = 0; i < columnNames.Length; i++)
             {
-                parameterNames[i] = $"@{columnNames[i]}"; 
+                parameterNames[i] = $"@{columnNames[i]}";
             }
 
             string sql = $"INSERT INTO {tableName} ({string.Join(", ", columnNames)}) VALUES ({string.Join(", ", parameterNames)})";
@@ -264,15 +286,15 @@ namespace DAL
                 {
                     con.Open();
                     command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-              
                     
-                    throw ex;
+                }
+                catch (Exception )
+                {
+                 
                 }
             }
         }
+
         public static void DeleteData(string tableName, string[] columnNames, object[] values)
         {
            

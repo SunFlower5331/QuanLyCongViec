@@ -31,6 +31,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dscv = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbotrangthai = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.cbotuychonchiase = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbomanv = new System.Windows.Forms.TextBox();
@@ -57,8 +59,8 @@
             this.btnphancong = new System.Windows.Forms.Button();
             this.btnchinhsuaphancong = new System.Windows.Forms.Button();
             this.btnluuthaydoi = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbotrangthai = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnhuy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -84,7 +86,6 @@
             this.dscv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscv.Location = new System.Drawing.Point(6, 21);
             this.dscv.Name = "dscv";
-            this.dscv.ReadOnly = true;
             this.dscv.RowHeadersWidth = 51;
             this.dscv.RowTemplate.Height = 24;
             this.dscv.Size = new System.Drawing.Size(383, 411);
@@ -116,6 +117,30 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phân công công việc";
+            // 
+            // cbotrangthai
+            // 
+            this.cbotrangthai.AutoCompleteCustomSource.AddRange(new string[] {
+            "Chưa hoàn thành",
+            "Đã hoàn thành"});
+            this.cbotrangthai.FormattingEnabled = true;
+            this.cbotrangthai.Items.AddRange(new object[] {
+            "Chưa hoàn thành",
+            "Đã hoàn thành"});
+            this.cbotrangthai.Location = new System.Drawing.Point(173, 552);
+            this.cbotrangthai.Name = "cbotrangthai";
+            this.cbotrangthai.Size = new System.Drawing.Size(238, 24);
+            this.cbotrangthai.TabIndex = 25;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(21, 558);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 18);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Trạng thái";
             // 
             // cbotuychonchiase
             // 
@@ -273,7 +298,7 @@
             // btnthoat
             // 
             this.btnthoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthoat.Location = new System.Drawing.Point(1057, 534);
+            this.btnthoat.Location = new System.Drawing.Point(1177, 534);
             this.btnthoat.Name = "btnthoat";
             this.btnthoat.Size = new System.Drawing.Size(88, 30);
             this.btnthoat.TabIndex = 19;
@@ -287,8 +312,9 @@
             this.btnsua.Name = "btnsua";
             this.btnsua.Size = new System.Drawing.Size(88, 30);
             this.btnsua.TabIndex = 18;
-            this.btnsua.Text = "Sửa";
+            this.btnsua.Text = "Cập nhật";
             this.btnsua.UseVisualStyleBackColor = true;
+            this.btnsua.Click += new System.EventHandler(this.btnsua_Click);
             // 
             // btnxoa
             // 
@@ -299,6 +325,7 @@
             this.btnxoa.TabIndex = 17;
             this.btnxoa.Text = "Xóa";
             this.btnxoa.UseVisualStyleBackColor = true;
+            this.btnxoa.Click += new System.EventHandler(this.btnxoa_Click);
             // 
             // btnthem
             // 
@@ -309,6 +336,7 @@
             this.btnthem.TabIndex = 16;
             this.btnthem.Text = "Thêm";
             this.btnthem.UseVisualStyleBackColor = true;
+            this.btnthem.Click += new System.EventHandler(this.btnthem_Click);
             // 
             // groupBox3
             // 
@@ -335,6 +363,8 @@
             // 
             // tongquat
             // 
+            this.tongquat.Controls.Add(this.btnhuy);
+            this.tongquat.Controls.Add(this.button1);
             this.tongquat.Controls.Add(this.btnluu);
             this.tongquat.Controls.Add(this.btnthem);
             this.tongquat.Controls.Add(this.btnsua);
@@ -359,6 +389,7 @@
             // 
             // btnchinhsuaphancong
             // 
+            this.btnchinhsuaphancong.Enabled = false;
             this.btnchinhsuaphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnchinhsuaphancong.Location = new System.Drawing.Point(435, 632);
             this.btnchinhsuaphancong.Name = "btnchinhsuaphancong";
@@ -378,30 +409,28 @@
             this.btnluuthaydoi.TabIndex = 25;
             this.btnluuthaydoi.Text = "Lưu thay đổi";
             this.btnluuthaydoi.UseVisualStyleBackColor = true;
+            this.btnluuthaydoi.Click += new System.EventHandler(this.btnluuthaydoi_Click);
             // 
-            // label8
+            // button1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(21, 558);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 18);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Trạng thái";
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(623, 276);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 30);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Thoát";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // cbotrangthai
+            // btnhuy
             // 
-            this.cbotrangthai.AutoCompleteCustomSource.AddRange(new string[] {
-            "Chưa hoàn thành",
-            "Đã hoàn thành"});
-            this.cbotrangthai.FormattingEnabled = true;
-            this.cbotrangthai.Items.AddRange(new object[] {
-            "Chưa hoàn thành",
-            "Đã hoàn thành"});
-            this.cbotrangthai.Location = new System.Drawing.Point(173, 552);
-            this.cbotrangthai.Name = "cbotrangthai";
-            this.cbotrangthai.Size = new System.Drawing.Size(238, 24);
-            this.cbotrangthai.TabIndex = 25;
+            this.btnhuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnhuy.Location = new System.Drawing.Point(1057, 534);
+            this.btnhuy.Name = "btnhuy";
+            this.btnhuy.Size = new System.Drawing.Size(88, 30);
+            this.btnhuy.TabIndex = 26;
+            this.btnhuy.Text = "Hủy";
+            this.btnhuy.UseVisualStyleBackColor = true;
+            this.btnhuy.Click += new System.EventHandler(this.btnhuy_Click);
             // 
             // FormCongViec
             // 
@@ -463,5 +492,7 @@
         private System.Windows.Forms.Button btnluuthaydoi;
         private System.Windows.Forms.ComboBox cbotrangthai;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnhuy;
+        private System.Windows.Forms.Button button1;
     }
 }

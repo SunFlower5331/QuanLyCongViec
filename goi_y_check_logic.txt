@@ -1,0 +1,3 @@
+FormDuLieu : cần check logic các kiểu dữ liệu cần thiết phải check ,không cần thiết thì khỏi(sql/c#)=>viết hàm 
+
+FormCongViec: cần check phần thêm phân công cv tránh trường hợp dữ liệu bị trùng, =>nên làm proc ,coi code tương tự việc check login(tìm dữ liệu trùng thì cho phép dăng nhập =>tham khảo lớp TàiKhoanBLL.DatabaseAccess,TaiKhoanAccess,làm tương tự như vậy như phuong8 thức checkLogic())

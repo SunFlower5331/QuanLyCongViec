@@ -141,7 +141,7 @@ INSERT INTO NhanVien VALUES ('NV002', N'Trần Thị B', '1995-02-15', 'Nữ', N
 
 -- Thêm dữ liệu vào bảng Taikhoan
 INSERT INTO Taikhoan VALUES ('NV001', '123', 1);
-INSERT INTO Taikhoan VALUES ('NV002', '456', 2);
+INSERT INTO Taikhoan VALUES ('NV002', '123', 2);
 
 -- Thêm dữ liệu vào bảng DsCongViec
 INSERT INTO DsCongViec VALUES (1, N'Lập kế hoạch dự án');
@@ -160,8 +160,8 @@ INSERT INTO DVCanHo VALUES (1, N'Đã hoàn thành', N'Vệ sinh chung cư', 1);
 INSERT INTO DVCanHo VALUES (2, N'Chưa hoàn thành', N'Sửa chữa cơ bản', 2);
 
 -- Thêm dữ liệu vào bảng CTCV
-INSERT INTO CTCV VALUES (1, 'NV001', N'Đang thực hiện', NULL);
-INSERT INTO CTCV VALUES (2, 'NV002', N'Đã hoàn thành', '2024-02-20');
+---CẦN SỬA
+
 
 -- Thêm dữ liệu vào bảng ThanhVienCanHo
 INSERT INTO ThanhVienCanHo VALUES (1, 1, N'Nguyễn Thị Hồng', N'Vợ');
