@@ -92,6 +92,7 @@ CREATE TABLE CTCV (
     thoiGianHoanThanh DATETIME,
 	Tuychonchiase NVARCHAR(50), --PUBLIC /PRIVATE
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv)  
+	FOREIGN KEY (maCV) REFERENCES DsCongViec(macv) 
 );
 
 CREATE TABLE ThanhVienCanHo (

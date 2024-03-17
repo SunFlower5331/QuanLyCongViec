@@ -66,7 +66,7 @@ namespace QuanLyCongViec
             this.user.Size = new System.Drawing.Size(398, 20);
             this.user.TabIndex = 1;
             this.user.Text = "User ID";
-            this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
+//            this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
             this.user.Enter += new System.EventHandler(this.user_Enter);
             this.user.Leave += new System.EventHandler(this.user_Leave);
             // 
@@ -171,7 +171,7 @@ namespace QuanLyCongViec
             this.label1.Size = new System.Drawing.Size(134, 31);
             this.label1.TabIndex = 14;
             this.label1.Text = "TasMana";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+//            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -221,7 +221,7 @@ namespace QuanLyCongViec
             this.quenPass.TabIndex = 0;
             this.quenPass.TabStop = true;
             this.quenPass.Text = "Quên mật khẩu";
-            this.quenPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.quenPass_LinkClicked);
+//            this.quenPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.quenPass_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -232,7 +232,7 @@ namespace QuanLyCongViec
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+//            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // FormLogin
             // 

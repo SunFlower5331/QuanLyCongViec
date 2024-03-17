@@ -19,6 +19,33 @@ namespace QuanLyCongViec
         {
             InitializeComponent();
         }
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
+            this.Hide();
+
+        }
+        private void FormCongViec_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+
+                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+                if (result == DialogResult.Yes)
+                {
+
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
 
         private void FormCongViec_Load(object sender, EventArgs e)
         {
@@ -28,6 +55,11 @@ namespace QuanLyCongViec
             loadDsCongViec();
             loadCTCV();
             cbotrangthai.SelectedIndex = 0;
+
+            dsnv.CurrentCell = null;
+            dscv.CurrentCell = null;
+            dsdpc.CurrentCell = null;
+
 
         }
         private void loadDsNv()
@@ -42,7 +74,6 @@ namespace QuanLyCongViec
         private void loadDsCongViec()
         {
             dscv.DataSource = DatabaseAccess.GetAllDscv().Tables[0];
-            dscv.AutoGenerateColumns = false;
             dscv.Columns["maCV"].HeaderText = "Mã công việc";
             dscv.Columns["ten"].HeaderText = "Tên công việc";
 
@@ -63,35 +94,36 @@ namespace QuanLyCongViec
         }
         private void dscv_Click(Object sender, EventArgs e)
         {
+           
+            btnchinhsuaphancong.Enabled = false;
             if (dscv.CurrentRow != null)
             {
                 DataGridViewRow row1 = dscv.CurrentRow;
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
                 tbotencv.Text = row1.Cells["ten"].Value.ToString();
-                btnphancong.Enabled = true;
+
 
             }
 
         }
         private void dsnv_Click(Object sender, EventArgs e)
         {
+           
             if (dsnv.CurrentRow != null)
             {
                 DataGridViewRow row2 = dsnv.CurrentRow;
                 tbobophan.Text = row2.Cells["phongban"].Value.ToString();
                 tbotennv.Text = row2.Cells["hoten"].Value.ToString();
                 tbomanv.Text = row2.Cells["maNV"].Value.ToString();
-                
+
             }
         }
         private void dsdpc_Click(object sender, EventArgs e)
         {
+            dscv.CurrentCell = null;
             if (dsdpc.CurrentRow != null)
             {
-                dscv.Enabled = false;
-                dsnv.Enabled = false;
-                btnluuthaydoi.Enabled = false;
-                btnphancong.Enabled = false;
+                btnchinhsuaphancong.Enabled = true;
                 DataGridViewRow row1 = dsdpc.CurrentRow;
 
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
@@ -134,7 +166,9 @@ namespace QuanLyCongViec
                     new object[] { maCV, maNV, "Chưa hoàn thành", thoiGianHoanThanh, tuyChonChiaSe });
 
                 loadCTCV();
-
+                dsnv.CurrentCell = null;
+                dscv.CurrentCell = null;
+                dsdpc.CurrentCell = null;
                 MessageBox.Show("Đã lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -142,87 +176,23 @@ namespace QuanLyCongViec
                 MessageBox.Show($"Đã xảy ra lỗi khi lưu dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btnthoat_Click(object sender, EventArgs e)
-        {
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Hide();
-
-        }
-        private void FormCongViec_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-
-                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-
-                if (result == DialogResult.Yes)
-                {
-
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-        private void btnluu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnchinhsuaphancong_Click(object sender, EventArgs e)
-        {
-            dsnv.Enabled = true;
-            btnluuthaydoi.Enabled = true;
-            
-
-
-        }
-
-        private void btnhuy_Click(object sender, EventArgs e)
-        {
-            dsnv.Enabled = true;
-            dscv.Enabled = true;
-            tbomacv.Text = "";
-            tbotencv.Text = "";
-            tbobophan.Text = "";
-            tbotennv.Text = "";
-            tbomanv.Text = "";
-            dtpthoihan.Text = "";
-            cbotuychonchiase.Text = "";
-            cbotrangthai.Text = "";
-        }
-
-        private void btnluuthaydoi_Click(object sender, EventArgs e)
         {
             try
             {
-                dscv.Enabled = false;
 
-                // Lấy dữ liệu từ các controls trên form
                 string maCV = tbomacv.Text;
                 string maNV = tbomanv.Text;
                 DateTime thoiGianHoanThanh = dtpthoihan.Value;
                 string tuyChonChiaSe = cbotuychonchiase.Text;
 
-                // Xác định các điều kiện để cập nhật dữ liệu
                 string[] conditionColumns = { "maCV" };
                 object[] conditionValues = { maCV };
 
-                // Cập nhật dữ liệu trong bảng "CTCV" với các điều kiện tương ứng
                 DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase" },
                     new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe }, conditionColumns, conditionValues);
-
-                // Load lại dữ liệu sau khi cập nhật
                 loadCTCV();
-                dsnv.Enabled = true;
-                dscv.Enabled = true;
-                tbomacv.Text = "";
+               tbomacv.Text = "";
                 tbotencv.Text = "";
                 tbobophan.Text = "";
                 tbotennv.Text = "";
@@ -230,22 +200,94 @@ namespace QuanLyCongViec
                 dtpthoihan.Text = "";
                 cbotuychonchiase.Text = "";
                 cbotrangthai.Text = "";
-                // Hiển thị thông báo khi cập nhật thành công
+                dsnv.CurrentCell = null;
+                dscv.CurrentCell = null;
+                dsdpc.CurrentCell = null;
+                dsnv.CurrentCell = null;
+                dscv.CurrentCell = null;
+                dsdpc.CurrentCell = null;
                 MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                // Hiển thị thông báo khi có lỗi xảy ra
+
                 MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
+
+ 
 
         private void btnthem_Click(object sender, EventArgs e)
         {
+            dscv.AllowUserToAddRows = true;
+            btnluu.Enabled = true;
+            //dscv.Rows.Add();
+
+            // Di chuyển con trỏ chuột đến ô đầu tiên của hàng cuối cùng
+            dscv.CurrentCell = dscv.Rows[dscv.Rows.Count - 1].Cells[0];
+            dscv.BeginEdit(true); // Bắt đầu chỉnh sửa ô
+
+        }
+
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
             try
             {
-                
-                DataGridViewRow newRow = dscv.Rows[dscv.Rows.Count - 2]; 
+                dscv.Enabled = true;
+                if (dscv.CurrentRow != null && dscv.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dscv.CurrentRow;
+                    string maCV = selectedRow.Cells["maCV"].Value.ToString();
+                    string ten = selectedRow.Cells["ten"].Value.ToString();
+
+                    string[] conditionColumns = { "maCV", "ten" };
+                    object[] conditionValues = { maCV, ten };
+
+                    DatabaseAccess.DeleteData("DsCongViec", conditionColumns, conditionValues);
+
+                    loadDsCongViec();
+                    MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (dsdpc.CurrentRow != null && dsdpc.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dsdpc.CurrentRow;
+                    int maCV = Convert.ToInt32(selectedRow.Cells["maCV"].Value);
+                    DatabaseAccess.delCTCV(maCV);
+
+                    loadCTCV();
+                    dscv.CurrentCell = null;
+                    dsdpc.CurrentCell = null;
+                    MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn hàng để xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi khi xóa dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dscv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnluu_Click(sender, e);
+                dscv.CurrentCell = dscv.Rows[dscv.Rows.Count - 1].Cells[0];
+                dscv.BeginEdit(true); // Bắt đầu chỉnh sửa ô
+
+            }
+        }
+
+        private void btnluu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow newRow = dscv.Rows[dscv.Rows.Count - 2];
                 foreach (DataGridViewCell cell in newRow.Cells)
                 {
                     if (cell.Value == null || string.IsNullOrWhiteSpace(cell.Value?.ToString()))
@@ -254,15 +296,27 @@ namespace QuanLyCongViec
                         return;
                     }
                 }
+
                 string maCV = newRow.Cells["maCV"].Value.ToString();
                 string ten = newRow.Cells["ten"].Value.ToString();
+
+                // Kiểm tra xem dữ liệu đã tồn tại trong cơ sở dữ liệu chưa
+                bool dataExists = DatabaseAccess.CheckDataExists("DsCongViec", "maCV", maCV);
+                if (dataExists)
+                {
+                    MessageBox.Show("Dữ liệu đã tồn tại trong cơ sở dữ liệu!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Nếu dữ liệu chưa tồn tại, thêm vào cơ sở dữ liệu
                 DatabaseAccess.InsertData("DsCongViec",
                     new string[] { "maCV", "ten" },
                     new object[] { maCV, ten });
-
+                dsnv.CurrentCell = null;
+                dscv.CurrentCell = null;
+                dsdpc.CurrentCell = null;
                 MessageBox.Show("Đã thêm dữ liệu mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadDsCongViec();
-              
             }
             catch (Exception ex)
             {
@@ -270,13 +324,38 @@ namespace QuanLyCongViec
             }
         }
 
-        private void btnsua_Click(object sender, EventArgs e)
+        private void btncapnhat_Click(object sender, EventArgs e)
         {
+            // Lấy thông tin từ hàng được chọn trong DataGridView
+            if (dscv.CurrentRow != null)
+            {
+                DataGridViewRow selectedRow = dscv.CurrentRow;
+                string maCV = selectedRow.Cells["maCV"].Value.ToString(); // Giả sử cột maCV là cột chứa mã công việc
+                                                                          // Lấy thông tin cập nhật từ các điều khiển khác trên form
+                string tenMoi = selectedRow.Cells["ten"].Value.ToString(); // Ví dụ, txtTenMoi là TextBox chứa tên mới cần cập nhật
+
+                // Cập nhật dữ liệu trong cơ sở dữ liệu
+                try
+                {
+                    // Gọi phương thức UpdateData để cập nhật dữ liệu
+                    DatabaseAccess.UpdateData("DsCongViec", new string[] { "ten" }, new object[] { tenMoi }, new string[] { "maCV" }, new object[] { maCV });
+                    MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Cập nhật lại DataGridView để hiển thị dữ liệu mới
+                    loadDsCongViec(); // Gọi phương thức loadDsCongViec để làm mới dữ liệu trong DataGridView
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một hàng để cập nhật!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-
     }
-
 }
 
 

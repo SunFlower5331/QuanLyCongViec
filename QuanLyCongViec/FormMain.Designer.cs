@@ -72,7 +72,7 @@
             this.trợGiúpToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1092, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1229, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -227,7 +227,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(420, 138);
+            this.label1.Location = new System.Drawing.Point(422, 125);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(213, 25);
             this.label1.TabIndex = 7;
@@ -242,22 +242,22 @@
             this.dscv.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dscv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscv.DataMember = "       ";
-            this.dscv.Location = new System.Drawing.Point(4, 203);
+            this.dscv.Location = new System.Drawing.Point(4, 181);
             this.dscv.Name = "dscv";
             this.dscv.ReadOnly = true;
             this.dscv.RowHeadersWidth = 51;
             this.dscv.RowTemplate.Height = 24;
-            this.dscv.Size = new System.Drawing.Size(1081, 398);
+            this.dscv.Size = new System.Drawing.Size(1221, 459);
             this.dscv.TabIndex = 4;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabcongty);
             this.tabControl1.Controls.Add(this.tabphongban);
-            this.tabControl1.Location = new System.Drawing.Point(0, 178);
+            this.tabControl1.Location = new System.Drawing.Point(0, 153);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1092, 430);
+            this.tabControl1.Size = new System.Drawing.Size(1229, 494);
             this.tabControl1.TabIndex = 8;
             // 
             // tabcongty
@@ -265,7 +265,7 @@
             this.tabcongty.Location = new System.Drawing.Point(4, 25);
             this.tabcongty.Name = "tabcongty";
             this.tabcongty.Padding = new System.Windows.Forms.Padding(3);
-            this.tabcongty.Size = new System.Drawing.Size(1084, 401);
+            this.tabcongty.Size = new System.Drawing.Size(1221, 440);
             this.tabcongty.TabIndex = 0;
             this.tabcongty.Text = "Công ty";
             this.tabcongty.UseVisualStyleBackColor = true;
@@ -275,7 +275,7 @@
             this.tabphongban.Location = new System.Drawing.Point(4, 25);
             this.tabphongban.Name = "tabphongban";
             this.tabphongban.Padding = new System.Windows.Forms.Padding(3);
-            this.tabphongban.Size = new System.Drawing.Size(1084, 401);
+            this.tabphongban.Size = new System.Drawing.Size(1221, 465);
             this.tabphongban.TabIndex = 1;
             this.tabphongban.Text = "Phòng ban";
             this.tabphongban.UseVisualStyleBackColor = true;
@@ -284,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 620);
+            this.ClientSize = new System.Drawing.Size(1229, 650);
             this.Controls.Add(this.dscv);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);

@@ -49,6 +49,30 @@ namespace DAL
             return user;
 
         }
+        public static bool CheckDataExists(string tableName, string columnName, string value)
+        {
+            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                try
+                {
+                    con.Open();
+
+                    // Truy vấn SQL để kiểm tra xem dữ liệu đã tồn tại trong bảng hay chưa
+                    string query = $"SELECT COUNT(1) FROM {tableName} WHERE {columnName} = @value";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@value", value);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+                catch (Exception)
+                {
+                   
+                    return false;
+                }
+            }
+        }
         public static bool IsDuplicateData(string tableName, string[] columns, object[] values)
         {
             using (SqlConnection con = SqlConnectionData.connect())
@@ -57,7 +81,7 @@ namespace DAL
                 SqlCommand command = con.CreateCommand();
                 command.CommandText = $"SELECT COUNT(*) FROM {tableName} WHERE ";
 
-                // Xây dựng điều kiện truy vấn dựa trên các cột và giá trị được truyền vào
+              
                 for (int i = 0; i < columns.Length; i++)
                 {
                     command.CommandText += $"{columns[i]} = @param{i}";
@@ -68,7 +92,7 @@ namespace DAL
 
                 int count = (int)command.ExecuteScalar();
 
-                return count > 0; // Trả về true nếu có bản ghi trùng, ngược lại trả về false
+                return count > 0;
             }
         }
         public static DataSet GetAllDscv()
@@ -294,7 +318,25 @@ namespace DAL
                 }
             }
         }
+        public static void delCTCV(int maCV)
+        {
+            string sql = "DELETE FROM CTCV WHERE maCV =@maCV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maCV", maCV);
+                try
+                {
+                    con.Open();
+                    command.ExecuteNonQuery();
+                }catch (Exception )
+                {
 
+                }
+
+            }
+
+        }
         public static void DeleteData(string tableName, string[] columnNames, object[] values)
         {
            
