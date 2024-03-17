@@ -12,6 +12,8 @@ namespace DTO
         public string maNV { get; set; }
         public string trangthai { get; set; }
         public DateTime thoiGianHoanThanh { get; set; }
+        public DateTime songayhethan { get; set; }
         public string Tuychonchiase { get; set; }
+        
     }
 }

@@ -49,6 +49,27 @@ namespace DAL
             return user;
 
         }
+        public static DataSet GetTienDoCongViec(string maNV)
+        {
+            DataSet data = new DataSet();
+            string query = "select C.maCV,DSCV.ten,DVCH.maCH,C.trangthai,C.thoiGianHoanThanh\r\n,C.songayhethan,C.Tuychonchiase \r\nfrom CTCV C,DsCongViec DSCV,DVCanHo DVCH \r\nwhere C.maNV=@maNV AND C.maCV=DSCV.maCV AND DVCH.maCV=C.maCV  ";
+            SqlConnection con = SqlConnectionData.connect();
+            SqlCommand command = con.CreateCommand();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            command.Parameters.AddWithValue("@maNV", maNV);
+            try
+            {
+                con.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return data;
+        }
         public static bool CheckDataExists(string tableName, string columnName, string value)
         {
             string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
@@ -199,6 +220,7 @@ namespace DAL
             return data;
 
         }
+
         public static (NhanVien, TaiKhoan) layThongTin(string manv)
         {
             NhanVien nhanVien = null;

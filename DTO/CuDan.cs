@@ -8,7 +8,7 @@ namespace DTO
 {
     public class CuDan
     {
-        public int maCD { get; set; }
+        public string maCD { get; set; }
         public string hinhthuc { get; set; }
         public string tenCH { get; set; }
         public DateTime ngaysinh { get; set; }
@@ -23,7 +23,7 @@ namespace DTO
         public bool IsValid()
         {
             // Kiểm tra các trường bắt buộc
-            if (maCD <= 0 || string.IsNullOrWhiteSpace(hinhthuc) || string.IsNullOrWhiteSpace(tenCH) || ngaysinh == default(DateTime) || string.IsNullOrWhiteSpace(cccd) || string.IsNullOrWhiteSpace(sdt_nguoithan) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(quoctich) || string.IsNullOrWhiteSpace(sothetamtru) || string.IsNullOrWhiteSpace(sdt_nguoithan))
+            if ( string.IsNullOrWhiteSpace(maCD) || string.IsNullOrWhiteSpace(hinhthuc) || string.IsNullOrWhiteSpace(tenCH) || ngaysinh == default(DateTime) || string.IsNullOrWhiteSpace(cccd) || string.IsNullOrWhiteSpace(sdt_nguoithan) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(quoctich) || string.IsNullOrWhiteSpace(sothetamtru) || string.IsNullOrWhiteSpace(sdt_nguoithan))
             {
                 return false;
             }

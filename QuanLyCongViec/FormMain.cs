@@ -107,5 +107,12 @@ namespace QuanLyCongViec
         {
 
         }
+
+        private void tiếnĐộCôngViệcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTienDoCongViec f=new FormTienDoCongViec();
+            f.Show();
+            this.Hide();
+        }
     }
 }

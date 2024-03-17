@@ -8,8 +8,8 @@ namespace DTO
 {
     public class ThanhVienCanHo
     {
-        public int maTV { get; set; }
-        public int maCD { get; set; }
+        public string maTV { get; set; }
+        public string maCD { get; set; }
         public string tenTV { get; set; }
         public string MoiQuanHe { get; set; }
     }

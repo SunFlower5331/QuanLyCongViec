@@ -17,7 +17,7 @@ namespace QuanLyCongViec
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCongViec());
+            Application.Run(new FormTienDoCongViec());
         }
     }
 }

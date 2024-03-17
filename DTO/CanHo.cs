@@ -8,8 +8,8 @@ namespace DTO
 {
     public class CanHo
     {
-        public int maCH { get; set; }
-        public int maCD { get; set; }
+        public string maCH { get; set; }
+        public string maCD { get; set; }
         public DateTime ngaynhan { get; set; }
         public DateTime ngaychuyenvao { get; set; }
         public DateTime ngaychuyendi { get; set; }

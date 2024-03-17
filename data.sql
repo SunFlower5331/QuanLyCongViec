@@ -1,9 +1,8 @@
-CREATE DATABASE QuanlyCongViec;
+DROP DATABASE QuanlyCongViec;
 GO
 
 USE QuanLyCongViec;
 GO
-
 CREATE TABLE PhongBan (
     id NVARCHAR(255) PRIMARY KEY,
     ten NVARCHAR(255)
@@ -32,14 +31,14 @@ CREATE TABLE NhanVien (
 );
 
 CREATE TABLE Taikhoan (
-    id VARCHAR(255) PRIMARY KEY REFERENCES NhanVien(manv),
+    id NVARCHAR(255) PRIMARY KEY REFERENCES NhanVien(manv),
     mk VARCHAR(255),
     loaiTK INT REFERENCES Quyen(id)
 );
 
 CREATE TABLE LichSuHoatDong (
     id INT PRIMARY KEY IDENTITY(1,1),
-    idNguoiDung VARCHAR(255),
+    idNguoiDung NVARCHAR(255),
     hanhDong NVARCHAR(255),
     thoiGian DATETIME,
     FOREIGN KEY (idNguoiDung) REFERENCES NhanVien(manv)
@@ -51,7 +50,7 @@ CREATE TABLE DsCongViec (
 );
 
 CREATE TABLE CuDan (
-    maCD INT PRIMARY KEY,
+    maCD NVARCHAR(255) PRIMARY KEY,
     hinhthuc NVARCHAR(50),
     tenCH NVARCHAR(255),
     ngaysinh DATE,
@@ -66,8 +65,8 @@ CREATE TABLE CuDan (
 );
 
 CREATE TABLE CanHo (
-    maCH INT PRIMARY KEY,
-    maCD INT REFERENCES CuDan(maCD),
+    maCH NVARCHAR(255) PRIMARY KEY,
+    maCD NVARCHAR(255) REFERENCES CuDan(maCD),
     ngaynhan DATE,
     ngaychuyenvao DATE,
     ngaychuyendi DATE,
@@ -77,7 +76,7 @@ CREATE TABLE CanHo (
 );
 
 CREATE TABLE DVCanHo (
-    maCH INT ,
+    maCH NVARCHAR(255),
     tinhtrang NVARCHAR(255),
     DV_dinhky NVARCHAR(255),
     maCV INT,
@@ -87,13 +86,25 @@ CREATE TABLE DVCanHo (
 
 CREATE TABLE CTCV (
     maCV INT,
-    maNV VARCHAR(255),  
+    maNV NVARCHAR(255),  
     trangthai NVARCHAR(50),
-    thoiGianHoanThanh DATETIME,
-	Tuychonchiase NVARCHAR(50), --PUBLIC /PRIVATE
-    FOREIGN KEY (maNV) REFERENCES NhanVien(manv)  
-	FOREIGN KEY (maCV) REFERENCES DsCongViec(macv) 
+    thoiGianHoanThanh DATE,
+    songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
+    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE
+    FOREIGN KEY (maNV) REFERENCES NhanVien(manv), 
+    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
 );
+
+CREATE TABLE Tuychonchiase_MaNV (
+    maCV INT,
+    maNV NVARCHAR(255),
+    maNV_duocchiase NVARCHAR(255),
+    PRIMARY KEY (maCV, maNV), -- Khóa chính kết hợp
+    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV),
+    FOREIGN KEY (maNV) REFERENCES NhanVien(manv),
+    FOREIGN KEY (maNV_duocchiase) REFERENCES NhanVien(manv)
+);
+
 
 CREATE TABLE ThanhVienCanHo (
     maTV INT PRIMARY KEY,
@@ -104,20 +115,30 @@ CREATE TABLE ThanhVienCanHo (
 
 CREATE TABLE DangKyDoXe (
     maDK INT PRIMARY KEY,
-    maCH INT FOREIGN KEY REFERENCES CanHo(maCH),
+    maCH NVARCHAR(255) FOREIGN KEY REFERENCES CanHo(maCH),
     bienso NVARCHAR(20),
     chungloai NVARCHAR(50),
     loai NVARCHAR(50)
 );
 
 CREATE TABLE DichVuCuDan (
-    maCD INT REFERENCES CuDan(maCD), 
-    maCH INT FOREIGN KEY REFERENCES CanHo(maCH),
+    maCD NVARCHAR(255) REFERENCES CuDan(maCD), 
+    maCH NVARCHAR(255) FOREIGN KEY REFERENCES CanHo(maCH),
     CongNo FLOAT,
     TongChiPhiDien FLOAT,
     TongphiQuanLy FLOAT,
     TongPhiDichVu FLOAT
 );
+
+INSERT INTO DVCanHo
+VALUES(123,'Chưa hoàn thành','BT','1'),(123,'Chưa hoàn thành','NHUNG','2'),
+(123,'Chưa hoàn thành','BÁO CÁO','5')
+select DSCV.maCV,DSCV.ten,DVCH.maCH,C.trangthai,C.thoiGianHoanThanh
+,C.songayhethan,C.Tuychonchiase 
+from CTCV C,DsCongViec DSCV,DVCanHo DVCH 
+where C.maNV='NV001' AND C.maCV=DSCV.maCV AND DVCH.maCV=DSCV.maCV 
+select * from CTCV C,DsCongViec DSCV,DVCanHo DVCH where C.maNV='NV001' AND DSCV.maCV=C.maCV AND DVCH.maCV=C.maCV
+
 go
 CREATE PROC proc_logic
 @user VARCHAR(255),

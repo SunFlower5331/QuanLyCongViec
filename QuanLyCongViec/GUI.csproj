@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,6 +94,12 @@
     <Compile Include="FormThongTinCaNhan.Designer.cs">
       <DependentUpon>FormThongTinCaNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTienDoCongViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTienDoCongViec.Designer.cs">
+      <DependentUpon>FormTienDoCongViec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCongViec.resx">
@@ -113,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormThongTinCaNhan.resx">
       <DependentUpon>FormThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTienDoCongViec.resx">
+      <DependentUpon>FormTienDoCongViec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -54,11 +54,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dsdpc = new System.Windows.Forms.DataGridView();
             this.tongquat = new System.Windows.Forms.GroupBox();
+            this.btnchinhsuaphancong = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dscv = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnphancong = new System.Windows.Forms.Button();
-            this.btnchinhsuaphancong = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -70,6 +71,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnphancong);
+            this.groupBox2.Controls.Add(this.btnchinhsuaphancong);
             this.groupBox2.Controls.Add(this.cbotrangthai);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cbotuychonchiase);
@@ -89,7 +92,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(435, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(471, 603);
+            this.groupBox2.Size = new System.Drawing.Size(465, 653);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phân công công việc";
@@ -321,7 +324,7 @@
             this.groupBox3.Controls.Add(this.dsdpc);
             this.groupBox3.Location = new System.Drawing.Point(933, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(395, 438);
+            this.groupBox3.Size = new System.Drawing.Size(395, 440);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách công việc đã phân công";
@@ -342,27 +345,37 @@
             // 
             // tongquat
             // 
-            this.tongquat.Controls.Add(this.btnchinhsuaphancong);
-            this.tongquat.Controls.Add(this.groupBox1);
-            this.tongquat.Controls.Add(this.btnphancong);
             this.tongquat.Controls.Add(this.button1);
             this.tongquat.Controls.Add(this.btnluu);
             this.tongquat.Controls.Add(this.btnthem);
             this.tongquat.Controls.Add(this.btncapnhat);
             this.tongquat.Controls.Add(this.btnthoat);
             this.tongquat.Controls.Add(this.btnxoa);
+            this.tongquat.Controls.Add(this.groupBox1);
             this.tongquat.Location = new System.Drawing.Point(3, -1);
             this.tongquat.Name = "tongquat";
             this.tongquat.Size = new System.Drawing.Size(1334, 683);
             this.tongquat.TabIndex = 22;
             this.tongquat.TabStop = false;
             // 
+            // btnchinhsuaphancong
+            // 
+            this.btnchinhsuaphancong.Enabled = false;
+            this.btnchinhsuaphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnchinhsuaphancong.Location = new System.Drawing.Point(24, 601);
+            this.btnchinhsuaphancong.Name = "btnchinhsuaphancong";
+            this.btnchinhsuaphancong.Size = new System.Drawing.Size(183, 30);
+            this.btnchinhsuaphancong.TabIndex = 24;
+            this.btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
+            this.btnchinhsuaphancong.UseVisualStyleBackColor = true;
+            this.btnchinhsuaphancong.Click += new System.EventHandler(this.btnchinhsuaphancong_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dscv);
             this.groupBox1.Location = new System.Drawing.Point(9, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(395, 438);
+            this.groupBox1.Size = new System.Drawing.Size(405, 576);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách công việc";
@@ -377,10 +390,21 @@
             this.dscv.RowHeadersWidth = 51;
             this.dscv.RowTemplate.Height = 24;
             this.dscv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dscv.Size = new System.Drawing.Size(383, 412);
+            this.dscv.Size = new System.Drawing.Size(393, 412);
             this.dscv.TabIndex = 2;
             this.dscv.Click += new System.EventHandler(this.dscv_Click);
             this.dscv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dscv_KeyDown);
+            // 
+            // btnphancong
+            // 
+            this.btnphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnphancong.Location = new System.Drawing.Point(260, 601);
+            this.btnphancong.Name = "btnphancong";
+            this.btnphancong.Size = new System.Drawing.Size(183, 30);
+            this.btnphancong.TabIndex = 23;
+            this.btnphancong.Text = "Phân công";
+            this.btnphancong.UseVisualStyleBackColor = true;
+            this.btnphancong.Click += new System.EventHandler(this.btnphancong_Click);
             // 
             // button1
             // 
@@ -391,29 +415,6 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnphancong
-            // 
-            this.btnphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnphancong.Location = new System.Drawing.Point(688, 633);
-            this.btnphancong.Name = "btnphancong";
-            this.btnphancong.Size = new System.Drawing.Size(183, 30);
-            this.btnphancong.TabIndex = 23;
-            this.btnphancong.Text = "Phân công";
-            this.btnphancong.UseVisualStyleBackColor = true;
-            this.btnphancong.Click += new System.EventHandler(this.btnphancong_Click);
-            // 
-            // btnchinhsuaphancong
-            // 
-            this.btnchinhsuaphancong.Enabled = false;
-            this.btnchinhsuaphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnchinhsuaphancong.Location = new System.Drawing.Point(467, 633);
-            this.btnchinhsuaphancong.Name = "btnchinhsuaphancong";
-            this.btnchinhsuaphancong.Size = new System.Drawing.Size(183, 30);
-            this.btnchinhsuaphancong.TabIndex = 24;
-            this.btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
-            this.btnchinhsuaphancong.UseVisualStyleBackColor = true;
-            this.btnchinhsuaphancong.Click += new System.EventHandler(this.btnchinhsuaphancong_Click);
             // 
             // FormCongViec
             // 
@@ -471,5 +472,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dscv;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
