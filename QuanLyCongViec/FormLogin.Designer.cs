@@ -125,7 +125,7 @@ namespace QuanLyCongViec
             this.loginForm.Size = new System.Drawing.Size(866, 532);
             this.loginForm.TabIndex = 10;
             this.loginForm.TabStop = false;
-            this.loginForm.Click += new System.EventHandler(this.pictureBox1_Click);
+    //        this.loginForm.Click += new System.EventHandler(this.pictureBox1_Click);
             this.loginForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonOut_MouseDown);
             // 
             // ngonngu
@@ -140,7 +140,7 @@ namespace QuanLyCongViec
             this.ngonngu.Name = "ngonngu";
             this.ngonngu.Size = new System.Drawing.Size(80, 21);
             this.ngonngu.TabIndex = 5;
-            this.ngonngu.SelectedIndexChanged += new System.EventHandler(this.ngonngu_SelectedIndexChanged);
+        //    this.ngonngu.SelectedIndexChanged += new System.EventHandler(this.ngonngu_SelectedIndexChanged);
             // 
             // underlineUser
             // 
@@ -261,7 +261,7 @@ namespace QuanLyCongViec
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormLogin";
             this.Text = "Login";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
+       //     this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
             this.Load += new System.EventHandler(this.FormLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.loginForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
@@ -270,21 +270,6 @@ namespace QuanLyCongViec
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ngonngu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

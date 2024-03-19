@@ -49,27 +49,80 @@ namespace DAL
             return user;
 
         }
+        public static int getUserQuyen(string maNV)
+        {
+            int quyenhan = 0;
+            string query = "SELECT quyenhan FROM NhanVien WHERE maNV = @maNV";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                con.Open(); // Mở kết nối trước khi thực hiện truy vấn
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    quyenhan = Convert.ToInt32(reader["quyenhan"]);
+                }
+            }
+
+            return quyenhan;
+        }
+
+
         public static DataSet GetTienDoCongViec(string maNV)
         {
             DataSet data = new DataSet();
-            string query = "select C.maCV,DSCV.ten,DVCH.maCH,C.trangthai,C.thoiGianHoanThanh\r\n,C.songayhethan,C.Tuychonchiase \r\nfrom CTCV C,DsCongViec DSCV,DVCanHo DVCH \r\nwhere C.maNV=@maNV AND C.maCV=DSCV.maCV AND DVCH.maCV=C.maCV  ";
-            SqlConnection con = SqlConnectionData.connect();
-            SqlCommand command = con.CreateCommand();
-            con.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-            command.Parameters.AddWithValue("@maNV", maNV);
-            try
-            {
-                con.Open();
-                command.ExecuteNonQuery();
+            string query = "SELECT C.maCV, DSCV.ten, DVCH.maCH, C.trangthai, C.thoiGianHoanThanh, C.songayhethan, C.Tuychonchiase " +
+                           "FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH " +
+                           "WHERE C.maNV = @maNV AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV";
 
-            }
-            catch (Exception)
+            using (SqlConnection con = SqlConnectionData.connect())
             {
-
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data); // Thực hiện truy vấn và gán kết quả vào DataSet
             }
+
             return data;
         }
+        public static DataSet GetNhanVienTheoPhongBan(string phongban)
+        {
+            DataSet data = new DataSet();
+            string query = "select chucvu,manv,hoten from NhanVien WHERE @phongban=phongban";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@phongban", phongban);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data); // Thực hiện truy vấn và gán kết quả vào DataSet
+            }
+
+            return data;
+        }
+        public static DataSet GetCTCVTheoPhongBan(string phongban)
+        {
+            DataSet data = new DataSet();
+            string query = "select  NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "from CTCV C,DsCongViec DSCV,NhanVien NV " +
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV and NV.phongban=@phongban";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@phongban", phongban);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data); // Thực hiện truy vấn và gán kết quả vào DataSet
+            }
+
+            return data;
+        }
+
+
         public static bool CheckDataExists(string tableName, string columnName, string value)
         {
             string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
@@ -127,10 +180,11 @@ namespace DAL
             con.Close();
             return data;
         }
+
         public static DataSet GetNhanVien()
         {
             DataSet data = new DataSet();
-            string query = "select manv,hoten,phongban from NhanVien";
+            string query = "select phongban,chucvu, manv,hoten from NhanVien";
             SqlConnection con = SqlConnectionData.connect();
             con.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
@@ -142,7 +196,7 @@ namespace DAL
         {
             DataSet data = new DataSet();
             string query = "" +
-                "select  DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,NV.phongban,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
                 "from CTCV C,DsCongViec DSCV,NhanVien NV " +
                 "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV";
             SqlConnection con = SqlConnectionData.connect();
@@ -161,6 +215,50 @@ namespace DAL
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             adapter.Fill(data);
             con.Close();    
+            return data;
+        }
+        public static DataSet GetDVCH()
+        {
+            DataSet data = new DataSet();
+            string query = "select * from DVCanHo";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetThanhVienCanHo()
+        {
+            DataSet data = new DataSet();
+            string query = "select * from ThanhVienCanHo";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetDangKyDoXe()
+        {
+            DataSet data = new DataSet();
+            string query = "select * from DangKyDoXe";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetChiphicanho()
+        {
+            DataSet data = new DataSet();
+            string query = "select * from Chiphicanho";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
             return data;
         }
         public static DataSet GetAllCuDan()

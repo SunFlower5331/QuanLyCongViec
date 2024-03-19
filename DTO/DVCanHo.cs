@@ -11,6 +11,6 @@ namespace DTO
         public string maCH { get; set; }
         public string tinhtrang { get; set; }
         public string DV_dinhky { get; set; }
-        public int maCV { get; set; }
+        public string maCV { get; set; }
     }
 }

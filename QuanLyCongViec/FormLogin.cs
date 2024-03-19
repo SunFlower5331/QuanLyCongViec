@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using BLL;
 using DTO;
 using System.Runtime.InteropServices;
+using DAL;
 
 
 namespace QuanLyCongViec
@@ -15,6 +16,7 @@ namespace QuanLyCongViec
         public FormLogin()
         {
             InitializeComponent();
+
         }
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -55,14 +57,15 @@ namespace QuanLyCongViec
 
         private void dangnhap_Click_1(object sender, EventArgs e)
         {
-            if (CheckLogin())
-            {
-                
-                FormMain fm=new FormMain();
+            /*if (CheckLogin())
+            {*/
+
+                FormMain fm = new FormMain();
                 fm.Show();
                 this.Hide();
+                CheckQuyen();
                 
-            }
+           
             
         }
 
@@ -87,6 +90,53 @@ namespace QuanLyCongViec
             Program.UserID = tk.id;
             return true;
         }
+    private void CheckQuyen()
+{
+  
+        FormMain main = (FormMain)Application.OpenForms["FormMain"];
+        string mapb = Program.getUserIDPB();
+        if (mapb != "CEO")
+        {
+            int userQuyen = DatabaseAccess.getUserQuyen(user.Text);
+            FormDuLieuNhanVien formDuLieuNhanVien = (FormDuLieuNhanVien)Application.OpenForms["FormDuLieuNhanVien"];
+
+            ToolStripMenuItem quanlyMenuItem = (ToolStripMenuItem)main.menuStrip2.Items["quanly"];
+            ToolStripMenuItem congviecMenuItem = (ToolStripMenuItem)quanlyMenuItem.DropDownItems["congviec"];
+                /*TabControl tabControl = formDuLieuNhanVien.tabDulieu;
+                TabPage tabTK = tabControl.TabPages["TaiKhoan"];*/
+                
+
+
+
+
+
+                switch (userQuyen)
+            {
+                case 2:
+
+                        congviecMenuItem.Enabled = false;
+                      
+                        // formDuLieuNhanVien.tabDulieu.TabPages["Quyen"].Visible = false;
+                       // formDuLieuNhanVien.chucnang.Visible = false;
+
+                        break;
+                case 3:
+                        congviecMenuItem.Enabled = false;
+                       /* formDuLieuNhanVien.tabDulieu.TabPages["TaiKhoan"].Visible = false;
+                        formDuLieuNhanVien.tabDulieu.TabPages["Quyen"].Visible = false;*/
+                        //formDuLieuNhanVien.chucnang.Visible = false;
+
+                        break;
+                default:
+                    break;
+            }
+        }
+    
+}
+
+
+
+
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
@@ -95,27 +145,26 @@ namespace QuanLyCongViec
         }
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Kiểm tra nếu người dùng chọn đóng cửa sổ bằng nút "X" (nút đóng cửa sổ)
+           
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                // Hiển thị hộp thoại xác nhận
+              
                 DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Nếu người dùng chọn "Có", đóng chương trình
+              
                 if (result == DialogResult.Yes)
                 {
-                    // Đóng chương trình
                     Application.Exit();
                 }
                 else
                 {
-                    // Hủy sự kiện đóng cửa sổ
+                   
                     e.Cancel = true;
                 }
             }
         }
 
-        // tạo event khi người dùng focus vào ô thì mấy placeholder sẽ biến mất
+       
         private void user_Enter(object sender, EventArgs e)
         {
             if (user.Text == "User ID")
@@ -133,7 +182,7 @@ namespace QuanLyCongViec
             }
         }
 
-        // tạo event khi người dùng rời khỏi ô thì placeholder hiện lại
+      
         private void user_Leave(object sender, EventArgs e)
         {
             if (user.Text == "")
@@ -162,7 +211,7 @@ namespace QuanLyCongViec
             this.WindowState = FormWindowState.Minimized;
         }
 
-        // Dùng để kéo thả cửa sổ
+      
         private void buttonOut_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

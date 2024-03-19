@@ -8,12 +8,20 @@ namespace DTO
 {
     public class CTCV
     {
-        public int maCV { get; set; }
+        public string maCV { get; set; }
         public string maNV { get; set; }
         public string trangthai { get; set; }
         public DateTime thoiGianHoanThanh { get; set; }
         public DateTime songayhethan { get; set; }
         public string Tuychonchiase { get; set; }
-        
+        public CTCV(string maCV, string maNV, string trangthai, DateTime thoiGianHoanThanh, DateTime songayhethan, string tuychonchiase)
+        {
+            this.maCV = maCV;
+            this.maNV = maNV;
+            this.trangthai = trangthai;
+            this.thoiGianHoanThanh = thoiGianHoanThanh;
+            this.songayhethan = songayhethan;
+            Tuychonchiase = tuychonchiase;
+        }
     }
 }

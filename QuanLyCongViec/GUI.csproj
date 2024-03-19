@@ -64,11 +64,17 @@
     <Compile Include="FormCongViec.Designer.cs">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDuLieu.cs">
+    <Compile Include="FormDuLieuCuDan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDuLieu.Designer.cs">
-      <DependentUpon>FormDuLieu.cs</DependentUpon>
+    <Compile Include="FormDuLieuCuDan.Designer.cs">
+      <DependentUpon>FormDuLieuCuDan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDuLieuNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDuLieuNhanVien.Designer.cs">
+      <DependentUpon>FormDuLieuNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="FormNhanVien.cs">
       <SubType>Form</SubType>
@@ -105,8 +111,11 @@
     <EmbeddedResource Include="FormCongViec.resx">
       <DependentUpon>FormCongViec.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDuLieu.resx">
-      <DependentUpon>FormDuLieu.cs</DependentUpon>
+    <EmbeddedResource Include="FormDuLieuCuDan.resx">
+      <DependentUpon>FormDuLieuCuDan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDuLieuNhanVien.resx">
+      <DependentUpon>FormDuLieuNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNhanVien.resx">
       <DependentUpon>FormNhanVien.cs</DependentUpon>

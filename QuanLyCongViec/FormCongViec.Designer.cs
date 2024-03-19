@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnphancong = new System.Windows.Forms.Button();
+            this.btnchinhsuaphancong = new System.Windows.Forms.Button();
             this.cbotrangthai = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbotuychonchiase = new System.Windows.Forms.ComboBox();
@@ -54,12 +56,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dsdpc = new System.Windows.Forms.DataGridView();
             this.tongquat = new System.Windows.Forms.GroupBox();
-            this.btnchinhsuaphancong = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dscv = new System.Windows.Forms.DataGridView();
-            this.btnphancong = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbotuychonhienthi = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -90,12 +91,35 @@
             this.groupBox2.Controls.Add(this.dtpthoihan);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(435, 23);
+            this.groupBox2.Location = new System.Drawing.Point(431, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(465, 653);
+            this.groupBox2.Size = new System.Drawing.Size(465, 633);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phân công công việc";
+            // 
+            // btnphancong
+            // 
+            this.btnphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnphancong.Location = new System.Drawing.Point(260, 601);
+            this.btnphancong.Name = "btnphancong";
+            this.btnphancong.Size = new System.Drawing.Size(183, 30);
+            this.btnphancong.TabIndex = 23;
+            this.btnphancong.Text = "Phân công";
+            this.btnphancong.UseVisualStyleBackColor = true;
+            this.btnphancong.Click += new System.EventHandler(this.btnphancong_Click);
+            // 
+            // btnchinhsuaphancong
+            // 
+            this.btnchinhsuaphancong.Enabled = false;
+            this.btnchinhsuaphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnchinhsuaphancong.Location = new System.Drawing.Point(24, 601);
+            this.btnchinhsuaphancong.Name = "btnchinhsuaphancong";
+            this.btnchinhsuaphancong.Size = new System.Drawing.Size(183, 30);
+            this.btnchinhsuaphancong.TabIndex = 24;
+            this.btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
+            this.btnchinhsuaphancong.UseVisualStyleBackColor = true;
+            this.btnchinhsuaphancong.Click += new System.EventHandler(this.btnchinhsuaphancong_Click);
             // 
             // cbotrangthai
             // 
@@ -345,7 +369,9 @@
             // 
             // tongquat
             // 
-            this.tongquat.Controls.Add(this.button1);
+            this.tongquat.Controls.Add(this.cbotuychonhienthi);
+            this.tongquat.Controls.Add(this.label9);
+            this.tongquat.Controls.Add(this.groupBox2);
             this.tongquat.Controls.Add(this.btnluu);
             this.tongquat.Controls.Add(this.btnthem);
             this.tongquat.Controls.Add(this.btncapnhat);
@@ -357,18 +383,6 @@
             this.tongquat.Size = new System.Drawing.Size(1334, 683);
             this.tongquat.TabIndex = 22;
             this.tongquat.TabStop = false;
-            // 
-            // btnchinhsuaphancong
-            // 
-            this.btnchinhsuaphancong.Enabled = false;
-            this.btnchinhsuaphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnchinhsuaphancong.Location = new System.Drawing.Point(24, 601);
-            this.btnchinhsuaphancong.Name = "btnchinhsuaphancong";
-            this.btnchinhsuaphancong.Size = new System.Drawing.Size(183, 30);
-            this.btnchinhsuaphancong.TabIndex = 24;
-            this.btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
-            this.btnchinhsuaphancong.UseVisualStyleBackColor = true;
-            this.btnchinhsuaphancong.Click += new System.EventHandler(this.btnchinhsuaphancong_Click);
             // 
             // groupBox1
             // 
@@ -395,26 +409,32 @@
             this.dscv.Click += new System.EventHandler(this.dscv_Click);
             this.dscv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dscv_KeyDown);
             // 
-            // btnphancong
+            // label9
             // 
-            this.btnphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnphancong.Location = new System.Drawing.Point(260, 601);
-            this.btnphancong.Name = "btnphancong";
-            this.btnphancong.Size = new System.Drawing.Size(183, 30);
-            this.btnphancong.TabIndex = 23;
-            this.btnphancong.Text = "Phân công";
-            this.btnphancong.UseVisualStyleBackColor = true;
-            this.btnphancong.Click += new System.EventHandler(this.btnphancong_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(915, 502);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(136, 18);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Tùy chọn hiển thị";
             // 
-            // button1
+            // cbotuychonhienthi
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(623, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 30);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Thoát";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cbotuychonhienthi.FormattingEnabled = true;
+            this.cbotuychonhienthi.Items.AddRange(new object[] {
+            "Tất cả nhân viên",
+            "DV",
+            "TC",
+            "VS",
+            "AN",
+            "KT",
+            "XD"});
+            this.cbotuychonhienthi.Location = new System.Drawing.Point(1081, 496);
+            this.cbotuychonhienthi.Name = "cbotuychonhienthi";
+            this.cbotuychonhienthi.Size = new System.Drawing.Size(238, 24);
+            this.cbotuychonhienthi.TabIndex = 28;
+            this.cbotuychonhienthi.SelectedIndexChanged += new System.EventHandler(this.cbotuychonhienthi_SelectedIndexChanged);
             // 
             // FormCongViec
             // 
@@ -422,7 +442,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1361, 694);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tongquat);
             this.Name = "FormCongViec";
             this.Text = "FormCongViec";
@@ -434,6 +453,7 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsdpc)).EndInit();
             this.tongquat.ResumeLayout(false);
+            this.tongquat.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).EndInit();
             this.ResumeLayout(false);
@@ -469,9 +489,10 @@
         private System.Windows.Forms.Button btnchinhsuaphancong;
         private System.Windows.Forms.ComboBox cbotrangthai;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dscv;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ComboBox cbotuychonhienthi;
+        private System.Windows.Forms.Label label9;
     }
 }

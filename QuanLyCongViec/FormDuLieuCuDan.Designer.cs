@@ -1,6 +1,6 @@
 ﻿namespace QuanLyCongViec
 {
-    partial class FormDuLieu
+    partial class FormDuLieuCuDan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDuLieu));
             this.tabDulieu = new System.Windows.Forms.TabControl();
             this.CuDan = new System.Windows.Forms.TabPage();
             this.dscudan = new System.Windows.Forms.DataGridView();
@@ -120,6 +119,7 @@
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsch.Location = new System.Drawing.Point(3, 3);
             this.dsch.Name = "dsch";
+            this.dsch.ReadOnly = true;
             this.dsch.RowHeadersWidth = 51;
             this.dsch.RowTemplate.Height = 24;
             this.dsch.Size = new System.Drawing.Size(1147, 523);
@@ -132,7 +132,7 @@
             this.Quyen.Name = "Quyen";
             this.Quyen.Size = new System.Drawing.Size(1153, 505);
             this.Quyen.TabIndex = 5;
-            this.Quyen.Text = "Quyền hạn";
+            this.Quyen.Text = "Dịch vụ căn hộ";
             this.Quyen.UseVisualStyleBackColor = true;
             // 
             // dsqh
@@ -140,6 +140,7 @@
             this.dsqh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsqh.Location = new System.Drawing.Point(3, 3);
             this.dsqh.Name = "dsqh";
+            this.dsqh.ReadOnly = true;
             this.dsqh.RowHeadersWidth = 51;
             this.dsqh.RowTemplate.Height = 24;
             this.dsqh.Size = new System.Drawing.Size(1147, 523);
@@ -152,7 +153,7 @@
             this.TaiKhoan.Name = "TaiKhoan";
             this.TaiKhoan.Size = new System.Drawing.Size(1153, 505);
             this.TaiKhoan.TabIndex = 3;
-            this.TaiKhoan.Text = "Tài khoản";
+            this.TaiKhoan.Text = "Thành viên căn hộ";
             this.TaiKhoan.UseVisualStyleBackColor = true;
             // 
             // dstk
@@ -160,6 +161,7 @@
             this.dstk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dstk.Location = new System.Drawing.Point(0, 3);
             this.dstk.Name = "dstk";
+            this.dstk.ReadOnly = true;
             this.dstk.RowHeadersWidth = 51;
             this.dstk.RowTemplate.Height = 24;
             this.dstk.Size = new System.Drawing.Size(1150, 526);
@@ -173,7 +175,7 @@
             this.NhanVien.Padding = new System.Windows.Forms.Padding(3);
             this.NhanVien.Size = new System.Drawing.Size(1153, 505);
             this.NhanVien.TabIndex = 0;
-            this.NhanVien.Text = "Nhân viên";
+            this.NhanVien.Text = "Đăng ký đỗ xe";
             this.NhanVien.UseVisualStyleBackColor = true;
             // 
             // dsnv
@@ -194,7 +196,7 @@
             this.PhongBan.Name = "PhongBan";
             this.PhongBan.Size = new System.Drawing.Size(1153, 505);
             this.PhongBan.TabIndex = 2;
-            this.PhongBan.Text = "Phòng ban";
+            this.PhongBan.Text = "Chi phí căn hộ";
             this.PhongBan.UseVisualStyleBackColor = true;
             // 
             // dspb
@@ -290,7 +292,6 @@
             // 
             // timkiem
             // 
-            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
             this.timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.timkiem.Location = new System.Drawing.Point(361, 17);
             this.timkiem.Name = "timkiem";
@@ -310,7 +311,7 @@
             this.txbtimkiem.TabIndex = 2;
             this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // FormDuLieu
+            // FormDuLieuCuDan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -324,8 +325,8 @@
             this.Controls.Add(this.btnxoa);
             this.Controls.Add(this.btnthem);
             this.Controls.Add(this.tabDulieu);
-            this.Name = "FormDuLieu";
-            this.Text = "Dữ liệu Công ty";
+            this.Name = "FormDuLieuCuDan";
+            this.Text = "Dữ liệu cư dân";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDuLieu_FormClosing);
             this.Load += new System.EventHandler(this.FormDuLieu_Load);
             this.tabDulieu.ResumeLayout(false);

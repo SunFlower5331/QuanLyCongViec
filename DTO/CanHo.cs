@@ -15,6 +15,7 @@ namespace DTO
         public DateTime ngaychuyendi { get; set; }
         public float phidv { get; set; }
         public float phiql { get; set; }
-        public float dien_nuoc_ngaynhan { get; set; }
+        public float dienngaynhan { get; set; }
+        public float nuocngaynhan { get; set; }
     }
 }

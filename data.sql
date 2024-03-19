@@ -1,10 +1,10 @@
-DROP DATABASE QuanlyCongViec;
+CREATE DATABASE QuanlyCongViec;
 GO
 
 USE QuanLyCongViec;
 GO
 CREATE TABLE PhongBan (
-    id NVARCHAR(255) PRIMARY KEY,
+    id VARCHAR(50) PRIMARY KEY,
     ten NVARCHAR(255)
 );
 
@@ -14,7 +14,7 @@ CREATE TABLE Quyen (
 );
 
 CREATE TABLE NhanVien (
-    manv VARCHAR(255) PRIMARY KEY,
+    manv VARCHAR(50) PRIMARY KEY,
     hoten NVARCHAR(255),
     ngaysinh DATE,
     gioitinh NVARCHAR(10),
@@ -22,35 +22,28 @@ CREATE TABLE NhanVien (
     didong VARCHAR(20),
     email VARCHAR(255),
     chucvu NVARCHAR(255),
-    phongban NVARCHAR(255) REFERENCES PhongBan(id),
+    phongban VARCHAR(50) FOREIGN KEY REFERENCES PhongBan(id),
     luong FLOAT,
     trangthai NVARCHAR(255),
     trinhdohocvan NVARCHAR(255),
     loaihinh NVARCHAR(255),
-    quyenhan INT REFERENCES Quyen(id)
+    quyenhan INT FOREIGN KEY REFERENCES Quyen(id)
 );
 
 CREATE TABLE Taikhoan (
-    id NVARCHAR(255) PRIMARY KEY REFERENCES NhanVien(manv),
+    id VARCHAR(50) PRIMARY KEY FOREIGN KEY REFERENCES NhanVien(manv),
     mk VARCHAR(255),
     loaiTK INT REFERENCES Quyen(id)
 );
 
-CREATE TABLE LichSuHoatDong (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    idNguoiDung NVARCHAR(255),
-    hanhDong NVARCHAR(255),
-    thoiGian DATETIME,
-    FOREIGN KEY (idNguoiDung) REFERENCES NhanVien(manv)
-);
 
 CREATE TABLE DsCongViec (
-    maCV INT PRIMARY KEY,
+    maCV VARCHAR(50) PRIMARY KEY,
     ten NVARCHAR(255)
 );
 
 CREATE TABLE CuDan (
-    maCD NVARCHAR(255) PRIMARY KEY,
+    maCD VARCHAR(50) PRIMARY KEY,
     hinhthuc NVARCHAR(50),
     tenCH NVARCHAR(255),
     ngaysinh DATE,
@@ -65,28 +58,30 @@ CREATE TABLE CuDan (
 );
 
 CREATE TABLE CanHo (
-    maCH NVARCHAR(255) PRIMARY KEY,
-    maCD NVARCHAR(255) REFERENCES CuDan(maCD),
+    maCH VARCHAR(50) PRIMARY KEY,
+    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD),
     ngaynhan DATE,
     ngaychuyenvao DATE,
     ngaychuyendi DATE,
     phidv FLOAT,
     phiql FLOAT,
-    dien_nuoc_ngaynhan FLOAT
+    dienngaynhan FLOAT,
+	nuocngaynhan FLOAT,
+	
 );
 
 CREATE TABLE DVCanHo (
-    maCH NVARCHAR(255),
+    maCH VARCHAR(50),
     tinhtrang NVARCHAR(255),
     DV_dinhky NVARCHAR(255),
-    maCV INT,
+    maCV VARCHAR(50),
     FOREIGN KEY (maCH) REFERENCES CanHo(maCH),
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV)
 );
 
 CREATE TABLE CTCV (
-    maCV INT,
-    maNV NVARCHAR(255),  
+    maCV VARCHAR(50),
+    maNV VARCHAR(50),  
     trangthai NVARCHAR(50),
     thoiGianHoanThanh DATE,
     songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
@@ -96,9 +91,9 @@ CREATE TABLE CTCV (
 );
 
 CREATE TABLE Tuychonchiase_MaNV (
-    maCV INT,
-    maNV NVARCHAR(255),
-    maNV_duocchiase NVARCHAR(255),
+    maCV VARCHAR(50),
+    maNV VARCHAR(50),
+    maNV_duocchiase VARCHAR(50),
     PRIMARY KEY (maCV, maNV), -- Khóa chính kết hợp
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV),
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv),
@@ -107,37 +102,57 @@ CREATE TABLE Tuychonchiase_MaNV (
 
 
 CREATE TABLE ThanhVienCanHo (
-    maTV INT PRIMARY KEY,
-    maCD INT FOREIGN KEY REFERENCES CuDan(maCD),
+    maTV VARCHAR(50) PRIMARY KEY,
+    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD),
     tenTV NVARCHAR(255),
     MoiQuanHe NVARCHAR(50)
 );
 
 CREATE TABLE DangKyDoXe (
-    maDK INT PRIMARY KEY,
-    maCH NVARCHAR(255) FOREIGN KEY REFERENCES CanHo(maCH),
+    maDK VARCHAR(50) PRIMARY KEY,
+    maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),
     bienso NVARCHAR(20),
     chungloai NVARCHAR(50),
-    loai NVARCHAR(50)
+    loai NVARCHAR(50),
+	
 );
 
-CREATE TABLE DichVuCuDan (
-    maCD NVARCHAR(255) REFERENCES CuDan(maCD), 
-    maCH NVARCHAR(255) FOREIGN KEY REFERENCES CanHo(maCH),
+--bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
+CREATE TABLE Chiphihangthang (
+    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD), 
+    maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),
+    ngaybatdau DATE,
+    ngayketthuc DATE,
+    sodien FLOAT,
+    sonuoc FLOAT,
+	phidien FLOAT,
+	phinuoc Float,
     CongNo FLOAT,
-    TongChiPhiDien FLOAT,
     TongphiQuanLy FLOAT,
-    TongPhiDichVu FLOAT
-);
-
-INSERT INTO DVCanHo
-VALUES(123,'Chưa hoàn thành','BT','1'),(123,'Chưa hoàn thành','NHUNG','2'),
-(123,'Chưa hoàn thành','BÁO CÁO','5')
-select DSCV.maCV,DSCV.ten,DVCH.maCH,C.trangthai,C.thoiGianHoanThanh
-,C.songayhethan,C.Tuychonchiase 
-from CTCV C,DsCongViec DSCV,DVCanHo DVCH 
-where C.maNV='NV001' AND C.maCV=DSCV.maCV AND DVCH.maCV=DSCV.maCV 
-select * from CTCV C,DsCongViec DSCV,DVCanHo DVCH where C.maNV='NV001' AND DSCV.maCV=C.maCV AND DVCH.maCV=C.maCV
+    TongPhiDichVu FLOAT,
+    TongChiPhiDienNuoc AS (sodien * phidien + sonuoc * phinuoc + TongphiQuanLy + TongPhiDichVu)
+); 
+go
+CREATE TRIGGER UpdateTongChiPhiDienNuoc
+ON Chiphidichvu
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    UPDATE Chiphidichvu
+    SET TongChiPhiDienNuoc = i.sodien * i.phidien + i.sonuoc * i.phinuoc + i.TongphiQuanLy + i.TongPhiDichVu
+    FROM Chiphidichvu c
+    INNER JOIN inserted i ON c.maCD = i.maCD AND c.maCH = i.maCH;
+END;
+go
+--
+CREATE TABLE UyQuyen(
+	maUQ VARCHAR(50) PRIMARY KEY,
+	tenchucnang NVARCHAR(255),
+	)
+CREATE TABLE DsUyQuyen(
+	maUQ VARCHAR(50) FOREIGN KEY REFERENCES UyQuyen(maUQ),
+	maNV VARCHAR(50) FOREIGN KEY REFERENCES NhanVien(maNV)
+	)
 
 go
 CREATE PROC proc_logic
@@ -149,25 +164,27 @@ BEGIN
 END;
 GO
 
--- Thêm dữ liệu vào bảng PhongBan
-INSERT INTO PhongBan VALUES ('PB001', 'Phòng Kế toán');
-INSERT INTO PhongBan VALUES ('PB002', 'Phòng Kỹ thuật');
+INSERT INTO PhongBan VALUES ('TC', 'Tài chính kế toán'),('VS', 'Vệ sinh'),('AN', 'An ninh'),('KT', 'Kỹ thuật')
+,('XD', 'Xây dựng');
 
 -- Thêm dữ liệu vào bảng Quyen
-INSERT INTO Quyen VALUES (1, 'Quản lý');
-INSERT INTO Quyen VALUES (2, 'Nhân viên');
+INSERT INTO Quyen VALUES (1, 'CEO');
+INSERT INTO Quyen VALUES (2, 'Quản lý');
+INSERT INTO Quyen VALUES (3, 'Nhân viên');
 
 -- Thêm dữ liệu vào bảng NhanVien
-INSERT INTO NhanVien VALUES ('NV001', N'Nguyễn Văn A', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'PB002', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 1);
-INSERT INTO NhanVien VALUES ('NV002', N'Trần Thị B', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kinh doanh', 'PB001', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 2);
+INSERT INTO NhanVien VALUES ('NV001', N'Nguyễn Văn A', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'KT', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 1);
+INSERT INTO NhanVien VALUES ('NV002', N'Trần Thị B', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'XD', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 2);
 
+INSERT INTO NhanVien VALUES ('NV003', N'Nguyễn Văn AN', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'VS', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 3);
+INSERT INTO NhanVien VALUES ('NV004', N'Trần Thị BẢO', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'AN', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 3);
 -- Thêm dữ liệu vào bảng Taikhoan
 INSERT INTO Taikhoan VALUES ('NV001', '123', 1);
 INSERT INTO Taikhoan VALUES ('NV002', '123', 2);
-
+INSERT INTO Taikhoan VALUES ('NV003', '123', 3),('NV004', '123', 3);
 -- Thêm dữ liệu vào bảng DsCongViec
-INSERT INTO DsCongViec VALUES (1, N'Lập kế hoạch dự án');
-INSERT INTO DsCongViec VALUES (2, N'Thiết kế giao diện');
+INSERT INTO DsCongViec VALUES (1, N'Sửa đèn');
+INSERT INTO DsCongViec VALUES (2, N'Sửa nước');
 
 -- Thêm dữ liệu vào bảng CuDan
 INSERT INTO CuDan VALUES (1, N'Căn hộ', N'Trần Văn Dũng', '1990-01-01', '123456789', '0123456789', 'dungtv@example.com', N'Việt Nam', 'Số 123, đường ABC', '0987654321', 0, N'Không');
@@ -196,3 +213,4 @@ INSERT INTO DangKyDoXe VALUES (2, 2, '456XYZ', N'Oto', N'Công ty');
 -- Thêm dữ liệu vào bảng DichVuCuDan
 INSERT INTO DichVuCuDan VALUES (1, 1, 0, 500000, 100000, 100);
 INSERT INTO DichVuCuDan VALUES (2, 2, 100000, 600000, 120000, 150);
+select manv,hoten,phongban from NhanVien

@@ -8,7 +8,7 @@ namespace DTO
 {
     public class DsCongViec
     {
-        public int maCV { get; set; }
+        public string maCV { get; set; }
         public string ten { get; set; }
     }
 }

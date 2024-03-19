@@ -45,9 +45,9 @@
     <Compile Include="CTCV.cs" />
     <Compile Include="CuDan.cs" />
     <Compile Include="DangKyDoXe.cs" />
+    <Compile Include="Chiphicanho.cs" />
     <Compile Include="DSCongViec.cs" />
     <Compile Include="DVCanHo.cs" />
-    <Compile Include="LichSuHoatDong.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

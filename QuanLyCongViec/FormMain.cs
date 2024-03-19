@@ -26,13 +26,13 @@ namespace QuanLyCongViec
             CenterLabel();
             groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
             menuStrip2.Size = new Size(this.ClientSize.Width - menuStrip2.Location.X - 10, this.ClientSize.Height - menuStrip2.Location.Y - 10);
-            //toolStrip1.Size = new Size(this.ClientSize.Width - toolStrip1.Location.X - 10, this.ClientSize.Height - toolStrip1.Location.Y - 10);
+          
             dscv.Size = new Size(this.ClientSize.Width - dscv.Location.X - 10, this.ClientSize.Height - dscv.Location.Y - 10);
         }
         private void CenterLabel()
         {
             int centerX = (this.ClientSize.Width - label1.Size.Width) / 2;
-            int centerY = label1.Location.Y; // Giữ nguyên vị trí theo chiều dọc
+            int centerY = label1.Location.Y; 
 
             label1.Location = new Point(centerX, centerY);
         }
@@ -93,7 +93,7 @@ namespace QuanLyCongViec
 
         private void côngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormDuLieu f=new FormDuLieu();
+            FormDuLieuNhanVien f=new FormDuLieuNhanVien();
             f.Show();
             this.Hide();
         }
@@ -111,6 +111,20 @@ namespace QuanLyCongViec
         private void tiếnĐộCôngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTienDoCongViec f=new FormTienDoCongViec();
+            f.Show();
+            this.Hide();
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCongViec f = new FormCongViec();
+            f.Show();
+            this.Hide();
+        }
+
+        private void dulieucudan_Click(object sender, EventArgs e)
+        {
+            FormDuLieuCuDan f= f = new FormDuLieuCuDan();
             f.Show();
             this.Hide();
         }
