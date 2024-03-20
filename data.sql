@@ -118,7 +118,7 @@ CREATE TABLE DangKyDoXe (
 );
 
 --bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
-CREATE TABLE Chiphihangthang (
+CREATE TABLE Chiphicanho(
     maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD), 
     maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),
     ngaybatdau DATE,

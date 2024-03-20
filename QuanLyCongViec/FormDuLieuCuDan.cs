@@ -123,52 +123,44 @@ namespace QuanLyCongViec
         {
             DataGridView dgv = null;
             btnluu.Enabled = true;
-            if (tabDulieu.SelectedTab == CuDan)
-            {
-             
-                dgv = dscudan;
-            }
-            else if (tabDulieu.SelectedTab == NhanVien)
-            {
-             
-                dgv = dsnv;
-            }
-            else if (tabDulieu.SelectedTab == PhongBan)
-            {
-             
-                dgv = dspb;
-            }
-            else if (tabDulieu.SelectedTab == TaiKhoan)
-            {
-              
-                dgv = dstk;
-            }
-            else if (tabDulieu.SelectedTab == Quyen)
-            {
-                
-                dgv = dsqh;
-            }
-            else if (tabDulieu.SelectedTab == CanHo)
-            {
 
+            // Xác định DataGridView tương ứng với tab đang được chọn
+            if (tabDulieu.SelectedTab == CuDan)
+                dgv = dscudan;
+            else if (tabDulieu.SelectedTab == NhanVien)
+                dgv = dsnv;
+            else if (tabDulieu.SelectedTab == PhongBan)
+                dgv = dspb;
+            else if (tabDulieu.SelectedTab == TaiKhoan)
+                dgv = dstk;
+            else if (tabDulieu.SelectedTab == Quyen)
+                dgv = dsqh;
+            else if (tabDulieu.SelectedTab == CanHo)
                 dgv = dsch;
-            }
 
             if (dgv != null)
             {
-                dgv.AllowUserToAddRows = true;
-                dgv.ReadOnly = false;
+                dgv.ReadOnly=false;
+                // Kiểm tra nếu dòng cuối cùng chứa dữ liệu
+                if (dgv.Rows.Count > 0 && dgv.Rows[dgv.Rows.Count - 1].Cells[0].Value != null)
+                {
+                    // Thêm một dòng mới vào DataTable nguồn dữ liệu
+                    ((DataTable)dgv.DataSource).Rows.Add();
+                }
 
-                dgv.ClearSelection();
-                dgv.Rows[dgv.Rows.Count - 1].Selected = true;
-
-                if (dgv.Columns.Count > 0)
-                    dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
-
-     
-                dgv.AllowUserToAddRows = false;
+                // Kích hoạt sự kiện RowsAdded để chọn dòng mới được thêm vào
+                dgv.RowsAdded += (s, ev) =>
+                {
+                    dgv.ClearSelection();
+                    dgv.Rows[ev.RowIndex].Selected = true;
+                    dgv.CurrentCell = dgv.Rows[ev.RowIndex].Cells[0];
+                };
             }
         }
+
+
+
+
         private void btnluu_Click(object sender, EventArgs e)
         {
             bool isDataValid = true;

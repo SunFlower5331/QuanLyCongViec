@@ -95,6 +95,7 @@
             // 
             // dscudan
             // 
+            this.dscudan.AllowUserToResizeRows = false;
             this.dscudan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscudan.Location = new System.Drawing.Point(-4, 6);
             this.dscudan.Name = "dscudan";
@@ -116,6 +117,8 @@
             // 
             // dsch
             // 
+            this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsch.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsch.Location = new System.Drawing.Point(3, 3);
             this.dsch.Name = "dsch";
@@ -137,6 +140,8 @@
             // 
             // dsqh
             // 
+            this.dsqh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsqh.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsqh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsqh.Location = new System.Drawing.Point(3, 3);
             this.dsqh.Name = "dsqh";
@@ -158,6 +163,8 @@
             // 
             // dstk
             // 
+            this.dstk.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dstk.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dstk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dstk.Location = new System.Drawing.Point(0, 3);
             this.dstk.Name = "dstk";
@@ -180,6 +187,8 @@
             // 
             // dsnv
             // 
+            this.dsnv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsnv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsnv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsnv.Location = new System.Drawing.Point(-4, 0);
             this.dsnv.Name = "dsnv";
@@ -201,6 +210,8 @@
             // 
             // dspb
             // 
+            this.dspb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dspb.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dspb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dspb.Location = new System.Drawing.Point(-4, 3);
             this.dspb.Name = "dspb";
