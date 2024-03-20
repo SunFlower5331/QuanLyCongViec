@@ -70,7 +70,7 @@
             this.groupBox1.Controls.Add(this.dscv);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(591, 337);
+            this.groupBox1.Size = new System.Drawing.Size(840, 337);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách công việc";
@@ -79,7 +79,7 @@
             // 
             this.dscv.AllowUserToAddRows = false;
             this.dscv.AllowUserToDeleteRows = false;
-            this.dscv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dscv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dscv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dscv.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dscv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -89,7 +89,7 @@
             this.dscv.ReadOnly = true;
             this.dscv.RowHeadersWidth = 51;
             this.dscv.RowTemplate.Height = 24;
-            this.dscv.Size = new System.Drawing.Size(585, 310);
+            this.dscv.Size = new System.Drawing.Size(834, 310);
             this.dscv.TabIndex = 0;
             // 
             // groupBox2
@@ -139,7 +139,7 @@
             this.cbotrangthai.Items.AddRange(new object[] {
             "Chưa hoàn thành",
             "Đã hoàn thành"});
-            this.cbotrangthai.Location = new System.Drawing.Point(144, 291);
+            this.cbotrangthai.Location = new System.Drawing.Point(165, 287);
             this.cbotrangthai.Name = "cbotrangthai";
             this.cbotrangthai.Size = new System.Drawing.Size(238, 24);
             this.cbotrangthai.TabIndex = 52;
@@ -148,7 +148,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 277);
+            this.label8.Location = new System.Drawing.Point(0, 293);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 18);
             this.label8.TabIndex = 50;
@@ -160,7 +160,7 @@
             this.cbotuychonchiase.Items.AddRange(new object[] {
             "Công việc chung",
             "Bộ phận"});
-            this.cbotuychonchiase.Location = new System.Drawing.Point(144, 236);
+            this.cbotuychonchiase.Location = new System.Drawing.Point(165, 248);
             this.cbotuychonchiase.Name = "cbotuychonchiase";
             this.cbotuychonchiase.Size = new System.Drawing.Size(238, 24);
             this.cbotuychonchiase.TabIndex = 48;
@@ -169,7 +169,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 242);
+            this.label7.Location = new System.Drawing.Point(-3, 254);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 18);
             this.label7.TabIndex = 47;
@@ -177,7 +177,7 @@
             // 
             // tbomanv
             // 
-            this.tbomanv.Location = new System.Drawing.Point(144, 112);
+            this.tbomanv.Location = new System.Drawing.Point(165, 127);
             this.tbomanv.Name = "tbomanv";
             this.tbomanv.ReadOnly = true;
             this.tbomanv.Size = new System.Drawing.Size(238, 22);
@@ -187,7 +187,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 116);
+            this.label6.Location = new System.Drawing.Point(0, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 18);
             this.label6.TabIndex = 45;
@@ -195,7 +195,7 @@
             // 
             // tbotennv
             // 
-            this.tbotennv.Location = new System.Drawing.Point(144, 154);
+            this.tbotennv.Location = new System.Drawing.Point(165, 165);
             this.tbotennv.Name = "tbotennv";
             this.tbotennv.ReadOnly = true;
             this.tbotennv.Size = new System.Drawing.Size(238, 22);
@@ -203,7 +203,7 @@
             // 
             // tbobophan
             // 
-            this.tbobophan.Location = new System.Drawing.Point(144, 76);
+            this.tbobophan.Location = new System.Drawing.Point(165, 85);
             this.tbobophan.Name = "tbobophan";
             this.tbobophan.ReadOnly = true;
             this.tbobophan.Size = new System.Drawing.Size(238, 22);
@@ -213,7 +213,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 158);
+            this.label5.Location = new System.Drawing.Point(-3, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 18);
             this.label5.TabIndex = 42;
@@ -221,7 +221,7 @@
             // 
             // tbotencv
             // 
-            this.tbotencv.Location = new System.Drawing.Point(144, 36);
+            this.tbotencv.Location = new System.Drawing.Point(165, 44);
             this.tbotencv.Name = "tbotencv";
             this.tbotencv.ReadOnly = true;
             this.tbotencv.Size = new System.Drawing.Size(238, 22);
@@ -231,7 +231,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 40);
+            this.label4.Location = new System.Drawing.Point(-1, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 18);
             this.label4.TabIndex = 40;
@@ -239,7 +239,7 @@
             // 
             // tbomacv
             // 
-            this.tbomacv.Location = new System.Drawing.Point(144, 5);
+            this.tbomacv.Location = new System.Drawing.Point(165, 11);
             this.tbomacv.Name = "tbomacv";
             this.tbomacv.ReadOnly = true;
             this.tbomacv.Size = new System.Drawing.Size(238, 22);
@@ -249,7 +249,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 6);
+            this.label3.Location = new System.Drawing.Point(3, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 18);
             this.label3.TabIndex = 38;
@@ -257,7 +257,7 @@
             // 
             // dtpthoihan
             // 
-            this.dtpthoihan.Location = new System.Drawing.Point(144, 195);
+            this.dtpthoihan.Location = new System.Drawing.Point(165, 208);
             this.dtpthoihan.Name = "dtpthoihan";
             this.dtpthoihan.Size = new System.Drawing.Size(238, 22);
             this.dtpthoihan.TabIndex = 37;
@@ -266,7 +266,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 80);
+            this.label2.Location = new System.Drawing.Point(0, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 18);
             this.label2.TabIndex = 36;
@@ -276,7 +276,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 198);
+            this.label1.Location = new System.Drawing.Point(3, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 18);
             this.label1.TabIndex = 35;
@@ -352,19 +352,20 @@
             this.dsnv.RowHeadersWidth = 51;
             this.dsnv.RowTemplate.Height = 24;
             this.dsnv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dsnv.Size = new System.Drawing.Size(539, 304);
+            this.dsnv.Size = new System.Drawing.Size(452, 304);
             this.dsnv.TabIndex = 35;
             this.dsnv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsnv_CellContentClick);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dsnv);
-            this.groupBox3.Location = new System.Drawing.Point(628, 12);
+            this.groupBox3.Location = new System.Drawing.Point(858, 18);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(551, 331);
+            this.groupBox3.Size = new System.Drawing.Size(464, 331);
             this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách nhân viên";
+            this.groupBox3.Visible = false;
             // 
             // btnxemcvpb
             // 

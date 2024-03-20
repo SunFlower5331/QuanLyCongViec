@@ -33,13 +33,13 @@
             this.dscudan = new System.Windows.Forms.DataGridView();
             this.CanHo = new System.Windows.Forms.TabPage();
             this.dsch = new System.Windows.Forms.DataGridView();
-            this.Quyen = new System.Windows.Forms.TabPage();
+            this.DVCanHo = new System.Windows.Forms.TabPage();
             this.dsqh = new System.Windows.Forms.DataGridView();
-            this.TaiKhoan = new System.Windows.Forms.TabPage();
+            this.ThanhVienCanHo = new System.Windows.Forms.TabPage();
             this.dstk = new System.Windows.Forms.DataGridView();
-            this.NhanVien = new System.Windows.Forms.TabPage();
+            this.DangKyDoXe = new System.Windows.Forms.TabPage();
             this.dsnv = new System.Windows.Forms.DataGridView();
-            this.PhongBan = new System.Windows.Forms.TabPage();
+            this.Chiphicanho = new System.Windows.Forms.TabPage();
             this.dspb = new System.Windows.Forms.DataGridView();
             this.btnthem = new System.Windows.Forms.Button();
             this.btnxoa = new System.Windows.Forms.Button();
@@ -55,13 +55,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dscudan)).BeginInit();
             this.CanHo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsch)).BeginInit();
-            this.Quyen.SuspendLayout();
+            this.DVCanHo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsqh)).BeginInit();
-            this.TaiKhoan.SuspendLayout();
+            this.ThanhVienCanHo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dstk)).BeginInit();
-            this.NhanVien.SuspendLayout();
+            this.DangKyDoXe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).BeginInit();
-            this.PhongBan.SuspendLayout();
+            this.Chiphicanho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -70,10 +70,10 @@
             // 
             this.tabDulieu.Controls.Add(this.CuDan);
             this.tabDulieu.Controls.Add(this.CanHo);
-            this.tabDulieu.Controls.Add(this.Quyen);
-            this.tabDulieu.Controls.Add(this.TaiKhoan);
-            this.tabDulieu.Controls.Add(this.NhanVien);
-            this.tabDulieu.Controls.Add(this.PhongBan);
+            this.tabDulieu.Controls.Add(this.DVCanHo);
+            this.tabDulieu.Controls.Add(this.ThanhVienCanHo);
+            this.tabDulieu.Controls.Add(this.DangKyDoXe);
+            this.tabDulieu.Controls.Add(this.Chiphicanho);
             this.tabDulieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDulieu.Location = new System.Drawing.Point(0, -2);
             this.tabDulieu.Name = "tabDulieu";
@@ -128,15 +128,15 @@
             this.dsch.Size = new System.Drawing.Size(1147, 523);
             this.dsch.TabIndex = 0;
             // 
-            // Quyen
+            // DVCanHo
             // 
-            this.Quyen.Controls.Add(this.dsqh);
-            this.Quyen.Location = new System.Drawing.Point(4, 29);
-            this.Quyen.Name = "Quyen";
-            this.Quyen.Size = new System.Drawing.Size(1153, 505);
-            this.Quyen.TabIndex = 5;
-            this.Quyen.Text = "Dịch vụ căn hộ";
-            this.Quyen.UseVisualStyleBackColor = true;
+            this.DVCanHo.Controls.Add(this.dsqh);
+            this.DVCanHo.Location = new System.Drawing.Point(4, 29);
+            this.DVCanHo.Name = "DVCanHo";
+            this.DVCanHo.Size = new System.Drawing.Size(1153, 505);
+            this.DVCanHo.TabIndex = 5;
+            this.DVCanHo.Text = "Dịch vụ căn hộ";
+            this.DVCanHo.UseVisualStyleBackColor = true;
             // 
             // dsqh
             // 
@@ -151,15 +151,15 @@
             this.dsqh.Size = new System.Drawing.Size(1147, 523);
             this.dsqh.TabIndex = 1;
             // 
-            // TaiKhoan
+            // ThanhVienCanHo
             // 
-            this.TaiKhoan.Controls.Add(this.dstk);
-            this.TaiKhoan.Location = new System.Drawing.Point(4, 29);
-            this.TaiKhoan.Name = "TaiKhoan";
-            this.TaiKhoan.Size = new System.Drawing.Size(1153, 505);
-            this.TaiKhoan.TabIndex = 3;
-            this.TaiKhoan.Text = "Thành viên căn hộ";
-            this.TaiKhoan.UseVisualStyleBackColor = true;
+            this.ThanhVienCanHo.Controls.Add(this.dstk);
+            this.ThanhVienCanHo.Location = new System.Drawing.Point(4, 29);
+            this.ThanhVienCanHo.Name = "ThanhVienCanHo";
+            this.ThanhVienCanHo.Size = new System.Drawing.Size(1153, 505);
+            this.ThanhVienCanHo.TabIndex = 3;
+            this.ThanhVienCanHo.Text = "Thành viên căn hộ";
+            this.ThanhVienCanHo.UseVisualStyleBackColor = true;
             // 
             // dstk
             // 
@@ -174,16 +174,16 @@
             this.dstk.Size = new System.Drawing.Size(1150, 526);
             this.dstk.TabIndex = 0;
             // 
-            // NhanVien
+            // DangKyDoXe
             // 
-            this.NhanVien.Controls.Add(this.dsnv);
-            this.NhanVien.Location = new System.Drawing.Point(4, 29);
-            this.NhanVien.Name = "NhanVien";
-            this.NhanVien.Padding = new System.Windows.Forms.Padding(3);
-            this.NhanVien.Size = new System.Drawing.Size(1153, 505);
-            this.NhanVien.TabIndex = 0;
-            this.NhanVien.Text = "Đăng ký đỗ xe";
-            this.NhanVien.UseVisualStyleBackColor = true;
+            this.DangKyDoXe.Controls.Add(this.dsnv);
+            this.DangKyDoXe.Location = new System.Drawing.Point(4, 29);
+            this.DangKyDoXe.Name = "DangKyDoXe";
+            this.DangKyDoXe.Padding = new System.Windows.Forms.Padding(3);
+            this.DangKyDoXe.Size = new System.Drawing.Size(1153, 505);
+            this.DangKyDoXe.TabIndex = 0;
+            this.DangKyDoXe.Text = "Đăng ký đỗ xe";
+            this.DangKyDoXe.UseVisualStyleBackColor = true;
             // 
             // dsnv
             // 
@@ -198,15 +198,15 @@
             this.dsnv.Size = new System.Drawing.Size(1151, 526);
             this.dsnv.TabIndex = 0;
             // 
-            // PhongBan
+            // Chiphicanho
             // 
-            this.PhongBan.Controls.Add(this.dspb);
-            this.PhongBan.Location = new System.Drawing.Point(4, 29);
-            this.PhongBan.Name = "PhongBan";
-            this.PhongBan.Size = new System.Drawing.Size(1153, 505);
-            this.PhongBan.TabIndex = 2;
-            this.PhongBan.Text = "Chi phí căn hộ";
-            this.PhongBan.UseVisualStyleBackColor = true;
+            this.Chiphicanho.Controls.Add(this.dspb);
+            this.Chiphicanho.Location = new System.Drawing.Point(4, 29);
+            this.Chiphicanho.Name = "Chiphicanho";
+            this.Chiphicanho.Size = new System.Drawing.Size(1153, 505);
+            this.Chiphicanho.TabIndex = 2;
+            this.Chiphicanho.Text = "Chi phí căn hộ";
+            this.Chiphicanho.UseVisualStyleBackColor = true;
             // 
             // dspb
             // 
@@ -345,13 +345,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dscudan)).EndInit();
             this.CanHo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsch)).EndInit();
-            this.Quyen.ResumeLayout(false);
+            this.DVCanHo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsqh)).EndInit();
-            this.TaiKhoan.ResumeLayout(false);
+            this.ThanhVienCanHo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dstk)).EndInit();
-            this.NhanVien.ResumeLayout(false);
+            this.DangKyDoXe.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).EndInit();
-            this.PhongBan.ResumeLayout(false);
+            this.Chiphicanho.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -363,13 +363,13 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabDulieu;
-        private System.Windows.Forms.TabPage NhanVien;
+        private System.Windows.Forms.TabPage DangKyDoXe;
         private System.Windows.Forms.TabPage CuDan;
-        private System.Windows.Forms.TabPage PhongBan;
+        private System.Windows.Forms.TabPage Chiphicanho;
         private System.Windows.Forms.DataGridView dscudan;
         private System.Windows.Forms.DataGridView dsnv;
         private System.Windows.Forms.DataGridView dspb;
-        private System.Windows.Forms.TabPage TaiKhoan;
+        private System.Windows.Forms.TabPage ThanhVienCanHo;
         private System.Windows.Forms.DataGridView dstk;
         private System.Windows.Forms.Button btnthem;
         private System.Windows.Forms.Button btnxoa;
@@ -377,7 +377,7 @@
         private System.Windows.Forms.Button btnluu;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.TabPage CanHo;
-        private System.Windows.Forms.TabPage Quyen;
+        private System.Windows.Forms.TabPage DVCanHo;
         private System.Windows.Forms.DataGridView dsch;
         private System.Windows.Forms.DataGridView dsqh;
         private System.Windows.Forms.Button btnCapNhat;

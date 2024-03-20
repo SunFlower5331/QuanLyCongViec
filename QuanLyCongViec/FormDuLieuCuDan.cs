@@ -127,34 +127,30 @@ namespace QuanLyCongViec
             // Xác định DataGridView tương ứng với tab đang được chọn
             if (tabDulieu.SelectedTab == CuDan)
                 dgv = dscudan;
-            else if (tabDulieu.SelectedTab == NhanVien)
+            else if (tabDulieu.SelectedTab == DangKyDoXe)
                 dgv = dsnv;
-            else if (tabDulieu.SelectedTab == PhongBan)
+            else if (tabDulieu.SelectedTab == Chiphicanho)
                 dgv = dspb;
-            else if (tabDulieu.SelectedTab == TaiKhoan)
+            else if (tabDulieu.SelectedTab == ThanhVienCanHo)
                 dgv = dstk;
-            else if (tabDulieu.SelectedTab == Quyen)
+            else if (tabDulieu.SelectedTab == DVCanHo)
                 dgv = dsqh;
             else if (tabDulieu.SelectedTab == CanHo)
                 dgv = dsch;
 
             if (dgv != null)
             {
-                dgv.ReadOnly=false;
-                // Kiểm tra nếu dòng cuối cùng chứa dữ liệu
-                if (dgv.Rows.Count > 0 && dgv.Rows[dgv.Rows.Count - 1].Cells[0].Value != null)
-                {
-                    // Thêm một dòng mới vào DataTable nguồn dữ liệu
-                    ((DataTable)dgv.DataSource).Rows.Add();
-                }
+                dgv.AllowUserToAddRows = true;
+                dgv.ReadOnly = false;
 
-                // Kích hoạt sự kiện RowsAdded để chọn dòng mới được thêm vào
-                dgv.RowsAdded += (s, ev) =>
-                {
-                    dgv.ClearSelection();
-                    dgv.Rows[ev.RowIndex].Selected = true;
-                    dgv.CurrentCell = dgv.Rows[ev.RowIndex].Cells[0];
-                };
+                dgv.ClearSelection();
+                dgv.Rows[dgv.Rows.Count - 1].Selected = true;
+
+                if (dgv.Columns.Count > 0)
+                    dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
+
+
+                dgv.AllowUserToAddRows = false;
             }
         }
 
@@ -178,19 +174,19 @@ namespace QuanLyCongViec
                 {
                     SaveLastRowData(dscudan, "CuDan");
                 }
-                else if (tabDulieu.SelectedTab == NhanVien)
+                else if (tabDulieu.SelectedTab == DangKyDoXe)
                 {
                     SaveLastRowData(dsnv, "NhanVien");
                 }
-                else if (tabDulieu.SelectedTab == PhongBan)
+                else if (tabDulieu.SelectedTab == Chiphicanho)
                 {
                     SaveLastRowData(dspb, "PhongBan");
                 }
-                else if (tabDulieu.SelectedTab == TaiKhoan)
+                else if (tabDulieu.SelectedTab == ThanhVienCanHo)
                 {
                     SaveLastRowData(dstk, "TaiKhoan");
                 }
-                else if (tabDulieu.SelectedTab == Quyen)
+                else if (tabDulieu.SelectedTab == DVCanHo)
                 {
                     SaveLastRowData(dsqh, "Quyen");
                 }
@@ -238,37 +234,38 @@ namespace QuanLyCongViec
 
         private bool CheckDataGridViewData(DataGridView dgv)
         {
-
             if (dgv.CurrentRow != null && dgv.CurrentCell.RowIndex == dgv.Rows.Count - 1)
             {
-            
                 foreach (DataGridViewCell cell in dgv.Rows[dgv.CurrentCell.RowIndex].Cells)
                 {
                     if (string.IsNullOrEmpty(cell.Value?.ToString()))
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    
                         dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0];
-
-                     
                         dgv.BeginEdit(true);
-
                         return false;
                     }
                 }
 
-             
-                bool isDataValid = CheckCuDanData(dgv);
-                if (!isDataValid)
-                {
-                    return false;
-                }
+                // Kiểm tra dữ liệu cụ thể của DataGridView nếu cần
+                /*   bool isDataValid = true;
+                   if (dgv == dscudan)
+                   {
+                       isDataValid &= CheckCuDanData(dgv);
+                   }
+                   // Thêm các kiểm tra dữ liệu của DataGridView khác nếu cần
+
+                   if (!isDataValid)
+                   {
+                       return false;
+                   }
+              
+            
+            */
             }
 
             return true;
         }
-
         private bool CheckCuDanData(DataGridView dgv)
         {
         
@@ -297,19 +294,19 @@ namespace QuanLyCongViec
             {
                 dgv = dscudan;
             }
-            else if (tabDulieu.SelectedTab == NhanVien)
+            else if (tabDulieu.SelectedTab == DangKyDoXe)
             {
                 dgv = dsnv;
             }
-            else if (tabDulieu.SelectedTab == PhongBan)
+            else if (tabDulieu.SelectedTab == Chiphicanho)
             {
                 dgv = dspb;
             }
-            else if (tabDulieu.SelectedTab == TaiKhoan)
+            else if (tabDulieu.SelectedTab == ThanhVienCanHo)
             {
                 dgv = dstk;
             }
-            else if (tabDulieu.SelectedTab == Quyen)
+            else if (tabDulieu.SelectedTab == DVCanHo)
             {
                 dgv = dsqh;
             }
@@ -320,14 +317,12 @@ namespace QuanLyCongViec
 
             if (dgv != null && dgv.SelectedRows.Count > 0)
             {
-
                 DataGridViewRow selectedRow = dgv.SelectedRows[0];
                 object[] rowData = new object[selectedRow.Cells.Count];
                 for (int i = 0; i < selectedRow.Cells.Count; i++)
                 {
                     rowData[i] = selectedRow.Cells[i].Value;
                 }
-
 
                 string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
@@ -339,19 +334,19 @@ namespace QuanLyCongViec
                     {
                         loadDsCuDan();
                     }
-                    else if (tabDulieu.SelectedTab == NhanVien)
+                    else if (tabDulieu.SelectedTab == DangKyDoXe)
                     {
                         loadDsNv();
                     }
-                    else if (tabDulieu.SelectedTab == PhongBan)
+                    else if (tabDulieu.SelectedTab == Chiphicanho)
                     {
                         loadDsPhongBan();
                     }
-                    else if (tabDulieu.SelectedTab == TaiKhoan)
+                    else if (tabDulieu.SelectedTab == ThanhVienCanHo)
                     {
                         loadDsTK();
                     }
-                    else if (tabDulieu.SelectedTab == Quyen)
+                    else if (tabDulieu.SelectedTab == DVCanHo)
                     {
                         loadDsQuyen();
                     }
@@ -377,36 +372,36 @@ namespace QuanLyCongViec
         private void btnCapNhat_Click_1(object sender, EventArgs e)
         {
             DataGridView dgv = null;
-            string name = "";
+            
             if (tabDulieu.SelectedTab == CuDan)
             {
                 dgv = dscudan;
-                name = "CuDan";
+                
             }
-            else if (tabDulieu.SelectedTab == NhanVien)
+            else if (tabDulieu.SelectedTab == DangKyDoXe)
             {
                 dgv = dsnv;
-                name = "DangKyDoXe";
+                
             }
-            else if (tabDulieu.SelectedTab == PhongBan)
+            else if (tabDulieu.SelectedTab == Chiphicanho)
             {
                 dgv = dspb;
-                name = "Chiphicanho";
+              
             }
-            else if (tabDulieu.SelectedTab == TaiKhoan)
+            else if (tabDulieu.SelectedTab == ThanhVienCanHo)
             {
                 dgv = dstk;
-                name = "ThanhVienCanHo";
+               
             }
-            else if (tabDulieu.SelectedTab == Quyen)
+            else if (tabDulieu.SelectedTab == DVCanHo)
             {
                 dgv = dsqh;
-                name = "DVCanHo";
+               
             }
             else if (tabDulieu.SelectedTab == CanHo)
             {
                 dgv = dsch;
-                name = "CanHo";
+                
 
             }
 
@@ -429,7 +424,7 @@ namespace QuanLyCongViec
                     try
                     {
                    
-                        string tableName = name;
+                        string tableName = tabDulieu.SelectedTab.Name;
 
                
                         List<string> columnNames = new List<string>();
@@ -515,22 +510,22 @@ namespace QuanLyCongViec
                 dgv = dscudan;
                 dscudan.ReadOnly = false;
             }
-            else if (tabDulieu.SelectedTab == NhanVien)
+            else if (tabDulieu.SelectedTab == DangKyDoXe)
             {
                 dgv = dsnv;
                 dsnv.ReadOnly = false;
             }
-            else if (tabDulieu.SelectedTab == PhongBan)
+            else if (tabDulieu.SelectedTab == Chiphicanho)
             {
                 dgv = dspb;
                 dspb.ReadOnly = false;
             }
-            else if (tabDulieu.SelectedTab == TaiKhoan)
+            else if (tabDulieu.SelectedTab == ThanhVienCanHo)
             {
                 dgv = dstk;
                 dstk.ReadOnly = false;
             }
-            else if (tabDulieu.SelectedTab == Quyen)
+            else if (tabDulieu.SelectedTab == DVCanHo)
             {
                 dgv = dsqh;
                 dsqh.ReadOnly = false;
@@ -601,19 +596,19 @@ namespace QuanLyCongViec
             {
                 dgv = dscudan;
             }
-            else if (tabDulieu.SelectedTab == NhanVien)
+            else if (tabDulieu.SelectedTab == DangKyDoXe)
             {
                 dgv = dsnv;
             }
-            else if (tabDulieu.SelectedTab == PhongBan)
+            else if (tabDulieu.SelectedTab == Chiphicanho)
             {
                 dgv = dspb;
             }
-            else if (tabDulieu.SelectedTab == TaiKhoan)
+            else if (tabDulieu.SelectedTab == ThanhVienCanHo)
             {
                 dgv = dstk;
             }
-            else if (tabDulieu.SelectedTab == Quyen)
+            else if (tabDulieu.SelectedTab == DVCanHo)
             {
                 dgv = dsqh;
             }

@@ -116,8 +116,12 @@ CREATE TABLE DangKyDoXe (
     loai NVARCHAR(50),
 	
 );
-
+SELECT C.maCV, DSCV.ten, DVCH.maCH, C.trangthai, C.thoiGianHoanThanh, C.songayhethan,C.Tuychonchiase
+FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH 
+WHERE C.maNV = 'NV002' AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV
 --bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
+
+
 CREATE TABLE Chiphicanho(
     maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD), 
     maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),

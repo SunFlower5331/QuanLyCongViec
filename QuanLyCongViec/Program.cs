@@ -30,7 +30,7 @@ namespace QuanLyCongViec
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDuLieuCuDan());
+            Application.Run(new FormLogin());
         }
     }
 }
