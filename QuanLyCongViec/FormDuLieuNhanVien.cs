@@ -107,7 +107,6 @@ namespace QuanLyCongViec
                 dgv = dslshd;
             }
 
-
             if (dgv != null)
             {
                 dgv.AllowUserToAddRows = true;
@@ -119,7 +118,7 @@ namespace QuanLyCongViec
                 if (dgv.Columns.Count > 0)
                     dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
 
-     
+
                 dgv.AllowUserToAddRows = false;
             }
         }
@@ -193,36 +192,39 @@ namespace QuanLyCongViec
 
         private bool CheckDataGridViewData(DataGridView dgv)
         {
-
             if (dgv.CurrentRow != null && dgv.CurrentCell.RowIndex == dgv.Rows.Count - 1)
             {
-            
                 foreach (DataGridViewCell cell in dgv.Rows[dgv.CurrentCell.RowIndex].Cells)
                 {
                     if (string.IsNullOrEmpty(cell.Value?.ToString()))
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    
                         dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0];
-
-                     
                         dgv.BeginEdit(true);
-
                         return false;
                     }
                 }
 
-             
-                bool isDataValid = CheckCuDanData(dgv);
-                if (!isDataValid)
-                {
-                    return false;
-                }
+                // Kiểm tra dữ liệu cụ thể của DataGridView nếu cần
+                /*   bool isDataValid = true;
+                   if (dgv == dscudan)
+                   {
+                       isDataValid &= CheckCuDanData(dgv);
+                   }
+                   // Thêm các kiểm tra dữ liệu của DataGridView khác nếu cần
+
+                   if (!isDataValid)
+                   {
+                       return false;
+                   }
+              
+            
+            */
             }
 
             return true;
         }
+
 
         private bool CheckCuDanData(DataGridView dgv)
         {
@@ -247,7 +249,6 @@ namespace QuanLyCongViec
         {
             DataGridView dgv = null;
 
-
             if (tabDulieu.SelectedTab == NhanVien)
             {
                 dgv = dsnv;
@@ -264,10 +265,9 @@ namespace QuanLyCongViec
             {
                 dgv = dslshd;
             }
-  
+
             if (dgv != null && dgv.SelectedRows.Count > 0)
             {
-
                 DataGridViewRow selectedRow = dgv.SelectedRows[0];
                 object[] rowData = new object[selectedRow.Cells.Count];
                 for (int i = 0; i < selectedRow.Cells.Count; i++)
@@ -275,14 +275,15 @@ namespace QuanLyCongViec
                     rowData[i] = selectedRow.Cells[i].Value;
                 }
 
-
                 string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
                 try
                 {
-  
-                 
-                     if (tabDulieu.SelectedTab == NhanVien)
+                    // Gọi phương thức xóa dữ liệu
+                    DatabaseAccess.DeleteData(tabDulieu.SelectedTab.Name, new string[] { primaryKeyColumn }, new object[] { rowData[0] });
+
+                    // Sau khi xóa dữ liệu, cần load lại danh sách dữ liệu để cập nhật giao diện
+                    if (tabDulieu.SelectedTab == NhanVien)
                     {
                         loadDsNv();
                     }
@@ -299,12 +300,10 @@ namespace QuanLyCongViec
                         loadDsQuyen();
                     }
 
-
                     MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception  )
+                catch (Exception)
                 {
-                    
                     MessageBox.Show("Đã xảy ra lỗi khi xóa dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -313,6 +312,7 @@ namespace QuanLyCongViec
                 MessageBox.Show("Vui lòng chọn một hàng để xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void btnCapNhat_Click_1(object sender, EventArgs e)
         {
@@ -555,7 +555,15 @@ namespace QuanLyCongViec
             }
         }
 
+        private void dslshd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

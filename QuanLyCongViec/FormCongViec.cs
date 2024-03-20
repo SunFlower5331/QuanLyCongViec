@@ -157,7 +157,8 @@ namespace QuanLyCongViec
         {
            
             btnchinhsuaphancong.Enabled = false;
-            if (dscv.CurrentRow != null && dscv.CurrentRow.Index >0)
+            btnphancong.Enabled = true;
+            if (dscv.CurrentRow != null && dscv.CurrentRow.Index >=0)
             {
                 DataGridViewRow row1 = dscv.CurrentRow;
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
@@ -169,7 +170,7 @@ namespace QuanLyCongViec
         }
         private void dsnv_Click(object sender, EventArgs e)
         {
-            if (dsnv.CurrentRow != null && dsnv.CurrentRow.Index >0)
+            if (dsnv.CurrentRow != null && dsnv.CurrentRow.Index >=0)
             {
                 DataGridViewRow row2 = dsnv.CurrentRow;
                 tbobophan.Text = row2.Cells["phongban"].Value.ToString();
@@ -181,7 +182,8 @@ namespace QuanLyCongViec
         private void dsdpc_Click(object sender, EventArgs e)
         {
             dscv.CurrentCell = null;
-            if (dsdpc.CurrentRow != null && dsdpc.CurrentRow.Index >0)
+            btnphancong.Enabled = false;
+            if (dsdpc.CurrentRow != null && dsdpc.CurrentRow.Index >=0)
             {
                 btnchinhsuaphancong.Enabled = true;
                 DataGridViewRow row1 = dsdpc.CurrentRow;
@@ -213,7 +215,7 @@ namespace QuanLyCongViec
                 string maNV = tbomanv.Text;
                 DateTime thoiGianHoanThanh = dtpthoihan.Value;
                 string tuyChonChiaSe = cbotuychonchiase.Text;
-
+                string trangthai=cbotrangthai.Text;
 
                 if (DatabaseAccess.IsDuplicateData("CTCV", new string[] { "maCV", "maNV" }, new object[] { maCV, maNV }))
                 {
@@ -223,7 +225,7 @@ namespace QuanLyCongViec
 
 
                 DatabaseAccess.InsertData("CTCV", new string[] { "maCV", "maNV", "trangthai", "thoiGianHoanThanh", "Tuychonchiase" },
-                    new object[] { maCV, maNV, "Chưa hoàn thành", thoiGianHoanThanh, tuyChonChiaSe });
+                    new object[] { maCV, maNV, trangthai, thoiGianHoanThanh, tuyChonChiaSe });
 
                 loadCTCV();
                 
@@ -246,12 +248,12 @@ namespace QuanLyCongViec
                 string maNV = tbomanv.Text;
                 DateTime thoiGianHoanThanh = dtpthoihan.Value;
                 string tuyChonChiaSe = cbotuychonchiase.Text;
-
+                string trangthai=cbotrangthai.Text;
                 string[] conditionColumns = { "maCV" };
                 object[] conditionValues = { maCV };
 
-                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase" },
-                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe }, conditionColumns, conditionValues);
+                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase","trangthai" },
+                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe,trangthai}, conditionColumns, conditionValues);
                 loadCTCV();
                tbomacv.Text = "";
                 tbotencv.Text = "";
@@ -302,7 +304,7 @@ namespace QuanLyCongViec
             {
                 
                 dscv.Enabled = true;
-                if (dscv.CurrentRow != null && dscv.SelectedRows.Count > 0)
+                if (dscv.CurrentRow != null && dscv.SelectedRows.Count >= 0)
                 {
                     DataGridViewRow selectedRow = dscv.CurrentRow;
                     string maCV = selectedRow.Cells["maCV"].Value.ToString();
@@ -316,7 +318,7 @@ namespace QuanLyCongViec
                     loadDsCongViec();
                     MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (dsdpc.CurrentRow != null && dsdpc.SelectedRows.Count > 0)
+                else if (dsdpc.CurrentRow != null && dsdpc.SelectedRows.Count >=0)
                 {
                     DataGridViewRow selectedRow = dsdpc.CurrentRow;
                     int maCV = Convert.ToInt32(selectedRow.Cells["maCV"].Value);

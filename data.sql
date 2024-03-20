@@ -1,4 +1,4 @@
-CREATE DATABASE QuanlyCongViec;
+create DATABASE QuanlyCongViec;
 GO
 
 USE QuanLyCongViec;
@@ -116,8 +116,12 @@ CREATE TABLE DangKyDoXe (
     loai NVARCHAR(50),
 	
 );
-
+SELECT C.maCV, DSCV.ten, DVCH.maCH, C.trangthai, C.thoiGianHoanThanh, C.songayhethan,C.Tuychonchiase
+FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH 
+WHERE C.maNV = 'NV002' AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV
 --bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
+
+
 CREATE TABLE Chiphicanho(
     maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD), 
     maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),
@@ -134,13 +138,13 @@ CREATE TABLE Chiphicanho(
 ); 
 go
 CREATE TRIGGER UpdateTongChiPhiDienNuoc
-ON Chiphidichvu
+ON Chiphicanho
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    UPDATE Chiphidichvu
+    UPDATE Chiphicanho
     SET TongChiPhiDienNuoc = i.sodien * i.phidien + i.sonuoc * i.phinuoc + i.TongphiQuanLy + i.TongPhiDichVu
-    FROM Chiphidichvu c
+    FROM Chiphicanho c
     INNER JOIN inserted i ON c.maCD = i.maCD AND c.maCH = i.maCH;
 END;
 go

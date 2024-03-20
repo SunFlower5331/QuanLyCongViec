@@ -57,13 +57,13 @@ namespace QuanLyCongViec
 
         private void dangnhap_Click_1(object sender, EventArgs e)
         {
-            /*if (CheckLogin())
-            {*/
-
+            if (CheckLogin())
+            {
                 FormMain fm = new FormMain();
                 fm.Show();
                 this.Hide();
                 CheckQuyen();
+            }
                 
            
             

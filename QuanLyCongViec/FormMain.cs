@@ -128,5 +128,10 @@ namespace QuanLyCongViec
             f.Show();
             this.Hide();
         }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

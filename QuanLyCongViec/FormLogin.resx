@@ -130,7 +130,7 @@
   <data name="logout.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAK4lJREFUeF7t3U/odml93/EggwzDMAyDiEiQEIpkUUrJopTSdQmhiy6LuMgqiIi4
+        vQAADr0BR/uQrQAAK4lJREFUeF7t3U/odml93/EggwzDMAyDiEiQEIpkUUrJopTSdQmhiy6LuMgqiIi4
         KEFEzCAiIiLiopRQRKSLEroKIZQuuiwhBAlBREREgoiUIBKCiyC07+vxnPGZmft5nt+f+88513m94U3i
         PL/nvs+5ru91fT6j8+c3AAAAcGb++I//+D35b/NL+a+WPwwAeIrux5fz8/nT/FZ+ePklYH80wC/lv8/v
         5S/zr/L3ll8GAET34lvh/+abb/6/Yf//KAG/s/wIsB+Wgf4P+b11oJeh/utUAgAglrvybeH/1H2pBGBf
@@ -322,14 +322,14 @@
   <data name="minimize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEkAAAARCAIAAAAezBYRAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAACtJREFUSEvtzwENADAQxKBJP+nTwac44O2ubqZupm6mbqZupm6mbqZuou0D2HxF
+        vAAADrwBlbxySQAAACtJREFUSEvtzwENADAQxKBJP+nTwac44O2ubqZupm6mbqZupm6mbqZuou0D2HxF
         6vhORU8AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA34AAAQ4CAYAAABWjw7rAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAA/7JJREFUeF7s/du29aiupYuOq5znzJIrd673f9O1JaEqKkJg7ObW/x4xx8VX0AmB
+        DwAACw8BkvkDpQAA/7JJREFUeF7s/du29aiupYuOq5znzJIrd673f9O1JaEqKkJg7ObW/x4xx8VX0AmB
         McZWtB4R//j3//h//j/l3/7dgayt8K8u/6vr//Yf/8dsqt/lX/79fw/tkio/zWmLxgl2Xdb+nyaH3tr/
         cPt/hD4z2Bcxg11l6Kt44P7/lHlA/0/XzRZ+jwcW5zGhM83XaTb0b3KOEf4zydAhD/z/Rv6LWuE/jvi/
         /99//E9CbaT/u+j/TjH/HjYh6f/msJz5V5l3k6UVWfVT/kXWjdnZsy3zP2TvV/YViD/pl2PujrVjlevN
@@ -8072,7 +8072,7 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>107</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

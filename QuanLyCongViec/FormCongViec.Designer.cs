@@ -56,11 +56,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dsdpc = new System.Windows.Forms.DataGridView();
             this.tongquat = new System.Windows.Forms.GroupBox();
+            this.cbotuychonhienthi = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dscv = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbotuychonhienthi = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -348,7 +348,7 @@
             this.groupBox3.Controls.Add(this.dsdpc);
             this.groupBox3.Location = new System.Drawing.Point(933, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(395, 440);
+            this.groupBox3.Size = new System.Drawing.Size(571, 440);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách công việc đã phân công";
@@ -357,13 +357,13 @@
             // 
             this.dsdpc.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dsdpc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dsdpc.Location = new System.Drawing.Point(6, 20);
+            this.dsdpc.Location = new System.Drawing.Point(0, 22);
             this.dsdpc.Name = "dsdpc";
             this.dsdpc.ReadOnly = true;
             this.dsdpc.RowHeadersWidth = 51;
             this.dsdpc.RowTemplate.Height = 24;
             this.dsdpc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dsdpc.Size = new System.Drawing.Size(383, 412);
+            this.dsdpc.Size = new System.Drawing.Size(565, 412);
             this.dsdpc.TabIndex = 2;
             this.dsdpc.Click += new System.EventHandler(this.dsdpc_Click);
             // 
@@ -380,9 +380,36 @@
             this.tongquat.Controls.Add(this.groupBox1);
             this.tongquat.Location = new System.Drawing.Point(3, -1);
             this.tongquat.Name = "tongquat";
-            this.tongquat.Size = new System.Drawing.Size(1334, 683);
+            this.tongquat.Size = new System.Drawing.Size(1501, 683);
             this.tongquat.TabIndex = 22;
             this.tongquat.TabStop = false;
+            // 
+            // cbotuychonhienthi
+            // 
+            this.cbotuychonhienthi.FormattingEnabled = true;
+            this.cbotuychonhienthi.Items.AddRange(new object[] {
+            "Tất cả nhân viên",
+            "DV",
+            "TC",
+            "VS",
+            "AN",
+            "KT",
+            "XD"});
+            this.cbotuychonhienthi.Location = new System.Drawing.Point(1081, 496);
+            this.cbotuychonhienthi.Name = "cbotuychonhienthi";
+            this.cbotuychonhienthi.Size = new System.Drawing.Size(238, 24);
+            this.cbotuychonhienthi.TabIndex = 28;
+            this.cbotuychonhienthi.SelectedIndexChanged += new System.EventHandler(this.cbotuychonhienthi_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(915, 502);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(136, 18);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Tùy chọn hiển thị";
             // 
             // groupBox1
             // 
@@ -409,38 +436,11 @@
             this.dscv.Click += new System.EventHandler(this.dscv_Click);
             this.dscv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dscv_KeyDown);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(915, 502);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 18);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "Tùy chọn hiển thị";
-            // 
-            // cbotuychonhienthi
-            // 
-            this.cbotuychonhienthi.FormattingEnabled = true;
-            this.cbotuychonhienthi.Items.AddRange(new object[] {
-            "Tất cả nhân viên",
-            "DV",
-            "TC",
-            "VS",
-            "AN",
-            "KT",
-            "XD"});
-            this.cbotuychonhienthi.Location = new System.Drawing.Point(1081, 496);
-            this.cbotuychonhienthi.Name = "cbotuychonhienthi";
-            this.cbotuychonhienthi.Size = new System.Drawing.Size(238, 24);
-            this.cbotuychonhienthi.TabIndex = 28;
-            this.cbotuychonhienthi.SelectedIndexChanged += new System.EventHandler(this.cbotuychonhienthi_SelectedIndexChanged);
-            // 
             // FormCongViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 694);
+            this.ClientSize = new System.Drawing.Size(1508, 694);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.tongquat);
             this.Name = "FormCongViec";

@@ -177,6 +177,15 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\placeholder1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoGoPhanMemTachNen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\VisioForge.DotNet.Core.Redist.Base.x64.15.8.6\build\VisioForge.DotNet.Core.Redist.Base.x64.targets" Condition="Exists('..\packages\VisioForge.DotNet.Core.Redist.Base.x64.15.8.6\build\VisioForge.DotNet.Core.Redist.Base.x64.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

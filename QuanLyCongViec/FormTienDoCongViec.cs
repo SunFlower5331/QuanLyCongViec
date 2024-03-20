@@ -74,15 +74,52 @@ namespace QuanLyCongViec
         {
             try
             {
-                dscv.DataSource = DatabaseAccess.GetTienDoCongViec(Program.UserID);
-                dscv.AutoGenerateColumns = false;
-                dscv.Columns["maCV"].HeaderText = "Mã công việc";
-                dscv.Columns["ten"].HeaderText = "Tên công việc";
-                dscv.Columns["maCH"].HeaderText = "Mã căn hộ";
-                dscv.Columns["trangthai"].HeaderText = "Trạng thái";
-                dscv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
-                dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
-                dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dscv.CurrentCell = null;
+                string maNV = Program.UserID;
+                DataSet dataSet = DatabaseAccess.GetTienDoCongViec(maNV);
+
+                DataTable dataTable = dataSet.Tables.Count >= 0 ? dataSet.Tables[0] : null;
+
+                if (dataTable != null && dataTable.Rows.Count > 0)
+                {
+                    // Gán dữ liệu cho DataGridView
+                    dscv.DataSource = dataTable;
+
+                    // Thiết lập tiêu đề cột
+                    dscv.Columns["maCV"].HeaderText = "Mã công việc";
+                    dscv.Columns["ten"].HeaderText = "Tên công việc";
+                    dscv.Columns["maCH"].HeaderText = "Mã căn hộ";
+                    dscv.Columns["trangthai"].HeaderText = "Trạng thái";
+                    dscv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                    dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
+                    dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+
+                    // Lặp qua từng hàng trong DataGridView
+                    foreach (DataGridViewRow dgvRow in dscv.Rows)
+                    {
+                        // Lấy giá trị của cột "songayhethan" trong hàng hiện tại
+                        int soNgayHetHan = Convert.ToInt32(dgvRow.Cells["songayhethan"].Value);
+
+                        // Kiểm tra nếu số ngày còn lại nhỏ hơn 0, tô màu đỏ cho hàng đó
+                        if (soNgayHetHan < 0 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase)
+)
+                        {
+                            dgvRow.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                        else if (string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Đã hoàn thành", StringComparison.OrdinalIgnoreCase))
+                        {
+                            dgvRow.DefaultCellStyle.BackColor = Color.Green;
+
+                        }else if (soNgayHetHan < 3 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase))
+                        {
+                            dgvRow.DefaultCellStyle.BackColor = Color.Orange;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu để hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -90,7 +127,9 @@ namespace QuanLyCongViec
             }
         }
 
-    
+
+
+
         private void cbotuychonchiase_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbotuychonchiase.SelectedIndex == 2) {

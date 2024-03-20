@@ -14,7 +14,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=HUYENDIU\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -76,15 +76,16 @@ namespace DAL
         {
             DataSet data = new DataSet();
             string query = "SELECT C.maCV, DSCV.ten, DVCH.maCH, C.trangthai, C.thoiGianHoanThanh, C.songayhethan, C.Tuychonchiase " +
-                           "FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH " +
-                           "WHERE C.maNV = @maNV AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV";
+               "FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH " +
+               "WHERE C.maNV = @maNV AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV";
+
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@maNV", maNV);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data); // Thực hiện truy vấn và gán kết quả vào DataSet
+                adapter.Fill(data); 
             }
 
             return data;
@@ -99,7 +100,7 @@ namespace DAL
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@phongban", phongban);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data); // Thực hiện truy vấn và gán kết quả vào DataSet
+                adapter.Fill(data);
             }
 
             return data;
