@@ -15,7 +15,7 @@ namespace QuanLyCongViec
 {
     public partial class FormDuLieuCuDan : Form
     {
-        
+
         public FormDuLieuCuDan()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace QuanLyCongViec
             loadDsNv();
             loadDsPhongBan();
             loadDsTK();
-           loadDsCanHo();
+            loadDsCanHo();
             loadDsQuyen();
 
         }
@@ -166,7 +166,7 @@ namespace QuanLyCongViec
             isDataValid &= CheckDataGridViewData(dsnv);
             isDataValid &= CheckDataGridViewData(dstk);
             isDataValid &= CheckDataGridViewData(dsqh);
-          
+
             if (isDataValid)
             {
 
@@ -199,8 +199,8 @@ namespace QuanLyCongViec
 
         private void SaveLastRowData(DataGridView dgv, string tableName)
         {
-            
-            DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 1]; 
+
+            DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 1];
             object[] rowData = new object[lastRow.Cells.Count];
             for (int i = 0; i < lastRow.Cells.Count; i++)
             {
@@ -224,7 +224,7 @@ namespace QuanLyCongViec
                     MessageBox.Show("Lỗi không xác định xảy ra. Vui lòng thử lại sau.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Đã xảy ra lỗi. Vui lòng thử lại sau.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -268,7 +268,7 @@ namespace QuanLyCongViec
         }
         private bool CheckCuDanData(DataGridView dgv)
         {
-        
+
             /*int maCD = Convert.ToInt32(dgv.Rows[dgv.Rows.Count - 1].Cells["maCD"].Value);
             string tenCH = dgv.Rows[dgv.Rows.Count - 1].Cells["tenCH"].Value.ToString();
             DateTime ngaySinh = Convert.ToDateTime(dgv.Rows[dgv.Rows.Count - 1].Cells["ngaySinh"].Value);
@@ -328,7 +328,7 @@ namespace QuanLyCongViec
 
                 try
                 {
-  
+
                     DatabaseAccess.DeleteData(tabDulieu.SelectedTab.Name, new string[] { primaryKeyColumn }, new object[] { rowData[0] });
                     if (tabDulieu.SelectedTab == CuDan)
                     {
@@ -357,9 +357,9 @@ namespace QuanLyCongViec
 
                     MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception  )
+                catch (Exception)
                 {
-                    
+
                     MessageBox.Show("Đã xảy ra lỗi khi xóa dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -372,36 +372,36 @@ namespace QuanLyCongViec
         private void btnCapNhat_Click_1(object sender, EventArgs e)
         {
             DataGridView dgv = null;
-            
+
             if (tabDulieu.SelectedTab == CuDan)
             {
                 dgv = dscudan;
-                
+
             }
             else if (tabDulieu.SelectedTab == DangKyDoXe)
             {
                 dgv = dsnv;
-                
+
             }
             else if (tabDulieu.SelectedTab == Chiphicanho)
             {
                 dgv = dspb;
-              
+
             }
             else if (tabDulieu.SelectedTab == ThanhVienCanHo)
             {
                 dgv = dstk;
-               
+
             }
             else if (tabDulieu.SelectedTab == DVCanHo)
             {
                 dgv = dsqh;
-               
+
             }
             else if (tabDulieu.SelectedTab == CanHo)
             {
                 dgv = dsch;
-                
+
 
             }
 
@@ -418,32 +418,32 @@ namespace QuanLyCongViec
                         rowData[i] = row.Cells[i].Value;
                     }
 
-          
+
                     string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
                     try
                     {
-                   
+
                         string tableName = tabDulieu.SelectedTab.Name;
 
-               
+
                         List<string> columnNames = new List<string>();
                         List<object> values = new List<object>();
-                        for (int i = 1; i < dgv.Columns.Count; i++) 
+                        for (int i = 1; i < dgv.Columns.Count; i++)
                         {
                             columnNames.Add(dgv.Columns[i].DataPropertyName);
                             values.Add(rowData[i]);
                         }
 
-                     
+
                         string[] conditionColumns = { primaryKeyColumn };
-               
+
                         object[] conditionValues = { rowData[0] };
 
-                
+
                         DatabaseAccess.UpdateData(tableName, columnNames.ToArray(), values.ToArray(), conditionColumns, conditionValues);
 
-                    
+
                         row.DataGridView.UpdateCellValue(row.Cells[0].ColumnIndex, row.Index);
                     }
                     catch (Exception ex)
@@ -452,7 +452,7 @@ namespace QuanLyCongViec
                     }
                 }
 
-            
+
                 dgv.ReadOnly = true;
                 btnCapNhat.Enabled = false;
                 btnluu.Enabled = true;
@@ -501,10 +501,10 @@ namespace QuanLyCongViec
         private void btnsua_Click(object sender, EventArgs e)
         {
             btnluu.Enabled = btnxoa.Enabled = btnthem.Enabled = false;
-            btnCapNhat.Enabled=true;
+            btnCapNhat.Enabled = true;
             DataGridView dgv = null;
 
-      
+
             if (tabDulieu.SelectedTab == CuDan)
             {
                 dgv = dscudan;
@@ -542,7 +542,7 @@ namespace QuanLyCongViec
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            
+
             FormMain formMain = new FormMain();
             formMain.Show();
             this.Hide();
@@ -550,16 +550,16 @@ namespace QuanLyCongViec
 
         private void FormDuLieu_FormClosing(object sender, FormClosingEventArgs e)
         {
- 
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
-         
+
                 DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-             
+
                 if (result == DialogResult.Yes)
                 {
-        
+
                     Application.Exit();
                 }
                 else

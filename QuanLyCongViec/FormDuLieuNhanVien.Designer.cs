@@ -42,7 +42,9 @@ namespace QuanLyCongViec
             this.PhongBan = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dspb = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbtimkiem = new System.Windows.Forms.GroupBox();
+            this.timkiem = new System.Windows.Forms.Button();
             this.txbtimkiem = new System.Windows.Forms.TextBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -51,10 +53,8 @@ namespace QuanLyCongViec
             this.btnxoa = new System.Windows.Forms.Button();
             this.btnthem = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timkiem = new System.Windows.Forms.Button();
             this.tabDulieu.SuspendLayout();
             this.Quyen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dslshd)).BeginInit();
@@ -181,7 +181,6 @@ namespace QuanLyCongViec
             // 
             this.PhongBan.BackColor = System.Drawing.Color.DimGray;
             this.PhongBan.Controls.Add(this.groupBox1);
-            this.PhongBan.Controls.Add(this.label1);
             this.PhongBan.Controls.Add(this.dspb);
             this.PhongBan.Location = new System.Drawing.Point(4, 27);
             this.PhongBan.Margin = new System.Windows.Forms.Padding(2);
@@ -216,6 +215,19 @@ namespace QuanLyCongViec
             this.dspb.Size = new System.Drawing.Size(872, 414);
             this.dspb.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(75, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 31);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "TasMana";
+            // 
             // gbtimkiem
             // 
             this.gbtimkiem.AutoSize = true;
@@ -230,6 +242,21 @@ namespace QuanLyCongViec
             this.gbtimkiem.TabIndex = 4;
             this.gbtimkiem.TabStop = false;
             this.gbtimkiem.Text = "Tìm kiếm";
+            // 
+            // timkiem
+            // 
+            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
+            this.timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.timkiem.Location = new System.Drawing.Point(271, 21);
+            this.timkiem.Margin = new System.Windows.Forms.Padding(2);
+            this.timkiem.Name = "timkiem";
+            this.timkiem.Size = new System.Drawing.Size(88, 28);
+            this.timkiem.TabIndex = 6;
+            this.timkiem.Text = "Tìm kiếm";
+            this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.timkiem.UseVisualStyleBackColor = true;
+            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
             // txbtimkiem
             // 
@@ -337,6 +364,7 @@ namespace QuanLyCongViec
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnThoat);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnCapNhat);
             this.groupBox2.Controls.Add(this.btnluu);
             this.groupBox2.Controls.Add(this.pictureBox2);
@@ -351,24 +379,11 @@ namespace QuanLyCongViec
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(118, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 31);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "TasMana";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(20)))));
             this.pictureBox2.Image = global::QuanLyCongViec.Properties.Resources.LoGoPhanMemTachNen;
-            this.pictureBox2.Location = new System.Drawing.Point(73, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(73, 65);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -386,21 +401,6 @@ namespace QuanLyCongViec
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // timkiem
-            // 
-            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
-            this.timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.timkiem.Location = new System.Drawing.Point(271, 21);
-            this.timkiem.Margin = new System.Windows.Forms.Padding(2);
-            this.timkiem.Name = "timkiem";
-            this.timkiem.Size = new System.Drawing.Size(88, 28);
-            this.timkiem.TabIndex = 6;
-            this.timkiem.Text = "Tìm kiếm";
-            this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.timkiem.UseVisualStyleBackColor = true;
-            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
-            // 
             // FormDuLieuNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,6 +413,7 @@ namespace QuanLyCongViec
             this.Controls.Add(this.gbtimkiem);
             this.Controls.Add(this.tabDulieu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormDuLieuNhanVien";
@@ -428,11 +429,11 @@ namespace QuanLyCongViec
             this.NhanVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).EndInit();
             this.PhongBan.ResumeLayout(false);
-            this.PhongBan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).EndInit();
             this.gbtimkiem.ResumeLayout(false);
             this.gbtimkiem.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

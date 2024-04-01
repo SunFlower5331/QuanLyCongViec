@@ -19,7 +19,63 @@ namespace QuanLyCongViec
         public FormCongViec()
         {
             InitializeComponent();
+            dscv.CellFormatting += dscv_CellFormatting;
+            dsnv.CellFormatting += dsnv_CellFormatting;
+            dsdpc.CellFormatting += dsdpc_CellFormatting;
         }
+        // Chỉnh sửa màu của 3 dataGridView
+        private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscv.EnableHeadersVisualStyles = false;
+            dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dscv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    if (row.Cells[i].Value != null)
+                    {
+                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                        row.Cells[i].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+        private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsnv.EnableHeadersVisualStyles = false;
+            dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsnv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    if (row.Cells[i].Value != null)
+                    {
+                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                        row.Cells[i].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+        private void dsdpc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsdpc.EnableHeadersVisualStyles = false;
+            dsdpc.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsdpc.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsdpc.Columns[i].HeaderCell.Style.SelectionBackColor = dsdpc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    if (row.Cells[i].Value != null)
+                    {
+                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                        row.Cells[i].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+        //
         private void btnthoat_Click(object sender, EventArgs e)
         {
             FormMain formMain = new FormMain();
@@ -81,7 +137,7 @@ namespace QuanLyCongViec
                     break;
                 case 2:
                     loadData("TC");
-                    break ;
+                    break;
                 case 3:
                     loadData("VS");
                     break;
@@ -94,7 +150,7 @@ namespace QuanLyCongViec
                 case 6:
                     loadData("XD");
                     break;
-               
+
             }
         }
 
@@ -108,7 +164,7 @@ namespace QuanLyCongViec
 
             dsdpc.DataSource = DatabaseAccess.GetCTCVTheoPhongBan(phongBan).Tables[0];
             dsdpc.AutoGenerateColumns = false;
-           
+
             dsdpc.Columns["chucvu"].HeaderText = "Chức vụ";
             dsdpc.Columns["maCV"].HeaderText = "Mã công việc";
             dsdpc.Columns["ten"].HeaderText = "Tên công việc";
@@ -147,7 +203,7 @@ namespace QuanLyCongViec
             dsdpc.Columns["ten"].HeaderText = "Tên công việc";
             dsdpc.Columns["maNV"].HeaderText = "Mã nhân viên";
             dsdpc.Columns["hoten"].HeaderText = "Tên nhân viên";
-            
+
             dsdpc.Columns["trangthai"].HeaderText = "Trạng thái";
             dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             dsdpc.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
@@ -155,10 +211,10 @@ namespace QuanLyCongViec
         }
         private void dscv_Click(Object sender, EventArgs e)
         {
-           
+
             btnchinhsuaphancong.Enabled = false;
             btnphancong.Enabled = true;
-            if (dscv.CurrentRow != null && dscv.CurrentRow.Index >=0)
+            if (dscv.CurrentRow != null && dscv.CurrentRow.Index >= 0)
             {
                 DataGridViewRow row1 = dscv.CurrentRow;
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
@@ -170,7 +226,7 @@ namespace QuanLyCongViec
         }
         private void dsnv_Click(object sender, EventArgs e)
         {
-            if (dsnv.CurrentRow != null && dsnv.CurrentRow.Index >=0)
+            if (dsnv.CurrentRow != null && dsnv.CurrentRow.Index >= 0)
             {
                 DataGridViewRow row2 = dsnv.CurrentRow;
                 tbobophan.Text = row2.Cells["phongban"].Value.ToString();
@@ -183,7 +239,7 @@ namespace QuanLyCongViec
         {
             dscv.CurrentCell = null;
             btnphancong.Enabled = false;
-            if (dsdpc.CurrentRow != null && dsdpc.CurrentRow.Index >=0)
+            if (dsdpc.CurrentRow != null && dsdpc.CurrentRow.Index >= 0)
             {
                 btnchinhsuaphancong.Enabled = true;
                 DataGridViewRow row1 = dsdpc.CurrentRow;
@@ -215,7 +271,7 @@ namespace QuanLyCongViec
                 string maNV = tbomanv.Text;
                 DateTime thoiGianHoanThanh = dtpthoihan.Value;
                 string tuyChonChiaSe = cbotuychonchiase.Text;
-                string trangthai=cbotrangthai.Text;
+                string trangthai = cbotrangthai.Text;
 
                 if (DatabaseAccess.IsDuplicateData("CTCV", new string[] { "maCV", "maNV" }, new object[] { maCV, maNV }))
                 {
@@ -228,7 +284,7 @@ namespace QuanLyCongViec
                     new object[] { maCV, maNV, trangthai, thoiGianHoanThanh, tuyChonChiaSe });
 
                 loadCTCV();
-                
+
                 MessageBox.Show("Đã lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -248,14 +304,14 @@ namespace QuanLyCongViec
                 string maNV = tbomanv.Text;
                 DateTime thoiGianHoanThanh = dtpthoihan.Value;
                 string tuyChonChiaSe = cbotuychonchiase.Text;
-                string trangthai=cbotrangthai.Text;
+                string trangthai = cbotrangthai.Text;
                 string[] conditionColumns = { "maCV" };
                 object[] conditionValues = { maCV };
 
-                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase","trangthai" },
-                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe,trangthai}, conditionColumns, conditionValues);
+                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
+                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
                 loadCTCV();
-               tbomacv.Text = "";
+                tbomacv.Text = "";
                 tbotencv.Text = "";
                 tbobophan.Text = "";
                 tbotennv.Text = "";
@@ -283,7 +339,7 @@ namespace QuanLyCongViec
 
         }
 
- 
+
 
         private void btnthem_Click(object sender, EventArgs e)
         {
@@ -302,7 +358,7 @@ namespace QuanLyCongViec
         {
             try
             {
-                
+
                 dscv.Enabled = true;
                 if (dscv.CurrentRow != null && dscv.SelectedRows.Count >= 0)
                 {
@@ -318,14 +374,14 @@ namespace QuanLyCongViec
                     loadDsCongViec();
                     MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (dsdpc.CurrentRow != null && dsdpc.SelectedRows.Count >=0)
+                else if (dsdpc.CurrentRow != null && dsdpc.SelectedRows.Count >= 0)
                 {
                     DataGridViewRow selectedRow = dsdpc.CurrentRow;
                     int maCV = Convert.ToInt32(selectedRow.Cells["maCV"].Value);
                     DatabaseAccess.delCTCV(maCV);
 
                     loadCTCV();
-                   
+
                     MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -348,7 +404,7 @@ namespace QuanLyCongViec
             {
                 btnluu_Click(sender, e);
                 dscv.CurrentCell = dscv.Rows[dscv.Rows.Count - 1].Cells[0];
-                dscv.BeginEdit(true); 
+                dscv.BeginEdit(true);
 
             }
         }
@@ -357,7 +413,7 @@ namespace QuanLyCongViec
         {
             try
             {
-               
+
                 DataGridViewRow newRow = dscv.Rows[dscv.Rows.Count - 2];
                 foreach (DataGridViewCell cell in newRow.Cells)
                 {
@@ -383,7 +439,7 @@ namespace QuanLyCongViec
                 DatabaseAccess.InsertData("DsCongViec",
                     new string[] { "maCV", "ten" },
                     new object[] { maCV, ten });
-               
+
                 MessageBox.Show("Đã thêm dữ liệu mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadDsCongViec();
             }
@@ -398,7 +454,7 @@ namespace QuanLyCongViec
 
         private void btncapnhat_Click(object sender, EventArgs e)
         {
-           
+
             // Lấy thông tin từ hàng được chọn trong DataGridView
             if (dscv.CurrentRow != null)
             {

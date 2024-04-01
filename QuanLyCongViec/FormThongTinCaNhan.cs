@@ -15,11 +15,11 @@ namespace QuanLyCongViec
     public partial class FormThongTinCaNhan : Form
     {
         public bool isExit = true;
-     
+
         public FormThongTinCaNhan()
         {
             InitializeComponent();
-            
+
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -29,7 +29,8 @@ namespace QuanLyCongViec
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (hienmk.Checked){
+            if (hienmk.Checked)
+            {
                 mk.UseSystemPasswordChar = false;
             }
             else
@@ -58,20 +59,20 @@ namespace QuanLyCongViec
                 txtTrinhDoHocVan.Text = nv.trinhdohocvan;
                 txtLoaiHinh.Text = nv.loaihinh;
                 txbmnv.Text = nv.manv;
-                cboquyenhan.Text = nv.quyenhan.ToString() ;
+                cboquyenhan.Text = nv.quyenhan.ToString();
                 txbtentk.Text = tk.id;
                 mk.Text = tk.mk;
-               
+
 
             }
         }
 
         private void sua(object sender, EventArgs e)
         {
-            button1.Enabled=true;
+            button1.Enabled = true;
             groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
             txbtentk.Enabled = false;
-            cboquyenhan.Enabled=true;
+            cboquyenhan.Enabled = true;
 
         }
         private bool KiemTraDuLieuNhap()
@@ -86,9 +87,9 @@ namespace QuanLyCongViec
                 string.IsNullOrEmpty(txtTrangThai.Text) ||
                 string.IsNullOrEmpty(txtTrinhDoHocVan.Text) ||
                 string.IsNullOrEmpty(txtLoaiHinh.Text) ||
-                string.IsNullOrEmpty(txbmnv.Text)||
+                string.IsNullOrEmpty(txbmnv.Text) ||
                     string.IsNullOrEmpty(mk.Text))
-                   
+
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin vào các ô!");
                 return false;
@@ -123,10 +124,10 @@ namespace QuanLyCongViec
             string loaihinh = txtLoaiHinh.Text;
             string tendangnhap = txbtentk.Text;
             string matkhau = mk.Text;
-            int quyenhan=Convert.ToInt32(cboquyenhan.Text);
+            int quyenhan = Convert.ToInt32(cboquyenhan.Text);
             int loaitaikhoan = Convert.ToInt32(cboquyenhan.Text);
             // Gọi phương thức cập nhật dữ liệu trong cơ sở dữ liệu
-            bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh,quyenhan);
+            bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan);
             bool result2 = DatabaseAccess.CapNhatThongTinTaiKhoan(tendangnhap, matkhau, loaitaikhoan);
 
             // Kiểm tra kết quả và hiển thị thông báo
@@ -141,7 +142,7 @@ namespace QuanLyCongViec
         }
         private void thoat(object sender, EventArgs e)
         {
-            FormMain f=new FormMain();
+            FormMain f = new FormMain();
             f.Show();
             this.Hide();
 

@@ -15,31 +15,53 @@ namespace QuanLyCongViec
 
     public partial class FormMain : Form
     {
-        
+
         public FormMain()
         {
             InitializeComponent();
             this.Resize += new EventHandler(FormMain_Resize);
+            menuStrip2.Renderer = new MyRenderer();
         }
+        // Chỉnh sửa màu menustrip
+        private class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColors()) { }
+        }
+        private class MyColors : ProfessionalColorTable
+        {
+            public override Color MenuItemPressedGradientBegin
+            {
+                get { return Color.Black; }
+            }
+            public override Color MenuItemPressedGradientEnd
+            {
+                get { return Color.Firebrick; }
+            }        
+            public override Color MenuBorder 
+             {
+                get { return Color.Silver; }
+            }
+        }
+        //
         private void FormMain_Resize(object sender, EventArgs e)
         {
             CenterLabel();
             groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
             menuStrip2.Size = new Size(this.ClientSize.Width - menuStrip2.Location.X - 10, this.ClientSize.Height - menuStrip2.Location.Y - 10);
-          
+
             dscv.Size = new Size(this.ClientSize.Width - dscv.Location.X - 10, this.ClientSize.Height - dscv.Location.Y - 10);
         }
         private void CenterLabel()
         {
             int centerX = (this.ClientSize.Width - label1.Size.Width) / 2;
-            int centerY = label1.Location.Y; 
+            int centerY = label1.Location.Y;
 
             label1.Location = new Point(centerX, centerY);
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormLogin f=new FormLogin();
+            FormLogin f = new FormLogin();
             f.Show();
             this.Hide();
 
@@ -65,7 +87,7 @@ namespace QuanLyCongViec
             FormThongTinCaNhan f = new FormThongTinCaNhan();
             f.Show();
             this.Hide();
-            
+
 
         }
 
@@ -93,7 +115,7 @@ namespace QuanLyCongViec
 
         private void côngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormDuLieuNhanVien f=new FormDuLieuNhanVien();
+            FormDuLieuNhanVien f = new FormDuLieuNhanVien();
             f.Show();
             this.Hide();
         }
@@ -110,7 +132,7 @@ namespace QuanLyCongViec
 
         private void tiếnĐộCôngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormTienDoCongViec f=new FormTienDoCongViec();
+            FormTienDoCongViec f = new FormTienDoCongViec();
             f.Show();
             this.Hide();
         }
@@ -124,14 +146,47 @@ namespace QuanLyCongViec
 
         private void dulieucudan_Click(object sender, EventArgs e)
         {
-            FormDuLieuCuDan f= f = new FormDuLieuCuDan();
+            FormDuLieuCuDan f = f = new FormDuLieuCuDan();
             f.Show();
             this.Hide();
         }
 
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void tácVụToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nhậpXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUpload_Download form = new FormUpload_Download();
+            form.Show();
+            this.Hide();
+        }
+
+        private void côngViệcToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormThongKeKetQuaCongViec form = new FormThongKeKetQuaCongViec();
+            form.Show();
+            this.Hide();
+        }
+
+        private void hiệuQuảCôngViệcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormThongKeHieuQuaCongViec form = new FormThongKeHieuQuaCongViec();
+            form.Show();
+            this.Hide();
+        }
+
+        private void chưaHoànThànhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBaoCao form = new FormBaoCao();
+            form.Show();
+            this.Hide();
         }
     }
 }

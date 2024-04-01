@@ -23,7 +23,7 @@ namespace QuanLyCongViec
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
+        
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             // check xem nếu checkbox đã được đánh hoặc để mặc định 
@@ -218,11 +218,10 @@ namespace QuanLyCongViec
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
     }
 }

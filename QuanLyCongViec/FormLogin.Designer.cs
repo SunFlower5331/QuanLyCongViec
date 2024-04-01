@@ -38,20 +38,20 @@ namespace QuanLyCongViec
             this.dangnhap = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.loginForm = new System.Windows.Forms.PictureBox();
             this.ngonngu = new System.Windows.Forms.ComboBox();
             this.underlineUser = new System.Windows.Forms.Label();
             this.underlinePass = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.logout = new System.Windows.Forms.PictureBox();
-            this.minimize = new System.Windows.Forms.PictureBox();
             this.quenPass = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            this.minimize = new System.Windows.Forms.PictureBox();
+            this.logout = new System.Windows.Forms.PictureBox();
+            this.loginForm = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).BeginInit();
             this.SuspendLayout();
             // 
             // user
@@ -115,17 +115,6 @@ namespace QuanLyCongViec
             this.dangnhap.UseVisualStyleBackColor = false;
             this.dangnhap.Click += new System.EventHandler(this.dangnhap_Click_1);
             // 
-            // loginForm
-            // 
-            this.loginForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.loginForm.Location = new System.Drawing.Point(-35, -46);
-            this.loginForm.Margin = new System.Windows.Forms.Padding(2);
-            this.loginForm.Name = "loginForm";
-            this.loginForm.Size = new System.Drawing.Size(866, 532);
-            this.loginForm.TabIndex = 10;
-            this.loginForm.TabStop = false;
-            this.loginForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonOut_MouseDown);
-            // 
             // ngonngu
             // 
             this.ngonngu.AllowDrop = true;
@@ -181,30 +170,6 @@ namespace QuanLyCongViec
             this.label2.TabIndex = 15;
             this.label2.Text = "Ver.0";
             // 
-            // logout
-            // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.Location = new System.Drawing.Point(720, 5);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(25, 25);
-            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logout.TabIndex = 17;
-            this.logout.TabStop = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
-            // 
-            // minimize
-            // 
-            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
-            this.minimize.Location = new System.Drawing.Point(685, 5);
-            this.minimize.Name = "minimize";
-            this.minimize.Size = new System.Drawing.Size(25, 25);
-            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.minimize.TabIndex = 18;
-            this.minimize.TabStop = false;
-            this.minimize.Click += new System.EventHandler(this.minimize_Click);
-            // 
             // quenPass
             // 
             this.quenPass.ActiveLinkColor = System.Drawing.Color.Firebrick;
@@ -227,6 +192,42 @@ namespace QuanLyCongViec
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            // 
+            // minimize
+            // 
+            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
+            this.minimize.Location = new System.Drawing.Point(685, 5);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(25, 25);
+            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimize.TabIndex = 18;
+            this.minimize.TabStop = false;
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
+            this.logout.Location = new System.Drawing.Point(720, 5);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(25, 25);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logout.TabIndex = 17;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
+            // loginForm
+            // 
+            this.loginForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.loginForm.Location = new System.Drawing.Point(-35, -46);
+            this.loginForm.Margin = new System.Windows.Forms.Padding(2);
+            this.loginForm.Name = "loginForm";
+            this.loginForm.Size = new System.Drawing.Size(866, 532);
+            this.loginForm.TabIndex = 10;
+            this.loginForm.TabStop = false;
+            this.loginForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonOut_MouseDown);
             // 
             // FormLogin
             // 
@@ -256,10 +257,10 @@ namespace QuanLyCongViec
             this.Name = "FormLogin";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.FormLogin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
