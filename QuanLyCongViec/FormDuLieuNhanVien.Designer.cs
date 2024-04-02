@@ -126,7 +126,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -331,7 +331,7 @@ namespace QuanLyCongViec
             // 
             this.btnCapNhat.BackColor = System.Drawing.Color.Transparent;
             this.btnCapNhat.Enabled = false;
-            this.btnCapNhat.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhat.ForeColor = System.Drawing.Color.Firebrick;
             this.btnCapNhat.Location = new System.Drawing.Point(44, 191);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(2);
@@ -346,7 +346,7 @@ namespace QuanLyCongViec
             // 
             this.btnluu.BackColor = System.Drawing.Color.Transparent;
             this.btnluu.Enabled = false;
-            this.btnluu.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnluu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnluu.ForeColor = System.Drawing.Color.Firebrick;
             this.btnluu.Location = new System.Drawing.Point(44, 415);
             this.btnluu.Margin = new System.Windows.Forms.Padding(2);
@@ -360,7 +360,7 @@ namespace QuanLyCongViec
             // btnsua
             // 
             this.btnsua.BackColor = System.Drawing.Color.Transparent;
-            this.btnsua.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsua.ForeColor = System.Drawing.Color.Firebrick;
             this.btnsua.Location = new System.Drawing.Point(44, 246);
             this.btnsua.Margin = new System.Windows.Forms.Padding(2);
@@ -374,7 +374,7 @@ namespace QuanLyCongViec
             // btnxoa
             // 
             this.btnxoa.BackColor = System.Drawing.Color.Transparent;
-            this.btnxoa.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnxoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnxoa.ForeColor = System.Drawing.Color.Firebrick;
             this.btnxoa.Location = new System.Drawing.Point(44, 303);
             this.btnxoa.Margin = new System.Windows.Forms.Padding(2);
@@ -388,7 +388,7 @@ namespace QuanLyCongViec
             // btnthem
             // 
             this.btnthem.BackColor = System.Drawing.Color.Transparent;
-            this.btnthem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnthem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnthem.ForeColor = System.Drawing.Color.Firebrick;
             this.btnthem.Location = new System.Drawing.Point(44, 360);
             this.btnthem.Margin = new System.Windows.Forms.Padding(2);
