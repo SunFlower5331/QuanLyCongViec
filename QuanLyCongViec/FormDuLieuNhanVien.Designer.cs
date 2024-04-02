@@ -126,8 +126,8 @@ namespace QuanLyCongViec
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dslshd.DefaultCellStyle = dataGridViewCellStyle2;
@@ -177,7 +177,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dstk.DefaultCellStyle = dataGridViewCellStyle4;
@@ -220,7 +220,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dsnv.DefaultCellStyle = dataGridViewCellStyle6;
@@ -275,7 +275,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dspb.DefaultCellStyle = dataGridViewCellStyle8;
@@ -329,9 +329,8 @@ namespace QuanLyCongViec
             // 
             // btnCapNhat
             // 
-            this.btnCapNhat.BackColor = System.Drawing.Color.White;
+            this.btnCapNhat.BackColor = System.Drawing.Color.Transparent;
             this.btnCapNhat.Enabled = false;
-            this.btnCapNhat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapNhat.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnCapNhat.ForeColor = System.Drawing.Color.Firebrick;
             this.btnCapNhat.Location = new System.Drawing.Point(44, 191);
@@ -345,9 +344,8 @@ namespace QuanLyCongViec
             // 
             // btnluu
             // 
-            this.btnluu.BackColor = System.Drawing.Color.White;
+            this.btnluu.BackColor = System.Drawing.Color.Transparent;
             this.btnluu.Enabled = false;
-            this.btnluu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnluu.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnluu.ForeColor = System.Drawing.Color.Firebrick;
             this.btnluu.Location = new System.Drawing.Point(44, 415);
@@ -361,8 +359,7 @@ namespace QuanLyCongViec
             // 
             // btnsua
             // 
-            this.btnsua.BackColor = System.Drawing.Color.White;
-            this.btnsua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsua.BackColor = System.Drawing.Color.Transparent;
             this.btnsua.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnsua.ForeColor = System.Drawing.Color.Firebrick;
             this.btnsua.Location = new System.Drawing.Point(44, 246);
@@ -376,8 +373,7 @@ namespace QuanLyCongViec
             // 
             // btnxoa
             // 
-            this.btnxoa.BackColor = System.Drawing.Color.White;
-            this.btnxoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnxoa.BackColor = System.Drawing.Color.Transparent;
             this.btnxoa.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnxoa.ForeColor = System.Drawing.Color.Firebrick;
             this.btnxoa.Location = new System.Drawing.Point(44, 303);
@@ -391,8 +387,7 @@ namespace QuanLyCongViec
             // 
             // btnthem
             // 
-            this.btnthem.BackColor = System.Drawing.Color.White;
-            this.btnthem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnthem.BackColor = System.Drawing.Color.Transparent;
             this.btnthem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnthem.ForeColor = System.Drawing.Color.Firebrick;
             this.btnthem.Location = new System.Drawing.Point(44, 360);
@@ -426,7 +421,7 @@ namespace QuanLyCongViec
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(20)))));
-//            this.pictureBox2.Image = global::QuanLyCongViec.Properties.Resources.LoGoPhanMemTachNen;
+            this.pictureBox2.Image = global::QuanLyCongViec.Properties.Resources.LoGoPhanMemTachNen;
             this.pictureBox2.Location = new System.Drawing.Point(6, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(73, 65);
@@ -436,7 +431,7 @@ namespace QuanLyCongViec
             // 
             // pictureBox1
             // 
-//            this.pictureBox1.Image = global::QuanLyCongViec.Properties.Resources.placeholder1;
+            this.pictureBox1.Image = global::QuanLyCongViec.Properties.Resources.placeholder1;
             this.pictureBox1.Location = new System.Drawing.Point(-73, -20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(290, 586);

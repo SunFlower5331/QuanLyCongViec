@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThongKeKetQuaCongViec));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelThongKeTheo = new System.Windows.Forms.Label();
-            this.labelMaNV = new System.Windows.Forms.Label();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenCongViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BanGiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.labelThongKeTheo = new System.Windows.Forms.Label();
+            this.labelMaNV = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -80,10 +81,43 @@
             this.TenCongViec,
             this.TongTG,
             this.BanGiao});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(28, 95);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(543, 119);
             this.dataGridView1.TabIndex = 31;
+            // 
+            // MaNV
+            // 
+            this.MaNV.HeaderText = "Mã nhân viên";
+            this.MaNV.Name = "MaNV";
+            // 
+            // TenNV
+            // 
+            this.TenNV.HeaderText = "Tên nhân viên";
+            this.TenNV.Name = "TenNV";
+            // 
+            // TenCongViec
+            // 
+            this.TenCongViec.HeaderText = "Tên công việc";
+            this.TenCongViec.Name = "TenCongViec";
+            // 
+            // TongTG
+            // 
+            this.TongTG.HeaderText = "Tổng thời gian làm";
+            this.TongTG.Name = "TongTG";
+            // 
+            // BanGiao
+            // 
+            this.BanGiao.HeaderText = "Bàn giao";
+            this.BanGiao.Name = "BanGiao";
             // 
             // button1
             // 
@@ -137,31 +171,6 @@
             this.labelMaNV.Size = new System.Drawing.Size(78, 13);
             this.labelMaNV.TabIndex = 26;
             this.labelMaNV.Text = "Mã nhân viên: ";
-            // 
-            // MaNV
-            // 
-            this.MaNV.HeaderText = "Mã nhân viên";
-            this.MaNV.Name = "MaNV";
-            // 
-            // TenNV
-            // 
-            this.TenNV.HeaderText = "Tên nhân viên";
-            this.TenNV.Name = "TenNV";
-            // 
-            // TenCongViec
-            // 
-            this.TenCongViec.HeaderText = "Tên công việc";
-            this.TenCongViec.Name = "TenCongViec";
-            // 
-            // TongTG
-            // 
-            this.TongTG.HeaderText = "Tổng thời gian làm";
-            this.TongTG.Name = "TongTG";
-            // 
-            // BanGiao
-            // 
-            this.BanGiao.HeaderText = "Bàn giao";
-            this.BanGiao.Name = "BanGiao";
             // 
             // FormThongKeKetQuaCongViec
             // 

@@ -71,10 +71,9 @@ namespace QuanLyCongViec
         private void sua(object sender, EventArgs e)
         {
             button1.Enabled = true;
-            groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = true;
-            txbtentk.Enabled = false;
-            cboquyenhan.Enabled = true;
-
+            txtHoTen.Enabled = dtpNgaySinh.Enabled = txtDiaChi.Enabled = cboGioiTinh.Enabled = txtDienThoai.Enabled = txtEmail.Enabled = true;
+            txbmnv.Enabled = txtChucVu.Enabled = txtLuong.Enabled = txtLoaiHinh.Enabled = txtPhongBan.Enabled = txtTrangThai.Enabled = txtTrinhDoHocVan.Enabled = cboquyenhan.Enabled = true;
+            mk.Enabled = true;      
         }
         private bool KiemTraDuLieuNhap()
         {
@@ -135,6 +134,10 @@ namespace QuanLyCongViec
             if (result && result2)
             {
                 MessageBox.Show("Cập nhật thông tin thành công!");
+                button1.Enabled = false;
+                txtHoTen.Enabled = dtpNgaySinh.Enabled = txtDiaChi.Enabled = cboGioiTinh.Enabled = txtDienThoai.Enabled = txtEmail.Enabled = false;
+                txbmnv.Enabled = txtChucVu.Enabled = txtLuong.Enabled = txtLoaiHinh.Enabled = txtPhongBan.Enabled = txtTrangThai.Enabled = txtTrinhDoHocVan.Enabled = cboquyenhan.Enabled = false;
+                mk.Enabled = false;
             }
             else
             {

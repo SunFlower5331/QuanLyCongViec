@@ -91,7 +91,6 @@
             this.groupBox1.Controls.Add(this.txtHoTen);
             this.groupBox1.Controls.Add(this.maphanquyen);
             this.groupBox1.Controls.Add(this.manhanvien);
-            this.groupBox1.Enabled = false;
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox1.Location = new System.Drawing.Point(9, 25);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -104,19 +103,21 @@
             // 
             // dtpNgaySinh
             // 
-            this.dtpNgaySinh.Location = new System.Drawing.Point(87, 66);
+            this.dtpNgaySinh.Enabled = false;
+            this.dtpNgaySinh.Location = new System.Drawing.Point(91, 66);
             this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(151, 20);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(155, 20);
             this.dtpNgaySinh.TabIndex = 18;
             // 
             // cboGioiTinh
             // 
+            this.cboGioiTinh.Enabled = false;
             this.cboGioiTinh.FormattingEnabled = true;
             this.cboGioiTinh.Items.AddRange(new object[] {
             "Nữ ",
             "Nam"});
-            this.cboGioiTinh.Location = new System.Drawing.Point(354, 30);
+            this.cboGioiTinh.Location = new System.Drawing.Point(368, 31);
             this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(2);
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(155, 21);
@@ -135,7 +136,8 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(83, 96);
+            this.txtDiaChi.Enabled = false;
+            this.txtDiaChi.Location = new System.Drawing.Point(91, 96);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(155, 20);
@@ -143,7 +145,8 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(354, 98);
+            this.txtEmail.Enabled = false;
+            this.txtEmail.Location = new System.Drawing.Point(368, 99);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(155, 20);
@@ -173,7 +176,8 @@
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Location = new System.Drawing.Point(354, 63);
+            this.txtDienThoai.Enabled = false;
+            this.txtDienThoai.Location = new System.Drawing.Point(368, 64);
             this.txtDienThoai.Margin = new System.Windows.Forms.Padding(2);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(155, 20);
@@ -192,7 +196,8 @@
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(83, 32);
+            this.txtHoTen.Enabled = false;
+            this.txtHoTen.Location = new System.Drawing.Point(91, 32);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(155, 20);
@@ -222,7 +227,8 @@
             // 
             // txtTrinhDoHocVan
             // 
-            this.txtTrinhDoHocVan.Location = new System.Drawing.Point(354, 98);
+            this.txtTrinhDoHocVan.Enabled = false;
+            this.txtTrinhDoHocVan.Location = new System.Drawing.Point(368, 97);
             this.txtTrinhDoHocVan.Margin = new System.Windows.Forms.Padding(2);
             this.txtTrinhDoHocVan.Name = "txtTrinhDoHocVan";
             this.txtTrinhDoHocVan.Size = new System.Drawing.Size(155, 20);
@@ -258,7 +264,6 @@
             this.groupBox2.Controls.Add(this.txbmnv);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Enabled = false;
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox2.Location = new System.Drawing.Point(9, 180);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
@@ -272,7 +277,8 @@
             // 
             // cboquyenhan
             // 
-            this.cboquyenhan.Location = new System.Drawing.Point(354, 129);
+            this.cboquyenhan.Enabled = false;
+            this.cboquyenhan.Location = new System.Drawing.Point(368, 128);
             this.cboquyenhan.Margin = new System.Windows.Forms.Padding(2);
             this.cboquyenhan.Name = "cboquyenhan";
             this.cboquyenhan.ReadOnly = true;
@@ -285,12 +291,13 @@
             "Intern/Trainee",
             "Part-time Employee",
             "Full-time Employee"});
+            this.txtLoaiHinh.Enabled = false;
             this.txtLoaiHinh.FormattingEnabled = true;
             this.txtLoaiHinh.Items.AddRange(new object[] {
             "Intern",
             "Parttime",
             "FullTime"});
-            this.txtLoaiHinh.Location = new System.Drawing.Point(83, 130);
+            this.txtLoaiHinh.Location = new System.Drawing.Point(94, 128);
             this.txtLoaiHinh.Margin = new System.Windows.Forms.Padding(2);
             this.txtLoaiHinh.Name = "txtLoaiHinh";
             this.txtLoaiHinh.Size = new System.Drawing.Size(155, 21);
@@ -309,11 +316,12 @@
             // 
             // txtTrangThai
             // 
+            this.txtTrangThai.Enabled = false;
             this.txtTrangThai.FormattingEnabled = true;
             this.txtTrangThai.Items.AddRange(new object[] {
             "Còn làm việc",
             "Đã nghĩ việc"});
-            this.txtTrangThai.Location = new System.Drawing.Point(354, 63);
+            this.txtTrangThai.Location = new System.Drawing.Point(368, 62);
             this.txtTrangThai.Margin = new System.Windows.Forms.Padding(2);
             this.txtTrangThai.Name = "txtTrangThai";
             this.txtTrangThai.Size = new System.Drawing.Size(155, 21);
@@ -321,11 +329,12 @@
             // 
             // txtPhongBan
             // 
+            this.txtPhongBan.Enabled = false;
             this.txtPhongBan.FormattingEnabled = true;
             this.txtPhongBan.Items.AddRange(new object[] {
             "Nữ ",
             "Nam"});
-            this.txtPhongBan.Location = new System.Drawing.Point(354, 30);
+            this.txtPhongBan.Location = new System.Drawing.Point(368, 29);
             this.txtPhongBan.Margin = new System.Windows.Forms.Padding(2);
             this.txtPhongBan.Name = "txtPhongBan";
             this.txtPhongBan.Size = new System.Drawing.Size(155, 21);
@@ -356,7 +365,8 @@
             // 
             // txtLuong
             // 
-            this.txtLuong.Location = new System.Drawing.Point(83, 96);
+            this.txtLuong.Enabled = false;
+            this.txtLuong.Location = new System.Drawing.Point(94, 94);
             this.txtLuong.Margin = new System.Windows.Forms.Padding(2);
             this.txtLuong.Name = "txtLuong";
             this.txtLuong.Size = new System.Drawing.Size(155, 20);
@@ -386,7 +396,8 @@
             // 
             // txtChucVu
             // 
-            this.txtChucVu.Location = new System.Drawing.Point(83, 66);
+            this.txtChucVu.Enabled = false;
+            this.txtChucVu.Location = new System.Drawing.Point(94, 64);
             this.txtChucVu.Margin = new System.Windows.Forms.Padding(2);
             this.txtChucVu.Name = "txtChucVu";
             this.txtChucVu.Size = new System.Drawing.Size(155, 20);
@@ -394,7 +405,8 @@
             // 
             // txbmnv
             // 
-            this.txbmnv.Location = new System.Drawing.Point(83, 32);
+            this.txbmnv.Enabled = false;
+            this.txbmnv.Location = new System.Drawing.Point(94, 30);
             this.txbmnv.Margin = new System.Windows.Forms.Padding(2);
             this.txbmnv.Name = "txbmnv";
             this.txbmnv.Size = new System.Drawing.Size(155, 20);
@@ -445,7 +457,6 @@
             this.groupBox3.Controls.Add(this.txbtentk);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Enabled = false;
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox3.Location = new System.Drawing.Point(9, 351);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
@@ -460,7 +471,7 @@
             // 
             this.hienmk.AutoSize = true;
             this.hienmk.ForeColor = System.Drawing.Color.White;
-            this.hienmk.Location = new System.Drawing.Point(272, 78);
+            this.hienmk.Location = new System.Drawing.Point(273, 78);
             this.hienmk.Margin = new System.Windows.Forms.Padding(2);
             this.hienmk.Name = "hienmk";
             this.hienmk.Size = new System.Drawing.Size(95, 17);
@@ -471,7 +482,8 @@
             // 
             // mk
             // 
-            this.mk.Location = new System.Drawing.Point(83, 74);
+            this.mk.Enabled = false;
+            this.mk.Location = new System.Drawing.Point(94, 75);
             this.mk.Margin = new System.Windows.Forms.Padding(2);
             this.mk.Name = "mk";
             this.mk.Size = new System.Drawing.Size(156, 20);
@@ -480,7 +492,8 @@
             // 
             // txbtentk
             // 
-            this.txbtentk.Location = new System.Drawing.Point(86, 32);
+            this.txbtentk.Enabled = false;
+            this.txbtentk.Location = new System.Drawing.Point(94, 32);
             this.txbtentk.Margin = new System.Windows.Forms.Padding(2);
             this.txbtentk.Name = "txbtentk";
             this.txbtentk.Size = new System.Drawing.Size(153, 20);

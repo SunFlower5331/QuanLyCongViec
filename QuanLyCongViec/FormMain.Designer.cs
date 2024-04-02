@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,7 +37,6 @@
             this.tácVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chưaHoànThànhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.quanly = new System.Windows.Forms.ToolStripMenuItem();
             this.dulieunhanvien = new System.Windows.Forms.ToolStripMenuItem();
             this.congviec = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +48,6 @@
             this.trợGiúpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vietnamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.timkiem = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,12 +58,14 @@
             this.tabphongban = new System.Windows.Forms.TabPage();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuStrip2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabcongty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -80,7 +81,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(922, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(924, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip2_MouseDown);
@@ -100,7 +101,7 @@
             this.thêmToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.thêmToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
-            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thêmToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thêmToolStripMenuItem.Click += new System.EventHandler(this.thêmToolStripMenuItem_Click);
             // 
@@ -109,7 +110,7 @@
             this.đăngXuấtToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.đăngXuấtToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -117,8 +118,7 @@
             // 
             this.tácVụToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chưaHoànThànhToolStripMenuItem,
-            this.nhậpXuấtToolStripMenuItem,
-            this.toolStripMenuItem3});
+            this.nhậpXuấtToolStripMenuItem});
             this.tácVụToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tácVụToolStripMenuItem.Name = "tácVụToolStripMenuItem";
             this.tácVụToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
@@ -142,14 +142,6 @@
             this.nhậpXuấtToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.nhậpXuấtToolStripMenuItem.Text = "Upload/ Download tài liệu";
             this.nhậpXuấtToolStripMenuItem.Click += new System.EventHandler(this.nhậpXuấtToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripMenuItem3.ForeColor = System.Drawing.Color.Silver;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(212, 22);
-            this.toolStripMenuItem3.Text = ".....";
             // 
             // quanly
             // 
@@ -216,7 +208,7 @@
             this.côngViệcToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.côngViệcToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.côngViệcToolStripMenuItem1.Name = "côngViệcToolStripMenuItem1";
-            this.côngViệcToolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
+            this.côngViệcToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.côngViệcToolStripMenuItem1.Text = "Kết quả công việc";
             this.côngViệcToolStripMenuItem1.Click += new System.EventHandler(this.côngViệcToolStripMenuItem1_Click);
             // 
@@ -225,7 +217,7 @@
             this.hiệuQuảCôngViệcToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.hiệuQuảCôngViệcToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.hiệuQuảCôngViệcToolStripMenuItem.Name = "hiệuQuảCôngViệcToolStripMenuItem";
-            this.hiệuQuảCôngViệcToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.hiệuQuảCôngViệcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hiệuQuảCôngViệcToolStripMenuItem.Text = "Hiệu quả công việc";
             this.hiệuQuảCôngViệcToolStripMenuItem.Click += new System.EventHandler(this.hiệuQuảCôngViệcToolStripMenuItem_Click);
             // 
@@ -245,7 +237,7 @@
             this.englishToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.englishToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.englishToolStripMenuItem.Text = "English";
             // 
             // vietnamToolStripMenuItem
@@ -253,25 +245,8 @@
             this.vietnamToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.vietnamToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.vietnamToolStripMenuItem.Name = "vietnamToolStripMenuItem";
-            this.vietnamToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.vietnamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vietnamToolStripMenuItem.Text = "Vietnam";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.groupBox1.Controls.Add(this.timkiem);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
-            this.groupBox1.Location = new System.Drawing.Point(11, 26);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(326, 67);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tìm kiếm";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // timkiem
             // 
@@ -311,19 +286,26 @@
             // 
             // dscv
             // 
-            this.dscv.AllowUserToOrderColumns = true;
             this.dscv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dscv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dscv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.dscv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscv.DataMember = "       ";
-            this.dscv.Location = new System.Drawing.Point(3, 147);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscv.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dscv.Location = new System.Drawing.Point(0, 0);
             this.dscv.Margin = new System.Windows.Forms.Padding(2);
             this.dscv.Name = "dscv";
             this.dscv.ReadOnly = true;
             this.dscv.RowHeadersWidth = 51;
             this.dscv.RowTemplate.Height = 24;
-            this.dscv.Size = new System.Drawing.Size(916, 373);
+            this.dscv.Size = new System.Drawing.Size(910, 375);
             this.dscv.TabIndex = 4;
             // 
             // tabControl1
@@ -334,19 +316,20 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(922, 401);
+            this.tabControl1.Size = new System.Drawing.Size(918, 401);
             this.tabControl1.TabIndex = 8;
             // 
             // tabcongty
             // 
+            this.tabcongty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.tabcongty.Controls.Add(this.dscv);
             this.tabcongty.Location = new System.Drawing.Point(4, 22);
             this.tabcongty.Margin = new System.Windows.Forms.Padding(2);
             this.tabcongty.Name = "tabcongty";
             this.tabcongty.Padding = new System.Windows.Forms.Padding(2);
-            this.tabcongty.Size = new System.Drawing.Size(914, 375);
+            this.tabcongty.Size = new System.Drawing.Size(910, 375);
             this.tabcongty.TabIndex = 0;
             this.tabcongty.Text = "Công ty";
-            this.tabcongty.UseVisualStyleBackColor = true;
             // 
             // tabphongban
             // 
@@ -383,15 +366,30 @@
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.groupBox1.Controls.Add(this.timkiem);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
+            this.groupBox1.Location = new System.Drawing.Point(11, 38);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(326, 67);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tìm kiếm";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(922, 528);
+            this.ClientSize = new System.Drawing.Size(924, 528);
             this.Controls.Add(this.minimize);
             this.Controls.Add(this.logout);
-            this.Controls.Add(this.dscv);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -406,12 +404,13 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabcongty.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,7 +424,6 @@
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dulieunhanvien;
         private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button timkiem;
         private System.Windows.Forms.Label label1;
@@ -444,9 +442,9 @@
         public System.Windows.Forms.MenuStrip menuStrip2;
         public System.Windows.Forms.ToolStripMenuItem congviec;
         private System.Windows.Forms.ToolStripMenuItem nhậpXuấtToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem hiệuQuảCôngViệcToolStripMenuItem;
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.PictureBox logout;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
