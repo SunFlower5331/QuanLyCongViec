@@ -426,7 +426,7 @@ namespace QuanLyCongViec
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(20)))));
-            this.pictureBox2.Image = global::QuanLyCongViec.Properties.Resources.LoGoPhanMemTachNen;
+//            this.pictureBox2.Image = global::QuanLyCongViec.Properties.Resources.LoGoPhanMemTachNen;
             this.pictureBox2.Location = new System.Drawing.Point(6, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(73, 65);
@@ -436,7 +436,7 @@ namespace QuanLyCongViec
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::QuanLyCongViec.Properties.Resources.placeholder1;
+//            this.pictureBox1.Image = global::QuanLyCongViec.Properties.Resources.placeholder1;
             this.pictureBox1.Location = new System.Drawing.Point(-73, -20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(290, 586);
