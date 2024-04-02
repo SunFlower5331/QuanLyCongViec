@@ -16,6 +16,23 @@ namespace QuanLyCongViec
         public FormUpload_Download()
         {
             InitializeComponent();
+            dsTaiLieu.CellFormatting += dsTaiLieu_CellFormatting;
+        }
+        private void dsTaiLieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsTaiLieu.EnableHeadersVisualStyles = false;
+            dsTaiLieu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsTaiLieu.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsTaiLieu.Columns[i].HeaderCell.Style.SelectionBackColor = dsTaiLieu.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
         }
 
         // Dùng để kéo thả cửa sổ

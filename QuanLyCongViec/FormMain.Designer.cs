@@ -57,10 +57,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabcongty = new System.Windows.Forms.TabPage();
             this.tabphongban = new System.Windows.Forms.TabPage();
+            this.minimize = new System.Windows.Forms.PictureBox();
+            this.logout = new System.Windows.Forms.PictureBox();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).BeginInit();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -79,6 +83,7 @@
             this.menuStrip2.Size = new System.Drawing.Size(922, 24);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip2_MouseDown);
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -257,12 +262,12 @@
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.groupBox1.Controls.Add(this.timkiem);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.ForeColor = System.Drawing.Color.Snow;
-            this.groupBox1.Location = new System.Drawing.Point(9, 33);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
+            this.groupBox1.Location = new System.Drawing.Point(11, 26);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(291, 65);
+            this.groupBox1.Size = new System.Drawing.Size(326, 67);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
@@ -270,33 +275,32 @@
             // 
             // timkiem
             // 
-            this.timkiem.ForeColor = System.Drawing.Color.Black;
+            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
-            this.timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.timkiem.Location = new System.Drawing.Point(186, 20);
+            this.timkiem.Location = new System.Drawing.Point(270, 17);
             this.timkiem.Margin = new System.Windows.Forms.Padding(2);
             this.timkiem.Name = "timkiem";
-            this.timkiem.Size = new System.Drawing.Size(76, 28);
+            this.timkiem.Size = new System.Drawing.Size(31, 33);
             this.timkiem.TabIndex = 6;
-            this.timkiem.Text = "Tìm kiếm";
             this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.timkiem.UseVisualStyleBackColor = true;
             this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 24);
+            this.textBox1.Location = new System.Drawing.Point(19, 24);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
+            this.textBox1.Size = new System.Drawing.Size(238, 20);
             this.textBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(388, 102);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
+            this.label1.Location = new System.Drawing.Point(380, 102);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 20);
@@ -355,29 +359,59 @@
             this.tabphongban.Text = "Phòng ban";
             this.tabphongban.UseVisualStyleBackColor = true;
             // 
+            // minimize
+            // 
+            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
+            this.minimize.Location = new System.Drawing.Point(859, 0);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(29, 24);
+            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimize.TabIndex = 20;
+            this.minimize.TabStop = false;
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
+            this.logout.Location = new System.Drawing.Point(894, 0);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(24, 24);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logout.TabIndex = 19;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(922, 528);
+            this.Controls.Add(this.minimize);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.dscv);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscv)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,5 +446,7 @@
         private System.Windows.Forms.ToolStripMenuItem nhậpXuấtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem hiệuQuảCôngViệcToolStripMenuItem;
+        private System.Windows.Forms.PictureBox minimize;
+        private System.Windows.Forms.PictureBox logout;
     }
 }

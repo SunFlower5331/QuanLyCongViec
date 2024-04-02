@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,26 @@ namespace QuanLyCongViec
             InitializeComponent();
             this.Resize += new EventHandler(FormMain_Resize);
             menuStrip2.Renderer = new MyRenderer();
+            dscv.CellFormatting += dscv_CellFormatting;
         }
+
+        private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscv.EnableHeadersVisualStyles = false;
+            dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dscv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
+        }
+
         // Chỉnh sửa màu menustrip
         private class MyRenderer : ToolStripProfessionalRenderer
         {
@@ -188,5 +208,32 @@ namespace QuanLyCongViec
             form.Show();
             this.Hide();
         }
+
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        // Dùng để kéo thả cửa sổ
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private void FormMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void menuStrip2_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        //
     }
 }

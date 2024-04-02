@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,10 @@ namespace QuanLyCongViec
         public FormDuLieuNhanVien()
         {
             InitializeComponent();
+            dslshd.CellFormatting += dslshd_CellFormatting;
+            dsnv.CellFormatting += dsnv_CellFormatting;
+            dstk.CellFormatting += dstk_CellFormatting;
+            dspb.CellFormatting += dspb_CellFormatting;
         }
 
         private void FormDuLieu_Load(object sender, EventArgs e)
@@ -34,8 +39,72 @@ namespace QuanLyCongViec
             loadDsQuyen();
         }
 
+        private void dslshd_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dslshd.EnableHeadersVisualStyles = false;
+            dslshd.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dslshd.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dslshd.Columns[i].HeaderCell.Style.SelectionBackColor = dslshd.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
 
-            private void loadDsNv()
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
+        }
+        private void dstk_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dstk.EnableHeadersVisualStyles = false;
+            dstk.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dstk.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dstk.Columns[i].HeaderCell.Style.SelectionBackColor = dstk.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
+        }
+        private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsnv.EnableHeadersVisualStyles = false;
+            dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsnv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
+        }
+        private void dspb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dspb.EnableHeadersVisualStyles = false;
+            dspb.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dspb.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dspb.Columns[i].HeaderCell.Style.SelectionBackColor = dspb.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
+        }
+
+        private void loadDsNv()
         {
             
             dsnv.DataSource = DatabaseAccess.GetAllNhanVien().Tables[0];
@@ -461,14 +530,6 @@ namespace QuanLyCongViec
 
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Hide();
-        }
-
         private void FormDuLieu_FormClosing(object sender, FormClosingEventArgs e)
         {
  
@@ -564,6 +625,29 @@ namespace QuanLyCongViec
         {
 
         }
+
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
+        }
+        // Dùng để kéo thả cửa sổ
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private void FormDuLieuNhanVien_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        //
     }
 }
 

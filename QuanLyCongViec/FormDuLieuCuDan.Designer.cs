@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDuLieuCuDan));
             this.tabDulieu = new System.Windows.Forms.TabControl();
             this.CuDan = new System.Windows.Forms.TabPage();
             this.dscudan = new System.Windows.Forms.DataGridView();
@@ -45,11 +46,12 @@
             this.btnxoa = new System.Windows.Forms.Button();
             this.btnsua = new System.Windows.Forms.Button();
             this.btnluu = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.timkiem = new System.Windows.Forms.Button();
             this.txbtimkiem = new System.Windows.Forms.TextBox();
+            this.minimize = new System.Windows.Forms.PictureBox();
+            this.logout = new System.Windows.Forms.PictureBox();
             this.tabDulieu.SuspendLayout();
             this.CuDan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscudan)).BeginInit();
@@ -64,11 +66,12 @@
             this.Chiphicanho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.SuspendLayout();
             // 
             // tabDulieu
             // 
-            this.tabDulieu.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabDulieu.Controls.Add(this.CuDan);
             this.tabDulieu.Controls.Add(this.CanHo);
             this.tabDulieu.Controls.Add(this.DVCanHo);
@@ -76,21 +79,22 @@
             this.tabDulieu.Controls.Add(this.DangKyDoXe);
             this.tabDulieu.Controls.Add(this.Chiphicanho);
             this.tabDulieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabDulieu.Location = new System.Drawing.Point(0, -1);
+            this.tabDulieu.ItemSize = new System.Drawing.Size(100, 30);
+            this.tabDulieu.Location = new System.Drawing.Point(3, 2);
             this.tabDulieu.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabDulieu.Name = "tabDulieu";
             this.tabDulieu.SelectedIndex = 0;
-            this.tabDulieu.Size = new System.Drawing.Size(879, 437);
+            this.tabDulieu.Size = new System.Drawing.Size(879, 426);
             this.tabDulieu.TabIndex = 0;
             // 
             // CuDan
             // 
             this.CuDan.Controls.Add(this.dscudan);
-            this.CuDan.Location = new System.Drawing.Point(4, 29);
+            this.CuDan.Location = new System.Drawing.Point(4, 34);
             this.CuDan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CuDan.Name = "CuDan";
             this.CuDan.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CuDan.Size = new System.Drawing.Size(871, 404);
+            this.CuDan.Size = new System.Drawing.Size(871, 388);
             this.CuDan.TabIndex = 1;
             this.CuDan.Text = "Cư dân";
             this.CuDan.UseVisualStyleBackColor = true;
@@ -113,10 +117,10 @@
             // CanHo
             // 
             this.CanHo.Controls.Add(this.dsch);
-            this.CanHo.Location = new System.Drawing.Point(4, 29);
+            this.CanHo.Location = new System.Drawing.Point(4, 34);
             this.CanHo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CanHo.Name = "CanHo";
-            this.CanHo.Size = new System.Drawing.Size(863, 404);
+            this.CanHo.Size = new System.Drawing.Size(871, 388);
             this.CanHo.TabIndex = 4;
             this.CanHo.Text = "Căn hộ";
             this.CanHo.UseVisualStyleBackColor = true;
@@ -139,10 +143,10 @@
             // DVCanHo
             // 
             this.DVCanHo.Controls.Add(this.dsqh);
-            this.DVCanHo.Location = new System.Drawing.Point(4, 29);
+            this.DVCanHo.Location = new System.Drawing.Point(4, 34);
             this.DVCanHo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DVCanHo.Name = "DVCanHo";
-            this.DVCanHo.Size = new System.Drawing.Size(863, 404);
+            this.DVCanHo.Size = new System.Drawing.Size(871, 388);
             this.DVCanHo.TabIndex = 5;
             this.DVCanHo.Text = "Dịch vụ căn hộ";
             this.DVCanHo.UseVisualStyleBackColor = true;
@@ -165,10 +169,10 @@
             // ThanhVienCanHo
             // 
             this.ThanhVienCanHo.Controls.Add(this.dstk);
-            this.ThanhVienCanHo.Location = new System.Drawing.Point(4, 29);
+            this.ThanhVienCanHo.Location = new System.Drawing.Point(4, 34);
             this.ThanhVienCanHo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ThanhVienCanHo.Name = "ThanhVienCanHo";
-            this.ThanhVienCanHo.Size = new System.Drawing.Size(863, 404);
+            this.ThanhVienCanHo.Size = new System.Drawing.Size(871, 388);
             this.ThanhVienCanHo.TabIndex = 3;
             this.ThanhVienCanHo.Text = "Thành viên căn hộ";
             this.ThanhVienCanHo.UseVisualStyleBackColor = true;
@@ -191,11 +195,11 @@
             // DangKyDoXe
             // 
             this.DangKyDoXe.Controls.Add(this.dsnv);
-            this.DangKyDoXe.Location = new System.Drawing.Point(4, 29);
+            this.DangKyDoXe.Location = new System.Drawing.Point(4, 34);
             this.DangKyDoXe.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DangKyDoXe.Name = "DangKyDoXe";
             this.DangKyDoXe.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.DangKyDoXe.Size = new System.Drawing.Size(863, 404);
+            this.DangKyDoXe.Size = new System.Drawing.Size(871, 388);
             this.DangKyDoXe.TabIndex = 0;
             this.DangKyDoXe.Text = "Đăng ký đỗ xe";
             this.DangKyDoXe.UseVisualStyleBackColor = true;
@@ -218,10 +222,10 @@
             // Chiphicanho
             // 
             this.Chiphicanho.Controls.Add(this.dspb);
-            this.Chiphicanho.Location = new System.Drawing.Point(4, 29);
+            this.Chiphicanho.Location = new System.Drawing.Point(4, 34);
             this.Chiphicanho.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Chiphicanho.Name = "Chiphicanho";
-            this.Chiphicanho.Size = new System.Drawing.Size(863, 404);
+            this.Chiphicanho.Size = new System.Drawing.Size(871, 388);
             this.Chiphicanho.TabIndex = 2;
             this.Chiphicanho.Text = "Chi phí căn hộ";
             this.Chiphicanho.UseVisualStyleBackColor = true;
@@ -294,19 +298,6 @@
             this.btnluu.UseVisualStyleBackColor = true;
             this.btnluu.Click += new System.EventHandler(this.btnluu_Click);
             // 
-            // btnThoat
-            // 
-            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.ForeColor = System.Drawing.Color.Firebrick;
-            this.btnThoat.Location = new System.Drawing.Point(799, 473);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(66, 30);
-            this.btnThoat.TabIndex = 5;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
             // btnCapNhat
             // 
             this.btnCapNhat.Enabled = false;
@@ -326,27 +317,26 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.timkiem);
             this.groupBox1.Controls.Add(this.txbtimkiem);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox1.Location = new System.Drawing.Point(9, 451);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox1.Size = new System.Drawing.Size(388, 64);
+            this.groupBox1.Size = new System.Drawing.Size(344, 65);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
             // 
             // timkiem
             // 
-            this.timkiem.ForeColor = System.Drawing.Color.Black;
-            this.timkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.timkiem.Location = new System.Drawing.Point(298, 16);
+            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
+            this.timkiem.Location = new System.Drawing.Point(292, 17);
             this.timkiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.timkiem.Name = "timkiem";
-            this.timkiem.Size = new System.Drawing.Size(75, 29);
+            this.timkiem.Size = new System.Drawing.Size(38, 29);
             this.timkiem.TabIndex = 6;
-            this.timkiem.Text = "Tìm kiếm";
-            this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.timkiem.UseVisualStyleBackColor = true;
             this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
@@ -360,6 +350,30 @@
             this.txbtimkiem.TabIndex = 2;
             this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // minimize
+            // 
+            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
+            this.minimize.Location = new System.Drawing.Point(816, 4);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(25, 25);
+            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimize.TabIndex = 22;
+            this.minimize.TabStop = false;
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
+            this.logout.Location = new System.Drawing.Point(851, 4);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(25, 25);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logout.TabIndex = 21;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // FormDuLieuCuDan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,19 +381,22 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(880, 604);
+            this.Controls.Add(this.minimize);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCapNhat);
-            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnluu);
             this.Controls.Add(this.btnsua);
             this.Controls.Add(this.btnxoa);
             this.Controls.Add(this.btnthem);
             this.Controls.Add(this.tabDulieu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FormDuLieuCuDan";
             this.Text = "Dữ liệu cư dân";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDuLieu_FormClosing);
             this.Load += new System.EventHandler(this.FormDuLieu_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormDuLieuCuDan_MouseDown);
             this.tabDulieu.ResumeLayout(false);
             this.CuDan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dscudan)).EndInit();
@@ -395,6 +412,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dspb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,7 +434,6 @@
         private System.Windows.Forms.Button btnxoa;
         private System.Windows.Forms.Button btnsua;
         private System.Windows.Forms.Button btnluu;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.TabPage CanHo;
         private System.Windows.Forms.TabPage DVCanHo;
         private System.Windows.Forms.DataGridView dsch;
@@ -424,5 +442,7 @@
         private System.Windows.Forms.Button timkiem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txbtimkiem;
+        private System.Windows.Forms.PictureBox minimize;
+        private System.Windows.Forms.PictureBox logout;
     }
 }

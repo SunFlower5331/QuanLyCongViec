@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,24 @@ namespace QuanLyCongViec
         public FormDuLieuCuDan()
         {
             InitializeComponent();
+            dscudan.CellFormatting += dscudan_CellFormatting;
+        }
+
+        private void dscudan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscudan.EnableHeadersVisualStyles = false;
+            dscudan.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dscudan.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscudan.Columns[i].HeaderCell.Style.SelectionBackColor = dscudan.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
         }
 
         private void FormDuLieu_Load(object sender, EventArgs e)
@@ -540,13 +559,6 @@ namespace QuanLyCongViec
 
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Hide();
-        }
 
         private void FormDuLieu_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -642,9 +654,28 @@ namespace QuanLyCongViec
             }
         }
 
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
 
-
-
+        private void logout_Click(object sender, EventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
+        }
+        // Dùng để kéo thả cửa sổ
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private void FormDuLieuCuDan_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        //
     }
 }
 

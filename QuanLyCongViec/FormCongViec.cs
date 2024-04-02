@@ -8,6 +8,7 @@ using System.Drawing.Text;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -76,13 +77,6 @@ namespace QuanLyCongViec
             }
         }
         //
-        private void btnthoat_Click(object sender, EventArgs e)
-        {
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Hide();
-
-        }
         private void FormCongViec_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -487,7 +481,28 @@ namespace QuanLyCongViec
             dsdpc.CurrentCell = null;
         }
 
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
 
+        private void logout_Click(object sender, EventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
+        }
+        // Dùng để kéo thả cửa sổ
+        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.dll", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private void FormCongViec_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        //
     }
 }
 
