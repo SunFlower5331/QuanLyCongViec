@@ -52,7 +52,7 @@
             // 
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
-            this.minimize.Location = new System.Drawing.Point(737, 4);
+            this.minimize.Location = new System.Drawing.Point(501, 5);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(25, 25);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -64,7 +64,7 @@
             // 
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.Location = new System.Drawing.Point(772, 4);
+            this.logout.Location = new System.Drawing.Point(536, 5);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(25, 25);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -78,13 +78,14 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox2.Location = new System.Drawing.Point(14, 130);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(773, 284);
+            this.groupBox2.Size = new System.Drawing.Size(534, 284);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Download tài liệu";
             // 
             // dsTaiLieu
             // 
+            this.dsTaiLieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsTaiLieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsTaiLieu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
@@ -100,7 +101,7 @@
             this.dsTaiLieu.DefaultCellStyle = dataGridViewCellStyle1;
             this.dsTaiLieu.Location = new System.Drawing.Point(12, 23);
             this.dsTaiLieu.Name = "dsTaiLieu";
-            this.dsTaiLieu.Size = new System.Drawing.Size(344, 245);
+            this.dsTaiLieu.Size = new System.Drawing.Size(504, 245);
             this.dsTaiLieu.TabIndex = 0;
             // 
             // FileName
@@ -126,7 +127,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox1.Location = new System.Drawing.Point(14, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(773, 78);
+            this.groupBox1.Size = new System.Drawing.Size(534, 78);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Upload tài liệu";
@@ -166,7 +167,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(565, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.minimize);

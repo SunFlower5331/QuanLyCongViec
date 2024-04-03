@@ -19,7 +19,9 @@ namespace QuanLyCongViec
         {
             InitializeComponent();
             labelDeMucBieuDo.Hide();
+            labelDeMucBieuDo2.Hide();
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView2.CellFormatting += dataGridView2_CellFormatting;
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -31,6 +33,22 @@ namespace QuanLyCongViec
                 for (int i = 0; i < row.Cells.Count; i++)
                 {
                     dataGridView1.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView1.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+
+                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                    row.Cells[i].Style.ForeColor = Color.White;
+
+                }
+            }
+        }
+        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dataGridView2.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView2.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
 
                     row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
                     row.Cells[i].Style.ForeColor = Color.White;
@@ -83,6 +101,7 @@ namespace QuanLyCongViec
             pieChart.BackColorTransparent = true;
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(pieChart);
+            labelDeMucBieuDo.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -105,7 +124,7 @@ namespace QuanLyCongViec
             pieChart.BackColorTransparent = true;
             this.panel2.Controls.Clear();
             this.panel2.Controls.Add(pieChart);
-            labelDeMucBieuDo.Show();
+            labelDeMucBieuDo2.Show();
         }
     }
 }

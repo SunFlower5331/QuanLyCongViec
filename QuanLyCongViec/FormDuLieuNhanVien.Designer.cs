@@ -186,7 +186,7 @@ namespace QuanLyCongViec
             this.dstk.Name = "dstk";
             this.dstk.RowHeadersWidth = 51;
             this.dstk.RowTemplate.Height = 24;
-            this.dstk.Size = new System.Drawing.Size(876, 416);
+            this.dstk.Size = new System.Drawing.Size(876, 486);
             this.dstk.TabIndex = 0;
             // 
             // NhanVien

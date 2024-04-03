@@ -28,6 +28,7 @@ namespace QuanLyCongViec
         private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dscv.EnableHeadersVisualStyles = false;
+            dscv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             foreach (DataGridViewRow row in dscv.Rows)
             {
@@ -45,6 +46,7 @@ namespace QuanLyCongViec
         private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dsnv.EnableHeadersVisualStyles = false;
+            dsnv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             foreach (DataGridViewRow row in dsnv.Rows)
             {
@@ -62,6 +64,7 @@ namespace QuanLyCongViec
         private void dsdpc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dsdpc.EnableHeadersVisualStyles = false;
+            dsdpc.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dsdpc.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             foreach (DataGridViewRow row in dsdpc.Rows)
             {

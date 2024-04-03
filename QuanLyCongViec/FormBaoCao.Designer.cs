@@ -147,7 +147,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -161,6 +161,7 @@
             // 
             this.MaCH.HeaderText = "Mã căn hộ";
             this.MaCH.Name = "MaCH";
+            this.MaCH.Width = 101;
             // 
             // TenCH
             // 
@@ -171,6 +172,7 @@
             // 
             this.TinhTrang.HeaderText = "Tình trạng";
             this.TinhTrang.Name = "TinhTrang";
+            this.TinhTrang.Width = 101;
             // 
             // CongNo
             // 
@@ -181,6 +183,7 @@
             // 
             this.CPDienNuoc.HeaderText = "Chi phí điện nước";
             this.CPDienNuoc.Name = "CPDienNuoc";
+            this.CPDienNuoc.Width = 101;
             // 
             // CPQuanLy
             // 
@@ -191,6 +194,7 @@
             // 
             this.CPKhac.HeaderText = "Chi phí khác";
             this.CPKhac.Name = "CPKhac";
+            this.CPKhac.Width = 101;
             // 
             // XemThongTin
             // 
