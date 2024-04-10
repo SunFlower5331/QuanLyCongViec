@@ -539,6 +539,25 @@ namespace DAL
             }
         }
 
+        public static DataSet GetDuLieuThongKeHieuQuaCV(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
+        {
+            DataSet data = new DataSet();
+            string query = "SELECT  CTCV.maNV, hoten,  luong , SUM(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 ELSE 0 END) AS solantrehan,   SUM(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 ELSE 0 END) AS solankhonghoanthanh,  SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 ELSE 0 END) AS solanhoanthanhdunghan,    SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 ELSE 0 END) AS solanhoanthanhsom " +
+                "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND CTCV.maNV = @maNV AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
+                "GROUP BY  CTCV.maNV,  hoten, luong;";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
+                command.Parameters.AddWithValue("@NgayKetThuc", NgayKetThuc);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
+
+            return data;
+        }
 
 
     }

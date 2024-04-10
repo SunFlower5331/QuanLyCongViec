@@ -18,8 +18,8 @@ namespace QuanLyCongViec
         public FormTienDoCongViec()
         {
             InitializeComponent();
-            dscv.CellFormatting += dscv_CellFormatting;
-            dsnv.CellFormatting += dsnv_CellFormatting;
+            //dscv.CellFormatting += dscv_CellFormatting;
+            //dsnv.CellFormatting += dsnv_CellFormatting;
         }
 
         private void FormTienDoCongViec_Load(object sender, EventArgs e)
@@ -28,38 +28,38 @@ namespace QuanLyCongViec
             
         }
 
-        private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            dscv.EnableHeadersVisualStyles = false;
-            dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            foreach (DataGridViewRow row in dscv.Rows)
-            {
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
+        //private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+        //    dscv.EnableHeadersVisualStyles = false;
+        //    dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        //    foreach (DataGridViewRow row in dscv.Rows)
+        //    {
+        //        for (int i = 0; i < row.Cells.Count; i++)
+        //        {
+        //            dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
 
-                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                    row.Cells[i].Style.ForeColor = Color.White;
+        //            row.Cells[i].Style.BackColor = Color.White;
+        //            row.Cells[i].Style.ForeColor = Color.Black;
 
-                }
-            }
-        }
-        private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            dsnv.EnableHeadersVisualStyles = false;
-            dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            foreach (DataGridViewRow row in dsnv.Rows)
-            {
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
+        //        }
+        //    }
+        //}
+        //private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+        //    dsnv.EnableHeadersVisualStyles = false;
+        //    dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        //    foreach (DataGridViewRow row in dsnv.Rows)
+        //    {
+        //        for (int i = 0; i < row.Cells.Count; i++)
+        //        {
+        //            dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
 
-                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                    row.Cells[i].Style.ForeColor = Color.White;
+        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+        //            row.Cells[i].Style.ForeColor = Color.White;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void tuychonhienthi()
         {

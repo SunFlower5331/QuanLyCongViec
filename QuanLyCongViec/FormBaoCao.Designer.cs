@@ -74,7 +74,7 @@
             // 
             // minimize
             // 
-            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.minimize.BackColor = System.Drawing.Color.White;
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(829, 7);
             this.minimize.Name = "minimize";
@@ -86,7 +86,7 @@
             // 
             // logout
             // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.logout.BackColor = System.Drawing.Color.White;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(864, 7);
             this.logout.Name = "logout";
@@ -98,6 +98,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.buttonTimKiem1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.dsch);
@@ -110,12 +111,13 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách căn hộ";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // buttonTimKiem1
             // 
-            this.buttonTimKiem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.buttonTimKiem1.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTimKiem1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTimKiem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.buttonTimKiem1.ForeColor = System.Drawing.Color.White;
             this.buttonTimKiem1.Image = ((System.Drawing.Image)(resources.GetObject("buttonTimKiem1.Image")));
             this.buttonTimKiem1.Location = new System.Drawing.Point(258, 23);
             this.buttonTimKiem1.Margin = new System.Windows.Forms.Padding(2);
@@ -227,6 +229,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.buttonTiemKiem2);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.dsyc);
@@ -239,12 +242,13 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách yêu cầu";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // buttonTiemKiem2
             // 
-            this.buttonTiemKiem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.buttonTiemKiem2.BackColor = System.Drawing.SystemColors.Control;
             this.buttonTiemKiem2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTiemKiem2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.buttonTiemKiem2.ForeColor = System.Drawing.Color.White;
             this.buttonTiemKiem2.Image = ((System.Drawing.Image)(resources.GetObject("buttonTiemKiem2.Image")));
             this.buttonTiemKiem2.Location = new System.Drawing.Point(259, 27);
             this.buttonTiemKiem2.Margin = new System.Windows.Forms.Padding(2);
@@ -355,7 +359,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(896, 606);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -366,6 +370,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBaoCao";
             this.Text = "FormBaoCao";
+            this.Load += new System.EventHandler(this.FormBaoCao_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormBaoCao_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();

@@ -16,7 +16,7 @@ namespace QuanLyCongViec
         public FormLogin()
         {
             InitializeComponent();
-
+            //minimize.Parent = logout.Parent = panel1;
         }
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -170,7 +170,7 @@ namespace QuanLyCongViec
             if (user.Text == "User ID")
             {
                 user.Text = "";
-                user.ForeColor = Color.LightGray;
+                user.ForeColor = Color.Black;
             }
         }
         private void pass_Enter(object sender, EventArgs e)
@@ -178,7 +178,7 @@ namespace QuanLyCongViec
             if (pass.Text == "Password")
             {
                 pass.Text = "";
-                pass.ForeColor = Color.LightGray;
+                pass.ForeColor = Color.Black;
             }
         }
 
@@ -222,6 +222,28 @@ namespace QuanLyCongViec
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void quenPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormQuenMatKhau form = new FormQuenMatKhau();
+            form.Show();
+            this.Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginForm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

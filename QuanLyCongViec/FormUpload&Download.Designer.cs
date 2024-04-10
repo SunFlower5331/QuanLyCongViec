@@ -50,7 +50,7 @@
             // 
             // minimize
             // 
-            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.minimize.BackColor = System.Drawing.Color.White;
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(501, 5);
             this.minimize.Name = "minimize";
@@ -62,7 +62,7 @@
             // 
             // logout
             // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.logout.BackColor = System.Drawing.Color.White;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(536, 5);
             this.logout.Name = "logout";
@@ -74,6 +74,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Controls.Add(this.dsTaiLieu);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
             this.groupBox2.Location = new System.Drawing.Point(14, 130);
@@ -121,6 +122,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -166,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(565, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

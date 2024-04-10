@@ -22,25 +22,25 @@ namespace QuanLyCongViec
             InitializeComponent();
             this.Resize += new EventHandler(FormMain_Resize);
             menuStrip2.Renderer = new MyRenderer();
-            dscv.CellFormatting += dscv_CellFormatting;
+            //dscv.CellFormatting += dscv_CellFormatting;
         }
 
-        private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            dscv.EnableHeadersVisualStyles = false;
-            dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            foreach (DataGridViewRow row in dscv.Rows)
-            {
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+        //private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+        //    dscv.EnableHeadersVisualStyles = false;
+        //    dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        //    foreach (DataGridViewRow row in dscv.Rows)
+        //    {
+        //        for (int i = 0; i < row.Cells.Count; i++)
+        //        {
+        //            dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
 
-                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                    row.Cells[i].Style.ForeColor = Color.White;
+        //            row.Cells[i].Style.BackColor = Color.White;
+        //            row.Cells[i].Style.ForeColor = Color.Black;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         // Chỉnh sửa màu menustrip
         private class MyRenderer : ToolStripProfessionalRenderer
@@ -51,11 +51,11 @@ namespace QuanLyCongViec
         {
             public override Color MenuItemPressedGradientBegin
             {
-                get { return Color.Black; }
+                get { return Color.FromArgb(246, 191, 2); }
             }
             public override Color MenuItemPressedGradientEnd
             {
-                get { return Color.Firebrick; }
+                get { return Color.FromArgb(175, 0, 0); }
             }        
             public override Color MenuBorder 
              {

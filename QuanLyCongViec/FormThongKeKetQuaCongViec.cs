@@ -16,25 +16,25 @@ namespace QuanLyCongViec
         public FormThongKeKetQuaCongViec()
         {
             InitializeComponent();
-            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            //dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
 
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    dataGridView1.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView1.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+        //private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+        //    dataGridView1.EnableHeadersVisualStyles = false;
+        //    dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        //    foreach (DataGridViewRow row in dataGridView1.Rows)
+        //    {
+        //        for (int i = 0; i < row.Cells.Count; i++)
+        //        {
+        //            dataGridView1.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView1.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
 
-                    row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                    row.Cells[i].Style.ForeColor = Color.White;
+        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+        //            row.Cells[i].Style.ForeColor = Color.White;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]

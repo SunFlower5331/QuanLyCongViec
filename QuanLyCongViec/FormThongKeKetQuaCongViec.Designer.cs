@@ -50,7 +50,7 @@
             // 
             // minimize
             // 
-            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.minimize.BackColor = System.Drawing.Color.White;
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(528, 6);
             this.minimize.Name = "minimize";
@@ -62,7 +62,7 @@
             // 
             // logout
             // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.logout.BackColor = System.Drawing.Color.White;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(563, 6);
             this.logout.Name = "logout";
@@ -123,7 +123,7 @@
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Firebrick;
-            this.button1.Location = new System.Drawing.Point(489, 46);
+            this.button1.Location = new System.Drawing.Point(471, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 24);
             this.button1.TabIndex = 30;
@@ -154,7 +154,7 @@
             // 
             this.labelThongKeTheo.AutoSize = true;
             this.labelThongKeTheo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelThongKeTheo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
+            this.labelThongKeTheo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.labelThongKeTheo.Location = new System.Drawing.Point(242, 49);
             this.labelThongKeTheo.Name = "labelThongKeTheo";
             this.labelThongKeTheo.Size = new System.Drawing.Size(50, 13);
@@ -165,7 +165,7 @@
             // 
             this.labelMaNV.AutoSize = true;
             this.labelMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
+            this.labelMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.labelMaNV.Location = new System.Drawing.Point(25, 48);
             this.labelMaNV.Name = "labelMaNV";
             this.labelMaNV.Size = new System.Drawing.Size(78, 13);
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 246);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
