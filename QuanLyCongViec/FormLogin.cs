@@ -245,5 +245,10 @@ namespace QuanLyCongViec
         {
 
         }
+
+        private void user_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

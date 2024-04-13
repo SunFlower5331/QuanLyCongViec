@@ -586,8 +586,24 @@ namespace DAL
             }
             return mk;
         }
+        public static DataSet getThongtinkh(string macv)
+        {
 
-        
+            DataSet data = new DataSet();
+            string query = "select CD.* from DVCanHo DVCH,DsCongViec DSCV,CanHo CH,CuDan CD where DVCH.maCV=DSCV.maCV and DVCH.maCH=CH.maCH and CH.maCD=CD.maCD and DSCV.maCV=@maCV";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maCV", macv);
+              
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
+
+            return data;
+        }
+
 
     }
 }

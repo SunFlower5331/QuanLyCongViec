@@ -32,9 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.underlineUser = new System.Windows.Forms.Label();
-            this.email = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -42,7 +41,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(64)))), ((int)(((byte)(89)))));
-            this.label1.Location = new System.Drawing.Point(79, 48);
+            this.label1.Location = new System.Drawing.Point(79, 110);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(350, 48);
@@ -57,7 +56,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(87, 254);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(500, 50);
             this.button1.TabIndex = 3;
@@ -73,21 +72,6 @@
             this.underlineUser.Name = "underlineUser";
             this.underlineUser.Size = new System.Drawing.Size(503, 2);
             this.underlineUser.TabIndex = 14;
-            // 
-            // email
-            // 
-            this.email.BackColor = System.Drawing.Color.White;
-            this.email.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.ForeColor = System.Drawing.Color.DimGray;
-            this.email.Location = new System.Drawing.Point(88, 199);
-            this.email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(500, 23);
-            this.email.TabIndex = 13;
-            this.email.TextChanged += new System.EventHandler(this.email_TextChanged);
-            this.email.Enter += new System.EventHandler(this.user_Enter);
-            this.email.Leave += new System.EventHandler(this.user_Leave);
             // 
             // linkLabel1
             // 
@@ -106,35 +90,34 @@
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.DarkMagenta;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
             // 
-            // label2
+            // email
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(64)))), ((int)(((byte)(89)))));
-            this.label2.Location = new System.Drawing.Point(83, 154);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 25);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Email";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.email.BackColor = System.Drawing.Color.White;
+            this.email.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.ForeColor = System.Drawing.Color.DimGray;
+            this.email.Location = new System.Drawing.Point(88, 199);
+            this.email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(499, 23);
+            this.email.TabIndex = 18;
+            this.email.Text = "Enter Email";
             // 
             // FormQuenMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(622, 511);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(622, 408);
+            this.Controls.Add(this.email);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.underlineUser);
-            this.Controls.Add(this.email);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.DimGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormQuenMatKhau";
             this.Text = "FormQuenMatKhau";
             this.Load += new System.EventHandler(this.FormQuenMatKhau_Load);
@@ -148,8 +131,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label underlineUser;
-        private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox email;
     }
 }

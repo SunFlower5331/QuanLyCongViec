@@ -24,44 +24,18 @@ namespace QuanLyCongViec
 
         private void FormTienDoCongViec_Load(object sender, EventArgs e)
         {
+
             loadTienDoCongViec();
-            
+            loadData("KT");
+            dsnv.CurrentCell = null;
+            dscv.CurrentCell = null;
+
+
+
         }
 
-        //private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dscv.EnableHeadersVisualStyles = false;
-        //    dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dscv.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
 
-        //            row.Cells[i].Style.BackColor = Color.White;
-        //            row.Cells[i].Style.ForeColor = Color.Black;
-
-        //        }
-        //    }
-        //}
-        //private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsnv.EnableHeadersVisualStyles = false;
-        //    dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dsnv.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
-
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
-
-        //        }
-        //    }
-        //}
-
-        private void tuychonhienthi()
+/*        private void tuychonhienthi()
         {
             switch ("KT")
             {
@@ -86,6 +60,14 @@ namespace QuanLyCongViec
                     break;
 
             }
+        }*/
+private void loadthongtinkhachhang(string macv)
+        {
+            thongtinkh.DataSource=DatabaseAccess.getThongtinkh(macv).Tables[0];
+
+
+
+
         }
         private void loadData(string phongBan)
         {
@@ -95,17 +77,17 @@ namespace QuanLyCongViec
             dsnv.Columns["manv"].HeaderText = "Mã nhân viên";
             dsnv.Columns["hoten"].HeaderText = "Họ và tên";
 
-            dscv.DataSource = DatabaseAccess.GetCTCVTheoPhongBan(phongBan).Tables[0];
-            dscv.AutoGenerateColumns = false;
+            dsmanv.DataSource = DatabaseAccess.GetCTCVTheoPhongBan(phongBan).Tables[0];
+            dsmanv.AutoGenerateColumns = false;
 
-            dscv.Columns["chucvu"].HeaderText = "Chức vụ";
-            dscv.Columns["maCV"].HeaderText = "Mã công việc";
-            dscv.Columns["ten"].HeaderText = "Tên công việc";
-            dscv.Columns["maNV"].HeaderText = "Mã nhân viên";
-            dscv.Columns["hoten"].HeaderText = "Tên nhân viên";
-            dscv.Columns["trangthai"].HeaderText = "Trạng thái";
-            dscv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
-            dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+            dsmanv.Columns["chucvu"].HeaderText = "Chức vụ";
+            dsmanv.Columns["maCV"].HeaderText = "Mã công việc";
+            dsmanv.Columns["ten"].HeaderText = "Tên công việc";
+            dsmanv.Columns["maNV"].HeaderText = "Mã nhân viên";
+            dsmanv.Columns["hoten"].HeaderText = "Tên nhân viên";
+            dsmanv.Columns["trangthai"].HeaderText = "Trạng thái";
+            dsmanv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+            dsmanv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
         }
         private void loadTienDoCongViec()
         {
@@ -169,35 +151,70 @@ namespace QuanLyCongViec
 
         private void cbotuychonchiase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbotuychonchiase.SelectedIndex == 2) {
+/*            if(cbotuychonchiase.SelectedIndex == 2) {
                 dsmanv.Visible = true;
             }
             else
             {
                 dsmanv.Visible = false;
-            }
+            }*/
         }
 
         private void btncapnhat_Click(object sender, EventArgs e)
         {
             cbotrangthai.Enabled = true;
             cbotuychonchiase.Enabled = true;
+           
+
         }
 
         private bool isThongTinKhVisible = false;
 
         private void btnthongtinkh_Click(object sender, EventArgs e)
         {
+          
             isThongTinKhVisible = !isThongTinKhVisible;
 
             thongtinkh.Visible = isThongTinKhVisible;
+            
         }
+        
 
         private void btnluu_Click(object sender, EventArgs e)
         {
-            dsmanv.Visible = false;
-            cbotuychonchiase.SelectedIndex = -1;
-            cbotrangthai.SelectedIndex = -1;
+            try
+            {
+
+                string maCV = tbomacv.Text;
+                string maNV = tbomanv.Text;
+                DateTime thoiGianHoanThanh = dtpthoihan.Value;
+                string tuyChonChiaSe = cbotuychonchiase.Text;
+                string trangthai = cbotrangthai.Text;
+                string[] conditionColumns = { "maCV" };
+                object[] conditionValues = { maCV };
+
+                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
+                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
+                this.FormTienDoCongViec_Load(null, null);
+                tbomacv.Text = "";
+                tbotencv.Text = "";
+                tbochucvu.Text = "";
+                tbotennv.Text = "";
+                tbomanv.Text = "";
+                dtpthoihan.Text = "";
+                cbotuychonchiase.Text = "";
+                cbotrangthai.Text = "";
+
+                MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            dsnv.CurrentCell = null;
+            dscv.CurrentCell = null;
+
         }
 
         private void dsnv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -205,10 +222,10 @@ namespace QuanLyCongViec
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+/*        private void button1_Click(object sender, EventArgs e)
         {
             tuychonhienthi();
-        }
+        }*/
 
         private void minimize_Click(object sender, EventArgs e)
         {
@@ -231,6 +248,75 @@ namespace QuanLyCongViec
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        //
+
+        private void dscv_Click(object sender, EventArgs e)
+        {
+            if (dscv.CurrentRow != null && dscv.CurrentRow.Index >= 0)
+            {
+                DataGridViewRow row1 = dscv.CurrentRow;
+                tbomacv.Text = row1.Cells["maCV"].Value.ToString();
+                tbotencv.Text = row1.Cells["ten"].Value.ToString();
+                cbotuychonchiase.Text= row1.Cells["Tuychonchiase"].Value.ToString();
+                cbotrangthai.Text = row1.Cells["trangthai"].Value.ToString();
+
+
+
+            }
+            if (tbomacv.Text != null)
+            {
+                loadthongtinkhachhang(tbomacv.Text);
+            }
+
+        }
+
+        private void dsnv_Click(object sender, EventArgs e)
+        {
+            if (dsnv.CurrentRow != null && dsnv.CurrentRow.Index >= 0)
+            {
+                DataGridViewRow row1 = dsnv.CurrentRow;
+                tbochucvu.Text = row1.Cells["chucvu"].Value.ToString();
+                tbomanv.Text = row1.Cells["maNV"].Value.ToString();
+                tbotennv.Text = row1.Cells["hoten"].Value.ToString();
+
+
+
+            }
+            
+        }
+
+        private bool check = false;
+
+        private void btnxemcvpb_Click(object sender, EventArgs e)
+        {
+
+            check = !check;
+
+            dsmanv.Visible = check;
+
+        }
+
+        private void dscv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dsmanv_Click(object sender, EventArgs e)
+        {
+            if (dsmanv.CurrentRow != null && dsmanv.CurrentRow.Index >= 0)
+            {
+                DataGridViewRow row1 = dsmanv.CurrentRow;
+                tbochucvu.Text = row1.Cells["chucvu"].Value.ToString();
+                tbomanv.Text = row1.Cells["maNV"].Value.ToString();
+                tbotennv.Text = row1.Cells["hoten"].Value.ToString();
+                tbomacv.Text = row1.Cells["maCV"].Value.ToString();
+                cbotrangthai.Text= row1.Cells["trangthai"].Value.ToString();
+                cbotuychonchiase.Text= row1.Cells["Tuychonchiase"].Value.ToString();
+                dtpthoihan.Text= row1.Cells["thoiGianHoanThanh"].Value.ToString();
+                tbotencv.Text= row1.Cells["ten"].Value.ToString();
+
+            }
+
+           
+        }
     }
 }
