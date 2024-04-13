@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +16,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -558,7 +560,34 @@ namespace DAL
 
             return data;
         }
+        public static string getMK(string email)
+        {
+            string mk = "";
+            string sql = "SELECT tk.mk FROM TaiKhoan tk,NhanVien nv WHERE nv.email = @email and tk.id=nv.manv";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@email", email);
+                try
+                {
+                    con.Open();
+                    
+                    object result = command.ExecuteScalar();
+                    if (result != null) 
+                    {
+                        mk = result.ToString(); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                   
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return mk;
+        }
 
+        
 
     }
 }
