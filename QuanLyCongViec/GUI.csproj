@@ -94,6 +94,12 @@
     <Compile Include="FormDuLieuNhanVien.Designer.cs">
       <DependentUpon>FormDuLieuNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGuiThongBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGuiThongBao.Designer.cs">
+      <DependentUpon>FormGuiThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,12 @@
     <Compile Include="FormUpload&amp;Download.Designer.cs">
       <DependentUpon>FormUpload&amp;Download.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpForm.Designer.cs">
+      <DependentUpon>PopUpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBaoCao.resx">
@@ -161,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDuLieuNhanVien.resx">
       <DependentUpon>FormDuLieuNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGuiThongBao.resx">
+      <DependentUpon>FormGuiThongBao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNhanVien.resx">
       <DependentUpon>FormNhanVien.cs</DependentUpon>
@@ -189,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpload&amp;Download.resx">
       <DependentUpon>FormUpload&amp;Download.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpForm.resx">
+      <DependentUpon>PopUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

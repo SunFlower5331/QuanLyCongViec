@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +16,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -48,6 +50,25 @@ namespace DAL
             }
             return user;
 
+        }
+        public static DataTable getNV()
+        {
+            DataTable dt = new DataTable();
+            string sql = "select phongban,maNV,hoten,email from NhanVien";
+            try
+            {
+                using(SqlConnection con = SqlConnectionData.connect()) { 
+                con.Open();
+                SqlDataAdapter adapter=new SqlDataAdapter(sql,con);
+                    adapter.Fill(dt);
+                
+                }
+
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
         }
         public static int getUserQuyen(string maNV)
         {
@@ -207,6 +228,40 @@ namespace DAL
             con.Close();
             return data;
         }
+        public static DataSet GetCTCVCty()
+        {
+            DataSet data = new DataSet();
+            string query = "" +
+                "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "from CTCV C,DsCongViec DSCV,NhanVien NV " +
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Công việc chung'";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetCTCVPban(string mapb)
+        {
+            DataSet data = new DataSet();
+            string query = "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "from CTCV C,DsCongViec DSCV,NhanVien NV " +
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Bộ phận' AND NV.phongban=@mapb";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+               
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@mapb", mapb);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
+
+            return data;
+        }
+
+
+
         public static DataSet GetAllNhanVien()
         {
             DataSet data = new DataSet();
@@ -654,6 +709,184 @@ namespace DAL
             DataSet data = new DataSet();
             string query = "SELECT Chiphicanho.maCH, tenCH, tinhTrangNguoiO, tinhTrangBanGiao, tinhTrangNoiThat, CongNo, TongChiPhiDienNuoc, TongphiQuanLy, TongPhiDichVu, quoctich " +
                 "FROM Chiphicanho, TinhTrangCanHo, CuDan WHERE  CuDan.maCD = Chiphicanho.maCD AND TinhTrangCanHo.maCH = Chiphicanho.maCH AND ngaybatdau >= @NgayBatDau AND ngayketthuc <= @Ngayketthuc AND Chiphicanho.maCH = @maCH;";
+        public static string getMK(string email)
+        {
+            string mk = "";
+            string sql = "SELECT tk.mk FROM TaiKhoan tk,NhanVien nv WHERE nv.email = @email and tk.id=nv.manv";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@email", email);
+                try
+                {
+                    con.Open();
+                    
+                    object result = command.ExecuteScalar();
+                    if (result != null) 
+                    {
+                        mk = result.ToString(); 
+                    }
+                }
+                catch (Exception ex)
+                {
+                   
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return mk;
+        }
+        public static string getEmail(string maNV)
+        {
+            string email = "";
+            string sql = "SELECT email FROM NhanVien  WHERE maNV = @maNV ";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                try
+                {
+                    con.Open();
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        email = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return email;
+        }
+        public static string getEmailCEO()
+        {
+            string email = "";
+            string sql = "SELECT email FROM NhanVien  WHERE quyenhan='1'";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        email = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return email;
+        }
+        public static DataSet getThongtinkh(string macv)
+        {
+
+            DataSet data = new DataSet();
+            string query = "select CD.* from DVCanHo DVCH,DsCongViec DSCV,CanHo CH,CuDan CD where DVCH.maCV=DSCV.maCV and DVCH.maCH=CH.maCH and CH.maCD=CD.maCD and DSCV.maCV=@maCV";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maCV", macv);
+              
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
+
+            return data;
+        }
+        public static int getSLCVSapHetHan(string maNV)
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM CTCV  WHERE trangthai=N'Chưa hoàn thành' and songayhethan<=2 and maNV=@maNV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return soluong;
+        }
+        public static int getSLCVNV(string maNV)
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM CTCV  WHERE trangthai=N'Chưa hoàn thành' and maNV=@maNV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return soluong;
+        }
+        public static int getSLCV()
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM CTCV WHERE trangthai=N'Chưa hoàn thành'";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return soluong;
+        }
+
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
