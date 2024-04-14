@@ -231,26 +231,17 @@ namespace DAL
                 "FROM CTCV C, DsCongViec DSCV, NhanVien NV " +
                 "WHERE C.maCV = DSCV.maCV AND C.maNV = NV.maNV AND NV.phongban = @mapb";
 
-            using (SqlConnection con = SqlConnectionData.connect())
-            {
-                con.Open();
-                SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@mapb", mapb);
-
-                try
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    adapter.Fill(data);
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý ngoại lệ nếu có
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-            }
-
+           
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
             return data;
+
+           
         }
+
 
         public static DataSet GetAllNhanVien()
         {

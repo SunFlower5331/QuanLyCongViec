@@ -28,7 +28,7 @@ namespace QuanLyCongViec
         {
 
             loadTienDoCongViec();
-            loadData("KT");
+            loadData(Program.getUserIDPB());
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
 
@@ -66,6 +66,18 @@ namespace QuanLyCongViec
 private void loadthongtinkhachhang(string macv)
         {
             thongtinkh.DataSource=DatabaseAccess.getThongtinkh(macv).Tables[0];
+            thongtinkh.Columns["maCD"].HeaderText = "Mã cư dân";
+            thongtinkh.Columns["hinhthuc"].HeaderText = "Hình thức";
+            thongtinkh.Columns["tenCH"].HeaderText = "Tên căn hộ";
+            thongtinkh.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            thongtinkh.Columns["cccd"].HeaderText = "CCCD";
+            thongtinkh.Columns["sdt"].HeaderText = "Số điện thoại";
+            thongtinkh.Columns["email"].HeaderText = "Email";
+            thongtinkh.Columns["quoctich"].HeaderText = "Quốc tịch";
+            thongtinkh.Columns["sothetamtru"].HeaderText = "Số thẻ tạm trú";
+            thongtinkh.Columns["sdt_nguoithan"].HeaderText = "Số điện thoại người thân";
+            thongtinkh.Columns["tinhtrangcongno"].HeaderText = "Tỉnh trạng công nợ";
+            thongtinkh.Columns["dk_thucung"].HeaderText = "Đăng ký thú cưng";
 
 
 
@@ -103,10 +115,9 @@ private void loadthongtinkhachhang(string macv)
 
                 if (dataTable != null && dataTable.Rows.Count > 0)
                 {
-                    // Gán dữ liệu cho DataGridView
+                    
                     dscv.DataSource = dataTable;
 
-                    // Thiết lập tiêu đề cột
                     dscv.Columns["maCV"].HeaderText = "Mã công việc";
                     dscv.Columns["ten"].HeaderText = "Tên công việc";
                     dscv.Columns["maCH"].HeaderText = "Mã căn hộ";
@@ -115,13 +126,13 @@ private void loadthongtinkhachhang(string macv)
                     dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
                     dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
 
-                    // Lặp qua từng hàng trong DataGridView
+                    
                     foreach (DataGridViewRow dgvRow in dscv.Rows)
                     {
-                        // Lấy giá trị của cột "songayhethan" trong hàng hiện tại
+                      
                         int soNgayHetHan = Convert.ToInt32(dgvRow.Cells["songayhethan"].Value);
 
-                        // Kiểm tra nếu số ngày còn lại nhỏ hơn 0, tô màu đỏ cho hàng đó
+                       
                         if (soNgayHetHan < 0 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase)
 )
                         {

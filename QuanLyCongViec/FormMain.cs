@@ -96,6 +96,7 @@ namespace QuanLyCongViec
         }
         private void loadCTCVPban()
         {
+            
             dscvcty.DataSource = DatabaseAccess.GetCTCVPban(Program.getUserIDPB()).Tables[0];
             dscvcty.AutoGenerateColumns = false;
             dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
@@ -176,8 +177,8 @@ namespace QuanLyCongViec
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            loadCTCVCty();
-            loadCTCVPban();
+            dscvcty.DataSource = DatabaseAccess.GetCTCVCty().Tables[0];
+            
         }
 
 

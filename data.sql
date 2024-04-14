@@ -116,9 +116,7 @@ CREATE TABLE DangKyDoXe (
     loai NVARCHAR(50),
 	
 );
-SELECT C.maCV, DSCV.ten, DVCH.maCH, C.trangthai, C.thoiGianHoanThanh, C.songayhethan,C.Tuychonchiase
-FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH 
-WHERE C.maNV = 'NV002' AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV
+
 --bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
 
 
@@ -136,19 +134,7 @@ CREATE TABLE Chiphicanho(
     TongPhiDichVu FLOAT,
     TongChiPhiDienNuoc FLOAT
 ); 
-go
-CREATE TRIGGER UpdateTongChiPhiDienNuoc
-ON Chiphicanho
-AFTER INSERT, UPDATE
-AS
-BEGIN
-    UPDATE Chiphicanho
-    SET TongChiPhiDienNuoc = i.sodien * i.phidien + i.sonuoc * i.phinuoc + i.TongphiQuanLy + i.TongPhiDichVu
-    FROM Chiphicanho c
-    INNER JOIN inserted i ON c.maCD = i.maCD AND c.maCH = i.maCH;
-END;
-go
---
+
 CREATE TABLE UyQuyen(
 	maUQ VARCHAR(50) PRIMARY KEY,
 	tenchucnang NVARCHAR(255),
@@ -177,15 +163,15 @@ INSERT INTO Quyen VALUES (2, 'Quản lý');
 INSERT INTO Quyen VALUES (3, 'Nhân viên');
 
 -- Thêm dữ liệu vào bảng NhanVien
-INSERT INTO NhanVien VALUES ('NV001', N'Nguyễn Văn A', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'KT', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 1);
-INSERT INTO NhanVien VALUES ('NV002', N'Trần Thị B', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'XD', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 2);
+INSERT INTO NhanVien VALUES ('KT001', N'Nguyễn Văn A', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'KT', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 1);
+INSERT INTO NhanVien VALUES ('TC002', N'Trần Thị B', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'XD', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 2);
 
-INSERT INTO NhanVien VALUES ('NV003', N'Nguyễn Văn AN', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'VS', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 3);
-INSERT INTO NhanVien VALUES ('NV004', N'Trần Thị BẢO', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'AN', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 3);
+INSERT INTO NhanVien VALUES ('VS003', N'Nguyễn Văn AN', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'VS', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 3);
+INSERT INTO NhanVien VALUES ('AN004', N'Trần Thị BẢO', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'AN', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 3);
 -- Thêm dữ liệu vào bảng Taikhoan
-INSERT INTO Taikhoan VALUES ('NV001', '123', 1);
-INSERT INTO Taikhoan VALUES ('NV002', '123', 2);
-INSERT INTO Taikhoan VALUES ('NV003', '123', 3),('NV004', '123', 3);
+INSERT INTO Taikhoan VALUES ('KT001', '123', 1);
+INSERT INTO Taikhoan VALUES ('TC002', '123', 2);
+INSERT INTO Taikhoan VALUES ('VS003', '123', 3),('ANNV004', '123', 3);
 -- Thêm dữ liệu vào bảng DsCongViec
 INSERT INTO DsCongViec VALUES (1, N'Sửa đèn');
 INSERT INTO DsCongViec VALUES (2, N'Sửa nước');
@@ -214,7 +200,3 @@ INSERT INTO ThanhVienCanHo VALUES (2, 2, N'Nguyễn Văn B', N'Chồng');
 INSERT INTO DangKyDoXe VALUES (1, 1, '123ABC', N'Oto', N'Cá nhân');
 INSERT INTO DangKyDoXe VALUES (2, 2, '456XYZ', N'Oto', N'Công ty');
 
--- Thêm dữ liệu vào bảng DichVuCuDan
-INSERT INTO DichVuCuDan VALUES (1, 1, 0, 500000, 100000, 100);
-INSERT INTO DichVuCuDan VALUES (2, 2, 100000, 600000, 120000, 150);
-select manv,hoten,phongban from NhanVien

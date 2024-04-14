@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +88,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(1232, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1232, 30);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip2_MouseDown);
@@ -101,7 +102,7 @@
             this.hệThốngToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hệThốngToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
             this.hệThốngToolStripMenuItem.Text = "Hệ thống";
             // 
             // thêmToolStripMenuItem
@@ -131,7 +132,7 @@
             this.tácVụToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tácVụToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tácVụToolStripMenuItem.Name = "tácVụToolStripMenuItem";
-            this.tácVụToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.tácVụToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.tácVụToolStripMenuItem.Text = "Tác vụ";
             // 
             // chưaHoànThànhToolStripMenuItem
@@ -161,7 +162,7 @@
             this.thốngKêToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thốngKêToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
             // 
             // côngViệcToolStripMenuItem1
@@ -193,7 +194,7 @@
             this.quanly.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quanly.ForeColor = System.Drawing.Color.White;
             this.quanly.Name = "quanly";
-            this.quanly.Size = new System.Drawing.Size(76, 24);
+            this.quanly.Size = new System.Drawing.Size(76, 26);
             this.quanly.Text = "Quản lý";
             // 
             // dulieunhanvien
@@ -241,7 +242,7 @@
             this.trợGiúpToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trợGiúpToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.trợGiúpToolStripMenuItem1.Name = "trợGiúpToolStripMenuItem1";
-            this.trợGiúpToolStripMenuItem1.Size = new System.Drawing.Size(93, 24);
+            this.trợGiúpToolStripMenuItem1.Size = new System.Drawing.Size(93, 26);
             this.trợGiúpToolStripMenuItem1.Text = "Ngôn ngữ";
             // 
             // englishToolStripMenuItem
@@ -301,16 +302,24 @@
             this.dscvcty.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dscvcty.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dscvcty.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dscvcty.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dscvcty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscvcty.DataMember = "       ";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dscvcty.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscvcty.DefaultCellStyle = dataGridViewCellStyle2;
             this.dscvcty.Location = new System.Drawing.Point(0, 0);
             this.dscvcty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dscvcty.Name = "dscvcty";
@@ -340,7 +349,7 @@
             this.tabcongty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabcongty.Name = "tabcongty";
             this.tabcongty.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabcongty.Size = new System.Drawing.Size(1224, 434);
+            this.tabcongty.Size = new System.Drawing.Size(1224, 436);
             this.tabcongty.TabIndex = 0;
             this.tabcongty.Text = "Công ty";
             // 
@@ -363,14 +372,14 @@
             this.dscvpban.BackgroundColor = System.Drawing.Color.White;
             this.dscvpban.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscvpban.DataMember = "       ";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dscvpban.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscvpban.DefaultCellStyle = dataGridViewCellStyle3;
             this.dscvpban.Location = new System.Drawing.Point(2, -14);
             this.dscvpban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dscvpban.Name = "dscvpban";
