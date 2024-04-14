@@ -97,18 +97,18 @@ namespace QuanLyCongViec
         private void loadCTCVPban()
         {
             
-            dscvcty.DataSource = DatabaseAccess.GetCTCVPban(Program.getUserIDPB()).Tables[0];
-            dscvcty.AutoGenerateColumns = false;
-            dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
-            dscvcty.Columns["chucvu"].HeaderText = "Chức vụ";
-            dscvcty.Columns["maCV"].HeaderText = "Mã công việc";
-            dscvcty.Columns["ten"].HeaderText = "Tên công việc";
-            dscvcty.Columns["maNV"].HeaderText = "Mã nhân viên";
-            dscvcty.Columns["hoten"].HeaderText = "Tên nhân viên";
+            dscvpban.DataSource = DatabaseAccess.GetCTCVPban(Program.getUserIDPB()).Tables[0];
+            dscvpban.AutoGenerateColumns = false;
+            dscvpban.Columns["phongban"].HeaderText = "Phòng ban";
+            dscvpban.Columns["chucvu"].HeaderText = "Chức vụ";
+            dscvpban.Columns["maCV"].HeaderText = "Mã công việc";
+            dscvpban.Columns["ten"].HeaderText = "Tên công việc";
+            dscvpban.Columns["maNV"].HeaderText = "Mã nhân viên";
+            dscvpban.Columns["hoten"].HeaderText = "Tên nhân viên";
 
-            dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
-            dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
-            dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+            dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
+            dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+            dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
 
         }
 
@@ -177,7 +177,10 @@ namespace QuanLyCongViec
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            dscvcty.DataSource = DatabaseAccess.GetCTCVCty().Tables[0];
+            
+                loadCTCVCty();
+
+                loadCTCVPban();
             
         }
 
@@ -283,33 +286,12 @@ namespace QuanLyCongViec
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-        private void FormMain_MouseDown(object sender, MouseEventArgs e)
+
+        private void gửiThôngBáoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            this.Hide();
+            FormGuiThongBao form = new FormGuiThongBao();
+            form.Show();    
         }
-
-        private void menuStrip2_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ShowPopupForm();
-        }
-        // Trong sự kiện button click hoặc bất kỳ sự kiện nào khác
-        private void ShowPopupForm()
-        {
-            PopUpForm popupForm = new PopUpForm(); // Tạo một instance của form pop-up
-            popupForm.TopMost = true; // Đảm bảo form luôn ở trên cùng
-            popupForm.Show(); // Hiển thị form pop-up
-        }
-
-
-
-
-        //
     }
 }

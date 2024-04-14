@@ -51,6 +51,25 @@ namespace DAL
             return user;
 
         }
+        public static DataTable getNV()
+        {
+            DataTable dt = new DataTable();
+            string sql = "select phongban,maNV,hoten,email from NhanVien";
+            try
+            {
+                using(SqlConnection con = SqlConnectionData.connect()) { 
+                con.Open();
+                SqlDataAdapter adapter=new SqlDataAdapter(sql,con);
+                    adapter.Fill(dt);
+                
+                }
+
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return dt;
+        }
         public static int getUserQuyen(string maNV)
         {
             int quyenhan = 0;
@@ -226,21 +245,21 @@ namespace DAL
         public static DataSet GetCTCVPban(string mapb)
         {
             DataSet data = new DataSet();
-            string query = "" +
-                "SELECT NV.phongban, NV.chucvu, DSCV.maCV, DSCV.ten, NV.maNV, NV.hoten, C.trangthai, C.thoiGianHoanThanh, C.Tuychonchiase " +
-                "FROM CTCV C, DsCongViec DSCV, NhanVien NV " +
-                "WHERE C.maCV = DSCV.maCV AND C.maNV = NV.maNV AND NV.phongban = @mapb";
+            string query = "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "from CTCV C,DsCongViec DSCV,NhanVien NV " +
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Bộ phận' AND NV.phongban=@mapb";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+               
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@mapb", mapb);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
 
-           
-            SqlConnection con = SqlConnectionData.connect();
-            con.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-            adapter.Fill(data);
-            con.Close();
             return data;
-
-           
         }
+
 
 
         public static DataSet GetAllNhanVien()
