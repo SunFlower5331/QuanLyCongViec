@@ -14,16 +14,103 @@ using DTO;
 namespace QuanLyCongViec
 {
 
+
     public partial class FormMain : Form
     {
 
         public FormMain()
         {
+            InitializeNotifyIcon();
             InitializeComponent();
             this.Resize += new EventHandler(FormMain_Resize);
             menuStrip2.Renderer = new MyRenderer();
-            //dscv.CellFormatting += dscv_CellFormatting;
+            thongbaocv();
+            thongbaocvnv();
+
+            
         }
+
+        private void thongbaocv()
+        {
+            if (DatabaseAccess.getSLCV() >= 5 && DatabaseAccess.getUserQuyen(Program.UserID)==1)
+            {
+                ShowNotification("Có quá nhiều công việc chưa được nhân viên cập nhật!");
+            }
+
+        }
+        private void thongbaocvnv()
+        {
+            string manv = Program.UserID;
+            if (DatabaseAccess.getUserQuyen(manv) != 1)
+            {
+                UpdateNotification(DatabaseAccess.getSLCVNV(manv), DatabaseAccess.getSLCVSapHetHan(manv));
+            }
+        }
+        private void InitializeNotifyIcon()
+        {
+            notifyIcon1 = new NotifyIcon();
+            notifyIcon1.Icon = SystemIcons.Information; 
+            notifyIcon1.Visible = true;
+            notifyIcon1.DoubleClick += NotifyIcon_DoubleClick; 
+        }
+        private void NotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+        public void ShowNotification(string message)
+        {
+            notifyIcon1.BalloonTipText = message;
+            notifyIcon1.ShowBalloonTip(5000);
+        }
+
+        // Sử dụng phương thức này để cập nhật thông báo
+        public void UpdateNotification(int numberOfTasks,int slsaphethan)
+        {
+            if (numberOfTasks > 0)
+            {
+                ShowNotification($"Bạn có {numberOfTasks} công việc chưa cập nhật. Và có {slsaphethan} công việc sắp hết hạn ");
+            }
+            else
+            {
+             
+                notifyIcon1.Visible = false;
+            }
+        }
+        private void loadCTCVCty()
+        {
+            dscvcty.DataSource = DatabaseAccess.GetCTCVCty().Tables[0];
+            dscvcty.AutoGenerateColumns = false;
+            dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
+            dscvcty.Columns["chucvu"].HeaderText = "Chức vụ";
+            dscvcty.Columns["maCV"].HeaderText = "Mã công việc";
+            dscvcty.Columns["ten"].HeaderText = "Tên công việc";
+            dscvcty.Columns["maNV"].HeaderText = "Mã nhân viên";
+            dscvcty.Columns["hoten"].HeaderText = "Tên nhân viên";
+
+            dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
+            dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+            dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+
+        }
+        private void loadCTCVPban()
+        {
+            dscvcty.DataSource = DatabaseAccess.GetCTCVPban(Program.getUserIDPB()).Tables[0];
+            dscvcty.AutoGenerateColumns = false;
+            dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
+            dscvcty.Columns["chucvu"].HeaderText = "Chức vụ";
+            dscvcty.Columns["maCV"].HeaderText = "Mã công việc";
+            dscvcty.Columns["ten"].HeaderText = "Tên công việc";
+            dscvcty.Columns["maNV"].HeaderText = "Mã nhân viên";
+            dscvcty.Columns["hoten"].HeaderText = "Tên nhân viên";
+
+            dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
+            dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+            dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+
+        }
+
 
         //private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         //{
@@ -69,7 +156,7 @@ namespace QuanLyCongViec
             groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
             menuStrip2.Size = new Size(this.ClientSize.Width - menuStrip2.Location.X - 10, this.ClientSize.Height - menuStrip2.Location.Y - 10);
 
-            dscv.Size = new Size(this.ClientSize.Width - dscv.Location.X - 10, this.ClientSize.Height - dscv.Location.Y - 10);
+            dscvcty.Size = new Size(this.ClientSize.Width - dscvcty.Location.X - 10, this.ClientSize.Height - dscvcty.Location.Y - 10);
         }
         private void CenterLabel()
         {
@@ -89,18 +176,10 @@ namespace QuanLyCongViec
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            //loadDsNv();
+            loadCTCVCty();
+            loadCTCVPban();
         }
-        private void loadDsCV()
-        {
 
-            dscv.DataSource = DatabaseAccess.GetAllTK().Tables[0];
-            dscv.AutoGenerateColumns = false;
-            dscv.Columns["id"].HeaderText = "Tên đăng nhập";
-            dscv.Columns["mk"].HeaderText = "Mật khẩu";
-            dscv.Columns["loaiTK"].HeaderText = "Loại tài khoản";
-
-        }
 
         private void thêmToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -140,16 +219,6 @@ namespace QuanLyCongViec
             this.Hide();
         }
 
-        private void timkiem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tiếnĐộCôngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTienDoCongViec f = new FormTienDoCongViec();
@@ -169,16 +238,6 @@ namespace QuanLyCongViec
             FormDuLieuCuDan f = f = new FormDuLieuCuDan();
             f.Show();
             this.Hide();
-        }
-
-        private void tácVụToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void nhậpXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -234,6 +293,22 @@ namespace QuanLyCongViec
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowPopupForm();
+        }
+        // Trong sự kiện button click hoặc bất kỳ sự kiện nào khác
+        private void ShowPopupForm()
+        {
+            PopUpForm popupForm = new PopUpForm(); // Tạo một instance của form pop-up
+            popupForm.TopMost = true; // Đảm bảo form luôn ở trên cùng
+            popupForm.Show(); // Hiển thị form pop-up
+        }
+
+
+
+
         //
     }
 }

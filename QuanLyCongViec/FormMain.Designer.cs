@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,23 +54,24 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dscv = new System.Windows.Forms.DataGridView();
+            this.dscvcty = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabcongty = new System.Windows.Forms.TabPage();
             this.tabphongban = new System.Windows.Forms.TabPage();
+            this.dscvpban = new System.Windows.Forms.DataGridView();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dscv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dscvcty)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabcongty.SuspendLayout();
+            this.tabphongban.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dscvpban)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -133,7 +133,6 @@
             this.tácVụToolStripMenuItem.Name = "tácVụToolStripMenuItem";
             this.tácVụToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
             this.tácVụToolStripMenuItem.Text = "Tác vụ";
-            this.tácVụToolStripMenuItem.Click += new System.EventHandler(this.tácVụToolStripMenuItem_Click);
             // 
             // chưaHoànThànhToolStripMenuItem
             // 
@@ -170,7 +169,7 @@
             this.côngViệcToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.côngViệcToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.côngViệcToolStripMenuItem1.Name = "côngViệcToolStripMenuItem1";
-            this.côngViệcToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.côngViệcToolStripMenuItem1.Size = new System.Drawing.Size(223, 26);
             this.côngViệcToolStripMenuItem1.Text = "Kết quả công việc";
             this.côngViệcToolStripMenuItem1.Click += new System.EventHandler(this.côngViệcToolStripMenuItem1_Click);
             // 
@@ -179,7 +178,7 @@
             this.hiệuQuảCôngViệcToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.hiệuQuảCôngViệcToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.hiệuQuảCôngViệcToolStripMenuItem.Name = "hiệuQuảCôngViệcToolStripMenuItem";
-            this.hiệuQuảCôngViệcToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.hiệuQuảCôngViệcToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.hiệuQuảCôngViệcToolStripMenuItem.Text = "Hiệu quả công việc";
             this.hiệuQuảCôngViệcToolStripMenuItem.Click += new System.EventHandler(this.hiệuQuảCôngViệcToolStripMenuItem_Click);
             // 
@@ -275,7 +274,6 @@
             this.timkiem.TabIndex = 6;
             this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.timkiem.UseVisualStyleBackColor = true;
-            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
             // textBox1
             // 
@@ -291,54 +289,53 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(191)))), ((int)(((byte)(2)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(296, 153);
+            this.label1.Location = new System.Drawing.Point(499, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(252, 29);
             this.label1.TabIndex = 7;
             this.label1.Text = "Danh sách công việc";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dscv
+            // dscvcty
             // 
-            this.dscv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dscv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dscv.BackgroundColor = System.Drawing.Color.White;
-            this.dscv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dscv.DataMember = "       ";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dscv.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dscv.Location = new System.Drawing.Point(0, 0);
-            this.dscv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dscv.Name = "dscv";
-            this.dscv.ReadOnly = true;
-            this.dscv.RowHeadersWidth = 51;
-            this.dscv.RowTemplate.Height = 24;
-            this.dscv.Size = new System.Drawing.Size(1221, 462);
-            this.dscv.TabIndex = 4;
+            this.dscvcty.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dscvcty.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dscvcty.BackgroundColor = System.Drawing.Color.White;
+            this.dscvcty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dscvcty.DataMember = "       ";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscvcty.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dscvcty.Location = new System.Drawing.Point(0, 0);
+            this.dscvcty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dscvcty.Name = "dscvcty";
+            this.dscvcty.ReadOnly = true;
+            this.dscvcty.RowHeadersWidth = 51;
+            this.dscvcty.RowTemplate.Height = 24;
+            this.dscvcty.Size = new System.Drawing.Size(1221, 462);
+            this.dscvcty.TabIndex = 4;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabcongty);
             this.tabControl1.Controls.Add(this.tabphongban);
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.Location = new System.Drawing.Point(0, 184);
+            this.tabControl1.Location = new System.Drawing.Point(0, 182);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1232, 463);
+            this.tabControl1.Size = new System.Drawing.Size(1232, 465);
             this.tabControl1.TabIndex = 8;
             // 
             // tabcongty
             // 
             this.tabcongty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.tabcongty.Controls.Add(this.dscv);
+            this.tabcongty.Controls.Add(this.dscvcty);
             this.tabcongty.Location = new System.Drawing.Point(4, 25);
             this.tabcongty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabcongty.Name = "tabcongty";
@@ -350,20 +347,45 @@
             // tabphongban
             // 
             this.tabphongban.BackColor = System.Drawing.Color.White;
+            this.tabphongban.Controls.Add(this.dscvpban);
             this.tabphongban.Location = new System.Drawing.Point(4, 25);
             this.tabphongban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabphongban.Name = "tabphongban";
             this.tabphongban.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabphongban.Size = new System.Drawing.Size(1224, 465);
+            this.tabphongban.Size = new System.Drawing.Size(1224, 436);
             this.tabphongban.TabIndex = 1;
             this.tabphongban.Text = "Phòng ban";
+            // 
+            // dscvpban
+            // 
+            this.dscvpban.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dscvpban.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dscvpban.BackgroundColor = System.Drawing.Color.White;
+            this.dscvpban.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dscvpban.DataMember = "       ";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscvpban.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dscvpban.Location = new System.Drawing.Point(2, -14);
+            this.dscvpban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dscvpban.Name = "dscvpban";
+            this.dscvpban.ReadOnly = true;
+            this.dscvpban.RowHeadersWidth = 51;
+            this.dscvpban.RowTemplate.Height = 24;
+            this.dscvpban.Size = new System.Drawing.Size(1221, 462);
+            this.dscvpban.TabIndex = 5;
             // 
             // minimize
             // 
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(1151, 0);
-            this.minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 30);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -376,7 +398,7 @@
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(1192, 0);
-            this.logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(32, 30);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -399,29 +421,13 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // groupBox2
+            // notifyIcon1
             // 
-            this.groupBox2.Controls.Add(this.listView1);
-            this.groupBox2.Location = new System.Drawing.Point(649, 30);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(575, 130);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
-            this.listView1.Location = new System.Drawing.Point(6, 19);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(563, 97);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Quản lí công việc";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.NotifyIcon_DoubleClick);
             // 
             // FormMain
             // 
@@ -429,7 +435,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1232, 650);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -446,14 +451,15 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dscv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dscvcty)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabcongty.ResumeLayout(false);
+            this.tabphongban.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dscvpban)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,7 +482,7 @@
         private System.Windows.Forms.ToolStripMenuItem côngViệcToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vietnamToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dscv;
+        private System.Windows.Forms.DataGridView dscvcty;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabcongty;
         private System.Windows.Forms.TabPage tabphongban;
@@ -489,7 +495,7 @@
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.PictureBox logout;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.DataGridView dscvpban;
     }
 }

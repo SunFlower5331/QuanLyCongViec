@@ -134,7 +134,7 @@ CREATE TABLE Chiphicanho(
     CongNo FLOAT,
     TongphiQuanLy FLOAT,
     TongPhiDichVu FLOAT,
-    TongChiPhiDienNuoc AS (sodien * phidien + sonuoc * phinuoc + TongphiQuanLy + TongPhiDichVu)
+    TongChiPhiDienNuoc FLOAT
 ); 
 go
 CREATE TRIGGER UpdateTongChiPhiDienNuoc

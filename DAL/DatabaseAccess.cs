@@ -209,6 +209,49 @@ namespace DAL
             con.Close();
             return data;
         }
+        public static DataSet GetCTCVCty()
+        {
+            DataSet data = new DataSet();
+            string query = "" +
+                "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "from CTCV C,DsCongViec DSCV,NhanVien NV " +
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Công việc chung'";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
+            return data;
+        }
+        public static DataSet GetCTCVPban(string mapb)
+        {
+            DataSet data = new DataSet();
+            string query = "" +
+                "SELECT NV.phongban, NV.chucvu, DSCV.maCV, DSCV.ten, NV.maNV, NV.hoten, C.trangthai, C.thoiGianHoanThanh, C.Tuychonchiase " +
+                "FROM CTCV C, DsCongViec DSCV, NhanVien NV " +
+                "WHERE C.maCV = DSCV.maCV AND C.maNV = NV.maNV AND NV.phongban = @mapb";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@mapb", mapb);
+
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(data);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+
+            return data;
+        }
+
         public static DataSet GetAllNhanVien()
         {
             DataSet data = new DataSet();
@@ -586,6 +629,57 @@ namespace DAL
             }
             return mk;
         }
+        public static string getEmail(string maNV)
+        {
+            string email = "";
+            string sql = "SELECT email FROM NhanVien  WHERE maNV = @maNV ";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                try
+                {
+                    con.Open();
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        email = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return email;
+        }
+        public static string getEmailCEO()
+        {
+            string email = "";
+            string sql = "SELECT email FROM NhanVien  WHERE quyenhan='1'";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        email = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return email;
+        }
         public static DataSet getThongtinkh(string macv)
         {
 
@@ -603,6 +697,90 @@ namespace DAL
 
             return data;
         }
+        public static int getSLCVSapHetHan(string maNV)
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM CTCV  WHERE trangthai=N'Chưa hoàn thành' and songayhethan<=2 and maNV=@maNV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return soluong;
+        }
+        public static int getSLCVNV(string maNV)
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM CTCV  WHERE trangthai=N'Chưa hoàn thành' and maNV=@maNV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@maNV", maNV);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return soluong;
+        }
+        public static int getSLCV()
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM CTCV WHERE trangthai=N'Chưa hoàn thành'";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return soluong;
+        }
+
 
 
     }

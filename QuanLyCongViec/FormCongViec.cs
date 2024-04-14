@@ -8,6 +8,8 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -284,6 +286,9 @@ namespace QuanLyCongViec
                 loadCTCV();
 
                 MessageBox.Show("Đã lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string email = DatabaseAccess.getEmail(maNV);
+                string content = "PHÂN CÔNG CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai;
+                guiEmail(email, content);
             }
             catch (Exception ex)
             {
@@ -324,6 +329,10 @@ namespace QuanLyCongViec
                 dscv.CurrentCell = null;
                 dsdpc.CurrentCell = null;
                 MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string email=DatabaseAccess.getEmail(maNV);
+                string content="CẬP NHẬT CÔNG VIỆC  \nMã công việc: "+maCV+"\nMã nhân viên: "+maNV+"\nThời gian hoàn thành: "+thoiGianHoanThanh+"\nTùy chọn chia sẽ: "+tuyChonChiaSe+"\nTrạng thái: " + trangthai;
+                guiEmail(email,content);
+
             }
             catch (Exception ex)
             {
@@ -337,7 +346,43 @@ namespace QuanLyCongViec
 
         }
 
+        private void guiEmail(string to, string content)
+        {
+            string from, pass;
+            from = "zantlytm@gmail.com";
+            pass = "rxaypqcmtmtxerbq";
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(to);
+                mail.From = new MailAddress(from);
+                mail.Subject = "[THÔNG BÁO ỨNG DỤNG QUẢN LÍ CÔNG VIỆC] CÔNG VIỆC";
+                mail.Body = content;
 
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+                smtp.EnableSsl = true;
+                smtp.Port = 587;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new NetworkCredential(from, pass);
+
+                try
+                {
+                    smtp.Send(mail);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi Cacth, không gửi đc");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi hệ thống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
+
+
+        }
 
         private void btnthem_Click(object sender, EventArgs e)
         {

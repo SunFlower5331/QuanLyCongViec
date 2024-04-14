@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -159,6 +161,43 @@ private void loadthongtinkhachhang(string macv)
                 dsmanv.Visible = false;
             }*/
         }
+        private void guiEmail(string to, string content)
+        {
+            string from, pass;
+            from = "zantlytm@gmail.com";
+            pass = "rxaypqcmtmtxerbq";
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(to);
+                mail.From = new MailAddress(from);
+                mail.Subject = "[THÔNG BÁO CÔNG VIỆC] NHÂN VIÊN CẬP NHẬT TIẾN ĐỘ CÔNG VIỆC";
+                mail.Body = content;
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+                smtp.EnableSsl = true;
+                smtp.Port = 587;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new NetworkCredential(from, pass);
+
+                try
+                {
+                    smtp.Send(mail);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi Cacth, không gửi đc");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi hệ thống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
+
+
+        }
 
         private void btncapnhat_Click(object sender, EventArgs e)
         {
@@ -192,10 +231,19 @@ private void loadthongtinkhachhang(string macv)
                 string trangthai = cbotrangthai.Text;
                 string[] conditionColumns = { "maCV" };
                 object[] conditionValues = { maCV };
+                if (maNV != null)
+                {
+                    DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
+                        new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
+                }
+                else
+                {
+                    DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
+                      new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
 
-                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
-                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
+                }
                 this.FormTienDoCongViec_Load(null, null);
+
                 tbomacv.Text = "";
                 tbotencv.Text = "";
                 tbochucvu.Text = "";
@@ -206,6 +254,10 @@ private void loadthongtinkhachhang(string macv)
                 cbotrangthai.Text = "";
 
                 MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string email = DatabaseAccess.getEmailCEO();
+                string content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai;
+                guiEmail(email, content);
+
             }
             catch (Exception ex)
             {
@@ -256,6 +308,7 @@ private void loadthongtinkhachhang(string macv)
                 DataGridViewRow row1 = dscv.CurrentRow;
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
                 tbotencv.Text = row1.Cells["ten"].Value.ToString();
+                tbomanv.Text = Program.UserID;
                 cbotuychonchiase.Text= row1.Cells["Tuychonchiase"].Value.ToString();
                 cbotrangthai.Text = row1.Cells["trangthai"].Value.ToString();
 
