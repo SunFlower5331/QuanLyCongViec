@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoThongKe1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.labelMaNV = new System.Windows.Forms.Label();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.labelNgayBatDau = new System.Windows.Forms.Label();
@@ -45,13 +47,15 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoThongKe2 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd2 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.textBoxMaBoPhan = new System.Windows.Forms.TextBox();
+            this.dateTimePickerStart2 = new System.Windows.Forms.DateTimePicker();
             this.labelDeMucBieuDo2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -97,6 +101,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.comboBoThongKe1);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.labelMaNV);
             this.groupBox1.Controls.Add(this.dateTimePickerEnd);
             this.groupBox1.Controls.Add(this.labelNgayBatDau);
@@ -107,18 +113,40 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(2)))), ((int)(((byte)(0)))));
             this.groupBox1.Location = new System.Drawing.Point(713, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 131);
+            this.groupBox1.Size = new System.Drawing.Size(370, 153);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống kê theo ";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // comboBoThongKe1
+            // 
+            this.comboBoThongKe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoThongKe1.FormattingEnabled = true;
+            this.comboBoThongKe1.Items.AddRange(new object[] {
+            "Tổng quan",
+            "Chi tiết"});
+            this.comboBoThongKe1.Location = new System.Drawing.Point(120, 121);
+            this.comboBoThongKe1.Name = "comboBoThongKe1";
+            this.comboBoThongKe1.Size = new System.Drawing.Size(239, 21);
+            this.comboBoThongKe1.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(29, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Thống kê theo:";
             // 
             // labelMaNV
             // 
             this.labelMaNV.AutoSize = true;
             this.labelMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.labelMaNV.Location = new System.Drawing.Point(19, 24);
+            this.labelMaNV.Location = new System.Drawing.Point(31, 24);
             this.labelMaNV.Name = "labelMaNV";
             this.labelMaNV.Size = new System.Drawing.Size(78, 13);
             this.labelMaNV.TabIndex = 0;
@@ -235,20 +263,46 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.comboBoThongKe2);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dateTimePickerEnd2);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.textBoxMaBoPhan);
+            this.groupBox2.Controls.Add(this.dateTimePickerStart2);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(2)))), ((int)(((byte)(0)))));
             this.groupBox2.Location = new System.Drawing.Point(713, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(370, 131);
+            this.groupBox2.Size = new System.Drawing.Size(370, 153);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống kê theo ";
+            // 
+            // comboBoThongKe2
+            // 
+            this.comboBoThongKe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoThongKe2.FormattingEnabled = true;
+            this.comboBoThongKe2.Items.AddRange(new object[] {
+            "Tổng quan",
+            "Chi tiết"});
+            this.comboBoThongKe2.Location = new System.Drawing.Point(120, 120);
+            this.comboBoThongKe2.Name = "comboBoThongKe2";
+            this.comboBoThongKe2.Size = new System.Drawing.Size(239, 21);
+            this.comboBoThongKe2.TabIndex = 16;
+            this.comboBoThongKe2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(29, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Thống kê theo:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label1
             // 
@@ -261,12 +315,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã bộ phận:";
             // 
-            // dateTimePicker1
+            // dateTimePickerEnd2
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(120, 86);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(239, 20);
-            this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePickerEnd2.Location = new System.Drawing.Point(120, 86);
+            this.dateTimePickerEnd2.Name = "dateTimePickerEnd2";
+            this.dateTimePickerEnd2.Size = new System.Drawing.Size(239, 20);
+            this.dateTimePickerEnd2.TabIndex = 12;
             // 
             // label2
             // 
@@ -304,19 +358,19 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // textBoxMaBoPhan
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(109, 20);
-            this.textBox1.TabIndex = 3;
+            this.textBoxMaBoPhan.Location = new System.Drawing.Point(120, 21);
+            this.textBoxMaBoPhan.Name = "textBoxMaBoPhan";
+            this.textBoxMaBoPhan.Size = new System.Drawing.Size(109, 20);
+            this.textBoxMaBoPhan.TabIndex = 3;
             // 
-            // dateTimePicker2
+            // dateTimePickerStart2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(120, 53);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(239, 20);
-            this.dateTimePicker2.TabIndex = 10;
+            this.dateTimePickerStart2.Location = new System.Drawing.Point(120, 53);
+            this.dateTimePickerStart2.Name = "dateTimePickerStart2";
+            this.dateTimePickerStart2.Size = new System.Drawing.Size(239, 20);
+            this.dateTimePickerStart2.TabIndex = 10;
             // 
             // labelDeMucBieuDo2
             // 
@@ -425,11 +479,15 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.TextBox textBoxMaBoPhan;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart2;
         private System.Windows.Forms.Label labelDeMucBieuDo2;
+        private System.Windows.Forms.ComboBox comboBoThongKe1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoThongKe2;
+        private System.Windows.Forms.Label label5;
     }
 }

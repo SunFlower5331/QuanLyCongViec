@@ -23,6 +23,7 @@ namespace QuanLyCongViec
             InitializeComponent();
             labelDeMucBieuDo.Hide();
             labelDeMucBieuDo2.Hide();
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             //dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             //dataGridView2.CellFormatting += dataGridView2_CellFormatting;
         }
@@ -84,24 +85,49 @@ namespace QuanLyCongViec
             this.Hide();
         }
 
-        private void loadThongKeHieuQuaCV(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
+        private void loadThongKeHieuQuaCVNV(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
-            dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCV(maNV, NgayBatDau, NgayKetThuc).Tables[0];
+            if (comboBoThongKe1.Text == "Tổng quan")
+            {
+                dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVNVTongQuan(maNV, NgayBatDau, NgayKetThuc).Tables[0];
+            }
+            else
+            {
+                dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVNVChiTiet(maNV, NgayBatDau, NgayKetThuc).Tables[0];
+            }    
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns["maNV"].HeaderText = "Mã nhân viên";
-            dataGridView1.Columns["hoten"].HeaderText = "Họ tên";
             dataGridView1.Columns["luong"].HeaderText = "Doanh thu";
-            dataGridView1.Columns["solantrehan"].HeaderText = "Số lần trễ hạn";
-            dataGridView1.Columns["solankhonghoanthanh"].HeaderText = "Số lần không hoàn thành";
-            dataGridView1.Columns["solanhoanthanhdunghan"].HeaderText = "Số lần hoàn thành đúng hạn";
-            dataGridView1.Columns["solanhoanthanhsom"].HeaderText = "Số lần hoàn thành sớm";
+            dataGridView1.Columns["solantrehan"].HeaderText = "Trễ hạn";
+            dataGridView1.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
+            dataGridView1.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
+            dataGridView1.Columns["solanhoanthanhsom"].HeaderText = "Hoàn thành sớm";
+
+        }
+
+        private void loadThongKeHieuQuaCVPB(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
+        {
+            if (comboBoThongKe2.Text == "Tổng quan")
+            {
+                dataGridView2.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVPBTongQuan(maNV, NgayBatDau, NgayKetThuc).Tables[0];
+            }
+            else
+            {
+                dataGridView2.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVPBChiTiet(maNV, NgayBatDau, NgayKetThuc).Tables[0];
+            }
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.Columns["luong"].HeaderText = "Doanh thu";
+            dataGridView2.Columns["solantrehan"].HeaderText = "Trễ hạn";
+            dataGridView2.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
+            dataGridView2.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
+            dataGridView2.Columns["solanhoanthanhsom"].HeaderText = "Hoàn thành sớm";
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //show table
-            loadThongKeHieuQuaCV(textboxMaNV.Text, dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
+            loadThongKeHieuQuaCVNV(textboxMaNV.Text, dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);          
+
             //show chart
             LiveCharts.WinForms.PieChart pieChart = new LiveCharts.WinForms.PieChart();
             pieChart.Width = 225;
@@ -126,6 +152,10 @@ namespace QuanLyCongViec
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // show table
+            loadThongKeHieuQuaCVPB(textBoxMaBoPhan.Text, dateTimePickerStart2.Value.AddDays(-1), dateTimePickerEnd2.Value);
+            
+            //show chart
             LiveCharts.WinForms.PieChart pieChart = new LiveCharts.WinForms.PieChart();
             pieChart.Width = 225;
             pieChart.Height = 225;
@@ -148,6 +178,16 @@ namespace QuanLyCongViec
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

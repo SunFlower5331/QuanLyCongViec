@@ -21,65 +21,65 @@ namespace QuanLyCongViec
         public FormCongViec()
         {
             InitializeComponent();
-            //dscv.CellFormatting += dscv_CellFormatting;
-            //dsnv.CellFormatting += dsnv_CellFormatting;
-            //dsdpc.CellFormatting += dsdpc_CellFormatting;
+            dscv.CellFormatting += dscv_CellFormatting;
+            dsnv.CellFormatting += dsnv_CellFormatting;
+            dsdpc.CellFormatting += dsdpc_CellFormatting;
         }
         // Chỉnh sửa màu của 3 dataGridView
-        //private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dscv.EnableHeadersVisualStyles = false;
-        //    dscv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-        //    dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dscv.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
-        //            if (row.Cells[i].Value != null)
-        //            {
-        //                row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //                row.Cells[i].Style.ForeColor = Color.White;
-        //            }
-        //        }
-        //    }
-        //}
-        //private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsnv.EnableHeadersVisualStyles = false;
-        //    dsnv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-        //    dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dsnv.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
-        //            if (row.Cells[i].Value != null)
-        //            {
-        //                row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //                row.Cells[i].Style.ForeColor = Color.White;
-        //            }
-        //        }
-        //    }
-        //}
-        //private void dsdpc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsdpc.EnableHeadersVisualStyles = false;
-        //    dsdpc.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-        //    dsdpc.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dsdpc.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsdpc.Columns[i].HeaderCell.Style.SelectionBackColor = dsdpc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
-        //            if (row.Cells[i].Value != null)
-        //            {
-        //                row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //                row.Cells[i].Style.ForeColor = Color.White;
-        //            }
-        //        }
-        //    }
-        //}
+        private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscv.EnableHeadersVisualStyles = false;
+            dscv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dscv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    if (row.Cells[i].Value != null)
+                    {
+                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                        row.Cells[i].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+        private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsnv.EnableHeadersVisualStyles = false;
+            dsnv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsnv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    if (row.Cells[i].Value != null)
+                    {
+                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                        row.Cells[i].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+        private void dsdpc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsdpc.EnableHeadersVisualStyles = false;
+            dsdpc.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dsdpc.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsdpc.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsdpc.Columns[i].HeaderCell.Style.SelectionBackColor = dsdpc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    if (row.Cells[i].Value != null)
+                    {
+                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
+                        row.Cells[i].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
         //
         private void FormCongViec_FormClosing(object sender, FormClosingEventArgs e)
         {

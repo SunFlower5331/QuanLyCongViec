@@ -29,29 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBaoCao));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.minimize = new System.Windows.Forms.PictureBox();
-            this.logout = new System.Windows.Forms.PictureBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonTimKiem1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dsch = new System.Windows.Forms.DataGridView();
-            this.MaCH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenCH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CongNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPDienNuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPQuanLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPKhac = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.XemThongTin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonTiemKiem2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.dsyc = new System.Windows.Forms.DataGridView();
             this.MaCH_YC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NguoiYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,213 +43,84 @@
             this.NDYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TinhTrang_YC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NVPhuTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minimize = new System.Windows.Forms.PictureBox();
+            this.logout = new System.Windows.Forms.PictureBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonXacNhan = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBoxThoiGian = new System.Windows.Forms.CheckBox();
+            this.checkBoxTinhTrangCanHo = new System.Windows.Forms.CheckBox();
+            this.checkBoxQuocTich = new System.Windows.Forms.CheckBox();
+            this.checkBoxCongNo = new System.Windows.Forms.CheckBox();
+            this.checkBoxTongChiPhi = new System.Windows.Forms.CheckBox();
+            this.checkBoxNVPT = new System.Windows.Forms.CheckBox();
+            this.checkBoxTinhTrangXuLy = new System.Windows.Forms.CheckBox();
+            this.checkBoxNguoiYC = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.textBoxTimKiem = new System.Windows.Forms.TextBox();
+            this.timkiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsch)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsyc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // minimize
-            // 
-            this.minimize.BackColor = System.Drawing.Color.White;
-            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
-            this.minimize.Location = new System.Drawing.Point(829, 7);
-            this.minimize.Name = "minimize";
-            this.minimize.Size = new System.Drawing.Size(25, 25);
-            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.minimize.TabIndex = 20;
-            this.minimize.TabStop = false;
-            this.minimize.Click += new System.EventHandler(this.minimize_Click);
-            // 
-            // logout
-            // 
-            this.logout.BackColor = System.Drawing.Color.White;
-            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.Location = new System.Drawing.Point(864, 7);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(25, 25);
-            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logout.TabIndex = 19;
-            this.logout.TabStop = false;
-            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.buttonTimKiem1);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.dsch);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
-            this.groupBox1.Location = new System.Drawing.Point(12, 43);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.Location = new System.Drawing.Point(12, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(872, 258);
+            this.groupBox1.Size = new System.Drawing.Size(872, 204);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách căn hộ";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // buttonTimKiem1
-            // 
-            this.buttonTimKiem1.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonTimKiem1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTimKiem1.ForeColor = System.Drawing.Color.White;
-            this.buttonTimKiem1.Image = ((System.Drawing.Image)(resources.GetObject("buttonTimKiem1.Image")));
-            this.buttonTimKiem1.Location = new System.Drawing.Point(258, 23);
-            this.buttonTimKiem1.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTimKiem1.Name = "buttonTimKiem1";
-            this.buttonTimKiem1.Size = new System.Drawing.Size(29, 28);
-            this.buttonTimKiem1.TabIndex = 9;
-            this.buttonTimKiem1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonTimKiem1.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(42, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 20);
-            this.textBox1.TabIndex = 7;
-            // 
             // dsch
             // 
+            this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dsch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaCH,
-            this.TenCH,
-            this.TinhTrang,
-            this.CongNo,
-            this.CPDienNuoc,
-            this.CPQuanLy,
-            this.CPKhac,
-            this.XemThongTin});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsch.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dsch.Location = new System.Drawing.Point(11, 74);
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsch.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dsch.Location = new System.Drawing.Point(11, 19);
             this.dsch.Name = "dsch";
             this.dsch.Size = new System.Drawing.Size(847, 178);
             this.dsch.TabIndex = 5;
-            // 
-            // MaCH
-            // 
-            this.MaCH.HeaderText = "Mã căn hộ";
-            this.MaCH.Name = "MaCH";
-            this.MaCH.Width = 101;
-            // 
-            // TenCH
-            // 
-            this.TenCH.HeaderText = "Tên chủ hộ";
-            this.TenCH.Name = "TenCH";
-            // 
-            // TinhTrang
-            // 
-            this.TinhTrang.HeaderText = "Tình trạng";
-            this.TinhTrang.Name = "TinhTrang";
-            this.TinhTrang.Width = 101;
-            // 
-            // CongNo
-            // 
-            this.CongNo.HeaderText = "Công nợ";
-            this.CongNo.Name = "CongNo";
-            // 
-            // CPDienNuoc
-            // 
-            this.CPDienNuoc.HeaderText = "Chi phí điện nước";
-            this.CPDienNuoc.Name = "CPDienNuoc";
-            this.CPDienNuoc.Width = 101;
-            // 
-            // CPQuanLy
-            // 
-            this.CPQuanLy.HeaderText = "Chi phí quản lý";
-            this.CPQuanLy.Name = "CPQuanLy";
-            // 
-            // CPKhac
-            // 
-            this.CPKhac.HeaderText = "Chi phí khác";
-            this.CPKhac.Name = "CPKhac";
-            this.CPKhac.Width = 101;
-            // 
-            // XemThongTin
-            // 
-            this.XemThongTin.HeaderText = "Xem thông rin";
-            this.XemThongTin.Name = "XemThongTin";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(339, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Sắp xếp theo: ";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Mã căn hộ",
-            "Tên chủ hộ",
-            "Công nợ"});
-            this.comboBox1.Location = new System.Drawing.Point(421, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 3;
+            this.dsch.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsch_CellContentClick);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Controls.Add(this.buttonTiemKiem2);
-            this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.dsyc);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
-            this.groupBox2.Location = new System.Drawing.Point(12, 314);
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(12, 380);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(872, 280);
+            this.groupBox2.Size = new System.Drawing.Size(872, 224);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách yêu cầu";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // buttonTiemKiem2
-            // 
-            this.buttonTiemKiem2.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonTiemKiem2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTiemKiem2.ForeColor = System.Drawing.Color.White;
-            this.buttonTiemKiem2.Image = ((System.Drawing.Image)(resources.GetObject("buttonTiemKiem2.Image")));
-            this.buttonTiemKiem2.Location = new System.Drawing.Point(259, 27);
-            this.buttonTiemKiem2.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTiemKiem2.Name = "buttonTiemKiem2";
-            this.buttonTiemKiem2.Size = new System.Drawing.Size(29, 28);
-            this.buttonTiemKiem2.TabIndex = 11;
-            this.buttonTiemKiem2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonTiemKiem2.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(42, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(201, 20);
-            this.textBox2.TabIndex = 10;
-            // 
             // dsyc
             // 
+            this.dsyc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsyc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsyc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCH_YC,
@@ -275,17 +129,16 @@
             this.NgayYC,
             this.NDYC,
             this.TinhTrang_YC,
-            this.NVPhuTrach,
-            this.GhiChu});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(81)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsyc.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dsyc.Location = new System.Drawing.Point(11, 73);
+            this.NVPhuTrach});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsyc.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dsyc.Location = new System.Drawing.Point(11, 19);
             this.dsyc.Name = "dsyc";
             this.dsyc.Size = new System.Drawing.Size(847, 196);
             this.dsyc.TabIndex = 6;
@@ -325,35 +178,226 @@
             this.NVPhuTrach.HeaderText = "Nhân viên phụ trách";
             this.NVPhuTrach.Name = "NVPhuTrach";
             // 
-            // GhiChu
+            // minimize
             // 
-            this.GhiChu.HeaderText = "Ghi chú";
-            this.GhiChu.Name = "GhiChu";
+            this.minimize.BackColor = System.Drawing.Color.White;
+            this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
+            this.minimize.Location = new System.Drawing.Point(829, 7);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(25, 25);
+            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.minimize.TabIndex = 20;
+            this.minimize.TabStop = false;
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.White;
+            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
+            this.logout.Location = new System.Drawing.Point(864, 7);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(25, 25);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logout.TabIndex = 19;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox3.Controls.Add(this.buttonXacNhan);
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.dateTimePickerEnd);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.dateTimePickerStart);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.groupBox3.Location = new System.Drawing.Point(12, 54);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(872, 100);
+            this.groupBox3.TabIndex = 23;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tùy chọn";
+            // 
+            // buttonXacNhan
+            // 
+            this.buttonXacNhan.Location = new System.Drawing.Point(794, 36);
+            this.buttonXacNhan.Name = "buttonXacNhan";
+            this.buttonXacNhan.Size = new System.Drawing.Size(68, 37);
+            this.buttonXacNhan.TabIndex = 18;
+            this.buttonXacNhan.Text = "Xác nhận";
+            this.buttonXacNhan.UseVisualStyleBackColor = true;
+            this.buttonXacNhan.Click += new System.EventHandler(this.buttonXacNhan_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkBoxThoiGian);
+            this.groupBox4.Controls.Add(this.checkBoxTinhTrangCanHo);
+            this.groupBox4.Controls.Add(this.checkBoxQuocTich);
+            this.groupBox4.Controls.Add(this.checkBoxCongNo);
+            this.groupBox4.Controls.Add(this.checkBoxTongChiPhi);
+            this.groupBox4.Controls.Add(this.checkBoxNVPT);
+            this.groupBox4.Controls.Add(this.checkBoxTinhTrangXuLy);
+            this.groupBox4.Controls.Add(this.checkBoxNguoiYC);
+            this.groupBox4.Location = new System.Drawing.Point(11, 19);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(471, 70);
+            this.groupBox4.TabIndex = 17;
+            this.groupBox4.TabStop = false;
+            // 
+            // checkBoxThoiGian
+            // 
+            this.checkBoxThoiGian.AutoSize = true;
+            this.checkBoxThoiGian.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxThoiGian.Location = new System.Drawing.Point(377, 43);
+            this.checkBoxThoiGian.Name = "checkBoxThoiGian";
+            this.checkBoxThoiGian.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxThoiGian.TabIndex = 7;
+            this.checkBoxThoiGian.Text = "Ngày yêu cầu";
+            this.checkBoxThoiGian.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTinhTrangCanHo
+            // 
+            this.checkBoxTinhTrangCanHo.AutoSize = true;
+            this.checkBoxTinhTrangCanHo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxTinhTrangCanHo.Location = new System.Drawing.Point(246, 43);
+            this.checkBoxTinhTrangCanHo.Name = "checkBoxTinhTrangCanHo";
+            this.checkBoxTinhTrangCanHo.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxTinhTrangCanHo.TabIndex = 6;
+            this.checkBoxTinhTrangCanHo.Text = "Tình trạng căn hộ";
+            this.checkBoxTinhTrangCanHo.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxQuocTich
+            // 
+            this.checkBoxQuocTich.AutoSize = true;
+            this.checkBoxQuocTich.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxQuocTich.Location = new System.Drawing.Point(377, 12);
+            this.checkBoxQuocTich.Name = "checkBoxQuocTich";
+            this.checkBoxQuocTich.Size = new System.Drawing.Size(72, 17);
+            this.checkBoxQuocTich.TabIndex = 5;
+            this.checkBoxQuocTich.Text = "Quốc tịch";
+            this.checkBoxQuocTich.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCongNo
+            // 
+            this.checkBoxCongNo.AutoSize = true;
+            this.checkBoxCongNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxCongNo.Location = new System.Drawing.Point(7, 12);
+            this.checkBoxCongNo.Name = "checkBoxCongNo";
+            this.checkBoxCongNo.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxCongNo.TabIndex = 3;
+            this.checkBoxCongNo.Text = "Công nợ";
+            this.checkBoxCongNo.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTongChiPhi
+            // 
+            this.checkBoxTongChiPhi.AutoSize = true;
+            this.checkBoxTongChiPhi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxTongChiPhi.Location = new System.Drawing.Point(7, 43);
+            this.checkBoxTongChiPhi.Name = "checkBoxTongChiPhi";
+            this.checkBoxTongChiPhi.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxTongChiPhi.TabIndex = 4;
+            this.checkBoxTongChiPhi.Text = "Tổng chi phí";
+            this.checkBoxTongChiPhi.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNVPT
+            // 
+            this.checkBoxNVPT.AutoSize = true;
+            this.checkBoxNVPT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxNVPT.Location = new System.Drawing.Point(101, 45);
+            this.checkBoxNVPT.Name = "checkBoxNVPT";
+            this.checkBoxNVPT.Size = new System.Drawing.Size(123, 17);
+            this.checkBoxNVPT.TabIndex = 2;
+            this.checkBoxNVPT.Text = "Nhân viên phụ trách";
+            this.checkBoxNVPT.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTinhTrangXuLy
+            // 
+            this.checkBoxTinhTrangXuLy.AutoSize = true;
+            this.checkBoxTinhTrangXuLy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxTinhTrangXuLy.Location = new System.Drawing.Point(246, 12);
+            this.checkBoxTinhTrangXuLy.Name = "checkBoxTinhTrangXuLy";
+            this.checkBoxTinhTrangXuLy.Size = new System.Drawing.Size(98, 17);
+            this.checkBoxTinhTrangXuLy.TabIndex = 1;
+            this.checkBoxTinhTrangXuLy.Text = "Tình trạng xử lý";
+            this.checkBoxTinhTrangXuLy.UseVisualStyleBackColor = true;
+            this.checkBoxTinhTrangXuLy.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBoxNguoiYC
+            // 
+            this.checkBoxNguoiYC.AutoSize = true;
+            this.checkBoxNguoiYC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.checkBoxNguoiYC.Location = new System.Drawing.Point(101, 12);
+            this.checkBoxNguoiYC.Name = "checkBoxNguoiYC";
+            this.checkBoxNguoiYC.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxNguoiYC.TabIndex = 0;
+            this.checkBoxNguoiYC.Text = "Người yêu cầu";
+            this.checkBoxNguoiYC.UseVisualStyleBackColor = true;
+            this.checkBoxNguoiYC.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // dateTimePickerEnd
+            // 
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(600, 59);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(181, 20);
+            this.dateTimePickerEnd.TabIndex = 16;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(339, 34);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(488, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Sắp xếp theo: ";
+            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Chọn ngày bắt đầu:";
             // 
-            // comboBox2
+            // label3
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.White;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Ngày",
-            "Tháng",
-            "Quý",
-            "Năm"});
-            this.comboBox2.Location = new System.Drawing.Point(421, 30);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 8;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(486, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Chọn ngày kết thúc:";
+            // 
+            // dateTimePickerStart
+            // 
+            this.dateTimePickerStart.Location = new System.Drawing.Point(600, 26);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(181, 20);
+            this.dateTimePickerStart.TabIndex = 14;
+            // 
+            // textBoxTimKiem
+            // 
+            this.textBoxTimKiem.ForeColor = System.Drawing.Color.DimGray;
+            this.textBoxTimKiem.Location = new System.Drawing.Point(328, 21);
+            this.textBoxTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTimKiem.Name = "textBoxTimKiem";
+            this.textBoxTimKiem.Size = new System.Drawing.Size(238, 20);
+            this.textBoxTimKiem.TabIndex = 7;
+            this.textBoxTimKiem.Text = "Tìm kiếm theo mã căn hộ";
+            this.textBoxTimKiem.Enter += new System.EventHandler(this.textBoxTimKiem_Enter);
+            this.textBoxTimKiem.Leave += new System.EventHandler(this.textBoxTimKiem_Leave);
+            // 
+            // timkiem
+            // 
+            this.timkiem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.timkiem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timkiem.ForeColor = System.Drawing.Color.White;
+            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
+            this.timkiem.Location = new System.Drawing.Point(579, 14);
+            this.timkiem.Margin = new System.Windows.Forms.Padding(2);
+            this.timkiem.Name = "timkiem";
+            this.timkiem.Size = new System.Drawing.Size(31, 33);
+            this.timkiem.TabIndex = 8;
+            this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.timkiem.UseVisualStyleBackColor = true;
+            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
             // FormBaoCao
             // 
@@ -361,6 +405,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(896, 606);
+            this.Controls.Add(this.textBoxTimKiem);
+            this.Controls.Add(this.timkiem);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.minimize);
@@ -372,16 +419,19 @@
             this.Text = "FormBaoCao";
             this.Load += new System.EventHandler(this.FormBaoCao_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormBaoCao_MouseDown);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsch)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsyc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsch)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsyc)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -392,20 +442,9 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dsch;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridView dsyc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenCH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CongNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPDienNuoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPQuanLy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPKhac;
-        private System.Windows.Forms.DataGridViewTextBoxColumn XemThongTin;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCH_YC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NguoiYC;
         private System.Windows.Forms.DataGridViewTextBoxColumn DichVuDinhKy;
@@ -413,10 +452,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NDYC;
         private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang_YC;
         private System.Windows.Forms.DataGridViewTextBoxColumn NVPhuTrach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button buttonTimKiem1;
-        private System.Windows.Forms.Button buttonTiemKiem2;
+        private System.Windows.Forms.CheckBox checkBoxTongChiPhi;
+        private System.Windows.Forms.CheckBox checkBoxCongNo;
+        private System.Windows.Forms.CheckBox checkBoxNVPT;
+        private System.Windows.Forms.CheckBox checkBoxTinhTrangXuLy;
+        private System.Windows.Forms.CheckBox checkBoxNguoiYC;
+        private System.Windows.Forms.CheckBox checkBoxQuocTich;
+        private System.Windows.Forms.CheckBox checkBoxThoiGian;
+        private System.Windows.Forms.CheckBox checkBoxTinhTrangCanHo;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button buttonXacNhan;
+        private System.Windows.Forms.TextBox textBoxTimKiem;
+        private System.Windows.Forms.Button timkiem;
     }
 }

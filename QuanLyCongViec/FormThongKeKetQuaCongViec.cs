@@ -16,6 +16,7 @@ namespace QuanLyCongViec
         public FormThongKeKetQuaCongViec()
         {
             InitializeComponent();
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             //dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
 

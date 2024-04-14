@@ -66,7 +66,7 @@ namespace QuanLyCongViec
         private void FormMain_Resize(object sender, EventArgs e)
         {
             CenterLabel();
-            groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
+            //groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
             menuStrip2.Size = new Size(this.ClientSize.Width - menuStrip2.Location.X - 10, this.ClientSize.Height - menuStrip2.Location.Y - 10);
 
             dscv.Size = new Size(this.ClientSize.Width - dscv.Location.X - 10, this.ClientSize.Height - dscv.Location.Y - 10);
