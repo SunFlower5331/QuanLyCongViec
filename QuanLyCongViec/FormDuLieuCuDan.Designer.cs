@@ -110,8 +110,9 @@
             // dscudan
             // 
             this.dscudan.AllowUserToResizeRows = false;
-            this.dscudan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dscudan.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.dscudan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dscudan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dscudan.BackgroundColor = System.Drawing.Color.White;
             this.dscudan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -136,7 +137,7 @@
             this.CanHo.Location = new System.Drawing.Point(4, 34);
             this.CanHo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CanHo.Name = "CanHo";
-            this.CanHo.Size = new System.Drawing.Size(1079, 608);
+            this.CanHo.Size = new System.Drawing.Size(1077, 608);
             this.CanHo.TabIndex = 4;
             this.CanHo.Text = "Căn hộ";
             this.CanHo.UseVisualStyleBackColor = true;
@@ -145,7 +146,7 @@
             // 
             this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsch.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dsch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.dsch.BackgroundColor = System.Drawing.Color.White;
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -161,7 +162,7 @@
             this.dsch.ReadOnly = true;
             this.dsch.RowHeadersWidth = 51;
             this.dsch.RowTemplate.Height = 24;
-            this.dsch.Size = new System.Drawing.Size(1155, 601);
+            this.dsch.Size = new System.Drawing.Size(1082, 601);
             this.dsch.TabIndex = 0;
             // 
             // DVCanHo
@@ -170,7 +171,7 @@
             this.DVCanHo.Location = new System.Drawing.Point(4, 34);
             this.DVCanHo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DVCanHo.Name = "DVCanHo";
-            this.DVCanHo.Size = new System.Drawing.Size(1079, 608);
+            this.DVCanHo.Size = new System.Drawing.Size(1077, 608);
             this.DVCanHo.TabIndex = 5;
             this.DVCanHo.Text = "Dịch vụ căn hộ";
             this.DVCanHo.UseVisualStyleBackColor = true;
@@ -195,7 +196,7 @@
             this.dsqh.ReadOnly = true;
             this.dsqh.RowHeadersWidth = 51;
             this.dsqh.RowTemplate.Height = 24;
-            this.dsqh.Size = new System.Drawing.Size(1147, 601);
+            this.dsqh.Size = new System.Drawing.Size(1078, 601);
             this.dsqh.TabIndex = 1;
             // 
             // ThanhVienCanHo
@@ -204,7 +205,7 @@
             this.ThanhVienCanHo.Location = new System.Drawing.Point(4, 34);
             this.ThanhVienCanHo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ThanhVienCanHo.Name = "ThanhVienCanHo";
-            this.ThanhVienCanHo.Size = new System.Drawing.Size(1079, 608);
+            this.ThanhVienCanHo.Size = new System.Drawing.Size(1077, 608);
             this.ThanhVienCanHo.TabIndex = 3;
             this.ThanhVienCanHo.Text = "Thành viên căn hộ";
             this.ThanhVienCanHo.UseVisualStyleBackColor = true;
@@ -229,7 +230,7 @@
             this.dstk.ReadOnly = true;
             this.dstk.RowHeadersWidth = 51;
             this.dstk.RowTemplate.Height = 24;
-            this.dstk.Size = new System.Drawing.Size(1151, 601);
+            this.dstk.Size = new System.Drawing.Size(1081, 601);
             this.dstk.TabIndex = 0;
             // 
             // DangKyDoXe
@@ -239,7 +240,7 @@
             this.DangKyDoXe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DangKyDoXe.Name = "DangKyDoXe";
             this.DangKyDoXe.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.DangKyDoXe.Size = new System.Drawing.Size(1079, 608);
+            this.DangKyDoXe.Size = new System.Drawing.Size(1077, 608);
             this.DangKyDoXe.TabIndex = 0;
             this.DangKyDoXe.Text = "Đăng ký đỗ xe";
             this.DangKyDoXe.UseVisualStyleBackColor = true;
@@ -248,7 +249,7 @@
             // 
             this.dsnv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsnv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dsnv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.dsnv.BackgroundColor = System.Drawing.Color.White;
             this.dsnv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
@@ -264,7 +265,7 @@
             this.dsnv.ReadOnly = true;
             this.dsnv.RowHeadersWidth = 51;
             this.dsnv.RowTemplate.Height = 24;
-            this.dsnv.Size = new System.Drawing.Size(1151, 604);
+            this.dsnv.Size = new System.Drawing.Size(1081, 604);
             this.dsnv.TabIndex = 0;
             // 
             // Chiphicanho
@@ -280,9 +281,9 @@
             // 
             // dspb
             // 
-            this.dspb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dspb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dspb.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dspb.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.dspb.BackgroundColor = System.Drawing.Color.White;
             this.dspb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -397,7 +398,7 @@
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(1391, 5);
-            this.minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 31);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -410,7 +411,7 @@
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(1437, 5);
-            this.logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(33, 31);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -444,7 +445,7 @@
             this.panel1.Controls.Add(this.btnluu);
             this.panel1.Controls.Add(this.btnCapNhat);
             this.panel1.Location = new System.Drawing.Point(3, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(383, 649);
             this.panel1.TabIndex = 33;

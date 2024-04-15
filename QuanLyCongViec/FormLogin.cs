@@ -62,7 +62,7 @@ namespace QuanLyCongViec
                 FormMain fm = new FormMain();
                 fm.Show();
                 this.Hide();
-                CheckQuyen();
+                //CheckQuyen();
             }
                 
            
@@ -90,7 +90,7 @@ namespace QuanLyCongViec
             Program.UserID = tk.id;
             return true;
         }
-    private void CheckQuyen()
+/*    private void CheckQuyen()
 {
   
         FormMain main = (FormMain)Application.OpenForms["FormMain"];
@@ -102,13 +102,8 @@ namespace QuanLyCongViec
 
             ToolStripMenuItem quanlyMenuItem = (ToolStripMenuItem)main.menuStrip2.Items["quanly"];
             ToolStripMenuItem congviecMenuItem = (ToolStripMenuItem)quanlyMenuItem.DropDownItems["congviec"];
-                /*TabControl tabControl = formDuLieuNhanVien.tabDulieu;
-                TabPage tabTK = tabControl.TabPages["TaiKhoan"];*/
-                
-
-
-
-
+                *//*TabControl tabControl = formDuLieuNhanVien.tabDulieu;
+                TabPage tabTK = tabControl.TabPages["TaiKhoan"];*//*
 
                 switch (userQuyen)
             {
@@ -122,8 +117,8 @@ namespace QuanLyCongViec
                         break;
                 case 3:
                         congviecMenuItem.Enabled = false;
-                       /* formDuLieuNhanVien.tabDulieu.TabPages["TaiKhoan"].Visible = false;
-                        formDuLieuNhanVien.tabDulieu.TabPages["Quyen"].Visible = false;*/
+                       *//* formDuLieuNhanVien.tabDulieu.TabPages["TaiKhoan"].Visible = false;
+                        formDuLieuNhanVien.tabDulieu.TabPages["Quyen"].Visible = false;*//*
                         //formDuLieuNhanVien.chucnang.Visible = false;
 
                         break;
@@ -132,7 +127,7 @@ namespace QuanLyCongViec
             }
         }
     
-}
+}*/
 
 
 

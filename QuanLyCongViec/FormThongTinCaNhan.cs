@@ -23,10 +23,6 @@ namespace QuanLyCongViec
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -71,9 +67,8 @@ namespace QuanLyCongViec
         private void sua(object sender, EventArgs e)
         {
             button1.Enabled = true;
-            txtHoTen.Enabled = dtpNgaySinh.Enabled = txtDiaChi.Enabled = cboGioiTinh.Enabled = txtDienThoai.Enabled = txtEmail.Enabled = true;
-            txbmnv.Enabled = txtChucVu.Enabled = txtLuong.Enabled = txtLoaiHinh.Enabled = txtPhongBan.Enabled = txtTrangThai.Enabled = txtTrinhDoHocVan.Enabled = cboquyenhan.Enabled = true;
-            mk.Enabled = true;      
+            txtHoTen.ReadOnly = txtDiaChi.ReadOnly = txtDienThoai.ReadOnly = false;
+            mk.ReadOnly = false;      
         }
         private bool KiemTraDuLieuNhap()
         {
@@ -191,6 +186,6 @@ namespace QuanLyCongViec
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        //
+    
     }
 }

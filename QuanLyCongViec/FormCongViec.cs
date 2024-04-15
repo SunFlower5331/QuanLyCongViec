@@ -110,6 +110,7 @@ namespace QuanLyCongViec
             dtpthoihan.CustomFormat = "dd/MM/yyyy";
             loadDsCongViec();
             cbotrangthai.SelectedIndex = 0;
+            cbotuychonchiase.SelectedIndex = 0;
             cbotuychonhienthi.SelectedIndex = 0;
             tuychonhienthi();
 

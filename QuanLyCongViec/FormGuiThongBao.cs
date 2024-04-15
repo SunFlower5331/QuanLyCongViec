@@ -88,8 +88,6 @@ namespace QuanLyCongViec
             checkedLisdsnv.DisplayMember = "DisplayName";
         }
         List<string> selectedEmails = new List<string>();
-        private bool isCheckingAll = false;
-
 
         private void checkedLisdsnv_ItemCheck(object sender, ItemCheckEventArgs e)
         {

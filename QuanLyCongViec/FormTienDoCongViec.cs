@@ -20,8 +20,6 @@ namespace QuanLyCongViec
         public FormTienDoCongViec()
         {
             InitializeComponent();
-            //dscv.CellFormatting += dscv_CellFormatting;
-            //dsnv.CellFormatting += dsnv_CellFormatting;
         }
 
         private void FormTienDoCongViec_Load(object sender, EventArgs e)
@@ -29,41 +27,27 @@ namespace QuanLyCongViec
 
             loadTienDoCongViec();
             loadData(Program.getUserIDPB());
+          
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
+            checkQuyen();
 
+        }
+        private void checkQuyen()
+        {
+            string id = Program.UserID;
+            int quyen = DatabaseAccess.getUserQuyen(id);
 
+            if (quyen == 3)
+            {
+                dsnv.Enabled = false;
+                dsmanv.Enabled = false;
+                dtpthoihan.Enabled = false;
+            }
 
         }
 
-
-/*        private void tuychonhienthi()
-        {
-            switch ("KT")
-            {
-                
-                case "DV":
-                    loadData("DV");
-                    break;
-                case "TC":
-                    loadData("TC");
-                    break;
-                case "VS":
-                    loadData("VS");
-                    break;
-                case "AN":
-                    loadData("AN");
-                    break;
-                case "KT":
-                    loadData("KT");
-                    break;
-                case "XD":
-                    loadData("XD");
-                    break;
-
-            }
-        }*/
-private void loadthongtinkhachhang(string macv)
+        private void loadthongtinkhachhang(string macv)
         {
             thongtinkh.DataSource=DatabaseAccess.getThongtinkh(macv).Tables[0];
             thongtinkh.Columns["maCD"].HeaderText = "Mã cư dân";
@@ -78,10 +62,6 @@ private void loadthongtinkhachhang(string macv)
             thongtinkh.Columns["sdt_nguoithan"].HeaderText = "Số điện thoại người thân";
             thongtinkh.Columns["tinhtrangcongno"].HeaderText = "Tỉnh trạng công nợ";
             thongtinkh.Columns["dk_thucung"].HeaderText = "Đăng ký thú cưng";
-
-
-
-
         }
         private void loadData(string phongBan)
         {
@@ -109,69 +89,46 @@ private void loadthongtinkhachhang(string macv)
             {
                 dscv.CurrentCell = null;
                 string maNV = Program.UserID;
-                DataSet dataSet = DatabaseAccess.GetTienDoCongViec(maNV);
+                dscv.DataSource = DatabaseAccess.GetTienDoCongViec(maNV).Tables[0];
 
-                DataTable dataTable = dataSet.Tables.Count >= 0 ? dataSet.Tables[0] : null;
+                dscv.Columns["maCV"].HeaderText = "Mã công việc";
+                dscv.Columns["ten"].HeaderText = "Tên công việc";
+                dscv.Columns["maCH"].HeaderText = "Mã căn hộ";
+                dscv.Columns["trangthai"].HeaderText = "Trạng thái";
+                dscv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
+                dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
 
-                if (dataTable != null && dataTable.Rows.Count > 0)
+
+                foreach (DataGridViewRow dgvRow in dscv.Rows)
                 {
-                    
-                    dscv.DataSource = dataTable;
 
-                    dscv.Columns["maCV"].HeaderText = "Mã công việc";
-                    dscv.Columns["ten"].HeaderText = "Tên công việc";
-                    dscv.Columns["maCH"].HeaderText = "Mã căn hộ";
-                    dscv.Columns["trangthai"].HeaderText = "Trạng thái";
-                    dscv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
-                    dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
-                    dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                    int soNgayHetHan = Convert.ToInt32(dgvRow.Cells["songayhethan"].Value);
 
-                    
-                    foreach (DataGridViewRow dgvRow in dscv.Rows)
-                    {
-                      
-                        int soNgayHetHan = Convert.ToInt32(dgvRow.Cells["songayhethan"].Value);
 
-                       
-                        if (soNgayHetHan < 0 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase)
+                    if (soNgayHetHan < 0 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase)
 )
-                        {
-                            dgvRow.DefaultCellStyle.BackColor = Color.Red;
-                        }
-                        else if (string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Đã hoàn thành", StringComparison.OrdinalIgnoreCase))
-                        {
-                            dgvRow.DefaultCellStyle.BackColor = Color.Green;
+                    {
+                        dgvRow.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    else if (string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Đã hoàn thành", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dgvRow.DefaultCellStyle.BackColor = Color.Green;
 
-                        }else if (soNgayHetHan < 3 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase))
-                        {
-                            dgvRow.DefaultCellStyle.BackColor = Color.Orange;
-                        }
+                    }
+                    else if (soNgayHetHan < 3 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dgvRow.DefaultCellStyle.BackColor = Color.Orange;
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Không có dữ liệu để hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"Đã xảy ra lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-
-
-        private void cbotuychonchiase_SelectedIndexChanged(object sender, EventArgs e)
-        {
-/*            if(cbotuychonchiase.SelectedIndex == 2) {
-                dsmanv.Visible = true;
-            }
-            else
-            {
-                dsmanv.Visible = false;
-            }*/
-        }
         private void guiEmail(string to, string content)
         {
             string from, pass;
@@ -214,6 +171,7 @@ private void loadthongtinkhachhang(string macv)
         {
             cbotrangthai.Enabled = true;
             cbotuychonchiase.Enabled = true;
+            btnluu.Enabled = true;
            
 
         }
@@ -222,11 +180,14 @@ private void loadthongtinkhachhang(string macv)
 
         private void btnthongtinkh_Click(object sender, EventArgs e)
         {
-          
-            isThongTinKhVisible = !isThongTinKhVisible;
+            if (tbomacv.Text != null)
+            {
+                loadthongtinkhachhang(tbomacv.Text);
+                isThongTinKhVisible = !isThongTinKhVisible;
+                thongtinkh.Visible = isThongTinKhVisible;
+                
+            }
 
-            thongtinkh.Visible = isThongTinKhVisible;
-            
         }
         
 
@@ -285,10 +246,6 @@ private void loadthongtinkhachhang(string macv)
 
         }
 
-/*        private void button1_Click(object sender, EventArgs e)
-        {
-            tuychonhienthi();
-        }*/
 
         private void minimize_Click(object sender, EventArgs e)
         {
@@ -342,10 +299,8 @@ private void loadthongtinkhachhang(string macv)
                 tbomanv.Text = row1.Cells["maNV"].Value.ToString();
                 tbotennv.Text = row1.Cells["hoten"].Value.ToString();
 
-
-
             }
-            
+
         }
 
         private bool check = false;
@@ -356,13 +311,13 @@ private void loadthongtinkhachhang(string macv)
             check = !check;
 
             dsmanv.Visible = check;
+            if (tbomacv.Text != null)
+            {
+                loadthongtinkhachhang(tbomacv.Text);
+            }
 
         }
 
-        private void dscv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dsmanv_Click(object sender, EventArgs e)
         {
@@ -379,8 +334,12 @@ private void loadthongtinkhachhang(string macv)
                 tbotencv.Text= row1.Cells["ten"].Value.ToString();
 
             }
+            if (tbomacv.Text != null)
+            {
+                loadthongtinkhachhang(tbomacv.Text);
+            }
 
-           
+
         }
     }
 }

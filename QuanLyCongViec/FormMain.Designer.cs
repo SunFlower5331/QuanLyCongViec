@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hethong = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gửiThôngBáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tácVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacvu = new System.Windows.Forms.ToolStripMenuItem();
             this.chưaHoànThànhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thongke = new System.Windows.Forms.ToolStripMenuItem();
             this.côngViệcToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.hiệuQuảCôngViệcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quanly = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +48,7 @@
             this.congviec = new System.Windows.Forms.ToolStripMenuItem();
             this.tiendocongviec = new System.Windows.Forms.ToolStripMenuItem();
             this.dulieucudan = new System.Windows.Forms.ToolStripMenuItem();
-            this.trợGiúpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.trogiup = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vietnamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timkiem = new System.Windows.Forms.Button();
@@ -80,11 +80,11 @@
             this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hệThốngToolStripMenuItem,
-            this.tácVụToolStripMenuItem,
-            this.thốngKêToolStripMenuItem,
+            this.hethong,
+            this.tacvu,
+            this.thongke,
             this.quanly,
-            this.trợGiúpToolStripMenuItem1});
+            this.trogiup});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -92,25 +92,25 @@
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
-            // hệThốngToolStripMenuItem
+            // hethong
             // 
-            this.hệThốngToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.hệThốngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hethong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.hethong.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.thêmToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem,
-            this.gửiThôngBáoToolStripMenuItem});
-            this.hệThốngToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hệThốngToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
-            this.hệThốngToolStripMenuItem.Text = "Hệ thống";
+            this.gửiThôngBáoToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.hethong.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hethong.ForeColor = System.Drawing.Color.White;
+            this.hethong.Name = "hethong";
+            this.hethong.Size = new System.Drawing.Size(87, 24);
+            this.hethong.Text = "Hệ thống";
             // 
             // thêmToolStripMenuItem
             // 
             this.thêmToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.thêmToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
-            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.thêmToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thêmToolStripMenuItem.Click += new System.EventHandler(this.thêmToolStripMenuItem_Click);
             // 
@@ -119,28 +119,28 @@
             this.đăngXuấtToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.đăngXuấtToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // gửiThôngBáoToolStripMenuItem
             // 
             this.gửiThôngBáoToolStripMenuItem.Name = "gửiThôngBáoToolStripMenuItem";
-            this.gửiThôngBáoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gửiThôngBáoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.gửiThôngBáoToolStripMenuItem.Text = "Gửi thông báo";
             this.gửiThôngBáoToolStripMenuItem.Click += new System.EventHandler(this.gửiThôngBáoToolStripMenuItem_Click);
             // 
-            // tácVụToolStripMenuItem
+            // tacvu
             // 
-            this.tácVụToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.tácVụToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tacvu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.tacvu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chưaHoànThànhToolStripMenuItem,
             this.nhậpXuấtToolStripMenuItem});
-            this.tácVụToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tácVụToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.tácVụToolStripMenuItem.Name = "tácVụToolStripMenuItem";
-            this.tácVụToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
-            this.tácVụToolStripMenuItem.Text = "Tác vụ";
+            this.tacvu.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tacvu.ForeColor = System.Drawing.Color.White;
+            this.tacvu.Name = "tacvu";
+            this.tacvu.Size = new System.Drawing.Size(66, 24);
+            this.tacvu.Text = "Tác vụ";
             // 
             // chưaHoànThànhToolStripMenuItem
             // 
@@ -160,17 +160,17 @@
             this.nhậpXuấtToolStripMenuItem.Text = "Upload/ Download tài liệu";
             this.nhậpXuấtToolStripMenuItem.Click += new System.EventHandler(this.nhậpXuấtToolStripMenuItem_Click);
             // 
-            // thốngKêToolStripMenuItem
+            // thongke
             // 
-            this.thốngKêToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.thốngKêToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thongke.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.thongke.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.côngViệcToolStripMenuItem1,
             this.hiệuQuảCôngViệcToolStripMenuItem});
-            this.thốngKêToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thốngKêToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
-            this.thốngKêToolStripMenuItem.Text = "Thống kê";
+            this.thongke.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongke.ForeColor = System.Drawing.Color.White;
+            this.thongke.Name = "thongke";
+            this.thongke.Size = new System.Drawing.Size(87, 24);
+            this.thongke.Text = "Thống kê";
             // 
             // côngViệcToolStripMenuItem1
             // 
@@ -240,17 +240,17 @@
             this.dulieucudan.Text = "Dữ liệu cư dân";
             this.dulieucudan.Click += new System.EventHandler(this.dulieucudan_Click);
             // 
-            // trợGiúpToolStripMenuItem1
+            // trogiup
             // 
-            this.trợGiúpToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.trợGiúpToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trogiup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.trogiup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.vietnamToolStripMenuItem});
-            this.trợGiúpToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.trợGiúpToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.trợGiúpToolStripMenuItem1.Name = "trợGiúpToolStripMenuItem1";
-            this.trợGiúpToolStripMenuItem1.Size = new System.Drawing.Size(93, 24);
-            this.trợGiúpToolStripMenuItem1.Text = "Ngôn ngữ";
+            this.trogiup.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.trogiup.ForeColor = System.Drawing.Color.White;
+            this.trogiup.Name = "trogiup";
+            this.trogiup.Size = new System.Drawing.Size(93, 24);
+            this.trogiup.Text = "Ngôn ngữ";
             // 
             // englishToolStripMenuItem
             // 
@@ -309,24 +309,24 @@
             this.dscvcty.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dscvcty.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dscvcty.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dscvcty.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dscvcty.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dscvcty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dscvcty.DataMember = "       ";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dscvcty.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscvcty.DefaultCellStyle = dataGridViewCellStyle4;
             this.dscvcty.Location = new System.Drawing.Point(0, 0);
             this.dscvcty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dscvcty.Name = "dscvcty";
@@ -420,7 +420,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(441, 98);
+            this.groupBox1.Size = new System.Drawing.Size(1232, 98);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
@@ -468,17 +468,17 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripMenuItem hệThốngToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hethong;
         private System.Windows.Forms.ToolStripMenuItem thêmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quanly;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thongke;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dulieunhanvien;
-        private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem trogiup;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button timkiem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripMenuItem tácVụToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tacvu;
         private System.Windows.Forms.ToolStripMenuItem chưaHoànThànhToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem côngViệcToolStripMenuItem1;

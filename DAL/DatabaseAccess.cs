@@ -70,26 +70,26 @@ namespace DAL
             }
             return dt;
         }
-        public static int getUserQuyen(string maNV)
+        public static int getUserQuyen(string id)
         {
-            int quyenhan = 0;
-            string query = "SELECT quyenhan FROM NhanVien WHERE maNV = @maNV";
+            int loaiTK = 0;
+            string query = "SELECT loaiTK FROM TaiKhoan WHERE id = @id";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
-                con.Open(); // Mở kết nối trước khi thực hiện truy vấn
+                con.Open(); 
 
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    quyenhan = Convert.ToInt32(reader["quyenhan"]);
+                    loaiTK = Convert.ToInt32(reader["loaiTK"]);
                 }
             }
 
-            return quyenhan;
+            return loaiTK;
         }
 
 
@@ -103,6 +103,7 @@ namespace DAL
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
+                con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@maNV", maNV);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -118,6 +119,7 @@ namespace DAL
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
+                con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@phongban", phongban);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -135,6 +137,7 @@ namespace DAL
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
+                con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@phongban", phongban);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -603,6 +606,7 @@ namespace DAL
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
+                con.Open();
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@maNV", maNV);
                 command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
@@ -698,11 +702,19 @@ namespace DAL
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
-                SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@maCV", macv);
-              
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
+                try
+                {
+                    con.Open();
+                    SqlCommand command = new SqlCommand(query, con);
+                    command.Parameters.AddWithValue("@maCV", macv);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(data);
+                }
+                catch
+                {
+                    Console.WriteLine("Lỗi!");
+                }
             }
 
             return data;

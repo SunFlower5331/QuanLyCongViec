@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTienDoCongViec));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dscv = new System.Windows.Forms.DataGridView();
@@ -92,14 +92,14 @@
             this.dscv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dscv.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dscv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(2)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dscv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(2)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscv.DefaultCellStyle = dataGridViewCellStyle1;
             this.dscv.GridColor = System.Drawing.Color.Black;
             this.dscv.Location = new System.Drawing.Point(3, 21);
             this.dscv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -109,7 +109,6 @@
             this.dscv.RowTemplate.Height = 24;
             this.dscv.Size = new System.Drawing.Size(832, 290);
             this.dscv.TabIndex = 0;
-            this.dscv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dscv_CellContentClick);
             this.dscv.Click += new System.EventHandler(this.dscv_Click);
             // 
             // groupBox2
@@ -340,6 +339,7 @@
             // btnluu
             // 
             this.btnluu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(191)))), ((int)(((byte)(2)))));
+            this.btnluu.Enabled = false;
             this.btnluu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnluu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnluu.ForeColor = System.Drawing.Color.Black;
@@ -388,14 +388,15 @@
             this.dsmanv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsmanv.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dsmanv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dsmanv.Location = new System.Drawing.Point(552, 502);
+            this.dsmanv.Location = new System.Drawing.Point(523, 523);
             this.dsmanv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dsmanv.Name = "dsmanv";
             this.dsmanv.RowHeadersWidth = 51;
             this.dsmanv.RowTemplate.Height = 24;
-            this.dsmanv.Size = new System.Drawing.Size(764, 270);
+            this.dsmanv.Size = new System.Drawing.Size(957, 249);
             this.dsmanv.TabIndex = 2;
             this.dsmanv.Visible = false;
+           
             this.dsmanv.Click += new System.EventHandler(this.dsmanv_Click);
             // 
             // thongtinkh
@@ -404,12 +405,13 @@
             this.thongtinkh.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.thongtinkh.BackgroundColor = System.Drawing.SystemColors.Control;
             this.thongtinkh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.thongtinkh.Location = new System.Drawing.Point(552, 400);
+            this.thongtinkh.Location = new System.Drawing.Point(523, 400);
             this.thongtinkh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.thongtinkh.Name = "thongtinkh";
+            this.thongtinkh.ReadOnly = true;
             this.thongtinkh.RowHeadersWidth = 51;
             this.thongtinkh.RowTemplate.Height = 24;
-            this.thongtinkh.Size = new System.Drawing.Size(764, 97);
+            this.thongtinkh.Size = new System.Drawing.Size(957, 119);
             this.thongtinkh.TabIndex = 3;
             this.thongtinkh.Visible = false;
             // 
@@ -426,7 +428,7 @@
             this.dsnv.RowHeadersWidth = 51;
             this.dsnv.RowTemplate.Height = 24;
             this.dsnv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dsnv.Size = new System.Drawing.Size(457, 290);
+            this.dsnv.Size = new System.Drawing.Size(621, 290);
             this.dsnv.TabIndex = 35;
             this.dsnv.Click += new System.EventHandler(this.dsnv_Click);
             // 
@@ -439,7 +441,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(464, 316);
+            this.groupBox3.Size = new System.Drawing.Size(599, 316);
             this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách nhân viên";
@@ -448,7 +450,7 @@
             // 
             this.minimize.BackColor = System.Drawing.Color.White;
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
-            this.minimize.Location = new System.Drawing.Point(1248, 2);
+            this.minimize.Location = new System.Drawing.Point(1368, 2);
             this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 31);
@@ -461,7 +463,7 @@
             // 
             this.logout.BackColor = System.Drawing.Color.White;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.Location = new System.Drawing.Point(1295, 2);
+            this.logout.Location = new System.Drawing.Point(1419, 2);
             this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(33, 31);
@@ -475,7 +477,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1333, 785);
+            this.ClientSize = new System.Drawing.Size(1492, 785);
             this.Controls.Add(this.minimize);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.groupBox3);

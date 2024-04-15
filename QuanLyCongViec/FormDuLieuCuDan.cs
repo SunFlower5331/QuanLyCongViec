@@ -199,7 +199,8 @@ namespace QuanLyCongViec
             dsch.Columns["ngaychuyendi"].HeaderText = "Ngày chuyển đi";
             dsch.Columns["phidv"].HeaderText = "Phí dịch vụ";
             dsch.Columns["phiql"].HeaderText = "Phí quản lý";
-            dsch.Columns["dien_nuoc_ngaynhan"].HeaderText = "Điện nước ngày nhận";
+            dsch.Columns["dienngaynhan"].HeaderText = "Điện ngày nhận";
+            dsch.Columns["nuocngaynhan"].HeaderText = "Điện ngày nhận";
 
         }
         private void loadDsQuyen()
