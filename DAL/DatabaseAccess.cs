@@ -51,6 +51,28 @@ namespace DAL
             return user;
 
         }
+        public static bool CheckCV(string maCV,string maNV)
+        {
+           
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("proc_CV", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@maCV", maCV);
+            cmd.Parameters.AddWithValue("@maNV", maNV);
+            cmd.Connection = con;
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                con.Close();
+                return true;
+                
+       
+            }
+            return  false;
+
+
+        }
         public static DataTable getNV()
         {
             DataTable dt = new DataTable();
@@ -217,11 +239,12 @@ namespace DAL
             con.Close();
             return data;
         }
+
         public static DataSet GetCTCV()
         {
             DataSet data = new DataSet();
             string query = "" +
-                "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase " +
+                "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.songayhethan,C.Tuychonchiase " +
                 "from CTCV C,DsCongViec DSCV,NhanVien NV " +
                 "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV";
             SqlConnection con = SqlConnectionData.connect();
@@ -274,6 +297,17 @@ namespace DAL
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             adapter.Fill(data);
             con.Close();    
+            return data;
+        }
+        public static DataSet GetDSUYCV()
+        {
+            DataSet data = new DataSet();
+            string query = "select * from DsUyQuyenCV";
+            SqlConnection con = SqlConnectionData.connect();
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            adapter.Fill(data);
+            con.Close();
             return data;
         }
         public static DataSet GetDVCH()
@@ -450,6 +484,7 @@ namespace DAL
                 return rowsAffected > 0;
             }
         }
+
         public static bool CapNhatThongTinTaiKhoan(string id, string mk, int loaiTK)
         {
             string query = "UPDATE TaiKhoan SET mk = @mk, loaiTK = @loaiTK WHERE id = @id";
@@ -642,6 +677,32 @@ namespace DAL
                 }
             }
             return mk;
+        }
+        public static string getloaihinh(string id)
+        {
+            string loaihinh = "";
+            string sql = "SELECT loaihinh FROM NhanVien WHERE id=@id";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@id", id);
+                try
+                {
+                    con.Open();
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        loaihinh = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+            return loaihinh;
         }
         public static string getEmail(string maNV)
         {

@@ -11,5 +11,4 @@
 
 internal static class ResourcesHelpers
 {
-    internal static Image icons8_window_search_30;
 }

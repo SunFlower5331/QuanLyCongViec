@@ -91,7 +91,18 @@ CREATE TABLE CTCV (
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv), 
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
 );
-
+CREATE TABLE DsUyQuyenCV (
+	maNV_cu VARCHAR(50),
+    maCV VARCHAR(50),
+    maNV_moi VARCHAR(50),  
+    trangthai NVARCHAR(50),
+    thoiGianHoanThanh DATE,
+    songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
+    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE
+    FOREIGN KEY (maNV_moi) REFERENCES NhanVien(manv), 
+	FOREIGN KEY (maNV_cu) REFERENCES NhanVien(manv), 
+    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
+);
 CREATE TABLE Tuychonchiase_MaNV (
     maCV VARCHAR(50),
     maNV VARCHAR(50),
@@ -163,6 +174,18 @@ CREATE TABLE DsUyQuyen(
 	maUQ VARCHAR(50) FOREIGN KEY REFERENCES UyQuyen(maUQ),
 	maNV VARCHAR(50) FOREIGN KEY REFERENCES NhanVien(maNV)
 );
+SELECT * FROM DsUyQuyenCV;
+
+go
+CREATE PROC proc_CV
+@maCV VARCHAR(255),
+@maNV VARCHAR(255)
+AS 
+BEGIN
+    SELECT * FROM CTCV WHERE maCV = @maCV AND maNV = @maNV;
+END;
+GO
+
 go
 CREATE PROC proc_logic
 @user VARCHAR(255),
@@ -172,7 +195,6 @@ BEGIN
     SELECT * FROM Taikhoan WHERE id = @user AND mk = @pass;
 END;
 GO
-
 -- Thêm dữ liệu vào bảng PhongBan và Quyen
 INSERT INTO PhongBan  VALUES ('GD', N'CEO');
 INSERT INTO PhongBan  VALUES ('VS', N'Bộ phận Vệ Sinh');
@@ -189,7 +211,8 @@ VALUES (1, N'CEO'),
 
 -- Thêm dữ liệu vào bảng NhanVien
 INSERT INTO NhanVien (manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan)
-VALUES ('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Chưa bắt đầu', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
+VALUES ('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Đã nghĩ việc', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
+('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Chưa bắt đầu', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
        ('KT-501', N'Phạm Văn Hùng', '03/01/1990', N'Nam', N'Đà Nẵng', '0381276137', 'embemay772023@gmail.com', N'Nhân viên kỹ thuật', 'KT', 20000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
 	   ('XD-603', N'Quách Minh Toàn', '21/12/1989', N'Nam', N'Lâm Đồng', '0356798212', 'parkjihyun187@gmail.com', N'Nhân viên xây dựng', 'XD', 15000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
 	   ('XD-601', N'Ngô Ngọc Trọng', '24/10/1997', N'Nam', N'Tiền Giang', '0327431639', 'npminhtri24102004@gmail.com', N'Nhân viên xây dựng', 'XD', 10000000, N'Hẹn lại khách', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),

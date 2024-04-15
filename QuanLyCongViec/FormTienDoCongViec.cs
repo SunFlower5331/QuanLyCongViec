@@ -99,7 +99,6 @@ namespace QuanLyCongViec
                 dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
                 dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
 
-
                 foreach (DataGridViewRow dgvRow in dscv.Rows)
                 {
 

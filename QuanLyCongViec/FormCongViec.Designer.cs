@@ -66,6 +66,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -80,6 +81,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnphancong);
             this.groupBox2.Controls.Add(this.btnchinhsuaphancong);
             this.groupBox2.Controls.Add(this.cbotrangthai);
@@ -107,16 +109,16 @@
             this.groupBox2.Size = new System.Drawing.Size(569, 639);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Phân công công việc";
+            this.groupBox2.Text = "Danh sách nhân viên";
             // 
             // btnphancong
             // 
             this.btnphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnphancong.ForeColor = System.Drawing.Color.Firebrick;
-            this.btnphancong.Location = new System.Drawing.Point(305, 597);
+            this.btnphancong.Location = new System.Drawing.Point(424, 597);
             this.btnphancong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnphancong.Name = "btnphancong";
-            this.btnphancong.Size = new System.Drawing.Size(183, 30);
+            this.btnphancong.Size = new System.Drawing.Size(124, 30);
             this.btnphancong.TabIndex = 23;
             this.btnphancong.Text = "Phân công";
             this.btnphancong.UseVisualStyleBackColor = true;
@@ -127,10 +129,10 @@
             this.btnchinhsuaphancong.Enabled = false;
             this.btnchinhsuaphancong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnchinhsuaphancong.ForeColor = System.Drawing.Color.Firebrick;
-            this.btnchinhsuaphancong.Location = new System.Drawing.Point(72, 597);
+            this.btnchinhsuaphancong.Location = new System.Drawing.Point(25, 597);
             this.btnchinhsuaphancong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnchinhsuaphancong.Name = "btnchinhsuaphancong";
-            this.btnchinhsuaphancong.Size = new System.Drawing.Size(183, 30);
+            this.btnchinhsuaphancong.Size = new System.Drawing.Size(171, 30);
             this.btnchinhsuaphancong.TabIndex = 24;
             this.btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
             this.btnchinhsuaphancong.UseVisualStyleBackColor = true;
@@ -426,6 +428,7 @@
             this.dsdpc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dsdpc.Size = new System.Drawing.Size(872, 230);
             this.dsdpc.TabIndex = 2;
+          
             this.dsdpc.Click += new System.EventHandler(this.dsdpc_Click);
             // 
             // cbotuychonhienthi
@@ -521,7 +524,7 @@
             this.minimize.BackColor = System.Drawing.Color.White;
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(1380, 6);
-            this.minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 31);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -534,13 +537,27 @@
             this.logout.BackColor = System.Drawing.Color.White;
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(1427, 6);
-            this.logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(33, 31);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logout.TabIndex = 23;
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Firebrick;
+            this.button1.Location = new System.Drawing.Point(229, 597);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 30);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Uỷ quyền";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormCongViec
             // 
@@ -609,5 +626,6 @@
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.PictureBox logout;
         private System.Windows.Forms.DataGridView dsnv;
+        private System.Windows.Forms.Button button1;
     }
 }

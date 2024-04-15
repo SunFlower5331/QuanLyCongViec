@@ -35,7 +35,7 @@ namespace QuanLyCongViec
             loadDsNv();
             loadDsPhongBan();
             loadDsTK();
-
+            loadDsUyQuyenCV();
             loadDsQuyen();
         }
 
@@ -124,6 +124,18 @@ namespace QuanLyCongViec
             dsnv.Columns["loaihinh"].HeaderText = "Loại hình";
             dsnv.Columns["quyenhan"].HeaderText = "Quyền hạn";
         }
+        private void loadDsUyQuyenCV()
+        {
+            dsuqcv.DataSource = DatabaseAccess.GetDSUYCV().Tables[0];
+            dsuqcv.AutoGenerateColumns = false;
+            dsuqcv.Columns["maNV_cu"].HeaderText = "Mã nhân viên";
+            dsuqcv.Columns["maCV"].HeaderText = "Họ và tên";
+            dsuqcv.Columns["maNV_moi"].HeaderText = "Ngày sinh";
+            dsuqcv.Columns["trangthai"].HeaderText = "Giới tính";
+            dsuqcv.Columns["thoiGianHoanThanh"].HeaderText = "Địa chỉ";
+            dsuqcv.Columns["songayhethan"].HeaderText = "Đi động";
+            dsuqcv.Columns["Tuychonchiase"].HeaderText = "Email";
+        }
         private void loadDsPhongBan()
         {
 
@@ -174,6 +186,9 @@ namespace QuanLyCongViec
             {
                 
                 dgv = dslshd;
+            }else if (tabDulieu.SelectedTab== DsUyQuyenCV)
+            {
+                dgv = dsuqcv;
             }
 
             if (dgv != null)
@@ -219,6 +234,10 @@ namespace QuanLyCongViec
                 else if (tabDulieu.SelectedTab == Quyen)
                 {
                     SaveLastRowData(dslshd, "Quyen");
+                }else if(tabDulieu.SelectedTab == DsUyQuyenCV)
+                {
+                    SaveLastRowData(dslshd, "DsUyQuyenCV");
+
                 }
               
             }
@@ -273,22 +292,6 @@ namespace QuanLyCongViec
                         return false;
                     }
                 }
-
-                // Kiểm tra dữ liệu cụ thể của DataGridView nếu cần
-                /*   bool isDataValid = true;
-                   if (dgv == dscudan)
-                   {
-                       isDataValid &= CheckCuDanData(dgv);
-                   }
-                   // Thêm các kiểm tra dữ liệu của DataGridView khác nếu cần
-
-                   if (!isDataValid)
-                   {
-                       return false;
-                   }
-              
-            
-            */
             }
 
             return true;
@@ -334,6 +337,11 @@ namespace QuanLyCongViec
             {
                 dgv = dslshd;
             }
+            else if (tabDulieu.SelectedTab == DsUyQuyenCV)
+            {
+                dgv = dsuqcv;
+
+            }
 
             if (dgv != null && dgv.SelectedRows.Count > 0)
             {
@@ -367,6 +375,9 @@ namespace QuanLyCongViec
                     else if (tabDulieu.SelectedTab == Quyen)
                     {
                         loadDsQuyen();
+                    }else if (tabDulieu.SelectedTab == DsUyQuyenCV)
+                    {
+                        loadDsUyQuyenCV();
                     }
 
                     MessageBox.Show("Đã xóa dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -403,7 +414,12 @@ namespace QuanLyCongViec
             {
                 dgv = dslshd;
             }
- 
+            else if (tabDulieu.SelectedTab == DsUyQuyenCV)
+            {
+                dgv = dsuqcv;
+
+            }
+
 
             if (dgv != null)
             {
@@ -525,8 +541,14 @@ namespace QuanLyCongViec
                 dgv = dslshd;
                 dslshd.ReadOnly = false;
             }
+            else if (tabDulieu.SelectedTab == DsUyQuyenCV)
+            {
+                dgv = dsuqcv;
+                dsuqcv.ReadOnly = false;
 
-          
+            }
+
+
 
         }
 
@@ -588,6 +610,11 @@ namespace QuanLyCongViec
             else if (tabDulieu.SelectedTab == Quyen)
             {
                 dgv = dslshd;
+            }
+            else if (tabDulieu.SelectedTab == DsUyQuyenCV)
+            {
+                dgv = dsuqcv;
+
             }
 
 

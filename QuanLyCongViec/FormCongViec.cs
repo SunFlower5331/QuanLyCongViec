@@ -194,6 +194,8 @@ namespace QuanLyCongViec
             dscv.Columns["ten"].HeaderText = "Tên công việc";
 
         }
+        UyQuyen uy1;
+        UyQuyen uy2;
         private void loadCTCV()
         {
             dsdpc.DataSource = DatabaseAccess.GetCTCV().Tables[0];
@@ -207,12 +209,37 @@ namespace QuanLyCongViec
 
             dsdpc.Columns["trangthai"].HeaderText = "Trạng thái";
             dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+            dsdpc.Columns["songayhethan"].HeaderText = "Thời gian còn lại";
             dsdpc.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+            foreach (DataGridViewRow dgvRow in dsdpc.Rows)
+            {
+                if (dgvRow.Cells["songayhethan"].Value != null && dgvRow.Cells["trangthai"].Value != null)
+                {
+                    int soNgayHetHan;
+                   
+                    if (int.TryParse(dgvRow.Cells["songayhethan"].Value.ToString(), out soNgayHetHan))
+                    {
+                        if (soNgayHetHan < 0 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase))
+                        {
+                            dgvRow.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                        else if (string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Đã hoàn thành", StringComparison.OrdinalIgnoreCase))
+                        {
+                            dgvRow.DefaultCellStyle.BackColor = Color.Green;
+                        }
+                        else if (soNgayHetHan < 3 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase))
+                        {
+                            dgvRow.DefaultCellStyle.BackColor = Color.Orange;
+                        }
+                    }
+                }
+            }
+
 
         }
         private void dscv_Click(Object sender, EventArgs e)
         {
-
+            button1.Enabled = false;
             btnchinhsuaphancong.Enabled = false;
             btnphancong.Enabled = true;
             if (dscv.CurrentRow != null && dscv.CurrentRow.Index >= 0)
@@ -225,14 +252,37 @@ namespace QuanLyCongViec
             }
 
         }
+        private void UyQuyen(UyQuyen uy1, UyQuyen uy2)
+        {
+            if (uy1 != null && uy2 != null)
+            {
+                DatabaseAccess.InsertData("DsUyQuyenCV", new string[] { "maNV_cu", "maCV", "maNV_moi", "trangthai", "thoiGianHoanThanh", "Tuychonchiase" },
+                                            new object[] { uy1.maNV, uy1.maCV, uy2.maNV, uy1.trangthai, uy1.thoiGianHoanThanh, uy1.Tuychonchiase });
+
+            }
+        }
+
         private void dsnv_Click(object sender, EventArgs e)
         {
+            if (dscv.CurrentRow != null)
+            {
+                button1.Enabled = false;
+
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
             if (dsnv.CurrentRow != null && dsnv.CurrentRow.Index >= 0)
             {
+                DataGridViewRow row1 = dsnv.CurrentRow;
+                tbobophan.Text = row1.Cells["phongban"].Value.ToString();
+                tbotennv.Text = row1.Cells["hoten"].Value.ToString();
+                tbomanv.Text = row1.Cells["maNV"].Value.ToString();
                 DataGridViewRow row2 = dsnv.CurrentRow;
-                tbobophan.Text = row2.Cells["phongban"].Value.ToString();
-                tbotennv.Text = row2.Cells["hoten"].Value.ToString();
-                tbomanv.Text = row2.Cells["maNV"].Value.ToString();
+                uy2 = null;
+                uy2 = new UyQuyen(tbomacv.Text, tbotencv.Text, tbobophan.Text, tbotennv.Text, tbomanv.Text, dtpthoihan.Text, cbotuychonchiase.Text, cbotrangthai.Text);
+              
             }
         }
 
@@ -240,6 +290,7 @@ namespace QuanLyCongViec
         {
             dscv.CurrentCell = null;
             btnphancong.Enabled = false;
+            button1.Enabled = false;
             if (dsdpc.CurrentRow != null && dsdpc.CurrentRow.Index >= 0)
             {
                 btnchinhsuaphancong.Enabled = true;
@@ -253,9 +304,13 @@ namespace QuanLyCongViec
                 dtpthoihan.Text = row1.Cells["thoiGianHoanThanh"].Value.ToString();
                 cbotuychonchiase.Text = row1.Cells["Tuychonchiase"].Value.ToString();
                 cbotrangthai.Text = row1.Cells["trangthai"].Value.ToString();
-
+                uy1 = null;
+                uy1 = new UyQuyen(tbomacv.Text, tbotencv.Text, tbobophan.Text, tbotennv.Text, tbomanv.Text, dtpthoihan.Text, cbotuychonchiase.Text, cbotrangthai.Text);
+            
             }
         }
+
+
         private void btnphancong_Click(object sender, EventArgs e)
         {
             try
@@ -299,6 +354,7 @@ namespace QuanLyCongViec
             dscv.CurrentCell = null;
             dsdpc.CurrentCell = null;
         }
+
         private void btnchinhsuaphancong_Click(object sender, EventArgs e)
         {
             try
@@ -313,7 +369,7 @@ namespace QuanLyCongViec
                 object[] conditionValues = { maCV };
 
                 DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
-                    new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
+                  new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
                 loadCTCV();
                 tbomacv.Text = "";
                 tbotencv.Text = "";
@@ -552,7 +608,47 @@ namespace QuanLyCongViec
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        //
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string maCV = tbomacv.Text;
+            string maNV = tbomanv.Text;
+            DateTime thoiGianHoanThanh = dtpthoihan.Value;
+            string tuyChonChiaSe = cbotuychonchiase.Text;
+            string trangthai = cbotrangthai.Text;
+            string[] conditionColumns = { "maCV" };
+            object[] conditionValues = { maCV };
+            if (DatabaseAccess.CheckCV(maCV, maNV) == false)
+
+            {
+                MessageBox.Show("ÚY1" + uy1.maNV + "uy2" + uy2.maNV);
+                UyQuyen(uy1, uy2);
+                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai" },
+              new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai }, conditionColumns, conditionValues);
+                loadCTCV();
+                tbomacv.Text = "";
+                tbotencv.Text = "";
+                tbobophan.Text = "";
+                tbotennv.Text = "";
+                tbomanv.Text = "";
+                dtpthoihan.Text = "";
+                cbotuychonchiase.Text = "";
+                cbotrangthai.Text = "";
+                dsnv.CurrentCell = null;
+                dscv.CurrentCell = null;
+                dsdpc.CurrentCell = null;
+                dsnv.CurrentCell = null;
+                dscv.CurrentCell = null;
+                dsdpc.CurrentCell = null;
+                MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string email = DatabaseAccess.getEmail(maNV);
+                string content ="ỦY QUYỀN CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai;
+                guiEmail(email, content);
+
+            }
+
+        }
+
     }
 }
 
