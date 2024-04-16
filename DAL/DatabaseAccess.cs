@@ -16,7 +16,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -597,9 +597,9 @@ namespace DAL
         public static DataSet GetDuLieuThongKeHieuQuaCVNVTongQuan(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT luong , SUM(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 ELSE 0 END) AS solantrehan,   SUM(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 ELSE 0 END) AS solankhonghoanthanh,  SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 ELSE 0 END) AS solanhoanthanhdunghan,    SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 ELSE 0 END) AS solanhoanthanhsom " +
+            string query = "SELECT COUNT(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 END) AS solantrehan,   COUNT(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 END) AS solankhonghoanthanh,  COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 END) AS solanhoanthanhdunghan,    COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 END) AS solanhoanthanhsom " +
                 "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND CTCV.maNV = @maNV AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
-                "GROUP BY  CTCV.maNV,  hoten, luong;";
+                "GROUP BY  CTCV.maNV,  hoten;";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
@@ -616,9 +616,9 @@ namespace DAL
         public static DataSet GetDuLieuThongKeHieuQuaCVNVChiTiet(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT CTCV.maCV, luong , COUNT(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 END) AS solantrehan,   COUNT(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 END) AS solankhonghoanthanh,  COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 END) AS solanhoanthanhdunghan,    COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 END) AS solanhoanthanhsom " +
-                "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND CTCV.maNV = @maNV AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
-                "GROUP BY  CTCV.maCV, luong";
+            string query = "SELECT CTCV.maCV, ten, thoiGianHoanThanh, COUNT(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 END) AS solantrehan,   COUNT(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 END) AS solankhonghoanthanh,  COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 END) AS solanhoanthanhdunghan,    COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 END) AS solanhoanthanhsom " +
+                "FROM    NhanVien,  CTCV, DsCongViec WHERE    CTCV.maNV = Nhanvien.manv AND  CTCV.maCV = DsCongViec.maCV  AND CTCV.maNV = @maNV AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
+                "GROUP BY  CTCV.maCV, ten, thoiGianHoanThanh";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
@@ -632,17 +632,17 @@ namespace DAL
 
             return data;
         }
-        public static DataSet GetDuLieuThongKeHieuQuaCVPBTongQuan(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
+        public static DataSet GetDuLieuThongKeHieuQuaCVPBTongQuan(string maPB, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT luong , SUM(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 ELSE 0 END) AS solantrehan,   SUM(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 ELSE 0 END) AS solankhonghoanthanh,  SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 ELSE 0 END) AS solanhoanthanhdunghan,    SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 ELSE 0 END) AS solanhoanthanhsom " +
-                "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND CTCV.maNV = @maNV AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
-                "GROUP BY  CTCV.maNV,  hoten, luong;";
+            string query = "SELECT  SUM(luong) AS doanhthu , COUNT(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 END) AS solantrehan, COUNT(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 END) AS solankhonghoanthanh, COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 END) AS solanhoanthanhdunghan, COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 END) AS solanhoanthanhsom " +
+                "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND NhanVien.phongban = @maPB AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
+                "GROUP BY  phongban;";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@maPB", maPB);
                 command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
                 command.Parameters.AddWithValue("@NgayKetThuc", NgayKetThuc);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -651,17 +651,17 @@ namespace DAL
 
             return data;
         }
-        public static DataSet GetDuLieuThongKeHieuQuaCVPBChiTiet(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
+        public static DataSet GetDuLieuThongKeHieuQuaCVPBChiTiet(string maPB, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT luong , SUM(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 ELSE 0 END) AS solantrehan,   SUM(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 ELSE 0 END) AS solankhonghoanthanh,  SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 ELSE 0 END) AS solanhoanthanhdunghan,    SUM(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 ELSE 0 END) AS solanhoanthanhsom " +
-                "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND CTCV.maNV = @maNV AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
-                "GROUP BY  CTCV.maNV,  hoten, luong;";
+            string query = "SELECT CTCV.maNV, NhanVien.hoten, luong, COUNT(CASE WHEN CTCV.trangthai = N'Trễ hạn' THEN 1 END) AS solantrehan, COUNT(CASE WHEN CTCV.trangthai = N'Không hoàn thành' THEN 1 END) AS solankhonghoanthanh, COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành đúng hạn' THEN 1 END) AS solanhoanthanhdunghan, COUNT(CASE WHEN CTCV.trangthai = N'Hoàn thành sớm' THEN 1 END) AS solanhoanthanhsom " +
+                "FROM    NhanVien,  CTCV WHERE    CTCV.maNV = Nhanvien.manv   AND NhanVien.phongban = @maPB AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @NgayKetThuc" + " " +
+                "GROUP BY  phongban, CTCV.maNV, NhanVien.hoten, luong;";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@maNV", maNV);
+                command.Parameters.AddWithValue("@maPB", maPB);
                 command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
                 command.Parameters.AddWithValue("@NgayKetThuc", NgayKetThuc);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -690,8 +690,9 @@ namespace DAL
         public static DataSet GetDuLieuBaoCaoYeuCau(DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT Chiphicanho.maCH, tenCH, tinhTrangNguoiO, tinhTrangBanGiao, tinhTrangNoiThat, CongNo, TongChiPhiDienNuoc, TongphiQuanLy, TongPhiDichVu, quoctich " +
-                "FROM Chiphicanho, TinhTrangCanHo, CuDan WHERE  CuDan.maCD = Chiphicanho.maCD AND TinhTrangCanHo.maCH = Chiphicanho.maCH AND ngaybatdau >= @NgayBatDau AND ngayketthuc <= @Ngayketthuc;";
+            string query = "SELECT DVCanHo.maCH, CuDan.tenCH, DV_dinhky, thoiGianHoanThanh, ten, tinhtrang, hoten " +
+                "FROM DVCanHo, DsCongViec, CanHo, CTCV, NhanVien, CuDan " +
+                "WHERE  DVCanHo.maCV = DsCongViec.maCV AND DVCanHo.maCH = CanHo.maCH AND CanHo.maCD = CuDan.maCD AND DVCanHo.maCV = CTCV.maCV AND CTCV.maNV = NhanVien.manv AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @Ngayketthuc;";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
@@ -704,11 +705,44 @@ namespace DAL
 
             return data;
         }
-        public static DataSet GetDuLieuBaoCaoTimKiem(string maCH, DateTime NgayBatDau, DateTime NgayKetThuc)
+        public static DataSet GetDuLieuBaoCaoTimKiemYC(string maCH, DateTime NgayBatDau, DateTime NgayKetThuc)
+        {
+            DataSet data = new DataSet();
+            string query = "SELECT DVCanHo.maCH, CuDan.tenCH, DV_dinhky, thoiGianHoanThanh, ten, tinhtrang, hoten " +
+            "FROM DVCanHo, DsCongViec, CanHo, CTCV, NhanVien, CuDan " +
+            "WHERE  DVCanHo.maCV = DsCongViec.maCV AND DVCanHo.maCH = CanHo.maCH AND CanHo.maCD = CuDan.maCD AND DVCanHo.maCV = CTCV.maCV AND CTCV.maNV = NhanVien.manv AND thoiGianHoanThanh >= @NgayBatDau AND thoiGianHoanThanh <= @Ngayketthuc AND DVCanHo.maCH = @maCH;";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maCH", maCH);
+                command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
+                command.Parameters.AddWithValue("@NgayKetThuc", NgayKetThuc);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
+
+            return data;
+        }
+        public static DataSet GetDuLieuBaoCaoTimKiemCH(string maCH, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
             string query = "SELECT Chiphicanho.maCH, tenCH, tinhTrangNguoiO, tinhTrangBanGiao, tinhTrangNoiThat, CongNo, TongChiPhiDienNuoc, TongphiQuanLy, TongPhiDichVu, quoctich " +
                 "FROM Chiphicanho, TinhTrangCanHo, CuDan WHERE  CuDan.maCD = Chiphicanho.maCD AND TinhTrangCanHo.maCH = Chiphicanho.maCH AND ngaybatdau >= @NgayBatDau AND ngayketthuc <= @Ngayketthuc AND Chiphicanho.maCH = @maCH;";
+
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@maCH", maCH);
+                command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
+                command.Parameters.AddWithValue("@NgayKetThuc", NgayKetThuc);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+            }
+
+            return data;
+        }
+
         public static string getMK(string email)
         {
             string mk = "";
@@ -888,17 +922,5 @@ namespace DAL
         }
 
 
-            using (SqlConnection con = SqlConnectionData.connect())
-            {
-                SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@maCH", maCH);
-                command.Parameters.AddWithValue("@NgayBatDau", NgayBatDau);
-                command.Parameters.AddWithValue("@NgayKetThuc", NgayKetThuc);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-            }
-
-            return data;
-        }
     }
 }

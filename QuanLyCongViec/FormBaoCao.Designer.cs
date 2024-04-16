@@ -29,20 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBaoCao));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dsch = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dsyc = new System.Windows.Forms.DataGridView();
-            this.MaCH_YC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NguoiYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DichVuDinhKy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NDYC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TinhTrang_YC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NVPhuTrach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -89,16 +82,16 @@
             // 
             // dsch
             // 
-            this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsch.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsch.DefaultCellStyle = dataGridViewCellStyle1;
             this.dsch.Location = new System.Drawing.Point(11, 19);
             this.dsch.Name = "dsch";
             this.dsch.Size = new System.Drawing.Size(847, 178);
@@ -120,63 +113,20 @@
             // 
             // dsyc
             // 
-            this.dsyc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsyc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dsyc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dsyc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaCH_YC,
-            this.NguoiYC,
-            this.DichVuDinhKy,
-            this.NgayYC,
-            this.NDYC,
-            this.TinhTrang_YC,
-            this.NVPhuTrach});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsyc.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsyc.DefaultCellStyle = dataGridViewCellStyle2;
             this.dsyc.Location = new System.Drawing.Point(11, 19);
             this.dsyc.Name = "dsyc";
             this.dsyc.Size = new System.Drawing.Size(847, 196);
             this.dsyc.TabIndex = 6;
-            // 
-            // MaCH_YC
-            // 
-            this.MaCH_YC.HeaderText = "Mã căn hộ";
-            this.MaCH_YC.Name = "MaCH_YC";
-            // 
-            // NguoiYC
-            // 
-            this.NguoiYC.HeaderText = "Người yêu cầu";
-            this.NguoiYC.Name = "NguoiYC";
-            // 
-            // DichVuDinhKy
-            // 
-            this.DichVuDinhKy.HeaderText = "Dịch vụ định kỳ";
-            this.DichVuDinhKy.Name = "DichVuDinhKy";
-            // 
-            // NgayYC
-            // 
-            this.NgayYC.HeaderText = "Ngày yêu cầu";
-            this.NgayYC.Name = "NgayYC";
-            // 
-            // NDYC
-            // 
-            this.NDYC.HeaderText = "Nội dung yêu cầu";
-            this.NDYC.Name = "NDYC";
-            // 
-            // TinhTrang_YC
-            // 
-            this.TinhTrang_YC.HeaderText = "Tình trạng";
-            this.TinhTrang_YC.Name = "TinhTrang_YC";
-            // 
-            // NVPhuTrach
-            // 
-            this.NVPhuTrach.HeaderText = "Nhân viên phụ trách";
-            this.NVPhuTrach.Name = "NVPhuTrach";
             // 
             // minimize
             // 
@@ -445,13 +395,6 @@
         private System.Windows.Forms.DataGridView dsch;
         private System.Windows.Forms.DataGridView dsyc;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCH_YC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NguoiYC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DichVuDinhKy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayYC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NDYC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TinhTrang_YC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NVPhuTrach;
         private System.Windows.Forms.CheckBox checkBoxTongChiPhi;
         private System.Windows.Forms.CheckBox checkBoxCongNo;
         private System.Windows.Forms.CheckBox checkBoxNVPT;

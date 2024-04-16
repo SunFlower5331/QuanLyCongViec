@@ -27,12 +27,12 @@ namespace QuanLyCongViec
             thongbaocv();
             thongbaocvnv();
 
-            
+
         }
 
         private void thongbaocv()
         {
-            if (DatabaseAccess.getSLCV() >= 5 && DatabaseAccess.getUserQuyen(Program.UserID)==1)
+            if (DatabaseAccess.getSLCV() >= 5 && DatabaseAccess.getUserQuyen(Program.UserID) == 1)
             {
                 ShowNotification("Có quá nhiều công việc chưa được nhân viên cập nhật!");
             }
@@ -49,13 +49,13 @@ namespace QuanLyCongViec
         private void InitializeNotifyIcon()
         {
             notifyIcon1 = new NotifyIcon();
-            notifyIcon1.Icon = SystemIcons.Information; 
+            notifyIcon1.Icon = SystemIcons.Information;
             notifyIcon1.Visible = true;
-            notifyIcon1.DoubleClick += NotifyIcon_DoubleClick; 
+            notifyIcon1.DoubleClick += NotifyIcon_DoubleClick;
         }
         private void NotifyIcon_DoubleClick(object sender, EventArgs e)
         {
-            
+
             this.Show();
             this.WindowState = FormWindowState.Normal;
         }
@@ -66,7 +66,7 @@ namespace QuanLyCongViec
         }
 
         // Sử dụng phương thức này để cập nhật thông báo
-        public void UpdateNotification(int numberOfTasks,int slsaphethan)
+        public void UpdateNotification(int numberOfTasks, int slsaphethan)
         {
             if (numberOfTasks > 0)
             {
@@ -74,7 +74,7 @@ namespace QuanLyCongViec
             }
             else
             {
-             
+
                 notifyIcon1.Visible = false;
             }
         }
@@ -96,7 +96,7 @@ namespace QuanLyCongViec
         }
         private void loadCTCVPban()
         {
-            
+
             dscvpban.DataSource = DatabaseAccess.GetCTCVPban(Program.getUserIDPB()).Tables[0];
             dscvpban.AutoGenerateColumns = false;
             dscvpban.Columns["phongban"].HeaderText = "Phòng ban";
@@ -144,9 +144,9 @@ namespace QuanLyCongViec
             public override Color MenuItemPressedGradientEnd
             {
                 get { return Color.FromArgb(175, 0, 0); }
-            }        
-            public override Color MenuBorder 
-             {
+            }
+            public override Color MenuBorder
+            {
                 get { return Color.Silver; }
             }
         }
@@ -157,7 +157,7 @@ namespace QuanLyCongViec
             //groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
             menuStrip2.Size = new Size(this.ClientSize.Width - menuStrip2.Location.X - 10, this.ClientSize.Height - menuStrip2.Location.Y - 10);
 
-            dscvcty.Size = new Size(this.ClientSize.Width - dscvcty.Location.X - 10, this.ClientSize.Height - dscvcty.Location.Y - 10);
+            //dscvcty.Size = new Size(this.ClientSize.Width - dscvcty.Location.X - 10, this.ClientSize.Height - dscvcty.Location.Y - 10);
         }
         private void CenterLabel()
         {
@@ -177,11 +177,11 @@ namespace QuanLyCongViec
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-            
-                loadCTCVCty();
 
-                loadCTCVPban();
-            
+            loadCTCVCty();
+
+            loadCTCVPban();
+
         }
 
 
@@ -291,7 +291,25 @@ namespace QuanLyCongViec
         {
             this.Hide();
             FormGuiThongBao form = new FormGuiThongBao();
-            form.Show();    
+            form.Show();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Tìm kiếm";
+                textBox1.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Tìm kiếm")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
         }
     }
 }

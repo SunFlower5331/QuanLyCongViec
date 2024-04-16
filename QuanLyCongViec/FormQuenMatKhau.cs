@@ -50,23 +50,6 @@ namespace QuanLyCongViec
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
         //
-        private void user_Enter(object sender, EventArgs e)
-        {
-            if (email.Text == "Example@email.com")
-            {
-                email.Text = "";
-                email.ForeColor = Color.LightGray;
-            }
-        }
-
-        private void user_Leave(object sender, EventArgs e)
-        {
-            if (email.Text == "")
-            {
-                email.Text = "Example@email.com";
-                email.ForeColor = Color.DimGray;
-            }
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -143,7 +126,36 @@ namespace QuanLyCongViec
         {
 
         }
+
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void email_Leave(object sender, EventArgs e)
+        {
+            if (email.Text == "")
+            {
+                email.Text = "Nhập email";
+                email.ForeColor = Color.DimGray;
+            }
+        }
+
+        private void email_Enter(object sender, EventArgs e)
+        {
+            if (email.Text == "Nhập email")
+            {
+                email.Text = "";
+                email.ForeColor = Color.LightGray;
+            }
+        }
     }
+            
 
 }
 

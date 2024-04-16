@@ -79,8 +79,8 @@ namespace QuanLyCongViec
 
         private void loadBaoCaoCanHo(DateTime NgayBatDau, DateTime NgayKetThuc)
         {
+            dsch.Columns.Clear();
             dsch.DataSource = DatabaseAccess.GetDuLieuBaoCaoCanHo(NgayBatDau, NgayKetThuc).Tables[0];
-            dsch.AutoGenerateColumns = false;
 
             dsch.Columns["CongNo"].Visible = checkBoxCongNo.Checked;
             dsch.Columns["TongChiPhiDienNuoc"].Visible = checkBoxTongChiPhi.Checked;
@@ -103,10 +103,32 @@ namespace QuanLyCongViec
             dsch.Columns["quoctich"].HeaderText = "Quốc tịch";
         }
 
+        private void loadBaoCaoYeuCau(DateTime NgayBatDau, DateTime NgayKetThuc)
+        {
+            dsyc.Columns.Clear();
+            dsyc.DataSource = DatabaseAccess.GetDuLieuBaoCaoYeuCau(NgayBatDau, NgayKetThuc).Tables[0];
+
+            dsyc.Columns["tenCH"].Visible = checkBoxNguoiYC.Checked;
+            dsyc.Columns["hoten"].Visible = checkBoxNVPT.Checked;
+            dsyc.Columns["thoiGianHoanThanh"].Visible = checkBoxThoiGian.Checked;
+            dsyc.Columns["tinhtrang"].Visible = checkBoxTinhTrangXuLy.Checked;
+
+            dsyc.Columns["maCH"].HeaderText = "Mã căn hộ";
+            dsyc.Columns["tenCH"].HeaderText = "Người yêu cầu";
+            dsyc.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
+            dsyc.Columns["thoiGianHoanThanh"].HeaderText = "Ngày yêu cầu";
+            dsyc.Columns["ten"].HeaderText = "Nội dung";
+            dsyc.Columns["tinhtrang"].HeaderText = "Tình trạng ";
+            dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
+        }
+
         private void loadBaoCaoTimKiem(DateTime NgayBatDau, DateTime NgayKetThuc)
         {
-            dsch.DataSource = DatabaseAccess.GetDuLieuBaoCaoTimKiem(textBoxTimKiem.Text, NgayBatDau, NgayKetThuc).Tables[0];
-            dsch.AutoGenerateColumns = false;
+            dsch.Columns.Clear();
+            dsyc.Columns.Clear();
+
+            dsch.DataSource = DatabaseAccess.GetDuLieuBaoCaoTimKiemCH(textBoxTimKiem.Text, NgayBatDau, NgayKetThuc).Tables[0];
+            dsyc.DataSource = DatabaseAccess.GetDuLieuBaoCaoTimKiemYC(textBoxTimKiem.Text, NgayBatDau, NgayKetThuc).Tables[0];
 
             dsch.Columns["CongNo"].Visible = checkBoxCongNo.Checked;
             dsch.Columns["TongChiPhiDienNuoc"].Visible = checkBoxTongChiPhi.Checked;
@@ -116,6 +138,11 @@ namespace QuanLyCongViec
             dsch.Columns["tinhTrangBanGiao"].Visible = checkBoxTinhTrangCanHo.Checked;
             dsch.Columns["tinhTrangNoiThat"].Visible = checkBoxTinhTrangCanHo.Checked;
             dsch.Columns["quoctich"].Visible = checkBoxQuocTich.Checked;
+
+            dsyc.Columns["tenCH"].Visible = checkBoxNguoiYC.Checked;
+            dsyc.Columns["hoten"].Visible = checkBoxNVPT.Checked;
+            dsyc.Columns["thoiGianHoanThanh"].Visible = checkBoxThoiGian.Checked;
+            dsyc.Columns["tinhtrang"].Visible = checkBoxTinhTrangXuLy.Checked;
 
             dsch.Columns["maCH"].HeaderText = "Mã căn hộ";
             dsch.Columns["tenCH"].HeaderText = "Tên chủ hộ";
@@ -127,6 +154,14 @@ namespace QuanLyCongViec
             dsch.Columns["TongphiQuanLy"].HeaderText = "Tổng chi phí quản lý";
             dsch.Columns["TongPhiDichVu"].HeaderText = "Tổng phí dịch vụ";
             dsch.Columns["quoctich"].HeaderText = "Quốc tịch";
+
+            dsyc.Columns["maCH"].HeaderText = "Mã căn hộ";
+            dsyc.Columns["tenCH"].HeaderText = "Người yêu cầu";
+            dsyc.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
+            dsyc.Columns["thoiGianHoanThanh"].HeaderText = "Ngày yêu cầu";
+            dsyc.Columns["ten"].HeaderText = "Nội dung";
+            dsyc.Columns["tinhtrang"].HeaderText = "Tình trạng ";
+            dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
         }
 
         private void FormBaoCao_Load(object sender, EventArgs e)
@@ -177,6 +212,7 @@ namespace QuanLyCongViec
         private void buttonXacNhan_Click(object sender, EventArgs e)
         {
             loadBaoCaoCanHo(dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
+            loadBaoCaoYeuCau(dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
         }
 
         private void textBoxTimKiem_Enter(object sender, EventArgs e)
