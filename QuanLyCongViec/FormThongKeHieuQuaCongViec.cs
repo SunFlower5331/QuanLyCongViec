@@ -23,6 +23,7 @@ namespace QuanLyCongViec
             InitializeComponent();
             labelDeMucBieuDo.Hide();
             labelDeMucBieuDo2.Hide();
+
             //dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             //dataGridView2.CellFormatting += dataGridView2_CellFormatting;
         }
@@ -150,6 +151,53 @@ namespace QuanLyCongViec
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                tabControl1.TabPages[0].Text = "Nhân viên";
+                tabControl1.TabPages[1].Text = "Bộ phận";
+                minimize.Text = "Thu nhỏ";
+                logout.Text = "Đăng xuất";
+                labelNgayBatDau.Text = "Ngày bắt đầu";
+                labelMaNV.Text = "Mã NV";
+                button1.Text = "Thống kê";
+                textboxMaNV.Text = "Mã NV";
+                labelDeMucBieuDo.Text = "Đề mục biểu đồ";
+                labelNgayKetThuc.Text = "Ngày kết thúc";
+                groupBox1.Text = "Thống kê theo";
+                groupBox2.Text = "Thống kê";
+
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+            else if (selectedLanguage == "English")
+            {
+                labelDeMucBieuDo.Text = "Employee work completion rate";
+                tabControl1.TabPages[0].Text = "Employee";
+                tabControl1.TabPages[1].Text = "Department";
+                minimize.Text = "Minimize";
+                logout.Text = "Logout";
+
+                labelNgayBatDau.Text = "Start Date";
+                labelMaNV.Text = "Employee ID";
+                button1.Text = "Statistic";
+                textboxMaNV.Text = "Employee ID";
+                labelDeMucBieuDo.Text = "Chart Title";
+                labelNgayKetThuc.Text = "End Date";
+                groupBox1.Text = "Statistics";
+
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+        }
+
+        private void FormThongKeHieuQuaCongViec_Load(object sender, EventArgs e)
+        {
+            UpdateLanguage();
         }
     }
 }

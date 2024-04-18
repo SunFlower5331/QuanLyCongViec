@@ -190,6 +190,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormThongKeKetQuaCongViec";
             this.Text = "FormThongKeKetQuaCongViec";
+            this.Load += new System.EventHandler(this.FormThongKeKetQuaCongViec_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormThongKeKetQuaCongViec_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();

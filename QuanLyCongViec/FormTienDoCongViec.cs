@@ -27,10 +27,11 @@ namespace QuanLyCongViec
 
             loadTienDoCongViec();
             loadData(Program.getUserIDPB());
-          
+
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
             checkQuyen();
+            UpdateLanguage();
 
         }
         private void checkQuyen()
@@ -49,7 +50,7 @@ namespace QuanLyCongViec
 
         private void loadthongtinkhachhang(string macv)
         {
-            thongtinkh.DataSource=DatabaseAccess.getThongtinkh(macv).Tables[0];
+            thongtinkh.DataSource = DatabaseAccess.getThongtinkh(macv).Tables[0];
             thongtinkh.Columns["maCD"].HeaderText = "Mã cư dân";
             thongtinkh.Columns["hinhthuc"].HeaderText = "Hình thức";
             thongtinkh.Columns["tenCH"].HeaderText = "Tên căn hộ";
@@ -85,6 +86,7 @@ namespace QuanLyCongViec
         }
         private void loadTienDoCongViec()
         {
+            string selectedLanguage = GlobalSettings.Language;
             try
             {
                 dscv.CurrentCell = null;
@@ -124,12 +126,20 @@ namespace QuanLyCongViec
 
             catch (Exception ex)
             {
-                MessageBox.Show($"Đã xảy ra lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi tải dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void guiEmail(string to, string content)
         {
+            string selectedLanguage = GlobalSettings.Language;
             string from, pass;
             from = "zantlytm@gmail.com";
             pass = "rxaypqcmtmtxerbq";
@@ -153,12 +163,26 @@ namespace QuanLyCongViec
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Lỗi Cacth, không gửi đc");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Lỗi Cacth, không gửi đc");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Cacth error, unable to send");
+                    }
                 }
             }
             catch
             {
-                MessageBox.Show("Lỗi hệ thống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Lỗi hệ thống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("System error!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
 
             }
@@ -171,7 +195,7 @@ namespace QuanLyCongViec
             cbotrangthai.Enabled = true;
             cbotuychonchiase.Enabled = true;
             btnluu.Enabled = true;
-           
+
 
         }
 
@@ -184,14 +208,15 @@ namespace QuanLyCongViec
                 loadthongtinkhachhang(tbomacv.Text);
                 isThongTinKhVisible = !isThongTinKhVisible;
                 thongtinkh.Visible = isThongTinKhVisible;
-                
+
             }
 
         }
-        
+
 
         private void btnluu_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             try
             {
 
@@ -224,16 +249,40 @@ namespace QuanLyCongViec
                 cbotuychonchiase.Text = "";
                 cbotrangthai.Text = "";
 
-                MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Data updated successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
                 string email = DatabaseAccess.getEmailCEO();
                 string content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai;
+
+                if (selectedLanguage == "Vietnamese")
+                {
+                    content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai;
+                }
+                else if (selectedLanguage == "English")
+                {
+                    content = "UPDATE JOB \nJob code: " + maCV + "\nEmployee code: " + maNV + "\nCompletion time: " + thoiGianHoanThanh + "\nSharing options: " + tuyChonChiaSe + "\nStatus: " + trangthai;
+                }
                 guiEmail(email, content);
 
             }
             catch (Exception ex)
             {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show($"An error occurred while updating data!\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-                MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
@@ -276,7 +325,7 @@ namespace QuanLyCongViec
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
                 tbotencv.Text = row1.Cells["ten"].Value.ToString();
                 tbomanv.Text = Program.UserID;
-                cbotuychonchiase.Text= row1.Cells["Tuychonchiase"].Value.ToString();
+                cbotuychonchiase.Text = row1.Cells["Tuychonchiase"].Value.ToString();
                 cbotrangthai.Text = row1.Cells["trangthai"].Value.ToString();
 
 
@@ -327,10 +376,10 @@ namespace QuanLyCongViec
                 tbomanv.Text = row1.Cells["maNV"].Value.ToString();
                 tbotennv.Text = row1.Cells["hoten"].Value.ToString();
                 tbomacv.Text = row1.Cells["maCV"].Value.ToString();
-                cbotrangthai.Text= row1.Cells["trangthai"].Value.ToString();
-                cbotuychonchiase.Text= row1.Cells["Tuychonchiase"].Value.ToString();
-                dtpthoihan.Text= row1.Cells["thoiGianHoanThanh"].Value.ToString();
-                tbotencv.Text= row1.Cells["ten"].Value.ToString();
+                cbotrangthai.Text = row1.Cells["trangthai"].Value.ToString();
+                cbotuychonchiase.Text = row1.Cells["Tuychonchiase"].Value.ToString();
+                dtpthoihan.Text = row1.Cells["thoiGianHoanThanh"].Value.ToString();
+                tbotencv.Text = row1.Cells["ten"].Value.ToString();
 
             }
             if (tbomacv.Text != null)
@@ -339,6 +388,50 @@ namespace QuanLyCongViec
             }
 
 
+        }
+        private void UpdateLanguage()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+            // Use selectedLanguage instead of getting language from GlobalSettings or other source
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Việt
+                groupBox1.Text = "Thông tin nhân viên";
+                groupBox2.Text = "Chia sẻ công việc";
+                label1.Text = "Mã nhân viên:";
+                label2.Text = "Thời hạn:";
+                label3.Text = "Mã công việc:";
+                label4.Text = "Tên công việc:";
+                label5.Text = "Chức vụ:";
+                label6.Text = "Họ và tên:";
+                label7.Text = "Tùy chọn chia sẻ:";
+                label8.Text = "Trạng thái:";
+                btnluu.Text = "Lưu";
+                btncapnhat.Text = "Cập nhật";
+                btnthongtinkh.Text = "Thông tin khác hàng";
+                btnxemcvpb.Text = "Xem công việc theo phòng ban";
+                groupBox3.Text = "Danh sách nhân viên";
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
+                groupBox1.Text = "Employee Information";
+                groupBox2.Text = "Share Job";
+                label1.Text = "Employee ID:";
+                label2.Text = "Deadline:";
+                label3.Text = "Job ID:";
+                label4.Text = "Job Name:";
+                label5.Text = "Position:";
+                label6.Text = "Full Name:";
+                label7.Text = "Share Option:";
+                label8.Text = "Status:";
+                btnluu.Text = "Save";
+                btncapnhat.Text = "Update";
+                btnthongtinkh.Text = "Customer Information";
+                btnxemcvpb.Text = "View jobs by department";
+                groupBox3.Text = "The list of Employee";
+            }
         }
     }
 }

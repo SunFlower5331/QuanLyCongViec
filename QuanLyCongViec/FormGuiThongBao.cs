@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
 
 namespace QuanLyCongViec
 {
@@ -18,14 +19,17 @@ namespace QuanLyCongViec
         public FormGuiThongBao()
         {
             InitializeComponent();
+            
         }
 
         private void FormGuiThongBao_Load(object sender, EventArgs e)
         {
             getDsNV();
+            UpdateLanguage();
         }
         private void guiEmail(string to, string content)
         {
+            string selectedLanguage = GlobalSettings.Language;
             string from, pass;
             from = "zantlytm@gmail.com";
             pass = "rxaypqcmtmtxerbq";
@@ -46,16 +50,41 @@ namespace QuanLyCongViec
                 try
                 {
                     smtp.Send(mail);
-                    MessageBox.Show("Đã gửi mail thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã gửi mail thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Mail sent successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Lỗi Cacth, không gửi đc");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Lỗi Cacth, không gửi đc");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Cacth error, unable to send");
+                    }
+                    
                 }
             }
             catch
             {
-                MessageBox.Show("Lỗi hệ thống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Lỗi hệ thống !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("System error!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+
 
 
             }
@@ -139,5 +168,27 @@ namespace QuanLyCongViec
             FormMain f=new FormMain();
             f.Show();
         }
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                label1.Text = "Tiêu đề:";
+                label2.Text = "Nội dung:";
+                label3.Text = "Email:";
+                gui.Text = " Gửi";
+            }
+            else if (selectedLanguage == "English")
+            {
+                label1.Text = "Title:";
+                label2.Text = "Content:";
+                label3.Text = "Email:";
+                gui.Text = " Send";
+            }
+        }
     }
 }
+

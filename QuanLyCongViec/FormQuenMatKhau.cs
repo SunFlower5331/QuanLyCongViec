@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
 
 namespace QuanLyCongViec
 {
@@ -19,6 +20,7 @@ namespace QuanLyCongViec
         public FormQuenMatKhau()
         {
             InitializeComponent();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace QuanLyCongViec
 
         private void FormQuenMatKhau_Load(object sender, EventArgs e)
         {
-
+            UpdateLanguage(); 
         }
 
         // Dùng để kéo thả cửa sổ
@@ -86,6 +88,8 @@ namespace QuanLyCongViec
         }
         private void guiEmail(string to,string content)
         {
+
+            string selectedLanguage = GlobalSettings.Language;
             string from, pass;
             from = "zantlytm@gmail.com";
             pass = "rxaypqcmtmtxerbq";
@@ -107,19 +111,41 @@ namespace QuanLyCongViec
                 {
                     smtp.Send(mail);
 
-                    MessageBox.Show("Mật khẩu đã được gửi vào mail của bạn. Vui lòng kiểm tra lại email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Mật khẩu đã được gửi vào mail của bạn. Vui lòng kiểm tra lại email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Password has been sent to your email. Please check your email again!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     FormLogin f = new FormLogin();
                     f.Show();
                     this.Close();
                 }
                 catch (Exception)
                 {
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Lỗi Cacth, không gửi đc");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Cacth error, unable to send");
+                    }
                     MessageBox.Show("Lỗi Cacth, không gửi đc");
                 }
             }
             catch
             {
-                MessageBox.Show("Sai email hoặc không được bỏ trống!              ","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Sai email hoặc không được bỏ trống!              ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Wrong email or cannot be left blank! ", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
 
             }
@@ -142,6 +168,30 @@ namespace QuanLyCongViec
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+        private void UpdateLanguage()
+        {
+
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                label1.Text = "Quên mật khẩu";
+                button1.Text = "Lấy mật khẩu";
+
+                linkLabel1.Text = "Quay lại đăng nhập";
+                email.Text = "Nhập email";
+            }
+            else if (selectedLanguage == "English")
+            {
+                label1.Text = "Forgot Password";
+                button1.Text = "Get password";
+
+                linkLabel1.Text = "Back to Sign in";
+                email.Text = "Enter Email";
+            }
         }
     }
 
