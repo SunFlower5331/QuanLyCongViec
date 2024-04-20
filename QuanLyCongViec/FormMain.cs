@@ -22,12 +22,8 @@ namespace QuanLyCongViec
         {
             InitializeNotifyIcon();
             InitializeComponent();
-            this.Resize += new EventHandler(FormMain_Resize);
             menuStrip2.Renderer = new MyRenderer();
-            thongbaocv();
-            thongbaocvnv();
-
-
+            
         }
 
         private void thongbaocv()
@@ -84,7 +80,7 @@ namespace QuanLyCongViec
             dscvcty.AutoGenerateColumns = false;
             dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
             dscvcty.Columns["chucvu"].HeaderText = "Chức vụ";
-            dscvcty.Columns["maCV"].HeaderText = "Mã công việc";
+            dscvcty.Columns["maCV"].HeaderText = "  Mã công việc";
             dscvcty.Columns["ten"].HeaderText = "Tên công việc";
             dscvcty.Columns["maNV"].HeaderText = "Mã nhân viên";
             dscvcty.Columns["hoten"].HeaderText = "Tên nhân viên";
@@ -92,6 +88,7 @@ namespace QuanLyCongViec
             dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
             dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+            dscvcty.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
 
         }
         private void loadCTCVPban()
@@ -109,7 +106,7 @@ namespace QuanLyCongViec
             dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
             dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
-
+            dscvpban.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
         }
 
 
@@ -150,22 +147,6 @@ namespace QuanLyCongViec
                 get { return Color.Silver; }
             }
         }
-        //
-        private void FormMain_Resize(object sender, EventArgs e)
-        {
-            CenterLabel();
-            //groupBox1.Size = new Size(this.ClientSize.Width - groupBox1.Location.X - 10, this.ClientSize.Height - groupBox1.Location.Y - 10);
-            menuStrip2.Size = new Size(this.ClientSize.Width - menuStrip2.Location.X - 10, this.ClientSize.Height - menuStrip2.Location.Y - 10);
-
-            //dscvcty.Size = new Size(this.ClientSize.Width - dscvcty.Location.X - 10, this.ClientSize.Height - dscvcty.Location.Y - 10);
-        }
-        private void CenterLabel()
-        {
-            int centerX = (this.ClientSize.Width - label1.Size.Width) / 2;
-            int centerY = label1.Location.Y;
-
-            label1.Location = new Point(centerX, centerY);
-        }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -173,14 +154,6 @@ namespace QuanLyCongViec
             f.Show();
             this.Hide();
 
-
-        }
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-            loadCTCVCty();
-
-            loadCTCVPban();
 
         }
 
@@ -192,28 +165,6 @@ namespace QuanLyCongViec
             this.Hide();
 
 
-        }
-
-        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Kiểm tra nếu người dùng chọn đóng cửa sổ bằng nút "X" (nút đóng cửa sổ)
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                // Hiển thị hộp thoại xác nhận
-                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                // Nếu người dùng chọn "Có", đóng chương trình
-                if (result == DialogResult.Yes)
-                {
-                    // Đóng chương trình
-                    Application.Exit();
-                }
-                else
-                {
-                    // Hủy sự kiện đóng cửa sổ
-                    e.Cancel = true;
-                }
-            }
         }
 
         private void côngViệcToolStripMenuItem_Click(object sender, EventArgs e)
@@ -279,7 +230,13 @@ namespace QuanLyCongViec
 
         private void logout_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -292,6 +249,46 @@ namespace QuanLyCongViec
             this.Hide();
             FormGuiThongBao form = new FormGuiThongBao();
             form.Show();
+        }
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            checkQuyen();
+            loadCTCVCty();
+            loadCTCVPban();
+
+        }
+
+        private void checkQuyen()
+        {
+            string id = Program.UserID;
+            int quyen = DatabaseAccess.getUserQuyen(id);
+           if(quyen==2) {
+                thongbaocvnv();
+                    ToolStripMenuItem quanliMenuItem = (ToolStripMenuItem)menuStrip2.Items["quanly"];
+                    ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
+                    ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
+                    congviecMenuItem.Enabled = false;
+                    dulieunhanvien.Enabled = false;
+
+            }
+            else if (quyen == 3)
+            {
+                thongbaocv();
+                thongbaocvnv();
+                ToolStripMenuItem quanliMenuItem = (ToolStripMenuItem)menuStrip2.Items["quanly"];
+                ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
+                ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
+                congviecMenuItem.Enabled = false;
+                dulieunhanvien.Enabled = false;
+
+             
+            }
+            else if (quyen == 1)
+            {
+                thongbaocv();
+         
+            }
+         
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
@@ -310,6 +307,17 @@ namespace QuanLyCongViec
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }
+        }
+
+        private void menuStrip2_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void timkiem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

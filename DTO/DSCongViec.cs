@@ -10,5 +10,6 @@ namespace DTO
     {
         public string maCV { get; set; }
         public string ten { get; set; }
+        public string ngayYC {  get; set; }
     }
 }

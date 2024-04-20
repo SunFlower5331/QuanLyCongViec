@@ -54,6 +54,7 @@
     <Compile Include="Quyen.cs" />
     <Compile Include="TaiKhoan.cs" />
     <Compile Include="ThanhVienCanHo.cs" />
+    <Compile Include="UyQuyen.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

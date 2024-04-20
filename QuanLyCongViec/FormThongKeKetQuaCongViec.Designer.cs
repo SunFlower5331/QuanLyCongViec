@@ -39,10 +39,12 @@
             this.TongTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BanGiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxMaNV = new System.Windows.Forms.TextBox();
+            this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
             this.labelThongKeTheo = new System.Windows.Forms.Label();
             this.labelMaNV = new System.Windows.Forms.Label();
+            this.buttonXuatPDF = new System.Windows.Forms.Button();
+            this.buttonExportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,6 +76,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
@@ -89,7 +93,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 95);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 132);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(543, 119);
             this.dataGridView1.TabIndex = 31;
@@ -129,27 +133,30 @@
             this.button1.TabIndex = 30;
             this.button1.Text = "Thống kê";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBoxMaNV
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(85, 20);
-            this.textBox1.TabIndex = 29;
+            this.textBoxMaNV.Location = new System.Drawing.Point(118, 46);
+            this.textBoxMaNV.Name = "textBoxMaNV";
+            this.textBoxMaNV.Size = new System.Drawing.Size(85, 20);
+            this.textBoxMaNV.TabIndex = 29;
             // 
-            // comboBox1
+            // comboBoxTrangThai
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Đúng hạn",
-            "Trước hạn",
+            this.comboBoxTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTrangThai.FormattingEnabled = true;
+            this.comboBoxTrangThai.Items.AddRange(new object[] {
+            "Tất cả",
+            "Hoàn thành đúng hạn",
+            "Hoàn thành sớm",
             "Trễ hạn",
+            "Chưa hoàn thành",
             "Không hoàn thành"});
-            this.comboBox1.Location = new System.Drawing.Point(308, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(87, 21);
-            this.comboBox1.TabIndex = 28;
+            this.comboBoxTrangThai.Location = new System.Drawing.Point(308, 46);
+            this.comboBoxTrangThai.Name = "comboBoxTrangThai";
+            this.comboBoxTrangThai.Size = new System.Drawing.Size(87, 21);
+            this.comboBoxTrangThai.TabIndex = 28;
             // 
             // labelThongKeTheo
             // 
@@ -158,9 +165,9 @@
             this.labelThongKeTheo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.labelThongKeTheo.Location = new System.Drawing.Point(242, 49);
             this.labelThongKeTheo.Name = "labelThongKeTheo";
-            this.labelThongKeTheo.Size = new System.Drawing.Size(50, 13);
+            this.labelThongKeTheo.Size = new System.Drawing.Size(61, 13);
             this.labelThongKeTheo.TabIndex = 27;
-            this.labelThongKeTheo.Text = "Tiến độ: ";
+            this.labelThongKeTheo.Text = "Trạng thái: ";
             // 
             // labelMaNV
             // 
@@ -173,16 +180,38 @@
             this.labelMaNV.TabIndex = 26;
             this.labelMaNV.Text = "Mã nhân viên: ";
             // 
+            // buttonXuatPDF
+            // 
+            this.buttonXuatPDF.Location = new System.Drawing.Point(503, 89);
+            this.buttonXuatPDF.Name = "buttonXuatPDF";
+            this.buttonXuatPDF.Size = new System.Drawing.Size(68, 25);
+            this.buttonXuatPDF.TabIndex = 33;
+            this.buttonXuatPDF.Text = "Xuất PDF";
+            this.buttonXuatPDF.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
+            // 
+            // buttonExportExcel
+            // 
+            this.buttonExportExcel.Location = new System.Drawing.Point(419, 89);
+            this.buttonExportExcel.Name = "buttonExportExcel";
+            this.buttonExportExcel.Size = new System.Drawing.Size(68, 25);
+            this.buttonExportExcel.TabIndex = 32;
+            this.buttonExportExcel.Text = "Xuất Excel";
+            this.buttonExportExcel.UseVisualStyleBackColor = true;
+            this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click);
+            // 
             // FormThongKeKetQuaCongViec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(593, 246);
+            this.ClientSize = new System.Drawing.Size(593, 300);
+            this.Controls.Add(this.buttonXuatPDF);
+            this.Controls.Add(this.buttonExportExcel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBoxMaNV);
+            this.Controls.Add(this.comboBoxTrangThai);
             this.Controls.Add(this.labelThongKeTheo);
             this.Controls.Add(this.labelMaNV);
             this.Controls.Add(this.minimize);
@@ -206,8 +235,8 @@
         private System.Windows.Forms.PictureBox logout;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBoxMaNV;
+        private System.Windows.Forms.ComboBox comboBoxTrangThai;
         private System.Windows.Forms.Label labelThongKeTheo;
         private System.Windows.Forms.Label labelMaNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
@@ -215,5 +244,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenCongViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTG;
         private System.Windows.Forms.DataGridViewTextBoxColumn BanGiao;
+        private System.Windows.Forms.Button buttonXuatPDF;
+        private System.Windows.Forms.Button buttonExportExcel;
     }
 }

@@ -3,12 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using OfficeOpenXml;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyCongViec
 {
@@ -20,6 +26,7 @@ namespace QuanLyCongViec
             //dsch.CellFormatting += dsch_CellFormatting;
             //dsyc.CellFormatting += dsyc_CellFormatting;
         }
+
 
         //private void dsch_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         //{
@@ -110,15 +117,15 @@ namespace QuanLyCongViec
 
             dsyc.Columns["tenCH"].Visible = checkBoxNguoiYC.Checked;
             dsyc.Columns["hoten"].Visible = checkBoxNVPT.Checked;
-            dsyc.Columns["thoiGianHoanThanh"].Visible = checkBoxThoiGian.Checked;
-            dsyc.Columns["tinhtrang"].Visible = checkBoxTinhTrangXuLy.Checked;
+            dsyc.Columns["ngayYC"].Visible = checkBoxThoiGian.Checked;
+            dsyc.Columns["trangthai"].Visible = checkBoxTinhTrangXuLy.Checked;
 
             dsyc.Columns["maCH"].HeaderText = "Mã căn hộ";
             dsyc.Columns["tenCH"].HeaderText = "Người yêu cầu";
             dsyc.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
-            dsyc.Columns["thoiGianHoanThanh"].HeaderText = "Ngày yêu cầu";
+            dsyc.Columns["ngayYC"].HeaderText = "Ngày yêu cầu";
             dsyc.Columns["ten"].HeaderText = "Nội dung";
-            dsyc.Columns["tinhtrang"].HeaderText = "Tình trạng ";
+            dsyc.Columns["trangthai"].HeaderText = "Tình trạng ";
             dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
         }
 
@@ -141,8 +148,8 @@ namespace QuanLyCongViec
 
             dsyc.Columns["tenCH"].Visible = checkBoxNguoiYC.Checked;
             dsyc.Columns["hoten"].Visible = checkBoxNVPT.Checked;
-            dsyc.Columns["thoiGianHoanThanh"].Visible = checkBoxThoiGian.Checked;
-            dsyc.Columns["tinhtrang"].Visible = checkBoxTinhTrangXuLy.Checked;
+            dsyc.Columns["ngayYC"].Visible = checkBoxThoiGian.Checked;
+            dsyc.Columns["trangthai"].Visible = checkBoxTinhTrangXuLy.Checked;
 
             dsch.Columns["maCH"].HeaderText = "Mã căn hộ";
             dsch.Columns["tenCH"].HeaderText = "Tên chủ hộ";
@@ -158,53 +165,13 @@ namespace QuanLyCongViec
             dsyc.Columns["maCH"].HeaderText = "Mã căn hộ";
             dsyc.Columns["tenCH"].HeaderText = "Người yêu cầu";
             dsyc.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
-            dsyc.Columns["thoiGianHoanThanh"].HeaderText = "Ngày yêu cầu";
+            dsyc.Columns["ngayYC"].HeaderText = "Ngày yêu cầu";
             dsyc.Columns["ten"].HeaderText = "Nội dung";
-            dsyc.Columns["tinhtrang"].HeaderText = "Tình trạng ";
+            dsyc.Columns["trangthai"].HeaderText = "Tình trạng ";
             dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
         }
 
         private void FormBaoCao_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dsch_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
         {
 
         }
@@ -236,5 +203,157 @@ namespace QuanLyCongViec
         {
             loadBaoCaoTimKiem(dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
         }
+
+        private void buttonExportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "DataGridViewExport.xlsx";
+            saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcel(saveFileDialog.FileName, dsch);
+                    Process.Start(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                }
+            }
+        }
+
+        private void buttonExportExcel2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "DataGridViewExport.xlsx";
+            saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcel(saveFileDialog.FileName, dsyc);
+                    Process.Start(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                }
+            }
+        }
+
+        private void ExportExcel(string path, DataGridView data)
+        {
+            Excel.Application application = new Excel.Application();
+            application.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < data.Columns.Count; i++)
+            {
+                application.Cells[1, i + 1] = data.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                for (int j = 0; j < data.Columns.Count; j++)
+                {
+                    application.Cells[i + 2, j + 1] = data.Rows[i].Cells[j].Value;
+                }
+            }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(path);
+            application.ActiveWorkbook.Saved = true;
+        }
+
+        private void buttonXuatPDF_Click(object sender, EventArgs e)
+        {
+            if (dsch.Rows.Count > 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF (*.pdf)|*.pdf";
+                saveFileDialog.FileName = "DataGridViewExport.pdf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var htmlContent = GetHtmlFromDataGridView(dsch);
+                    var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
+                    Process.Start(pdfFile);
+                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+            }
+        }
+
+        private void buttonXuatPDF2_Click(object sender, EventArgs e)
+        {
+            if (dsyc.Rows.Count > 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF (*.pdf)|*.pdf";
+                saveFileDialog.FileName = "DataGridViewExport.pdf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var htmlContent = GetHtmlFromDataGridView(dsyc);
+                    var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
+                    Process.Start(pdfFile);
+                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+            }
+        }
+
+        private string GetHtmlFromDataGridView(DataGridView dataGridView)
+        {
+            string fileName = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("ddMMyyyyhhmmss") + ".html");
+            string html = "<!DOCTYPE html><html><head><style>table { border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; }</style></head><body><table>";
+
+            // Add headers
+            html += "<tr>";
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                html += "<th>" + column.HeaderText + "</th>";
+            }
+            html += "</tr>";
+
+            // Add data
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                html += "<tr>";
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    html += "<td>" + cell.Value.ToString() + "</td>";
+                }
+                html += "</tr>";
+            }
+
+            html += "</table></body></html>";
+
+            System.IO.File.WriteAllText(fileName, html);
+            return fileName;
+        }
+
+        private string TransferHtmlToPdf(string htmlContent, string pdfFilePath)
+        {
+            string pdfFile = pdfFilePath.Replace(".html", ".pdf");
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
+            info.Arguments = "--headless --disable-gpu --print-to-pdf=\"" + pdfFile + "\" \"" + htmlContent + "\"";
+            info.CreateNoWindow = true;
+            Process process = new Process();
+            process.StartInfo = info;
+            process.Start();
+            process.WaitForExit();
+
+            return pdfFile;
+        }
+
     }
+    
+    
 }

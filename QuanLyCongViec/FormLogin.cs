@@ -62,7 +62,7 @@ namespace QuanLyCongViec
                 FormMain fm = new FormMain();
                 fm.Show();
                 this.Hide();
-                CheckQuyen();
+               
             }
                 
            
@@ -88,51 +88,16 @@ namespace QuanLyCongViec
                     return false;
             }
             Program.UserID = tk.id;
+            string trangthai = DatabaseAccess.getloaihinh(tk.id);
+            if (string.Equals(trangthai, "Đã nghĩ việc", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào ứng dụng!");
+                return false;
+            }
+
             return true;
         }
-    private void CheckQuyen()
-{
-  
-        FormMain main = (FormMain)Application.OpenForms["FormMain"];
-        string mapb = Program.getUserIDPB();
-        if (mapb != "CEO")
-        {
-            int userQuyen = DatabaseAccess.getUserQuyen(user.Text);
-            FormDuLieuNhanVien formDuLieuNhanVien = (FormDuLieuNhanVien)Application.OpenForms["FormDuLieuNhanVien"];
 
-            ToolStripMenuItem quanlyMenuItem = (ToolStripMenuItem)main.menuStrip2.Items["quanly"];
-            ToolStripMenuItem congviecMenuItem = (ToolStripMenuItem)quanlyMenuItem.DropDownItems["congviec"];
-                /*TabControl tabControl = formDuLieuNhanVien.tabDulieu;
-                TabPage tabTK = tabControl.TabPages["TaiKhoan"];*/
-                
-
-
-
-
-
-                switch (userQuyen)
-            {
-                case 2:
-
-                        congviecMenuItem.Enabled = false;
-                      
-                        // formDuLieuNhanVien.tabDulieu.TabPages["Quyen"].Visible = false;
-                       // formDuLieuNhanVien.chucnang.Visible = false;
-
-                        break;
-                case 3:
-                        congviecMenuItem.Enabled = false;
-                       /* formDuLieuNhanVien.tabDulieu.TabPages["TaiKhoan"].Visible = false;
-                        formDuLieuNhanVien.tabDulieu.TabPages["Quyen"].Visible = false;*/
-                        //formDuLieuNhanVien.chucnang.Visible = false;
-
-                        break;
-                default:
-                    break;
-            }
-        }
-    
-}
 
 
 

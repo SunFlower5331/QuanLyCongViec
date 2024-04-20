@@ -29,13 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBaoCao));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonXuatPDF = new System.Windows.Forms.Button();
+            this.buttonExportExcel = new System.Windows.Forms.Button();
             this.dsch = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonXuatPDF2 = new System.Windows.Forms.Button();
             this.dsyc = new System.Windows.Forms.DataGridView();
+            this.buttonExportExcel2 = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -60,6 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsch)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsyc)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -70,6 +79,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.buttonXuatPDF);
+            this.groupBox1.Controls.Add(this.buttonExportExcel);
             this.groupBox1.Controls.Add(this.dsch);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(12, 160);
@@ -78,30 +89,52 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách căn hộ";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // buttonXuatPDF
+            // 
+            this.buttonXuatPDF.Location = new System.Drawing.Point(794, 90);
+            this.buttonXuatPDF.Name = "buttonXuatPDF";
+            this.buttonXuatPDF.Size = new System.Drawing.Size(68, 37);
+            this.buttonXuatPDF.TabIndex = 20;
+            this.buttonXuatPDF.Text = "Xuất PDF";
+            this.buttonXuatPDF.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
+            // 
+            // buttonExportExcel
+            // 
+            this.buttonExportExcel.Location = new System.Drawing.Point(794, 28);
+            this.buttonExportExcel.Name = "buttonExportExcel";
+            this.buttonExportExcel.Size = new System.Drawing.Size(68, 37);
+            this.buttonExportExcel.TabIndex = 19;
+            this.buttonExportExcel.Text = "Xuất Excel";
+            this.buttonExportExcel.UseVisualStyleBackColor = true;
+            this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click);
             // 
             // dsch
             // 
+            this.dsch.AllowUserToAddRows = false;
             this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsch.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsch.DefaultCellStyle = dataGridViewCellStyle4;
             this.dsch.Location = new System.Drawing.Point(11, 19);
             this.dsch.Name = "dsch";
-            this.dsch.Size = new System.Drawing.Size(847, 178);
+            this.dsch.Size = new System.Drawing.Size(770, 178);
             this.dsch.TabIndex = 5;
-            this.dsch.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsch_CellContentClick);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.buttonXuatPDF2);
             this.groupBox2.Controls.Add(this.dsyc);
+            this.groupBox2.Controls.Add(this.buttonExportExcel2);
+            this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(12, 380);
             this.groupBox2.Name = "groupBox2";
@@ -109,24 +142,74 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách yêu cầu";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // buttonXuatPDF2
+            // 
+            this.buttonXuatPDF2.Location = new System.Drawing.Point(794, 101);
+            this.buttonXuatPDF2.Name = "buttonXuatPDF2";
+            this.buttonXuatPDF2.Size = new System.Drawing.Size(68, 37);
+            this.buttonXuatPDF2.TabIndex = 24;
+            this.buttonXuatPDF2.Text = "Xuất PDF";
+            this.buttonXuatPDF2.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF2.Click += new System.EventHandler(this.buttonXuatPDF2_Click);
             // 
             // dsyc
             // 
+            this.dsyc.AllowUserToAddRows = false;
             this.dsyc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dsyc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsyc.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsyc.DefaultCellStyle = dataGridViewCellStyle5;
             this.dsyc.Location = new System.Drawing.Point(11, 19);
             this.dsyc.Name = "dsyc";
-            this.dsyc.Size = new System.Drawing.Size(847, 196);
+            this.dsyc.Size = new System.Drawing.Size(770, 196);
             this.dsyc.TabIndex = 6;
+            // 
+            // buttonExportExcel2
+            // 
+            this.buttonExportExcel2.Location = new System.Drawing.Point(794, 39);
+            this.buttonExportExcel2.Name = "buttonExportExcel2";
+            this.buttonExportExcel2.Size = new System.Drawing.Size(68, 37);
+            this.buttonExportExcel2.TabIndex = 23;
+            this.buttonExportExcel2.Text = "Xuất Excel";
+            this.buttonExportExcel2.UseVisualStyleBackColor = true;
+            this.buttonExportExcel2.Click += new System.EventHandler(this.buttonExportExcel2_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.ForeColor = System.Drawing.Color.Black;
+            this.groupBox5.Location = new System.Drawing.Point(12, 380);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(872, 224);
+            this.groupBox5.TabIndex = 25;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Danh sách yêu cầu";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView1.Location = new System.Drawing.Point(11, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(770, 196);
+            this.dataGridView1.TabIndex = 6;
             // 
             // minimize
             // 
@@ -271,7 +354,6 @@
             this.checkBoxTinhTrangXuLy.TabIndex = 1;
             this.checkBoxTinhTrangXuLy.Text = "Tình trạng xử lý";
             this.checkBoxTinhTrangXuLy.UseVisualStyleBackColor = true;
-            this.checkBoxTinhTrangXuLy.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBoxNguoiYC
             // 
@@ -283,7 +365,6 @@
             this.checkBoxNguoiYC.TabIndex = 0;
             this.checkBoxNguoiYC.Text = "Người yêu cầu";
             this.checkBoxNguoiYC.UseVisualStyleBackColor = true;
-            this.checkBoxNguoiYC.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // dateTimePickerEnd
             // 
@@ -373,6 +454,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsch)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsyc)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -411,5 +494,11 @@
         private System.Windows.Forms.Button buttonXacNhan;
         private System.Windows.Forms.TextBox textBoxTimKiem;
         private System.Windows.Forms.Button timkiem;
+        private System.Windows.Forms.Button buttonExportExcel;
+        private System.Windows.Forms.Button buttonXuatPDF;
+        private System.Windows.Forms.Button buttonXuatPDF2;
+        private System.Windows.Forms.Button buttonExportExcel2;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

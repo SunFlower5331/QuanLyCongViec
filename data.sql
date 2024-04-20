@@ -1,8 +1,10 @@
-create DATABASE QuanlyCongViec;
+CREATE DATABASE QuanlyCongViec;
 GO
 
 USE QuanLyCongViec;
 GO
+SET DATEFORMAT DMY;
+
 CREATE TABLE PhongBan (
     id VARCHAR(50) PRIMARY KEY,
     ten NVARCHAR(255)
@@ -69,7 +71,7 @@ CREATE TABLE CanHo (
 	nuocngaynhan FLOAT,
 	
 );
-
+select *from Taikhoan
 CREATE TABLE DVCanHo (
     maCH VARCHAR(50),
     tinhtrang NVARCHAR(255),
@@ -89,7 +91,18 @@ CREATE TABLE CTCV (
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv), 
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
 );
-
+CREATE TABLE DsUyQuyenCV (
+	maNV_cu VARCHAR(50),
+    maCV VARCHAR(50),
+    maNV_moi VARCHAR(50),  
+    trangthai NVARCHAR(50),
+    thoiGianHoanThanh DATE,
+    songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
+    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE
+    FOREIGN KEY (maNV_moi) REFERENCES NhanVien(manv), 
+	FOREIGN KEY (maNV_cu) REFERENCES NhanVien(manv), 
+    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
+);
 CREATE TABLE Tuychonchiase_MaNV (
     maCV VARCHAR(50),
     maNV VARCHAR(50),
@@ -117,6 +130,7 @@ CREATE TABLE DangKyDoXe (
 	
 );
 
+
 --bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
 
 
@@ -134,15 +148,43 @@ CREATE TABLE Chiphicanho(
     TongPhiDichVu FLOAT,
     TongChiPhiDienNuoc FLOAT
 ); 
+-- go
+--CREATE TRIGGER UpdateTongChiPhiDienNuoc
+--ON Chiphicanho
+---AFTER INSERT, UPDATE
+--AS
+--BEGIN
+  --  UPDATE c
+    --SET c.sodien = i.sodien,
+      --  c.phidien = i.phidien,
+        --c.sonuoc = i.sonuoc,
+        --c.phinuoc = i.phinuoc,
+        --c.TongphiQuanLy = i.TongphiQuanLy,
+        --c.TongPhiDichVu = i.TongPhiDichVu
+    --FROM Chiphicanho c
+    --INNER JOIN inserted i ON c.maCD = i.maCD AND c.maCH = i.maCH;
+--END;
+--GO
 
 CREATE TABLE UyQuyen(
 	maUQ VARCHAR(50) PRIMARY KEY,
 	tenchucnang NVARCHAR(255),
-	)
+);
 CREATE TABLE DsUyQuyen(
 	maUQ VARCHAR(50) FOREIGN KEY REFERENCES UyQuyen(maUQ),
 	maNV VARCHAR(50) FOREIGN KEY REFERENCES NhanVien(maNV)
-	)
+);
+SELECT * FROM DsUyQuyenCV;
+
+go
+CREATE PROC proc_CV
+@maCV VARCHAR(255),
+@maNV VARCHAR(255)
+AS 
+BEGIN
+    SELECT * FROM CTCV WHERE maCV = @maCV AND maNV = @maNV;
+END;
+GO
 
 go
 CREATE PROC proc_logic
@@ -153,50 +195,78 @@ BEGIN
     SELECT * FROM Taikhoan WHERE id = @user AND mk = @pass;
 END;
 GO
+-- Thêm dữ liệu vào bảng PhongBan và Quyen
+INSERT INTO PhongBan  VALUES ('GD', N'CEO');
+INSERT INTO PhongBan  VALUES ('VS', N'Bộ phận Vệ Sinh');
+INSERT INTO PhongBan  VALUES ('DV', N'Hành chính Nhân sự & Dịch vụ Cư Dân');
+INSERT INTO PhongBan  VALUES ('TC', N'Tài chính Kế toán');
+INSERT INTO PhongBan  VALUES ('AN', N'An Ninh');
+INSERT INTO PhongBan  VALUES ('KT', N'Kỹ Thuật Bảo Trì');
+INSERT INTO PhongBan  VALUES ('XD', N'Xây Dựng');
 
-INSERT INTO PhongBan VALUES ('TC', 'Tài chính kế toán'),('VS', 'Vệ sinh'),('AN', 'An ninh'),('KT', 'Kỹ thuật')
-,('XD', 'Xây dựng');
-
--- Thêm dữ liệu vào bảng Quyen
-INSERT INTO Quyen VALUES (1, 'CEO');
-INSERT INTO Quyen VALUES (2, 'Quản lý');
-INSERT INTO Quyen VALUES (3, 'Nhân viên');
+INSERT INTO Quyen (id, ten)  
+VALUES (1, N'CEO'),
+       (2, N'Quản lý'),
+	   (3, N'Nhân viên')
 
 -- Thêm dữ liệu vào bảng NhanVien
-INSERT INTO NhanVien VALUES ('KT001', N'Nguyễn Văn A', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'KT', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 1);
-INSERT INTO NhanVien VALUES ('TC002', N'Trần Thị B', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'XD', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 2);
-
-INSERT INTO NhanVien VALUES ('VS003', N'Nguyễn Văn AN', '1990-05-15', 'Nam', N'Hà Nội', '0987654321', 'nva@example.com', N'Nhân viên kỹ thuật', 'VS', 15000000, N'Đang làm việc', N'Cử nhân CNTT', N'Thực tập', 3);
-INSERT INTO NhanVien VALUES ('AN004', N'Trần Thị BẢO', '1995-02-15', 'Nữ', N'Hồ Chí Minh', '0123456789', 'ttb@example.com', N'Nhân viên kỹ thuật xây dựng', 'AN', 12000000, N'Đang làm việc', N'Cử nhân Kinh doanh', N'Thực tập', 3);
+INSERT INTO NhanVien (manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan)
+VALUES ('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Đã nghĩ việc', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
+('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Chưa bắt đầu', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
+       ('KT-501', N'Phạm Văn Hùng', '03/01/1990', N'Nam', N'Đà Nẵng', '0381276137', 'embemay772023@gmail.com', N'Nhân viên kỹ thuật', 'KT', 20000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
+	   ('XD-603', N'Quách Minh Toàn', '21/12/1989', N'Nam', N'Lâm Đồng', '0356798212', 'parkjihyun187@gmail.com', N'Nhân viên xây dựng', 'XD', 15000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
+	   ('XD-601', N'Ngô Ngọc Trọng', '24/10/1997', N'Nam', N'Tiền Giang', '0327431639', 'npminhtri24102004@gmail.com', N'Nhân viên xây dựng', 'XD', 10000000, N'Hẹn lại khách', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
+	   ('KT-502', N'Lê Quang Hải', '22/11/1999', N'Nam', N'Lâm Đồng', '0342671089', 'trinhletuyetnhung.hvt@gmail.com', N'Nhân viên kỹ thuật', 'KT', 5000000, N'Đã xong', N'Tốt nghiệp đại học', N'Nhân viên Part-time', 3)
 -- Thêm dữ liệu vào bảng Taikhoan
-INSERT INTO Taikhoan VALUES ('KT001', '123', 1);
-INSERT INTO Taikhoan VALUES ('TC002', '123', 2);
-INSERT INTO Taikhoan VALUES ('VS003', '123', 3),('ANNV004', '123', 3);
+INSERT INTO Taikhoan (id, mk, loaiTK)
+VALUES ('VS-301', '123', 1),
+	   ('KT-501', '123', 2),
+	   ('XD-603', '123', 3),
+	   ('XD-601', '123', 3),
+	   ('KT-502', '123', 3)
+SELECT * FROM Taikhoan
 -- Thêm dữ liệu vào bảng DsCongViec
-INSERT INTO DsCongViec VALUES (1, N'Sửa đèn');
-INSERT INTO DsCongViec VALUES (2, N'Sửa nước');
 
+INSERT INTO DsCongViec (maCV, ten)
+VALUES ('1', N'Kiểm tra hệ thống thoát nước'),
+	   ('2', N'Sửa chuông cửa'),
+	   ('3', N'Bảo dưỡng máy lạnh'),
+	   ('4', N'Vệ sinh'),
+	   ('5', N'Kiểm tra Sàn gỗ'),
+	   ('6', N'Sửa điện'),
+	   ('7', N'Chốt chỉ số điện'),
+	   ('8', N'Chốt chỉ số nước'),
+	   ('9', N'Kiểm tra hệ thống công tắc')
 -- Thêm dữ liệu vào bảng CuDan
-INSERT INTO CuDan VALUES (1, N'Căn hộ', N'Trần Văn Dũng', '1990-01-01', '123456789', '0123456789', 'dungtv@example.com', N'Việt Nam', 'Số 123, đường ABC', '0987654321', 0, N'Không');
-INSERT INTO CuDan VALUES (2, N'Biệt thự', N'Nguyễn Thị Hằng', '1985-07-10', '987654321', '0987654321', 'hangnt@example.com', N'Việt Nam', 'Số 456, đường XYZ', '0123456789', 0, N'Có');
+INSERT INTO CuDan (maCD, hinhthuc, tenCH,  ngaysinh, cccd, sdt, email, quoctich, sothetamtru, sdt_nguoithan, tinhtrangcongno, dk_thucung)
+VALUES ('CD1', N'Căn hộ FS', N'Nguyễn Văn A', '01/01/1993', '123456789', '0123456788', 'nva@gmail.com', N'Việt Nam', 'c', '0987654322', 0, N'Không'),
+	   ('CD2', N'Căn hộ GS', N'Đoàn Đăng B', '10/07/1985', '987654321', '0987654456', 'doandangb@gmail.com', N'Việt Nam', 'AA034569', '0128856789', 0, N'Có'),
+	   ('CD3', N'Căn hộ Penthouse', N'Phạm Hoàng C', '05/07/1998', '456587764', '0379553745', 'phamhoangc98@gmail.com', N'Việt Nam', 'CC097654', '0128856789', 0, N'Có')
 
 -- Thêm dữ liệu vào bảng CanHo
-INSERT INTO CanHo VALUES (1, 1, '2024-01-01', '2024-01-15', NULL, 500000, 100000, 100);
-INSERT INTO CanHo VALUES (2, 2, '2024-02-01', '2024-02-15', NULL, 600000, 120000, 120);
+INSERT INTO CanHo (maCH, maCD, ngaynhan, ngaychuyenvao, ngaychuyendi, phidv, phiql, dienngaynhan, nuocngaynhan)
+VALUES ('W2910', 'CD1', '01/02/2023', '02/02/2023', NULL, 500000, 100000, 100, 50),
+       ('W3508', 'CD2', '15/02/2024', '17/02/2024', NULL, 600000, 120000, 150, 70)
 
 -- Thêm dữ liệu vào bảng DVCanHo
-INSERT INTO DVCanHo VALUES (1, N'Đã hoàn thành', N'Vệ sinh chung cư', 1);
-INSERT INTO DVCanHo VALUES (2, N'Chưa hoàn thành', N'Sửa chữa cơ bản', 2);
-
+INSERT INTO DVCanHo (maCH, tinhtrang, DV_dinhky, maCV)
+VALUES ('W2910', N'Đang có người ở', N'Vệ sinh','2'),
+('W2910', N'Đang có người ở', N'Vệ sinh','4'),
+       ('W3508', N'Đã bàn giao', N'Kiểm tra hệ thống công tắc','9')
+SELECT * FROM DVCanHo
 -- Thêm dữ liệu vào bảng CTCV
----CẦN SỬA
+INSERT INTO CTCV
+VALUES ('4', 'VS-301', N'Chưa bắt đầu', '10/02/2024',  N'Công việc chung'),
+	   ('2', 'KT-502', N'Đã hoàn thành', '02/02/2024', N'Bộ phận')
 
 
 -- Thêm dữ liệu vào bảng ThanhVienCanHo
-INSERT INTO ThanhVienCanHo VALUES (1, 1, N'Nguyễn Thị Hồng', N'Vợ');
-INSERT INTO ThanhVienCanHo VALUES (2, 2, N'Nguyễn Văn B', N'Chồng');
+INSERT INTO ThanhVienCanHo(maTV, maCD, tenTV, MoiQuanHe) 
+VALUES ('TV1', 'CD1', N'Nguyễn Thị Hồng', N'Vợ'),
+       ('TV2', 'CD2', N'Nguyễn Văn B', N'Chồng')
 
 -- Thêm dữ liệu vào bảng DangKyDoXe
-INSERT INTO DangKyDoXe VALUES (1, 1, '123ABC', N'Oto', N'Cá nhân');
-INSERT INTO DangKyDoXe VALUES (2, 2, '456XYZ', N'Oto', N'Công ty');
+INSERT INTO DangKyDoXe (maDK, maCH, bienSo, chungloai, loai) 
+VALUES (01, 'W2910', '48AD- 17456', N'xe tay ga', N'Vision'),
+	   (02, 'W3508', '456XYZ', N'Oto', N'Công ty')
 

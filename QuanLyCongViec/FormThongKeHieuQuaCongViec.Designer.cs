@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThongKeHieuQuaCongViec));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF = new System.Windows.Forms.Button();
+            this.buttonExportExcel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoThongKe1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +48,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF2 = new System.Windows.Forms.Button();
+            this.buttonExportExcel2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxPB = new System.Windows.Forms.ComboBox();
             this.comboBoThongKe2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +66,6 @@
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.comboBoxPB = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -87,6 +91,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.buttonXuatPDF);
+            this.tabPage2.Controls.Add(this.buttonExportExcel);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.labelDeMucBieuDo);
             this.tabPage2.Controls.Add(this.panel1);
@@ -97,6 +103,26 @@
             this.tabPage2.Size = new System.Drawing.Size(1086, 442);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nhân viên";
+            // 
+            // buttonXuatPDF
+            // 
+            this.buttonXuatPDF.Location = new System.Drawing.Point(519, 6);
+            this.buttonXuatPDF.Name = "buttonXuatPDF";
+            this.buttonXuatPDF.Size = new System.Drawing.Size(76, 31);
+            this.buttonXuatPDF.TabIndex = 23;
+            this.buttonXuatPDF.Text = "Xuất PDF";
+            this.buttonXuatPDF.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
+            // 
+            // buttonExportExcel
+            // 
+            this.buttonExportExcel.Location = new System.Drawing.Point(416, 6);
+            this.buttonExportExcel.Name = "buttonExportExcel";
+            this.buttonExportExcel.Size = new System.Drawing.Size(76, 31);
+            this.buttonExportExcel.TabIndex = 22;
+            this.buttonExportExcel.Text = "Xuất Excel";
+            this.buttonExportExcel.UseVisualStyleBackColor = true;
+            this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click);
             // 
             // groupBox1
             // 
@@ -117,7 +143,6 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống kê theo ";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // comboBoThongKe1
             // 
@@ -230,25 +255,27 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 43);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(698, 430);
+            this.dataGridView1.Size = new System.Drawing.Size(688, 390);
             this.dataGridView1.TabIndex = 5;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.buttonXuatPDF2);
+            this.tabPage1.Controls.Add(this.buttonExportExcel2);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.labelDeMucBieuDo2);
             this.tabPage1.Controls.Add(this.panel2);
@@ -259,6 +286,26 @@
             this.tabPage1.Size = new System.Drawing.Size(1086, 442);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bộ phận";
+            // 
+            // buttonXuatPDF2
+            // 
+            this.buttonXuatPDF2.Location = new System.Drawing.Point(519, 6);
+            this.buttonXuatPDF2.Name = "buttonXuatPDF2";
+            this.buttonXuatPDF2.Size = new System.Drawing.Size(76, 31);
+            this.buttonXuatPDF2.TabIndex = 26;
+            this.buttonXuatPDF2.Text = "Xuất PDF";
+            this.buttonXuatPDF2.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF2.Click += new System.EventHandler(this.buttonXuatPDF2_Click);
+            // 
+            // buttonExportExcel2
+            // 
+            this.buttonExportExcel2.Location = new System.Drawing.Point(416, 6);
+            this.buttonExportExcel2.Name = "buttonExportExcel2";
+            this.buttonExportExcel2.Size = new System.Drawing.Size(76, 31);
+            this.buttonExportExcel2.TabIndex = 25;
+            this.buttonExportExcel2.Text = "Xuất Excel";
+            this.buttonExportExcel2.UseVisualStyleBackColor = true;
+            this.buttonExportExcel2.Click += new System.EventHandler(this.buttonExportExcel2_Click);
             // 
             // groupBox2
             // 
@@ -280,6 +327,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thống kê theo ";
             // 
+            // comboBoxPB
+            // 
+            this.comboBoxPB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPB.FormattingEnabled = true;
+            this.comboBoxPB.Items.AddRange(new object[] {
+            "KT",
+            "DV",
+            "TC",
+            "VS",
+            "AN",
+            "XD"});
+            this.comboBoxPB.Location = new System.Drawing.Point(120, 21);
+            this.comboBoxPB.Name = "comboBoxPB";
+            this.comboBoxPB.Size = new System.Drawing.Size(112, 21);
+            this.comboBoxPB.TabIndex = 17;
+            // 
             // comboBoThongKe2
             // 
             this.comboBoThongKe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -291,7 +354,6 @@
             this.comboBoThongKe2.Name = "comboBoThongKe2";
             this.comboBoThongKe2.Size = new System.Drawing.Size(239, 21);
             this.comboBoThongKe2.TabIndex = 16;
-            this.comboBoThongKe2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -302,7 +364,6 @@
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Thống kê theo:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label1
             // 
@@ -386,11 +447,12 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView2.Location = new System.Drawing.Point(6, 43);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(698, 430);
+            this.dataGridView2.Size = new System.Drawing.Size(688, 390);
             this.dataGridView2.TabIndex = 15;
             // 
             // minimize
@@ -416,22 +478,6 @@
             this.logout.TabIndex = 27;
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
-            // 
-            // comboBoxPB
-            // 
-            this.comboBoxPB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPB.FormattingEnabled = true;
-            this.comboBoxPB.Items.AddRange(new object[] {
-            "KT",
-            "DV",
-            "TC",
-            "VS",
-            "AN",
-            "XD"});
-            this.comboBoxPB.Location = new System.Drawing.Point(120, 21);
-            this.comboBoxPB.Name = "comboBoxPB";
-            this.comboBoxPB.Size = new System.Drawing.Size(112, 21);
-            this.comboBoxPB.TabIndex = 17;
             // 
             // FormThongKeHieuQuaCongViec
             // 
@@ -498,5 +544,9 @@
         private System.Windows.Forms.ComboBox comboBoThongKe2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxPB;
+        private System.Windows.Forms.Button buttonXuatPDF;
+        private System.Windows.Forms.Button buttonExportExcel;
+        private System.Windows.Forms.Button buttonXuatPDF2;
+        private System.Windows.Forms.Button buttonExportExcel2;
     }
 }

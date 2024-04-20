@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace QuanLyCongViec
         public FormUpload_Download()
         {
             InitializeComponent();
+            LoadPdfList();
             //dsTaiLieu.CellFormatting += dsTaiLieu_CellFormatting;
         }
         //private void dsTaiLieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -58,5 +60,72 @@ namespace QuanLyCongViec
             this.Hide();
         }
 
+        private void LoadPdfList()
+        {
+            dsTaiLieu.Columns.Clear();
+            dsTaiLieu.DataSource = DatabaseAccess.LoadPdfDataToDataGridView();
+            dsTaiLieu.Columns["FileName"].HeaderText = "Tên file";
+        }
+
+        private void buttonChonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxFilePath.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void buttonTaiLen_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxFilePath.Text))
+            {
+                string filePath = textBoxFilePath.Text;
+                bool uploadResult = DatabaseAccess.UploadPdfToDatabase(filePath);
+                if (uploadResult)
+                {
+                    MessageBox.Show("File PDF đã được tải lên cơ sở dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textBoxFilePath.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi tải lên file PDF!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            LoadPdfList();
+        }
+
+        private void buttonTaiXuong_Click(object sender, EventArgs e)
+        {
+            if (dsTaiLieu.SelectedRows.Count > 0)
+            {
+                int selectedPdfId = Convert.ToInt32(dsTaiLieu.SelectedRows[0].Cells["Id"].Value);
+                string selectedPdfFileName = dsTaiLieu.SelectedRows[0].Cells["FileName"].Value.ToString();
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+                saveFileDialog.FileName = selectedPdfFileName;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string savePath = saveFileDialog.FileName;
+                    bool downloadResult = DatabaseAccess.DownloadPdfFromDatabase(selectedPdfId, savePath);
+                    if (downloadResult)
+                    {
+                        MessageBox.Show("File PDF đã được tải xuống thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra khi tải xuống file PDF!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một tệp PDF để tải xuống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

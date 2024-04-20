@@ -14,6 +14,10 @@ using DAL;
 using System.Data.SqlClient;
 using DTO;
 using System.Runtime.ConstrainedExecution;
+using System.Diagnostics;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using System.Drawing.Printing;
 
 namespace QuanLyCongViec
 {
@@ -103,7 +107,7 @@ namespace QuanLyCongViec
                 dataGridView1.Columns["ten"].HeaderText = "Tên công việc";
                 dataGridView1.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             }
-
+            dataGridView1.Columns["solanchuahoanthanh"].HeaderText = "Chưa hoàn thành";
             dataGridView1.Columns["solantrehan"].HeaderText = "Trễ hạn";
             dataGridView1.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
             dataGridView1.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
@@ -126,9 +130,9 @@ namespace QuanLyCongViec
 
                 dataGridView2.Columns["maNV"].HeaderText = "Mã nhân viên";
                 dataGridView2.Columns["hoten"].HeaderText = "Họ tên";
-                dataGridView2.Columns["luong"].HeaderText = "Doanh thu";
+                dataGridView2.Columns["luong"].HeaderText = "Lương";
             }
-
+            dataGridView2.Columns["solanchuahoanthanh"].HeaderText = "Chưa hoàn thành";
             dataGridView2.Columns["solantrehan"].HeaderText = "Trễ hạn";
             dataGridView2.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
             dataGridView2.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
@@ -153,6 +157,12 @@ namespace QuanLyCongViec
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 DataRow row = data.Tables[0].Rows[0];
+                seriesCollection.Add(new PieSeries
+                {
+                    Title = "Chưa hoàn thành",
+                    Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
+                    DataLabels = true
+                });
                 seriesCollection.Add(new PieSeries
                 {
                     Title = "Trễ hạn",
@@ -185,7 +195,6 @@ namespace QuanLyCongViec
             }
         }
 
-
         private void button2_Click(object sender, EventArgs e)
         {
             // show table
@@ -203,6 +212,12 @@ namespace QuanLyCongViec
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 DataRow row = data.Tables[0].Rows[0];
+                seriesCollection.Add(new PieSeries
+                {
+                    Title = "Chưa hoàn thành",
+                    Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
+                    DataLabels = true
+                });
                 seriesCollection.Add(new PieSeries
                 {
                     Title = "Trễ hạn",
@@ -245,18 +260,154 @@ namespace QuanLyCongViec
             return DatabaseAccess.GetDuLieuThongKeHieuQuaCVPBTongQuan(maPB, ngayBatDau, ngayKetThuc);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void buttonXuatPDF_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF (*.pdf)|*.pdf";
+                saveFileDialog.FileName = "DataGridViewExport.pdf";
 
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var htmlContent = GetHtmlFromDataGridView(dataGridView1);
+                    var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
+                    Process.Start(pdfFile);
+                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+            }
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private string GetHtmlFromDataGridView(DataGridView dataGridView)
         {
+            string fileName = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("ddMMyyyyhhmmss") + ".html");
+            string html = "<!DOCTYPE html><html><head><style>table { border-collapse: collapse; } th, td { border: 1px solid black; padding: 8px; }</style></head><body><table>";
 
+            // Add headers
+            html += "<tr>";
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                html += "<th>" + column.HeaderText + "</th>";
+            }
+            html += "</tr>";
+
+            // Add data
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                html += "<tr>";
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    html += "<td>" + cell.Value.ToString() + "</td>";
+                }
+                html += "</tr>";
+            }
+
+            html += "</table></body></html>";
+
+            System.IO.File.WriteAllText(fileName, html);
+            return fileName;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private string TransferHtmlToPdf(string htmlContent, string pdfFilePath)
         {
+            string pdfFile = pdfFilePath.Replace(".html", ".pdf");
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
+            info.Arguments = "--headless --disable-gpu --print-to-pdf=\"" + pdfFile + "\" \"" + htmlContent + "\"";
+            info.CreateNoWindow = true;
+            Process process = new Process();
+            process.StartInfo = info;
+            process.Start();
+            process.WaitForExit();
+
+            return pdfFile;
+        }
+
+        private void buttonExportExcel_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "DataGridViewExport.xlsx";
+            saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcel(saveFileDialog.FileName, dataGridView1);
+                    Process.Start(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                }
+            }
+        }
+
+        private void ExportExcel(string path, DataGridView data)
+        {
+            Excel.Application application = new Excel.Application();
+            application.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < data.Columns.Count; i++)
+            {
+                application.Cells[1, i + 1] = data.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                for (int j = 0; j < data.Columns.Count; j++)
+                {
+                    application.Cells[i + 2, j + 1] = data.Rows[i].Cells[j].Value;
+                }
+            }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(path);
+            application.ActiveWorkbook.Saved = true;
+        }
+
+
+        private void buttonExportExcel2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "DataGridViewExport.xlsx";
+            saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ExportExcel(saveFileDialog.FileName, dataGridView2);
+                    Process.Start(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                }
+            }
+        }
+
+        private void buttonXuatPDF2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF (*.pdf)|*.pdf";
+                saveFileDialog.FileName = "DataGridViewExport.pdf";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var htmlContent = GetHtmlFromDataGridView(dataGridView2);
+                    var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
+                    Process.Start(pdfFile);
+                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+            }
 
         }
     }

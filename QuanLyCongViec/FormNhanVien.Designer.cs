@@ -117,7 +117,7 @@
             // gioitinh
             // 
             this.gioitinh.AutoSize = true;
-            this.gioitinh.ForeColor = System.Drawing.Color.White;
+            this.gioitinh.ForeColor = System.Drawing.Color.Black;
             this.gioitinh.Location = new System.Drawing.Point(270, 30);
             this.gioitinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gioitinh.Name = "gioitinh";
@@ -145,7 +145,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(270, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -156,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(8, 98);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
@@ -176,7 +176,7 @@
             // macanho
             // 
             this.macanho.AutoSize = true;
-            this.macanho.ForeColor = System.Drawing.Color.White;
+            this.macanho.ForeColor = System.Drawing.Color.Black;
             this.macanho.Location = new System.Drawing.Point(270, 66);
             this.macanho.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.macanho.Name = "macanho";
@@ -195,7 +195,7 @@
             // maphanquyen
             // 
             this.maphanquyen.AutoSize = true;
-            this.maphanquyen.ForeColor = System.Drawing.Color.White;
+            this.maphanquyen.ForeColor = System.Drawing.Color.Black;
             this.maphanquyen.Location = new System.Drawing.Point(8, 66);
             this.maphanquyen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.maphanquyen.Name = "maphanquyen";
@@ -206,7 +206,7 @@
             // manhanvien
             // 
             this.manhanvien.AutoSize = true;
-            this.manhanvien.ForeColor = System.Drawing.Color.White;
+            this.manhanvien.ForeColor = System.Drawing.Color.Black;
             this.manhanvien.Location = new System.Drawing.Point(8, 37);
             this.manhanvien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.manhanvien.Name = "manhanvien";
@@ -225,7 +225,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(270, 101);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
@@ -279,7 +279,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(10, 136);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -315,7 +315,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(270, 30);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
@@ -334,7 +334,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(8, 98);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
@@ -345,7 +345,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(270, 66);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
@@ -372,7 +372,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(8, 66);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
@@ -383,7 +383,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(8, 37);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
