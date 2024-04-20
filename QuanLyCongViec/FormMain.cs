@@ -452,7 +452,7 @@ namespace QuanLyCongViec
             GlobalSettings.Language = "Vietnamese"; // Cập nhật ngôn ngữ thành tiếng Việt
             UpdateLanguage();
         }
-        }
+        
 
         private void menuStrip2_MouseDown(object sender, MouseEventArgs e)
         {

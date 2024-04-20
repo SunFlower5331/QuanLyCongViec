@@ -61,7 +61,7 @@ namespace QuanLyCongViec
             this.Hide();
         }
 
-        private void UpdateLanguage()
+        private void UpdateLanguage(DataGridView data)
         {
             // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
             string selectedLanguage = GlobalSettings.Language;
@@ -71,26 +71,24 @@ namespace QuanLyCongViec
             {
                 minimize.Text = "Thu nhỏ";
                 logout.Text = "Đăng xuất";
-                groupBox2.Text = "Tài liệu";
-                FileName.HeaderText = "Tên tập tin";
-                NguoiDang.HeaderText = "Người đăng";
-                Download.HeaderText = "Tải về";
-                groupBox1.Text = "Tìm kiếm";
-                button2.Text = "Đặt lại";
-                button1.Text = "Tìm kiếm";
+                groupBox2.Text = "Danh sách tài liệu";
+                dsTaiLieu.Columns["FileName"].HeaderText = "Tên tập tin";
+                groupBox1.Text = "Tải tài liệu lên";
+                buttonChonFile.Text = "Chọn tài liệu";
+                buttonTaiLen.Text = "Tải lên";
+                buttonTaiXuong.Text = "Tải xuống";
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
             else if (selectedLanguage == "English")
             {
                 minimize.Text = "Minimize";
                 logout.Text = "Log out";
-                groupBox2.Text = "Documents";
-                FileName.HeaderText = "File Name";
-                NguoiDang.HeaderText = "Uploader";
-                Download.HeaderText = "Download";
-                groupBox1.Text = "Search";
-                button2.Text = "Reset";
-                button1.Text = "Search";
+                groupBox2.Text = "List of Documents";
+                dsTaiLieu.Columns["FileName"].HeaderText = "File name";
+                groupBox1.Text = "Upload file";
+                buttonChonFile.Text = "Choose file";
+                buttonTaiLen.Text = "Upload";
+                buttonTaiXuong.Text = "Download";
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
         }
@@ -99,7 +97,6 @@ namespace QuanLyCongViec
         {
             dsTaiLieu.Columns.Clear();
             dsTaiLieu.DataSource = DatabaseAccess.LoadPdfDataToDataGridView();
-            dsTaiLieu.Columns["FileName"].HeaderText = "Tên file";
         }
 
         private void buttonChonFile_Click(object sender, EventArgs e)
@@ -164,7 +161,7 @@ namespace QuanLyCongViec
         }
         private void FormUpload_Download_Load(object sender, EventArgs e)
         {
-            UpdateLanguage();
+            UpdateLanguage(dsTaiLieu);
         }
     }
 }

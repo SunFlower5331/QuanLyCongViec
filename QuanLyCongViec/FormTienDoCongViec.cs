@@ -423,7 +423,7 @@ namespace QuanLyCongViec
                 btnxemcvpb.Text = "Xem công việc theo phòng ban";
                 groupBox3.Text = "Danh sách nhân viên";
 
-        }
+        
 
         
 

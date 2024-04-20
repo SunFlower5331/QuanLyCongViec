@@ -1290,7 +1290,6 @@ namespace QuanLyCongViec
 
                 // Datagrid "dsqh"
                 dsqh.Columns["maCH"].HeaderText = "Mã căn hộ";
-                dsqh.Columns["tinhtrang"].HeaderText = "Tình trạng";
                 dsqh.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
                 dsqh.Columns["maCV"].HeaderText = "Mã công việc";
 

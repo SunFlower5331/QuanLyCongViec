@@ -173,7 +173,7 @@ namespace QuanLyCongViec
        
         private void user_Enter(object sender, EventArgs e)
         {
-            if (user.Text == "ID tài khoản")
+            if (user.Text == "User ID" || user.Text == "Tên người dùng")
             {
                 user.Text = "";
                 user.ForeColor = Color.Black;
@@ -181,7 +181,7 @@ namespace QuanLyCongViec
         }
         private void pass_Enter(object sender, EventArgs e)
         {
-            if (pass.Text == "Mật khẩu")
+            if (pass.Text == "Mật khẩu" || pass.Text == "Password")
             {
                 pass.Text = "";
                 pass.ForeColor = Color.Black;
@@ -193,7 +193,14 @@ namespace QuanLyCongViec
         {
             if (user.Text == "")
             {
-                user.Text = "ID tài khoản";
+                if (GlobalSettings.Language == "Vietnamese")
+                {
+                    user.Text = "Tên người dùng";
+                }
+                else
+                {
+                    user.Text = "User ID";
+                }
                 user.ForeColor = Color.DimGray;
             }
         }
@@ -202,7 +209,14 @@ namespace QuanLyCongViec
         {
             if (pass.Text == "")
             {
-                pass.Text = "Mật khẩu";
+                if (GlobalSettings.Language == "Vietnamese")
+                {
+                    pass.Text = "Mật khẩu";
+                }
+                else
+                {
+                    pass.Text = "Password";
+                }
                 pass.ForeColor = Color.DimGray;
             }
         }

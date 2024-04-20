@@ -41,7 +41,8 @@ CREATE TABLE Taikhoan (
 
 CREATE TABLE DsCongViec (
     maCV VARCHAR(50) PRIMARY KEY,
-    ten NVARCHAR(255)
+    ten NVARCHAR(255),
+	ngayYC DATE
 );
 
 CREATE TABLE CuDan (
@@ -74,7 +75,6 @@ CREATE TABLE CanHo (
 select *from Taikhoan
 CREATE TABLE DVCanHo (
     maCH VARCHAR(50),
-    tinhtrang NVARCHAR(255),
     DV_dinhky NVARCHAR(255),
     maCV VARCHAR(50),
     FOREIGN KEY (maCH) REFERENCES CanHo(maCH),
@@ -87,7 +87,8 @@ CREATE TABLE CTCV (
     trangthai NVARCHAR(50),
     thoiGianHoanThanh DATE,
     songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
-    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE
+    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE,
+	ngaycapnhat DATE
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv), 
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
 );
@@ -98,7 +99,8 @@ CREATE TABLE DsUyQuyenCV (
     trangthai NVARCHAR(50),
     thoiGianHoanThanh DATE,
     songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
-    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE
+    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE,
+	ngayBanGiao DATE
     FOREIGN KEY (maNV_moi) REFERENCES NhanVien(manv), 
 	FOREIGN KEY (maNV_cu) REFERENCES NhanVien(manv), 
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
@@ -176,6 +178,19 @@ CREATE TABLE DsUyQuyen(
 );
 SELECT * FROM DsUyQuyenCV;
 
+CREATE TABLE TinhTrangCanHo(
+	maCH VARCHAR(50) PRIMARY KEY,
+	tinhTrangNguoiO NVARCHAR(50),
+	tinhTrangBanGiao NVARCHAR(50),
+	tinhTrangNoiThat NVARCHAR(50)
+);
+
+CREATE TABLE DsTaiLieu (
+    Id INT PRIMARY KEY IDENTITY,
+    FileName NVARCHAR(255) NOT NULL,
+    PdfData VARBINARY(MAX) NOT NULL
+);
+
 go
 CREATE PROC proc_CV
 @maCV VARCHAR(255),
@@ -227,16 +242,16 @@ VALUES ('VS-301', '123', 1),
 SELECT * FROM Taikhoan
 -- Thêm dữ liệu vào bảng DsCongViec
 
-INSERT INTO DsCongViec (maCV, ten)
-VALUES ('1', N'Kiểm tra hệ thống thoát nước'),
-	   ('2', N'Sửa chuông cửa'),
-	   ('3', N'Bảo dưỡng máy lạnh'),
-	   ('4', N'Vệ sinh'),
-	   ('5', N'Kiểm tra Sàn gỗ'),
-	   ('6', N'Sửa điện'),
-	   ('7', N'Chốt chỉ số điện'),
-	   ('8', N'Chốt chỉ số nước'),
-	   ('9', N'Kiểm tra hệ thống công tắc')
+INSERT INTO DsCongViec (maCV, ten, ngayYC)
+VALUES ('1', N'Kiểm tra hệ thống thoát nước', '2024-01-01'),
+	   ('2', N'Sửa chuông cửa', '2024-01-30'),
+	   ('3', N'Bảo dưỡng máy lạnh', '2024-02-01'),
+	   ('4', N'Vệ sinh', '2024-02-05'),
+	   ('5', N'Kiểm tra Sàn gỗ', '2024-02-07'),
+	   ('6', N'Sửa điện', '2024-02-08'),
+	   ('7', N'Chốt chỉ số điện', '2024-02-10'),
+	   ('8', N'Chốt chỉ số nước', '2024-02-11'),
+	   ('9', N'Kiểm tra hệ thống công tắc', '2024-02-13')
 -- Thêm dữ liệu vào bảng CuDan
 INSERT INTO CuDan (maCD, hinhthuc, tenCH,  ngaysinh, cccd, sdt, email, quoctich, sothetamtru, sdt_nguoithan, tinhtrangcongno, dk_thucung)
 VALUES ('CD1', N'Căn hộ FS', N'Nguyễn Văn A', '01/01/1993', '123456789', '0123456788', 'nva@gmail.com', N'Việt Nam', 'c', '0987654322', 0, N'Không'),
@@ -249,15 +264,15 @@ VALUES ('W2910', 'CD1', '01/02/2023', '02/02/2023', NULL, 500000, 100000, 100, 5
        ('W3508', 'CD2', '15/02/2024', '17/02/2024', NULL, 600000, 120000, 150, 70)
 
 -- Thêm dữ liệu vào bảng DVCanHo
-INSERT INTO DVCanHo (maCH, tinhtrang, DV_dinhky, maCV)
-VALUES ('W2910', N'Đang có người ở', N'Vệ sinh','2'),
-('W2910', N'Đang có người ở', N'Vệ sinh','4'),
-       ('W3508', N'Đã bàn giao', N'Kiểm tra hệ thống công tắc','9')
+INSERT INTO DVCanHo (maCH, DV_dinhky, maCV)
+VALUES ('W2910',  N'Vệ sinh','2'),
+('W2910', N'Vệ sinh','4'),
+       ('W3508', N'Kiểm tra hệ thống công tắc','9')
 SELECT * FROM DVCanHo
 -- Thêm dữ liệu vào bảng CTCV
 INSERT INTO CTCV
-VALUES ('4', 'VS-301', N'Chưa bắt đầu', '10/02/2024',  N'Công việc chung'),
-	   ('2', 'KT-502', N'Đã hoàn thành', '02/02/2024', N'Bộ phận')
+VALUES ('4', 'VS-301', N'Chưa hoàn thành', '10/02/2024',  N'Công việc chung', '2024-02-09'),
+	   ('2', 'KT-502', N'Đã hoàn thành', '02/02/2024', N'Bộ phận', '2024-04-20')
 
 
 -- Thêm dữ liệu vào bảng ThanhVienCanHo

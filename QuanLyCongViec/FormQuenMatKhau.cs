@@ -163,7 +163,7 @@ namespace QuanLyCongViec
             Application.Exit();
         }
 
-        }
+        
         private void UpdateLanguage()
         {
 
@@ -188,7 +188,7 @@ namespace QuanLyCongViec
                 email.Text = "Enter Email";
             }
         }
-    }
+    
         private void email_Leave(object sender, EventArgs e)
         {
             if (email.Text == "")

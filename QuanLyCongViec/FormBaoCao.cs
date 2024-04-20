@@ -1,4 +1,5 @@
 ﻿using System;
+using DAL;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -358,7 +359,7 @@ namespace QuanLyCongViec
         private void UpdateLanguage()
         {
             // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
-            string selectedLanguage = GlobalSettings.Language;
+            //    string selectedLanguage = GlobalSettings.Language;
 
             // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
             //if (selectedLanguage == "Vietnamese")
