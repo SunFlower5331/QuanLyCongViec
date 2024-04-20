@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -158,7 +159,40 @@ namespace QuanLyCongViec
                 MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
             }
         }
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
 
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                labelMaNV.Text = "Mã nhân viên";
+                labelThongKeTheo.Text = "Tiến độ";
+                button1.Text = "Thống kê";
+                dataGridView1.Columns["MaNV"].HeaderText = "Mã NV";
+                dataGridView1.Columns["TenNV"].HeaderText = "Tên NV";
+                dataGridView1.Columns["TenCongViec"].HeaderText = "Tên Công Việc";
+                dataGridView1.Columns["TongTG"].HeaderText = "Tổng Thời Gian";
+                dataGridView1.Columns["BanGiao"].HeaderText = "Bàn Giao";
+            }
+            else if (selectedLanguage == "English")
+            {
+                labelMaNV.Text = "Employee ID";
+                labelThongKeTheo.Text = "Progress";
+                button1.Text = "Statistics";
+                dataGridView1.Columns["MaNV"].HeaderText = "Employee ID";
+                dataGridView1.Columns["TenNV"].HeaderText = "Employee Name";
+                dataGridView1.Columns["TenCongViec"].HeaderText = "Job Title";
+                dataGridView1.Columns["TongTG"].HeaderText = "Total Time";
+                dataGridView1.Columns["BanGiao"].HeaderText = "Handover";
+            }
+        }
+
+        private void FormThongKeKetQuaCongViec_Load(object sender, EventArgs e)
+        {
+            UpdateLanguage();
+        }
         private string GetHtmlFromDataGridView(DataGridView dataGridView)
         {
             string fileName = Path.Combine(Path.GetTempPath(), DateTime.Now.ToString("ddMMyyyyhhmmss") + ".html");

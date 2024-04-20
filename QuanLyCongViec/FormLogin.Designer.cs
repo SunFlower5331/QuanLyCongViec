@@ -134,6 +134,7 @@ namespace QuanLyCongViec
             this.ngonngu.Name = "ngonngu";
             this.ngonngu.Size = new System.Drawing.Size(80, 21);
             this.ngonngu.TabIndex = 5;
+            this.ngonngu.SelectedIndexChanged += new System.EventHandler(this.ngonngu_SelectedIndexChanged);
             // 
             // underlineUser
             // 

@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,40 @@ namespace QuanLyCongViec
             FormMain fm = new FormMain();
             fm.Show();
             this.Hide();
+        }
+
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                minimize.Text = "Thu nhỏ";
+                logout.Text = "Đăng xuất";
+                groupBox2.Text = "Tài liệu";
+                FileName.HeaderText = "Tên tập tin";
+                NguoiDang.HeaderText = "Người đăng";
+                Download.HeaderText = "Tải về";
+                groupBox1.Text = "Tìm kiếm";
+                button2.Text = "Đặt lại";
+                button1.Text = "Tìm kiếm";
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+            else if (selectedLanguage == "English")
+            {
+                minimize.Text = "Minimize";
+                logout.Text = "Log out";
+                groupBox2.Text = "Documents";
+                FileName.HeaderText = "File Name";
+                NguoiDang.HeaderText = "Uploader";
+                Download.HeaderText = "Download";
+                groupBox1.Text = "Search";
+                button2.Text = "Reset";
+                button1.Text = "Search";
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
         }
 
         private void LoadPdfList()
@@ -126,6 +161,10 @@ namespace QuanLyCongViec
             {
                 MessageBox.Show("Vui lòng chọn một tệp PDF để tải xuống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void FormUpload_Download_Load(object sender, EventArgs e)
+        {
+            UpdateLanguage();
         }
     }
 }

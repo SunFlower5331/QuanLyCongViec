@@ -17,6 +17,7 @@ namespace QuanLyCongViec
         {
             InitializeComponent();
             //minimize.Parent = logout.Parent = panel1;
+            
         }
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -72,51 +73,91 @@ namespace QuanLyCongViec
 
         private bool CheckLogin()
         {
+            string selectedLanguage = GlobalSettings.Language;
             tk.id = user.Text;
             tk.mk = pass.Text;
             string getUser = tkBLL.CheckLogic(tk);
             switch (getUser)
             {
                 case "Require_taikhoan":
-                    MessageBox.Show("Tài khoản không được để trống");
+
+                        // Dựa vào ngôn ngữ được chọn, trả về các chuỗi văn bản tương ứng
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Tài khoản không được để trống");
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("Account cannot be empty");
+                        }
                     return false;
+
                 case "Require_matkhau":
-                    MessageBox.Show("Tài khoản không được để trống");
+                    // Dựa vào ngôn ngữ được chọn, trả về các chuỗi văn bản tương ứng
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Mật khẩu không được để trống");
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("Password cannot be empty");
+                        }
                     return false;
+
                 case "Tài khoản hoặc mật khẩu không chính xác!":
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
+                    // Dựa vào ngôn ngữ được chọn, trả về các chuỗi văn bản tương ứng
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("You do not have permission to access the applicationy!");
+                        }
                     return false;
             }
+
             Program.UserID = tk.id;
             string trangthai = DatabaseAccess.getloaihinh(tk.id);
             if (string.Equals(trangthai, "Đã nghĩ việc", StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("Bạn không có quyền truy cập vào ứng dụng!");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Bạn không có quyền truy cập vào ứng dụng!!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("You do not have access to the application!");
+                }
                 return false;
             }
 
             return true;
         }
 
-
-
-
-
-
         private void FormLogin_Load(object sender, EventArgs e)
         {
             ngonngu.SelectedIndex = 0;
+            UpdateLanguage(); // Gọi hàm cập nhật ngôn ngữ khi form được khởi tạo
 
         }
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+            string selectedLanguage = GlobalSettings.Language;
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
-              
-                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-              
+                DialogResult result = result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    result = MessageBox.Show("Do you want to exit the program?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                }
+
                 if (result == DialogResult.Yes)
                 {
                     Application.Exit();
@@ -215,5 +256,54 @@ namespace QuanLyCongViec
         {
 
         }
+
+        // Xử lý sự kiện khi chọn ngôn ngữ
+        private void ngonngu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Cập nhật ngôn ngữ thông qua biến global
+            GlobalSettings.Language = ngonngu.SelectedItem.ToString();
+            // Gọi hàm cập nhật ngôn ngữ
+            UpdateLanguage();
+        }
+
+        // Hàm cập nhật ngôn ngữ
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ được chọn từ biến global
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật các chuỗi văn bản tùy thuộc vào ngôn ngữ được chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Đặt lại tất cả các văn bản trong form thành tiếng Việt
+                user.Text = "Tên người dùng";
+                label4.Text = "Chào mừng trở lại";
+                label5.Text = "với";
+                pass.Text = "Mật khẩu";
+                checkBoxHTMK.Text = "Hiện mật khẩu";
+                dangnhap.Text = "Đăng nhập";
+                quenPass.Text = "Quên mật khẩu";
+                label3.Text = "Đăng nhập";
+                // Cập nhật các văn bản khác tương ứng nếu cần
+            }
+            else if (selectedLanguage == "English")
+            {
+
+                label4.Text = "Welcome Back";
+                label5.Text = "To";
+                // Đặt lại tất cả các văn bản trong form thành tiếng Anh
+                user.Text = "User ID";
+                pass.Text = "Password";
+                checkBoxHTMK.Text = "Show password";
+                dangnhap.Text = "Login";
+                quenPass.Text = "Forget password";
+                label3.Text = "Sign In";
+                // Cập nhật các văn bản khác tương ứng nếu cần
+            }
+        }
+
+        // Các sự kiện và phương thức khác của form
     }
+
 }
+

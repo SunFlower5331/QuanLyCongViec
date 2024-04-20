@@ -257,6 +257,7 @@ namespace QuanLyCongViec
             this.trogiup.Name = "trogiup";
             this.trogiup.Size = new System.Drawing.Size(73, 20);
             this.trogiup.Text = "Ngôn ngữ";
+            this.trogiup.Click += new System.EventHandler(this.trogiup_Click);
             // 
             // englishToolStripMenuItem
             // 
@@ -265,6 +266,7 @@ namespace QuanLyCongViec
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.englishToolStripMenuItem.Text = "English";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // vietnamToolStripMenuItem
             // 
@@ -273,6 +275,7 @@ namespace QuanLyCongViec
             this.vietnamToolStripMenuItem.Name = "vietnamToolStripMenuItem";
             this.vietnamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vietnamToolStripMenuItem.Text = "Vietnam";
+            this.vietnamToolStripMenuItem.Click += new System.EventHandler(this.vietnamToolStripMenuItem_Click);
             // 
             // timkiem
             // 

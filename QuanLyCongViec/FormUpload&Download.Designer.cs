@@ -188,6 +188,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormUpload_Download";
             this.Text = "FormUpload_Download";
+            this.Load += new System.EventHandler(this.FormUpload_Download_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormUpload_Download_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();

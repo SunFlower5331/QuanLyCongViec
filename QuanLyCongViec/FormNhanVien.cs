@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +26,7 @@ namespace QuanLyCongViec
 
         private void FormNhanVien_Load(object sender, EventArgs e)
         {
-
+            UpdateLanguage();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,5 +70,33 @@ namespace QuanLyCongViec
 
         }
         //
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật các nhãn và các điều khiển khác trong giao diện với ngôn ngữ tiếng Việt
+                macanho.Text = "Mã căn hộ";
+                maphanquyen.Text = "Mã phân quyền";
+                manhanvien.Text = "Mã nhân viên";
+
+                gioitinh.Text = "Giới tính";
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật các nhãn và các điều khiển khác trong giao diện với ngôn ngữ tiếng Anh
+                macanho.Text = "Apartment ID";
+                maphanquyen.Text = "Permission ID";
+                manhanvien.Text = "Employee ID";
+
+                gioitinh.Text = "Gender";
+
+            }
+        }
+
     }
 }

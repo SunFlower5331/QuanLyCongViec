@@ -23,7 +23,7 @@ namespace QuanLyCongViec
             InitializeNotifyIcon();
             InitializeComponent();
             menuStrip2.Renderer = new MyRenderer();
-            
+
         }
 
         private void thongbaocv()
@@ -167,6 +167,28 @@ namespace QuanLyCongViec
 
         }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+              
+                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+             
+                if (result == DialogResult.Yes)
+                {
+              
+                    Application.Exit();
+                }
+                else
+                {
+                  
+                    e.Cancel = true;
+                }
+            }
+        }
+
         private void côngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDuLieuNhanVien f = new FormDuLieuNhanVien();
@@ -262,13 +284,14 @@ namespace QuanLyCongViec
         {
             string id = Program.UserID;
             int quyen = DatabaseAccess.getUserQuyen(id);
-           if(quyen==2) {
+            if (quyen == 2)
+            {
                 thongbaocvnv();
-                    ToolStripMenuItem quanliMenuItem = (ToolStripMenuItem)menuStrip2.Items["quanly"];
-                    ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
-                    ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
-                    congviecMenuItem.Enabled = false;
-                    dulieunhanvien.Enabled = false;
+                ToolStripMenuItem quanliMenuItem = (ToolStripMenuItem)menuStrip2.Items["quanly"];
+                ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
+                ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
+                congviecMenuItem.Enabled = false;
+                dulieunhanvien.Enabled = false;
 
             }
             else if (quyen == 3)
@@ -281,7 +304,7 @@ namespace QuanLyCongViec
                 congviecMenuItem.Enabled = false;
                 dulieunhanvien.Enabled = false;
 
-             
+
             }
             else if (quyen == 1)
             {
@@ -307,6 +330,128 @@ namespace QuanLyCongViec
                 textBox1.Text = "";
                 textBox1.ForeColor = Color.Black;
             }
+
+        }
+
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                tabControl1.TabPages[0].Text = "Công ty";
+                tabControl1.TabPages[1].Text = "Phòng ban";
+                groupBox1.Text = "Tìm kiếm";
+                label1.Text = "Danh sách công việc";
+                hethong.Text = "Hệ thống";
+                thêmToolStripMenuItem.Text = "Thông tin cá nhân";
+                quanly.Text = "Quản lý";
+                thongke.Text = "Thống kê";
+                đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+                dulieunhanvien.Text = "Dữ liệu nhân viên";
+                trogiup.Text = "Ngôn ngữ";
+                tacvu.Text = "Tác vụ";
+                chưaHoànThànhToolStripMenuItem.Text = "Báo cáo công việc";
+                côngViệcToolStripMenuItem1.Text = "Kết quả công việc";
+                englishToolStripMenuItem.Text = "Tiếng Anh";
+                vietnamToolStripMenuItem.Text = "Tiếng Việt";
+                tiendocongviec.Text = "Tiến độ công việc cá nhân";
+                dulieucudan.Text = "Dữ liệu cư dân";
+                congviec.Text = "Công việc";
+                nhậpXuấtToolStripMenuItem.Text = "Upload/ Download tài liệu";
+                hiệuQuảCôngViệcToolStripMenuItem.Text = "Hiệu Quả Công Việc";
+                gửiThôngBáoToolStripMenuItem.Text = "Gửi Thông Báo";
+
+                dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
+                dscvcty.Columns["chucvu"].HeaderText = "Chức vụ";
+                dscvcty.Columns["maCV"].HeaderText = "Mã công việc";
+                dscvcty.Columns["ten"].HeaderText = "Tên công việc";
+                dscvcty.Columns["maNV"].HeaderText = "Mã nhân viên";
+                dscvcty.Columns["hoten"].HeaderText = "Tên nhân viên";
+                dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
+                dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+
+                // DataGridView trong tabPage2
+                dscvpban.Columns["phongban"].HeaderText = "Phòng ban";
+                dscvpban.Columns["chucvu"].HeaderText = "Chức vụ";
+                dscvpban.Columns["maCV"].HeaderText = "Mã công việc";
+                dscvpban.Columns["ten"].HeaderText = "Tên công việc";
+                dscvpban.Columns["maNV"].HeaderText = "Mã nhân viên";
+                dscvpban.Columns["hoten"].HeaderText = "Tên nhân viên";
+                dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
+                dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                tabControl1.TabPages[0].Text = "Company";
+                tabControl1.TabPages[1].Text = "Department";
+                groupBox1.Text = "Search";
+                label1.Text = "Work list";
+                hethong.Text = "System";
+                thêmToolStripMenuItem.Text = "Personal information";
+                quanly.Text = "Manage";
+                thongke.Text = "Statistics";
+                đăngXuấtToolStripMenuItem.Text = "Log out";
+                dulieunhanvien.Text = "Employee Data";
+                trogiup.Text = "Language";
+                tacvu.Text = "Tasks";
+                chưaHoànThànhToolStripMenuItem.Text = "Work report";
+                côngViệcToolStripMenuItem1.Text = "Tasks result";
+                englishToolStripMenuItem.Text = "English";
+                vietnamToolStripMenuItem.Text = "Vietnamese";
+                tiendocongviec.Text = "Personal work progress";
+                dulieucudan.Text = "Resident Data";
+                congviec.Text = "Tasks";
+                nhậpXuấtToolStripMenuItem.Text = "Upload/Download documents";
+                hiệuQuảCôngViệcToolStripMenuItem.Text = "Task Efficiency";
+                gửiThôngBáoToolStripMenuItem.Text = "Send Notification";
+                // Cập nhật các thành phần khác tương ứng nếu cần
+
+                dscvcty.Columns["phongban"].HeaderText = "Department";
+                dscvcty.Columns["chucvu"].HeaderText = "Position";
+                dscvcty.Columns["maCV"].HeaderText = "Task ID";
+                dscvcty.Columns["ten"].HeaderText = "Task Name";
+                dscvcty.Columns["maNV"].HeaderText = "Employee ID";
+                dscvcty.Columns["hoten"].HeaderText = "Employee Name";
+                dscvcty.Columns["trangthai"].HeaderText = "Status";
+                dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
+                dscvcty.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+
+                // DataGridView trong tabPage2
+                dscvpban.Columns["phongban"].HeaderText = "Department";
+                dscvpban.Columns["chucvu"].HeaderText = "Position";
+                dscvpban.Columns["maCV"].HeaderText = "Task ID";
+                dscvpban.Columns["ten"].HeaderText = "Task Name";
+                dscvpban.Columns["maNV"].HeaderText = "Employee ID";
+                dscvpban.Columns["hoten"].HeaderText = "Employee Name";
+                dscvpban.Columns["trangthai"].HeaderText = "Status";
+                dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
+                dscvpban.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+
+
+            }
+        }
+
+        private void trogiup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlobalSettings.Language = "English"; // Cập nhật ngôn ngữ thành tiếng Anh
+            UpdateLanguage();
+        }
+
+        private void vietnamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlobalSettings.Language = "Vietnamese"; // Cập nhật ngôn ngữ thành tiếng Việt
+            UpdateLanguage();
+        }
         }
 
         private void menuStrip2_MouseDown(object sender, MouseEventArgs e)

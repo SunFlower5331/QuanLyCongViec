@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,7 @@ namespace QuanLyCongViec
         public FormThongTinCaNhan()
         {
             InitializeComponent();
+            
 
         }
 
@@ -62,6 +64,7 @@ namespace QuanLyCongViec
 
 
             }
+            UpdateLanguage();
         }
 
         private void sua(object sender, EventArgs e)
@@ -72,6 +75,7 @@ namespace QuanLyCongViec
         }
         private bool KiemTraDuLieuNhap()
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (string.IsNullOrEmpty(txtHoTen.Text) ||
                 string.IsNullOrEmpty(txtDiaChi.Text) ||
                 string.IsNullOrEmpty(txtDienThoai.Text) ||
@@ -86,13 +90,21 @@ namespace QuanLyCongViec
                     string.IsNullOrEmpty(mk.Text))
 
             {
-                MessageBox.Show("Vui lòng nhập đủ thông tin vào các ô!");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Vui lòng nhập đủ thông tin vào các ô!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Please enter all information in the boxes!");
+                }
                 return false;
             }
             return true;
         }
         private void luu(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (!KiemTraDuLieuNhap())
             {
                 return; // Nếu thông tin không đầy đủ, không thực hiện cập nhật
@@ -101,7 +113,75 @@ namespace QuanLyCongViec
             double luong;
             if (!double.TryParse(txtLuong.Text, out luong))
             {
-                MessageBox.Show("Vui lòng nhập một số hợp lệ cho lương!");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Please enter a valid number for salary!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Please enter all information in the boxes!");
+                }
+
+                return;
+            }
+            // check sđt
+            string didong = txtDienThoai.Text;
+            didong = new string(didong.Where(char.IsDigit).ToArray()); // Loại bỏ các ký tự không phải số
+            if (didong.Length != 10) // Kiểm tra độ dài phải là 10 (ví dụ cho số điện thoại di động)
+            {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Invalid phone number!");
+                }
+
+                return;
+            }
+            if (!int.TryParse(didong, out _))
+            {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Vui lòng nhập một số điện thoại hợp lệ!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Please enter a valid phone number!");
+                }
+
+                return;
+            }
+            //check email
+            string email = txtEmail.Text;
+            if (!IsValidEmail(email))
+            {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Vui lòng nhập đủ thông tin vào các ô!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Please enter a valid email address!");
+                }
+                return;
+            }
+
+            //check quyenhan
+            int quyenhan = Convert.ToInt32(cboquyenhan.Text);
+
+            if (quyenhan < 1 || quyenhan > 3)
+            {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("quyền hạn chỉ có thể là 1, 2 hoặc 3.");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("powers can only be 1, 2 or 3.");
+                }
+
                 return;
             }
             // Tiếp tục với quá trình cập nhật dữ liệu
@@ -110,8 +190,7 @@ namespace QuanLyCongViec
             DateTime ngaysinh = dtpNgaySinh.Value;
             string gioitinh = cboGioiTinh.SelectedItem.ToString();
             string diachi = txtDiaChi.Text;
-            string didong = txtDienThoai.Text;
-            string email = txtEmail.Text;
+
             string chucvu = txtChucVu.Text;
             string phongban = txtPhongBan.Text;
             string trangthai = txtTrangThai.Text;
@@ -119,7 +198,7 @@ namespace QuanLyCongViec
             string loaihinh = txtLoaiHinh.Text;
             string tendangnhap = txbtentk.Text;
             string matkhau = mk.Text;
-            int quyenhan = Convert.ToInt32(cboquyenhan.Text);
+
             int loaitaikhoan = Convert.ToInt32(cboquyenhan.Text);
             // Gọi phương thức cập nhật dữ liệu trong cơ sở dữ liệu
             bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan);
@@ -128,7 +207,15 @@ namespace QuanLyCongViec
             // Kiểm tra kết quả và hiển thị thông báo
             if (result && result2)
             {
-                MessageBox.Show("Cập nhật thông tin thành công!");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Cập nhật thông tin thành công!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Successfully updated!");
+                }
+
                 button1.Enabled = false;
                 txtHoTen.Enabled = dtpNgaySinh.Enabled = txtDiaChi.Enabled = cboGioiTinh.Enabled = txtDienThoai.Enabled = txtEmail.Enabled = false;
                 txbmnv.Enabled = txtChucVu.Enabled = txtLuong.Enabled = txtLoaiHinh.Enabled = txtPhongBan.Enabled = txtTrangThai.Enabled = txtTrinhDoHocVan.Enabled = cboquyenhan.Enabled = false;
@@ -136,16 +223,45 @@ namespace QuanLyCongViec
             }
             else
             {
-                MessageBox.Show("Cập nhật thông tin thất bại!");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Cập nhật thông tin thất bại!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Update information failed!");
+                }
+
             }
+        }
+
+        // check format email
+        private bool IsValidEmail(string email)
+        {
+            // Biểu thức chính quy để kiểm tra định dạng email
+            string pattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+
+            // Kiểm tra sự khớp của email với biểu thức chính quy
+            return Regex.IsMatch(email, pattern);
         }
         private void Form_FormThongTinCaNhanClosing(object sender, FormClosingEventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             // Kiểm tra nếu người dùng chọn đóng cửa sổ bằng nút "X" (nút đóng cửa sổ)
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                // Hiển thị hộp thoại xác nhận
+
                 DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // Hiển thị hộp thoại xác nhận
+                if (selectedLanguage == "Vietnamese")
+                {
+                    result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    result = MessageBox.Show("Do you want to exit the program?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                }
 
                 // Nếu người dùng chọn "Có", đóng chương trình
                 if (result == DialogResult.Yes)
@@ -186,6 +302,64 @@ namespace QuanLyCongViec
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-    
+
+        private void UpdateLanguage()
+        {
+            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+                groupBox3.Text = "Thông tin tài khoản";
+                groupBox1.Text = "Thông tin cá nhân";
+                macanho.Text = "Mã căn hộ:";
+                maphanquyen.Text = "Mã phân quyền:";
+                manhanvien.Text = "Mã nhân viên:";
+                label1.Text = "Họ và tên:";
+                label2.Text = "Địa chỉ:";
+                label4.Text = "Trình độ học vấn:";
+                gioitinh.Text = "Giới tính:";
+                label3.Text = "Ngày sinh:";
+                groupBox2.Text = "Thông tin công ty";
+                label7.Text = "Phòng ban:";
+                label9.Text = "Lương:";
+                label10.Text = "Chức vụ:";
+                label11.Text = "Mã nhân viên:";
+                label12.Text = "Trạng thái:";
+                button1.Text = "Lưu";
+                label5.Text = "Tên tài khoản:";
+                label6.Text = "Mật khẩu:";
+                label8.Text = "Quyền hạn:";
+                button3.Text = "Sửa";
+                hienmk.Text = "Hiện mật khẩu";
+            }
+            else if (selectedLanguage == "English")
+            {
+                groupBox3.Text = "account information";
+                groupBox1.Text = "Personal Information";
+                macanho.Text = "Apartment code:";
+                maphanquyen.Text = "Permission code:";
+                manhanvien.Text = "Employee code:";
+                label1.Text = "Full Name:";
+                label2.Text = "Address:";
+                label4.Text = "Educational Level:";
+                gioitinh.Text = "Gender:";
+                label3.Text = "Date of Birth:";
+                groupBox2.Text = "Company Information";
+                label7.Text = "Department:";
+                label9.Text = "Salary:";
+                label10.Text = "Position:";
+                label11.Text = "Employee code:";
+                label12.Text = "Status:";
+                button1.Text = "Save";
+                label5.Text = "Username:";
+                label6.Text = "Password:";
+                label8.Text = "Permission:";
+                button3.Text = "Fix";
+                hienmk.Text = "Show password";
+            }
+        }
     }
 }
+
