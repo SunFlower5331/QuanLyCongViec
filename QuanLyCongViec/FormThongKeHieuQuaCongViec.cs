@@ -262,6 +262,7 @@ namespace QuanLyCongViec
 
         private void buttonXuatPDF_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (dataGridView1.Rows.Count > 0)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -273,12 +274,26 @@ namespace QuanLyCongViec
                     var htmlContent = GetHtmlFromDataGridView(dataGridView1);
                     var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
                     Process.Start(pdfFile);
-                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export data to PDF successfully!", "Info");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("No data found to export to PDF!", "Info");
+                }
             }
         }
 
@@ -329,6 +344,7 @@ namespace QuanLyCongViec
 
         private void buttonExportExcel_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "DataGridViewExport.xlsx";
             saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
@@ -338,11 +354,25 @@ namespace QuanLyCongViec
                 {
                     ExportExcel(saveFileDialog.FileName, dataGridView1);
                     Process.Start(saveFileDialog.FileName);
-                    MessageBox.Show("Xuất file thành công!");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất file thành công!");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export file successfully!");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("An error occurred while exporting the file\n" + ex.Message);
+                    }
                 }
             }
         }
@@ -370,6 +400,7 @@ namespace QuanLyCongViec
 
         private void buttonExportExcel2_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "DataGridViewExport.xlsx";
             saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
@@ -379,17 +410,32 @@ namespace QuanLyCongViec
                 {
                     ExportExcel(saveFileDialog.FileName, dataGridView2);
                     Process.Start(saveFileDialog.FileName);
-                    MessageBox.Show("Xuất file thành công!");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất file thành công!");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export file successfully!");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("An error occurred while exporting the file\n" + ex.Message);
+                    }
                 }
             }
         }
 
         private void buttonXuatPDF2_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (dataGridView1.Rows.Count > 0)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -401,12 +447,26 @@ namespace QuanLyCongViec
                     var htmlContent = GetHtmlFromDataGridView(dataGridView2);
                     var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
                     Process.Start(pdfFile);
-                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export data to PDF successfully!", "Info");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("You do not have permission to access the application!");
+                }
             }
         }
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -434,6 +494,13 @@ namespace QuanLyCongViec
                 groupBox1.Text = "Thống kê theo";
                 groupBox2.Text = "Thống kê";
 
+
+                buttonXuatPDF.Text = "Xuất PDF";
+                buttonExportExcel.Text = "Xuất Excel";
+
+                buttonXuatPDF2.Text = "Xuất PDF";
+                buttonExportExcel2.Text = "Xuất Excel";
+
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
             else if (selectedLanguage == "English")
@@ -451,6 +518,12 @@ namespace QuanLyCongViec
                 labelDeMucBieuDo.Text = "Chart Title";
                 labelNgayKetThuc.Text = "End Date";
                 groupBox1.Text = "Statistics";
+
+                buttonXuatPDF.Text = "Export PDF";
+                buttonExportExcel.Text = "Export Excel";
+
+                buttonXuatPDF2.Text = "Export PDF";
+                buttonExportExcel2.Text = "Export Excel";
 
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }

@@ -100,6 +100,7 @@ namespace QuanLyCongViec
 
         private void buttonExportExcel_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "DataGridViewExport.xlsx";
             saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
@@ -109,11 +110,25 @@ namespace QuanLyCongViec
                 {
                     ExportExcel(saveFileDialog.FileName, dataGridView1);
                     Process.Start(saveFileDialog.FileName);
-                    MessageBox.Show("Xuất file thành công!");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất file thành công!");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export file successfully!");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("An error occurred while exporting the file\n" + ex.Message);
+                    }
                 }
             }
         }
@@ -140,6 +155,7 @@ namespace QuanLyCongViec
 
         private void buttonXuatPDF_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (dataGridView1.Rows.Count > 0)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -151,12 +167,26 @@ namespace QuanLyCongViec
                     var htmlContent = GetHtmlFromDataGridView(dataGridView1);
                     var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
                     Process.Start(pdfFile);
-                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export data to PDF successfully!", "Info");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("You do not have permission to access the application!");
+                }
             }
         }
         private void UpdateLanguage()
@@ -175,6 +205,9 @@ namespace QuanLyCongViec
                 dataGridView1.Columns["TenCongViec"].HeaderText = "Tên Công Việc";
                 dataGridView1.Columns["TongTG"].HeaderText = "Tổng Thời Gian";
                 dataGridView1.Columns["BanGiao"].HeaderText = "Bàn Giao";
+
+                buttonXuatPDF.Text = "Xuất PDF";
+                buttonExportExcel.Text = "Xuất Excel";
             }
             else if (selectedLanguage == "English")
             {
@@ -186,6 +219,9 @@ namespace QuanLyCongViec
                 dataGridView1.Columns["TenCongViec"].HeaderText = "Job Title";
                 dataGridView1.Columns["TongTG"].HeaderText = "Total Time";
                 dataGridView1.Columns["BanGiao"].HeaderText = "Handover";
+
+                buttonXuatPDF.Text = "Export PDF";
+                buttonExportExcel.Text = "Export Excel";
             }
         }
 

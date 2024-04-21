@@ -127,6 +127,7 @@ namespace QuanLyCongViec
                     MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            UpdateLanguage4();
         }
 
         private void guiEmail(string to, string content)
@@ -202,7 +203,7 @@ namespace QuanLyCongViec
                 thongtinkh.Visible = isThongTinKhVisible;
 
             }
-
+            UpdateLanguage1();
         }
 
 
@@ -359,6 +360,8 @@ namespace QuanLyCongViec
                 tbotennv.Text = row1.Cells["hoten"].Value.ToString();
 
             }
+            UpdateLanguage2();
+
 
         }
 
@@ -366,7 +369,8 @@ namespace QuanLyCongViec
 
         private void btnxemcvpb_Click(object sender, EventArgs e)
         {
-
+            UpdateLanguage2();
+            UpdateLanguage3();
             check = !check;
 
             dsmanv.Visible = check;
@@ -380,6 +384,7 @@ namespace QuanLyCongViec
 
         private void dsmanv_Click(object sender, EventArgs e)
         {
+
             if (dsmanv.CurrentRow != null && dsmanv.CurrentRow.Index >= 0)
             {
                 DataGridViewRow row1 = dsmanv.CurrentRow;
@@ -448,7 +453,194 @@ namespace QuanLyCongViec
                 groupBox3.Text = "The list of Employee";
             }
         }
-            private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void UpdateLanguage1()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+            // Use selectedLanguage instead of getting language from GlobalSettings or other source
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Việt
+                thongtinkh.Columns["maCD"].HeaderText = "Mã cư dân";
+                thongtinkh.Columns["hinhthuc"].HeaderText = "Hình thức";
+                thongtinkh.Columns["tenCH"].HeaderText = "Tên căn hộ";
+                thongtinkh.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+                thongtinkh.Columns["cccd"].HeaderText = "CCCD";
+                thongtinkh.Columns["sdt"].HeaderText = "Số điện thoại";
+                thongtinkh.Columns["email"].HeaderText = "Email";
+                thongtinkh.Columns["quoctich"].HeaderText = "Quốc tịch";
+                thongtinkh.Columns["sothetamtru"].HeaderText = "Số thẻ tạm trú";
+                thongtinkh.Columns["sdt_nguoithan"].HeaderText = "Số điện thoại người thân";
+                thongtinkh.Columns["tinhtrangcongno"].HeaderText = "Tỉnh trạng công nợ";
+                thongtinkh.Columns["dk_thucung"].HeaderText = "Đăng ký thú cưng";
+
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
+                thongtinkh.Columns["maCD"].HeaderText = "Resident ID";
+                thongtinkh.Columns["hinhthuc"].HeaderText = "Form";
+                thongtinkh.Columns["tenCH"].HeaderText = "Apartment Name";
+                thongtinkh.Columns["ngaysinh"].HeaderText = "Date of Birth";
+                thongtinkh.Columns["cccd"].HeaderText = "ID Card";
+                thongtinkh.Columns["sdt"].HeaderText = "Phone Number";
+                thongtinkh.Columns["email"].HeaderText = "Email";
+                thongtinkh.Columns["quoctich"].HeaderText = "Nationality";
+                thongtinkh.Columns["sothetamtru"].HeaderText = "Temporary Residence Card Number";
+                thongtinkh.Columns["sdt_nguoithan"].HeaderText = "Relative's Phone Number";
+                thongtinkh.Columns["tinhtrangcongno"].HeaderText = "Debt Status";
+                thongtinkh.Columns["dk_thucung"].HeaderText = "Pet Registration";
+
+            }
+        }
+        private void UpdateLanguage2()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+            // Use selectedLanguage instead of getting language from GlobalSettings or other source
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Việt
+                dsnv.Columns["chucvu"].HeaderText = "Chức vụ";
+                dsnv.Columns["manv"].HeaderText = "Mã nhân viên";
+                dsnv.Columns["hoten"].HeaderText = "Họ và tên";
+
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
+                dsnv.Columns["chucvu"].HeaderText = "Position";
+                dsnv.Columns["manv"].HeaderText = "Employee ID";
+                dsnv.Columns["hoten"].HeaderText = "Full Name";
+
+            }
+        }
+
+        private void UpdateLanguage3()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+            // Use selectedLanguage instead of getting language from GlobalSettings or other source
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Việt
+
+                dsmanv.Columns["chucvu"].HeaderText = "Chức vụ";
+                dsmanv.Columns["maCV"].HeaderText = "Mã công việc";
+                dsmanv.Columns["ten"].HeaderText = "Tên công việc";
+                dsmanv.Columns["maNV"].HeaderText = "Mã nhân viên";
+                dsmanv.Columns["hoten"].HeaderText = "Tên nhân viên";
+                dsmanv.Columns["trangthai"].HeaderText = "Trạng thái";
+                dsmanv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                dsmanv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dsmanv.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
+
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
+                dsmanv.Columns["chucvu"].HeaderText = "Position";
+                dsmanv.Columns["maCV"].HeaderText = "Job ID";
+                dsmanv.Columns["ten"].HeaderText = "Job Name";
+                dsmanv.Columns["maNV"].HeaderText = "Employee ID";
+                dsmanv.Columns["hoten"].HeaderText = "Employee Name";
+                dsmanv.Columns["trangthai"].HeaderText = "Status";
+                dsmanv.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
+                dsmanv.Columns["Tuychonchiase"].HeaderText = "Share Options";
+                dsmanv.Columns["ngaycapnhat"].HeaderText = "Update Date";
+
+
+            }
+        }
+        private void UpdateLanguage4()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+            // Use selectedLanguage instead of getting language from GlobalSettings or other source
+            if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Việt
+                dscv.Columns["maCV"].HeaderText = "Mã công việc";
+                dscv.Columns["ten"].HeaderText = "Tên công việc";
+                dscv.Columns["maCH"].HeaderText = "Mã căn hộ";
+                dscv.Columns["trangthai"].HeaderText = "Trạng thái";
+                dscv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                dscv.Columns["songayhethan"].HeaderText = "Số ngày còn lại";
+                dscv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dscv.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
+
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
+                dscv.Columns["maCV"].HeaderText = "Job ID";
+                dscv.Columns["ten"].HeaderText = "Job Name";
+                dscv.Columns["maCH"].HeaderText = "Apartment ID";
+                dscv.Columns["trangthai"].HeaderText = "Status";
+                dscv.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
+                dscv.Columns["songayhethan"].HeaderText = "Days Left";
+                dscv.Columns["Tuychonchiase"].HeaderText = "Share Options";
+                dscv.Columns["ngaycapnhat"].HeaderText = "Update Date";
+
+
+            }
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged1()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+
+            if (selectedLanguage == "English")
+            {
+
+                // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Anh
+
+                cbotuychonchiase.Items.Clear();
+
+                cbotuychonchiase.Items.Add("Công việc chung");
+                cbotuychonchiase.Items.Add("Bộ phận");
+
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+            else if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
+
+                cbotuychonchiase.Items.Clear();
+
+                cbotuychonchiase.Items.Add("Joint work");
+                cbotuychonchiase.Items.Add("Part");
+
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+        }
+        private void comboBoxLanguage_SelectedIndexChanged2()
+        {
+            string selectedLanguage = GlobalSettings.Language;
+
+            if (selectedLanguage == "English")
+            {
+
+                cbotrangthai.Items.Clear();
+
+
+                cbotrangthai.Items.Add("Chưa hoàn thành");
+                cbotrangthai.Items.Add("Hoàn thành");
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+            else if (selectedLanguage == "Vietnamese")
+            {
+                // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
+
+                cbotrangthai.Items.Clear();
+
+                cbotrangthai.Items.Add("Unfinished");
+                cbotrangthai.Items.Add("Accomplished");
+                // Cập nhật các thành phần khác tương ứng nếu cần
+            }
+        }
+
+        private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
             {
                 // Chỉ xử lý cho cột trạng thái
                 if (dscv.Columns[e.ColumnIndex].Name == "trangthai")

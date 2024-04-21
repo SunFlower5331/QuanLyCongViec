@@ -843,6 +843,18 @@ namespace QuanLyCongViec
                 dstk.Columns["id"].HeaderText = "Tên đăng nhập";
                 dstk.Columns["mk"].HeaderText = "Mật khẩu";
                 dstk.Columns["loaiTK"].HeaderText = "Loại tài khoản";
+
+                buttonXuatPDF.Text = "Xuất PDF";
+                buttonExportExcel.Text = "Xuất Excel";
+
+                buttonXuatPDF2.Text = "Xuất PDF";
+                buttonExportExcel2.Text = "Xuất Excel";
+
+                buttonXuatPDF3.Text = "Xuất PDF";
+                buttonExportExcel3.Text = "Xuất Excel";
+
+                buttonXuatPDF4.Text = "Xuất PDF";
+                buttonExportExcel4.Text = "Xuất Excel";
             }
             else if (selectedLanguage == "English")
             {
@@ -891,6 +903,18 @@ namespace QuanLyCongViec
                 dstk.Columns["id"].HeaderText = "Username";
                 dstk.Columns["mk"].HeaderText = "Password";
                 dstk.Columns["loaiTK"].HeaderText = "Account Type";
+
+                buttonXuatPDF.Text = "Export PDF";
+                buttonExportExcel.Text = "Export Excel";
+
+                buttonXuatPDF2.Text = "Export PDF";
+                buttonExportExcel2.Text = "Export Excel";
+
+                buttonXuatPDF3.Text = "Export PDF";
+                buttonExportExcel3.Text = "Export Excel";
+
+                buttonXuatPDF4.Text = "Export PDF";
+                buttonExportExcel4.Text = "Export Excel";
 
             }
         }

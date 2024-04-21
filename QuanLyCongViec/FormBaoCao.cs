@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using OfficeOpenXml;
 using Excel = Microsoft.Office.Interop.Excel;
+using DTO;
 
 namespace QuanLyCongViec
 {
@@ -109,6 +110,7 @@ namespace QuanLyCongViec
             dsch.Columns["TongphiQuanLy"].HeaderText = "Tổng chi phí quản lý";
             dsch.Columns["TongPhiDichVu"].HeaderText = "Tổng phí dịch vụ";
             dsch.Columns["quoctich"].HeaderText = "Quốc tịch";
+            UpdateLanguage1();
         }
 
         private void loadBaoCaoYeuCau(DateTime NgayBatDau, DateTime NgayKetThuc)
@@ -128,6 +130,7 @@ namespace QuanLyCongViec
             dsyc.Columns["ten"].HeaderText = "Nội dung";
             dsyc.Columns["trangthai"].HeaderText = "Tình trạng ";
             dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
+            UpdateLanguage2();
         }
 
         private void loadBaoCaoTimKiem(DateTime NgayBatDau, DateTime NgayKetThuc)
@@ -170,6 +173,7 @@ namespace QuanLyCongViec
             dsyc.Columns["ten"].HeaderText = "Nội dung";
             dsyc.Columns["trangthai"].HeaderText = "Tình trạng ";
             dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
+            UpdateLanguage3();
         }
 
         private void FormBaoCao_Load(object sender, EventArgs e)
@@ -182,6 +186,7 @@ namespace QuanLyCongViec
         {
             loadBaoCaoCanHo(dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
             loadBaoCaoYeuCau(dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
+
         }
 
         private void textBoxTimKiem_Enter(object sender, EventArgs e)
@@ -208,6 +213,7 @@ namespace QuanLyCongViec
 
         private void buttonExportExcel_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "DataGridViewExport.xlsx";
             saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
@@ -217,17 +223,33 @@ namespace QuanLyCongViec
                 {
                     ExportExcel(saveFileDialog.FileName, dsch);
                     Process.Start(saveFileDialog.FileName);
-                    MessageBox.Show("Xuất file thành công!");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất file thành công!");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export file successfully!");
+                    }
+
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("An error occurred while exporting the file\n" + ex.Message);
+                    }
                 }
             }
         }
 
         private void buttonExportExcel2_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "DataGridViewExport.xlsx";
             saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
@@ -237,11 +259,26 @@ namespace QuanLyCongViec
                 {
                     ExportExcel(saveFileDialog.FileName, dsyc);
                     Process.Start(saveFileDialog.FileName);
-                    MessageBox.Show("Xuất file thành công!");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất file thành công!");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export file successfully!");
+                    }
+
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã có lỗi xảy ra trong quá trình xuất file\n" + ex.Message);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("An error occurred while exporting the file\n" + ex.Message);
+                    }
                 }
             }
         }
@@ -268,6 +305,7 @@ namespace QuanLyCongViec
 
         private void buttonXuatPDF_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (dsch.Rows.Count > 0)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -279,17 +317,32 @@ namespace QuanLyCongViec
                     var htmlContent = GetHtmlFromDataGridView(dsch);
                     var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
                     Process.Start(pdfFile);
-                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export data to PDF successfully!", "Info");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("No data found to export to PDF!", "Info");
+                }
             }
         }
 
         private void buttonXuatPDF2_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (dsyc.Rows.Count > 0)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -301,12 +354,27 @@ namespace QuanLyCongViec
                     var htmlContent = GetHtmlFromDataGridView(dsyc);
                     var pdfFile = TransferHtmlToPdf(htmlContent, saveFileDialog.FileName);
                     Process.Start(pdfFile);
-                    MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Xuất dữ liệu sang PDF thành công!", "Info");
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Export data to PDF successfully!", "Info");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Không tìm thấy dữ liệu để xuất ra PDF!", "Info");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("No data found to export to PDF!", "Info");
+                }
             }
         }
 
@@ -358,66 +426,184 @@ namespace QuanLyCongViec
         //
         private void UpdateLanguage()
         {
-            // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
-            //    string selectedLanguage = GlobalSettings.Language;
+            // Lấy ngôn ngữ được chọn từ biến global
+            string selectedLanguage = GlobalSettings.Language;
 
-            // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
-            //if (selectedLanguage == "Vietnamese")
-            //{
-            //    label1.Text = "Tìm kiếm:";
-            //    label2.Text = "Kết quả:";
-            //    groupBox1.Text = "Danh sách căn hộ";
-            //    groupBox2.Text = "Yêu cầu dịch vụ";
-            //    buttonTimKiem1.Text = "Tìm kiếm";
-            //    buttonTiemKiem2.Text = "Tìm kiếm";
+            // Cập nhật các chuỗi văn bản tùy thuộc vào ngôn ngữ được chọn
+            if (selectedLanguage == "Vietnamese")
+            {
 
-            //    dsch.Columns["MaCH"].HeaderText = "Mã căn hộ";
-            //    dsch.Columns["TenCH"].HeaderText = "Tên căn hộ";
-            //    dsch.Columns["TinhTrang"].HeaderText = "Tình trạng";
-            //    dsch.Columns["CongNo"].HeaderText = "Công nợ";
-            //    dsch.Columns["CPDienNuoc"].HeaderText = "Chi phí điện nước";
-            //    dsch.Columns["CPQuanLy"].HeaderText = "Chi phí quản lý";
-            //    dsch.Columns["CPKhac"].HeaderText = "Chi phí khác";
-            //    dsch.Columns["XemThongTin"].HeaderText = "Xem thông tin";
+                // Cập nhật các văn bản cho form khác
+                groupBox1.Text = "Danh sách căn hộ";
+                groupBox2.Text = "Danh sách yêu cầu";
+                groupBox3.Text = "Tùy chọn";
 
-            //    dsyc.Columns["MaCH_YC"].HeaderText = "Mã căn hộ";
-            //    dsyc.Columns["NguoiYC"].HeaderText = "Người yêu cầu";
-            //    dsyc.Columns["DichVuDinhKy"].HeaderText = "Dịch vụ định kỳ";
-            //    dsyc.Columns["NgayYC"].HeaderText = "Ngày yêu cầu";
-            //    dsyc.Columns["NDYC"].HeaderText = "Nội dung yêu cầu";
-            //    dsyc.Columns["TinhTrang_YC"].HeaderText = "Tình trạng";
-            //    dsyc.Columns["NVPhuTrach"].HeaderText = "Nhân viên phụ trách";
-            //    dsyc.Columns["GhiChu"].HeaderText = "Ghi chú";
-            //}
-            //else if (selectedLanguage == "English")
-            //{
-            //    label1.Text = "Search:";
-            //    label2.Text = "Result:";
-            //    groupBox1.Text = "Apartment List";
-            //    groupBox2.Text = "Service Requests";
-            //    buttonTimKiem1.Text = "Search";
-            //    buttonTiemKiem2.Text = "Search";
+                checkBoxTongChiPhi.Text = "Tổng chi hí";
+                checkBoxCongNo.Text = "Công nợ";
+                checkBoxNVPT.Text = "Nhân viên phụ trách";
+                checkBoxTinhTrangXuLy.Text = "Tình trạng xử lý";
+                checkBoxNguoiYC.Text = "Người yêu cầu";
+                checkBoxQuocTich.Text = "Quốc tịch";
+                checkBoxThoiGian.Text = "Ngày yêu cầu";
+                checkBoxTinhTrangCanHo.Text = "Tình trạng căn hộ";
+                label2.Text = "CHọn ngày bắt đầu:";
+                label3.Text = "Chọn ngày kết thúc";
+                textBoxTimKiem.Text = "Tìm kiếm";
 
-            //    dsch.Columns["MaCH"].HeaderText = "Apartment ID";
-            //    dsch.Columns["TenCH"].HeaderText = "Apartment Name";
-            //    dsch.Columns["TinhTrang"].HeaderText = "Status";
-            //    dsch.Columns["CongNo"].HeaderText = "Debt";
-            //    dsch.Columns["CPDienNuoc"].HeaderText = "Electricity and Water Costs";
-            //    dsch.Columns["CPQuanLy"].HeaderText = "Management Costs";
-            //    dsch.Columns["CPKhac"].HeaderText = "Other Costs";
-            //    dsch.Columns["XemThongTin"].HeaderText = "View Details";
+                buttonXacNhan.Text = "Xác nhận";
+                buttonExportExcel.Text = "Xuất Excel";
+                buttonXuatPDF.Text = "Xuất PDF";
+                buttonXuatPDF2.Text = "Xuất PDF";
+                buttonExportExcel2.Text = "Xuất Excel";
 
-            //    dsyc.Columns["MaCH_YC"].HeaderText = "Apartment ID";
-            //    dsyc.Columns["NguoiYC"].HeaderText = "Requester";
-            //    dsyc.Columns["DichVuDinhKy"].HeaderText = "Regular Services";
-            //    dsyc.Columns["NgayYC"].HeaderText = "Request Date";
-            //    dsyc.Columns["NDYC"].HeaderText = "Request Content";
-            //    dsyc.Columns["TinhTrang_YC"].HeaderText = "Status";
-            //    dsyc.Columns["NVPhuTrach"].HeaderText = "Assigned Staff";
-            //    dsyc.Columns["GhiChu"].HeaderText = "Note";
-            //}
+            }
+            else if (selectedLanguage == "English")
+            {
+                groupBox1.Text = "Apartment list";
+                groupBox2.Text = "Request list";
+                groupBox3.Text = "Options";
+
+                checkBoxTongChiPhi.Text = "Total cost";
+                checkBoxCongNo.Text = "Debt";
+                checkBoxNVPT.Text = "Staff in charge";
+                checkBoxTinhTrangXuLy.Text = "Processing status";
+                checkBoxNguoiYC.Text = "Requester";
+                checkBoxQuocTich.Text = "Nationality";
+                checkBoxThoiGian.Text = "Request date";
+                checkBoxTinhTrangCanHo.Text = "Apartment status";
+                label2.Text = "Choose start date:";
+                label3.Text = "Select end date";
+                textBoxTimKiem.Text = "Search";
+
+                buttonXacNhan.Text = "Confirm";
+                buttonExportExcel.Text = "Export Excel";
+                buttonXuatPDF.Text = "Export PDF";
+                buttonXuatPDF2.Text = "Export PDF";
+                buttonExportExcel2.Text = "Export Excel";
+
+            }
         }
+        private void UpdateLanguage1()
+        {
+            // Lấy ngôn ngữ được chọn từ biến global
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật các chuỗi văn bản tùy thuộc vào ngôn ngữ được chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+
+                // Cập nhật các văn bản cho form khác
+                dsch.Columns["maCH"].HeaderText = "Mã căn hộ";
+                dsch.Columns["tenCH"].HeaderText = "Tên chủ hộ";
+                dsch.Columns["CongNo"].HeaderText = "Công nợ";
+                dsch.Columns["tinhTrangNguoiO"].HeaderText = "Tình trạng người ở";
+                dsch.Columns["tinhTrangBanGiao"].HeaderText = "Tình trạng bàn giao";
+                dsch.Columns["tinhTrangNoiThat"].HeaderText = "Tình trạng nội thất";
+                dsch.Columns["TongChiPhiDienNuoc"].HeaderText = "Tổng chi phí điện nước";
+                dsch.Columns["TongphiQuanLy"].HeaderText = "Tổng chi phí quản lý";
+                dsch.Columns["TongPhiDichVu"].HeaderText = "Tổng phí dịch vụ";
+                dsch.Columns["quoctich"].HeaderText = "Quốc tịch";
+
+            }
+            else if (selectedLanguage == "English")
+            {
+
+                dsch.Columns["maCH"].HeaderText = "Apartment code";
+                dsch.Columns["tenCH"].HeaderText = "Household name";
+                dsch.Columns["CongNo"].HeaderText = "Debt";
+                dsch.Columns["tinhTrangNguoiO"].HeaderText = "Resident status";
+                dsch.Columns["tinhTrangBanGiao"].HeaderText = "Hanover status";
+                dsch.Columns["tinhTrangNoiThat"].HeaderText = "Interior condition";
+                dsch.Columns["TongChiPhiDienNuoc"].HeaderText = "Total electricity and water costs";
+                dsch.Columns["TongphiQuanLy"].HeaderText = "Total management costs";
+                dsch.Columns["TongPhiDichVu"].HeaderText = "Total service fee";
+
+            }
+        }
+        private void UpdateLanguage2()
+        {
+            // Lấy ngôn ngữ được chọn từ biến global
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật các chuỗi văn bản tùy thuộc vào ngôn ngữ được chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+
+                dsyc.Columns["maCH"].HeaderText = "Mã căn hộ";
+                dsyc.Columns["tenCH"].HeaderText = "Người yêu cầu";
+                dsyc.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
+                dsyc.Columns["ngayYC"].HeaderText = "Ngày yêu cầu";
+                dsyc.Columns["ten"].HeaderText = "Nội dung";
+                dsyc.Columns["trangthai"].HeaderText = "Tình trạng ";
+                dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
+
+            }
+            else if (selectedLanguage == "English")
+            {
+
+                dsyc.Columns["maCH"].HeaderText = "Apartment ID";
+                dsyc.Columns["tenCH"].HeaderText = "Requester";
+                dsyc.Columns["DV_dinhky"].HeaderText = "Regular Services";
+                dsyc.Columns["ngayYC"].HeaderText = "Request Date";
+                dsyc.Columns["ten"].HeaderText = "Content";
+                dsyc.Columns["trangthai"].HeaderText = "Status";
+                dsyc.Columns["hoten"].HeaderText = "Staff in Charge";
+            }
+        }
+        private void UpdateLanguage3()
+        {
+            // Lấy ngôn ngữ được chọn từ biến global
+            string selectedLanguage = GlobalSettings.Language;
+
+            // Cập nhật các chuỗi văn bản tùy thuộc vào ngôn ngữ được chọn
+            if (selectedLanguage == "Vietnamese")
+            {
+
+                // Cập nhật các văn bản cho form khác
+                dsch.Columns["maCH"].HeaderText = "Mã căn hộ";
+                dsch.Columns["tenCH"].HeaderText = "Tên chủ hộ";
+                dsch.Columns["CongNo"].HeaderText = "Công nợ";
+                dsch.Columns["tinhTrangNguoiO"].HeaderText = "Tình trạng người ở";
+                dsch.Columns["tinhTrangBanGiao"].HeaderText = "Tình trạng bàn giao";
+                dsch.Columns["tinhTrangNoiThat"].HeaderText = "Tình trạng nội thất";
+                dsch.Columns["TongChiPhiDienNuoc"].HeaderText = "Tổng chi phí điện nước";
+                dsch.Columns["TongphiQuanLy"].HeaderText = "Tổng chi phí quản lý";
+                dsch.Columns["TongPhiDichVu"].HeaderText = "Tổng phí dịch vụ";
+                dsch.Columns["quoctich"].HeaderText = "Quốc tịch";
+
+                dsyc.Columns["maCH"].HeaderText = "Mã căn hộ";
+                dsyc.Columns["tenCH"].HeaderText = "Người yêu cầu";
+                dsyc.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
+                dsyc.Columns["ngayYC"].HeaderText = "Ngày yêu cầu";
+                dsyc.Columns["ten"].HeaderText = "Nội dung";
+                dsyc.Columns["trangthai"].HeaderText = "Tình trạng ";
+                dsyc.Columns["hoten"].HeaderText = "Nhân viên phụ trách";
+            }
+            else if (selectedLanguage == "English")
+            {
+                dsch.Columns["maCH"].HeaderText = "Apartment ID";
+                dsch.Columns["tenCH"].HeaderText = "Owner's Name";
+                dsch.Columns["CongNo"].HeaderText = "Debt";
+                dsch.Columns["tinhTrangNguoiO"].HeaderText = "Occupancy Status";
+                dsch.Columns["tinhTrangBanGiao"].HeaderText = "Handover Status";
+                dsch.Columns["tinhTrangNoiThat"].HeaderText = "Furniture Status";
+                dsch.Columns["TongChiPhiDienNuoc"].HeaderText = "Total Electricity and Water Cost";
+                dsch.Columns["TongphiQuanLy"].HeaderText = "Total Management Fee";
+                dsch.Columns["TongPhiDichVu"].HeaderText = "Total Service Fee";
+                dsch.Columns["quoctich"].HeaderText = "Nationality";
+
+                dsyc.Columns["maCH"].HeaderText = "Apartment ID";
+                dsyc.Columns["tenCH"].HeaderText = "Requester";
+                dsyc.Columns["DV_dinhky"].HeaderText = "Regular Services";
+                dsyc.Columns["ngayYC"].HeaderText = "Request Date";
+                dsyc.Columns["ten"].HeaderText = "Content";
+                dsyc.Columns["trangthai"].HeaderText = "Status";
+                dsyc.Columns["hoten"].HeaderText = "Staff in Charge";
+
+            }
+        }
+
     }
-    
-    
+
+
 }

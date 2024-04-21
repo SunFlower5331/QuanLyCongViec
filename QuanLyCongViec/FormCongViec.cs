@@ -97,8 +97,6 @@ namespace QuanLyCongViec
             tuychonhienthi();
             UpdateLanguage();
             comboBoxLanguage_SelectedIndexChanged();
-            comboBoxLanguage_SelectedIndexChanged1();
-            comboBoxLanguage_SelectedIndexChanged2();
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
             dsdpc.CurrentCell = null;
@@ -120,21 +118,27 @@ namespace QuanLyCongViec
                     break;
                 case 1:
                     loadData("DV");
+                    UpdateLanguage();
                     break;
                 case 2:
                     loadData("TC");
+                    UpdateLanguage();
                     break;
                 case 3:
                     loadData("VS");
+                    UpdateLanguage();
                     break;
                 case 4:
                     loadData("AN");
+                    UpdateLanguage();
                     break;
                 case 5:
                     loadData("KT");
+                    UpdateLanguage();
                     break;
                 case 6:
                     loadData("XD");
+                    UpdateLanguage();
                     break;
 
             }
@@ -1052,6 +1056,9 @@ namespace QuanLyCongViec
 
                 dscv.Columns["maCV"].HeaderText = "Mã công việc";
                 dscv.Columns["ten"].HeaderText = "Tên công việc";
+
+                buttonXuatPDF.Text = "Xuất PDF";
+                buttonExportExcel.Text = "Xuất Excel";
             }
             else if (selectedLanguage == "English")
             {
@@ -1106,6 +1113,9 @@ namespace QuanLyCongViec
 
                 dscv.Columns["maCV"].HeaderText = "Job ID";
                 dscv.Columns["ten"].HeaderText = "Job Name";
+
+                buttonXuatPDF.Text = "Export PDF";
+                buttonExportExcel.Text = "Export Excel";
 
 
             }
@@ -1258,6 +1268,7 @@ namespace QuanLyCongViec
 
             return pdfFile;
         }
+
     }
 }
 

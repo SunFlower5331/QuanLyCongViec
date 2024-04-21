@@ -28,9 +28,18 @@ namespace QuanLyCongViec
 
         private void thongbaocv()
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (DatabaseAccess.getSLCV() >= 5 && DatabaseAccess.getUserQuyen(Program.UserID) == 1)
             {
-                ShowNotification("Có quá nhiều công việc chưa được nhân viên cập nhật!");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    ShowNotification("Có quá nhiều công việc chưa được nhân viên cập nhật!");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    ShowNotification("There are too many jobs that have not been updated by employees!");
+                }
+
             }
 
         }
@@ -64,9 +73,18 @@ namespace QuanLyCongViec
         // Sử dụng phương thức này để cập nhật thông báo
         public void UpdateNotification(int numberOfTasks, int slsaphethan)
         {
+            string selectedLanguage = GlobalSettings.Language;
+
             if (numberOfTasks > 0)
             {
-                ShowNotification($"Bạn có {numberOfTasks} công việc chưa cập nhật. Và có {slsaphethan} công việc sắp hết hạn ");
+                if (selectedLanguage == "Vietnamese")
+                {
+                    ShowNotification($"Bạn có {numberOfTasks} công việc chưa cập nhật. Và có {slsaphethan} công việc sắp hết hạn ");
+                }
+                else if (selectedLanguage == "English")
+                {
+                    ShowNotification($"You have {numberOfTasks} tasks that are not up to date. And there are {slsaphethan} tasks that are about to expire");
+                }
             }
             else
             {
@@ -169,25 +187,24 @@ namespace QuanLyCongViec
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            string selectedLanguage = GlobalSettings.Language;
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
-              
-                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(selectedLanguage == "Vietnamese" ? "Bạn có muốn thoát chương trình không?" : "Do you want to exit the program?",
+                                                      selectedLanguage == "Vietnamese" ? "Xác nhận" : "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-             
                 if (result == DialogResult.Yes)
                 {
-              
                     Application.Exit();
                 }
                 else
                 {
-                  
                     e.Cancel = true;
                 }
             }
         }
+
 
         private void côngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -252,14 +269,17 @@ namespace QuanLyCongViec
 
         private void logout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            string selectedLanguage = GlobalSettings.Language;
 
+            DialogResult result = MessageBox.Show(selectedLanguage == "Vietnamese" ? "Bạn có muốn thoát chương trình không?" : "Do you want to exit the program?",
+                                                  selectedLanguage == "Vietnamese" ? "Xác nhận" : "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
+
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -277,7 +297,7 @@ namespace QuanLyCongViec
             checkQuyen();
             loadCTCVCty();
             loadCTCVPban();
-
+            UpdateLanguage();
         }
 
         private void checkQuyen()
@@ -452,7 +472,7 @@ namespace QuanLyCongViec
             GlobalSettings.Language = "Vietnamese"; // Cập nhật ngôn ngữ thành tiếng Việt
             UpdateLanguage();
         }
-        
+
 
         private void menuStrip2_MouseDown(object sender, MouseEventArgs e)
         {

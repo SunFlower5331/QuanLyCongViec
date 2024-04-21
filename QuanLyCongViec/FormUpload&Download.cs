@@ -112,18 +112,33 @@ namespace QuanLyCongViec
 
         private void buttonTaiLen_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (!string.IsNullOrEmpty(textBoxFilePath.Text))
             {
                 string filePath = textBoxFilePath.Text;
                 bool uploadResult = DatabaseAccess.UploadPdfToDatabase(filePath);
                 if (uploadResult)
                 {
-                    MessageBox.Show("File PDF đã được tải lên cơ sở dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("File PDF đã được tải lên cơ sở dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("The PDF file has been uploaded to the database successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     textBoxFilePath.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Có lỗi xảy ra khi tải lên file PDF!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Có lỗi xảy ra khi tải lên file PDF!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("An error occurred while uploading the PDF file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             LoadPdfList();
@@ -131,6 +146,7 @@ namespace QuanLyCongViec
 
         private void buttonTaiXuong_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (dsTaiLieu.SelectedRows.Count > 0)
             {
                 int selectedPdfId = Convert.ToInt32(dsTaiLieu.SelectedRows[0].Cells["Id"].Value);
@@ -146,17 +162,38 @@ namespace QuanLyCongViec
                     bool downloadResult = DatabaseAccess.DownloadPdfFromDatabase(selectedPdfId, savePath);
                     if (downloadResult)
                     {
-                        MessageBox.Show("File PDF đã được tải xuống thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("File PDF đã được tải xuống thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("The PDF file has been downloaded successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Có lỗi xảy ra khi tải xuống file PDF!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Có lỗi xảy ra khi tải xuống file PDF!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("An error occurred while downloading the PDF file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một tệp PDF để tải xuống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Vui lòng chọn một tệp PDF để tải xuống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Vui lòng chọn một tệp PDF để tải xuống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         private void FormUpload_Download_Load(object sender, EventArgs e)
