@@ -472,7 +472,7 @@ namespace QuanLyCongViec
                 textBox1.Text = "Search";
                 c.Text = "Total work";
                 labelHieuSuat.Text = "Performance";
-                labelDoanhThu.Text = "revenue";
+                labelDoanhThu.Text = "Revenue";
 
                 labelTongNV.Text = "General staff";
 
