@@ -31,7 +31,9 @@ namespace QuanLyCongViec
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
             checkQuyen();
-            UpdateLanguage();
+            UpdateLanguage_caclabel_btn();
+            UpdateLanguage_dscv();
+            UpdateLanguage_nv();
 
         }
         private void checkQuyen()
@@ -63,6 +65,7 @@ namespace QuanLyCongViec
             thongtinkh.Columns["sdt_nguoithan"].HeaderText = "Số điện thoại người thân";
             thongtinkh.Columns["tinhtrangcongno"].HeaderText = "Tỉnh trạng công nợ";
             thongtinkh.Columns["dk_thucung"].HeaderText = "Đăng ký thú cưng";
+            UpdateLanguage_chitietkh();
         }
         private void loadData(string phongBan)
         {
@@ -71,7 +74,7 @@ namespace QuanLyCongViec
             dsnv.Columns["chucvu"].HeaderText = "Chức vụ";
             dsnv.Columns["manv"].HeaderText = "Mã nhân viên";
             dsnv.Columns["hoten"].HeaderText = "Họ và tên";
-
+            //UpdateLanguage2();
             dsmanv.DataSource = DatabaseAccess.GetCTCVTheoPhongBan(phongBan).Tables[0];
             dsmanv.AutoGenerateColumns = false;
 
@@ -127,7 +130,7 @@ namespace QuanLyCongViec
                     MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            UpdateLanguage4();
+//UpdateLanguage4();
         }
 
         private void guiEmail(string to, string content)
@@ -199,11 +202,13 @@ namespace QuanLyCongViec
             if (tbomacv.Text != null)
             {
                 loadthongtinkhachhang(tbomacv.Text);
+                
                 isThongTinKhVisible = !isThongTinKhVisible;
                 thongtinkh.Visible = isThongTinKhVisible;
+                UpdateLanguage_chitietkh();
 
             }
-            UpdateLanguage1();
+            
         }
 
 
@@ -331,6 +336,7 @@ namespace QuanLyCongViec
 
         private void dscv_Click(object sender, EventArgs e)
         {
+
             if (dscv.CurrentRow != null && dscv.CurrentRow.Index >= 0)
             {
                 DataGridViewRow row1 = dscv.CurrentRow;
@@ -360,7 +366,7 @@ namespace QuanLyCongViec
                 tbotennv.Text = row1.Cells["hoten"].Value.ToString();
 
             }
-            UpdateLanguage2();
+           //UpdateLanguage2();
 
 
         }
@@ -369,14 +375,13 @@ namespace QuanLyCongViec
 
         private void btnxemcvpb_Click(object sender, EventArgs e)
         {
-            UpdateLanguage2();
-            UpdateLanguage3();
             check = !check;
 
             dsmanv.Visible = check;
             if (tbomacv.Text != null)
             {
                 loadthongtinkhachhang(tbomacv.Text);
+                UpdateLanguage_cvdaphancong();
             }
 
         }
@@ -405,7 +410,7 @@ namespace QuanLyCongViec
 
 
         }
-        private void UpdateLanguage()
+        private void UpdateLanguage_caclabel_btn()
         {
             string selectedLanguage = GlobalSettings.Language;
             // Use selectedLanguage instead of getting language from GlobalSettings or other source
@@ -427,11 +432,6 @@ namespace QuanLyCongViec
                 btnthongtinkh.Text = "Thông tin khác hàng";
                 btnxemcvpb.Text = "Xem công việc theo phòng ban";
                 groupBox3.Text = "Danh sách nhân viên";
-
-        
-
-        
-
             }
             else if (selectedLanguage == "English")
             {
@@ -453,7 +453,8 @@ namespace QuanLyCongViec
                 groupBox3.Text = "The list of Employee";
             }
         }
-        private void UpdateLanguage1()
+        //THONG TIN KH
+        private void UpdateLanguage_chitietkh()
         {
             string selectedLanguage = GlobalSettings.Language;
             // Use selectedLanguage instead of getting language from GlobalSettings or other source
@@ -475,8 +476,9 @@ namespace QuanLyCongViec
 
 
             }
-            else if (selectedLanguage == "English")
+            else
             {
+
                 // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
                 thongtinkh.Columns["maCD"].HeaderText = "Resident ID";
                 thongtinkh.Columns["hinhthuc"].HeaderText = "Form";
@@ -493,7 +495,9 @@ namespace QuanLyCongViec
 
             }
         }
-        private void UpdateLanguage2()
+
+      
+        private void UpdateLanguage_nv()
         {
             string selectedLanguage = GlobalSettings.Language;
             // Use selectedLanguage instead of getting language from GlobalSettings or other source
@@ -516,7 +520,7 @@ namespace QuanLyCongViec
             }
         }
 
-        private void UpdateLanguage3()
+        private void UpdateLanguage_cvdaphancong()
         {
             string selectedLanguage = GlobalSettings.Language;
             // Use selectedLanguage instead of getting language from GlobalSettings or other source
@@ -552,7 +556,7 @@ namespace QuanLyCongViec
 
             }
         }
-        private void UpdateLanguage4()
+        private void UpdateLanguage_dscv()
         {
             string selectedLanguage = GlobalSettings.Language;
             // Use selectedLanguage instead of getting language from GlobalSettings or other source
@@ -590,7 +594,7 @@ namespace QuanLyCongViec
         {
             string selectedLanguage = GlobalSettings.Language;
 
-            if (selectedLanguage == "English")
+            if (selectedLanguage == "Vietnamese")
             {
 
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Anh
@@ -602,7 +606,7 @@ namespace QuanLyCongViec
 
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
-            else if (selectedLanguage == "Vietnamese")
+            else if (selectedLanguage == "English")
             {
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
 
@@ -618,7 +622,7 @@ namespace QuanLyCongViec
         {
             string selectedLanguage = GlobalSettings.Language;
 
-            if (selectedLanguage == "English")
+            if (selectedLanguage == "Vietnamese")
             {
 
                 cbotrangthai.Items.Clear();
@@ -628,7 +632,7 @@ namespace QuanLyCongViec
                 cbotrangthai.Items.Add("Hoàn thành");
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
-            else if (selectedLanguage == "Vietnamese")
+            else if (selectedLanguage == "English")
             {
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
 
@@ -660,6 +664,11 @@ namespace QuanLyCongViec
                     e.CellStyle.ForeColor = Color.Blue;
                 }
             }
+        }
+
+        private void dscv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

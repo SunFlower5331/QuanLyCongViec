@@ -17,7 +17,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=HUYENDIEU;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=BAOHAN;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -261,7 +261,7 @@ namespace DAL
             string query = "" +
                 "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase, C.ngaycapnhat " +
                 "from CTCV C,DsCongViec DSCV,NhanVien NV " +
-                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Công việc chung'";
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Công việc chung-PUBLIC'";
             SqlConnection con = SqlConnectionData.connect();
             con.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
@@ -274,7 +274,7 @@ namespace DAL
             DataSet data = new DataSet();
             string query = "select NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase, C.ngaycapnhat " +
                 "from CTCV C,DsCongViec DSCV,NhanVien NV " +
-                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Bộ phận' AND NV.phongban=@mapb";
+                "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV AND C.Tuychonchiase=N'Bộ phận-PRIVATE' AND NV.phongban=@mapb";
             using (SqlConnection con = SqlConnectionData.connect())
             {
                
@@ -981,7 +981,7 @@ namespace DAL
         {
 
             DataSet data = new DataSet();
-            string query = "select CD.* from DVCanHo DVCH,DsCongViec DSCV,CanHo CH,CuDan CD where DVCH.maCV=DSCV.maCV and DVCH.maCH=CH.maCH and CH.maCD=CD.maCD and DSCV.maCV=@maCV";
+            string query = "select DISTINCT CD.* from DVCanHo DVCH,DsCongViec DSCV,CanHo CH,CuDan CD where DVCH.maCV=DSCV.maCV and DVCH.maCH=CH.maCH and CH.maCD=CD.maCD and DSCV.maCV=@maCV";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {

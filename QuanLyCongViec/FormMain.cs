@@ -403,6 +403,7 @@ namespace QuanLyCongViec
                 dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
                 dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                
 
             }
             else if (selectedLanguage == "English")
@@ -440,6 +441,7 @@ namespace QuanLyCongViec
                 dscvcty.Columns["trangthai"].HeaderText = "Status";
                 dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dscvcty.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+                 dscvcty.Columns["ngaycapnhat"].HeaderText = "Update day";
 
                 // DataGridView trong tabPage2
                 dscvpban.Columns["phongban"].HeaderText = "Department";
@@ -450,7 +452,7 @@ namespace QuanLyCongViec
                 dscvpban.Columns["hoten"].HeaderText = "Employee Name";
                 dscvpban.Columns["trangthai"].HeaderText = "Status";
                 dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
-                dscvpban.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+                dscvcty.Columns["ngaycapnhat"].HeaderText = "Update day";
 
 
             }
@@ -481,6 +483,11 @@ namespace QuanLyCongViec
         }
 
         private void timkiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
