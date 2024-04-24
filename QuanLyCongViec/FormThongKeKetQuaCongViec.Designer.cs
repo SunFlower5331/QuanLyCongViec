@@ -33,11 +33,6 @@
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenCongViec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BanGiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxMaNV = new System.Windows.Forms.TextBox();
             this.comboBoxTrangThai = new System.Windows.Forms.ComboBox();
@@ -79,17 +74,11 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaNV,
-            this.TenNV,
-            this.TenCongViec,
-            this.TongTG,
-            this.BanGiao});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
@@ -98,41 +87,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(543, 119);
             this.dataGridView1.TabIndex = 31;
             // 
-            // MaNV
-            // 
-            this.MaNV.HeaderText = "Mã nhân viên";
-            this.MaNV.Name = "MaNV";
-            // 
-            // TenNV
-            // 
-            this.TenNV.HeaderText = "Tên nhân viên";
-            this.TenNV.Name = "TenNV";
-            // 
-            // TenCongViec
-            // 
-            this.TenCongViec.HeaderText = "Tên công việc";
-            this.TenCongViec.Name = "TenCongViec";
-            // 
-            // TongTG
-            // 
-            this.TongTG.HeaderText = "Tổng thời gian làm";
-            this.TongTG.Name = "TongTG";
-            // 
-            // BanGiao
-            // 
-            this.BanGiao.HeaderText = "Bàn giao";
-            this.BanGiao.Name = "BanGiao";
-            // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Firebrick;
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(471, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 24);
             this.button1.TabIndex = 30;
             this.button1.Text = "Thống kê";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBoxMaNV
@@ -162,7 +127,7 @@
             // 
             this.labelThongKeTheo.AutoSize = true;
             this.labelThongKeTheo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelThongKeTheo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
+            this.labelThongKeTheo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.labelThongKeTheo.Location = new System.Drawing.Point(242, 49);
             this.labelThongKeTheo.Name = "labelThongKeTheo";
             this.labelThongKeTheo.Size = new System.Drawing.Size(61, 13);
@@ -173,7 +138,7 @@
             // 
             this.labelMaNV.AutoSize = true;
             this.labelMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
+            this.labelMaNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.labelMaNV.Location = new System.Drawing.Point(25, 48);
             this.labelMaNV.Name = "labelMaNV";
             this.labelMaNV.Size = new System.Drawing.Size(78, 13);
@@ -182,22 +147,28 @@
             // 
             // buttonXuatPDF
             // 
+            this.buttonXuatPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF.Location = new System.Drawing.Point(503, 89);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
             this.buttonXuatPDF.Size = new System.Drawing.Size(68, 25);
             this.buttonXuatPDF.TabIndex = 33;
             this.buttonXuatPDF.Text = "Xuất PDF";
-            this.buttonXuatPDF.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF.UseVisualStyleBackColor = false;
             this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
             // 
             // buttonExportExcel
             // 
+            this.buttonExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel.Location = new System.Drawing.Point(419, 89);
             this.buttonExportExcel.Name = "buttonExportExcel";
             this.buttonExportExcel.Size = new System.Drawing.Size(68, 25);
             this.buttonExportExcel.TabIndex = 32;
             this.buttonExportExcel.Text = "Xuất Excel";
-            this.buttonExportExcel.UseVisualStyleBackColor = true;
+            this.buttonExportExcel.UseVisualStyleBackColor = false;
             this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click);
             // 
             // FormThongKeKetQuaCongViec
@@ -240,11 +211,6 @@
         private System.Windows.Forms.ComboBox comboBoxTrangThai;
         private System.Windows.Forms.Label labelThongKeTheo;
         private System.Windows.Forms.Label labelMaNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenCongViec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TongTG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BanGiao;
         private System.Windows.Forms.Button buttonXuatPDF;
         private System.Windows.Forms.Button buttonExportExcel;
     }

@@ -20,6 +20,10 @@ namespace QuanLyCongViec
         public FormTienDoCongViec()
         {
             InitializeComponent();
+            dscv.CellFormatting += dscv_CellFormatting;
+            dsnv.CellFormatting += dsnv_CellFormatting;
+            thongtinkh.CellFormatting += thongtinkh_CellFormatting;
+            dsmanv.CellFormatting += dsmanv_CellFormatting;
         }
 
         private void FormTienDoCongViec_Load(object sender, EventArgs e)
@@ -107,7 +111,7 @@ namespace QuanLyCongViec
                 {
 
                     int soNgayHetHan = Convert.ToInt32(dgvRow.Cells["songayhethan"].Value);
-              
+
                     if (soNgayHetHan < 3 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Chưa hoàn thành", StringComparison.OrdinalIgnoreCase))
                     {
                         dgvRow.DefaultCellStyle.ForeColor = Color.White;
@@ -428,9 +432,9 @@ namespace QuanLyCongViec
                 btnxemcvpb.Text = "Xem công việc theo phòng ban";
                 groupBox3.Text = "Danh sách nhân viên";
 
-        
 
-        
+
+
 
             }
             else if (selectedLanguage == "English")
@@ -641,12 +645,25 @@ namespace QuanLyCongViec
         }
 
         private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscv.EnableHeadersVisualStyles = false;
+            dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dscv.Rows)
             {
-                // Chỉ xử lý cho cột trạng thái
-                if (dscv.Columns[e.ColumnIndex].Name == "trangthai")
+                for (int i = 0; i < row.Cells.Count; i++)
                 {
-                    DataGridViewRow row = dscv.Rows[e.RowIndex];
-                    int soNgayHetHan = Convert.ToInt32(row.Cells["songayhethan"].Value);
+                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
+            // Chỉ xử lý cho cột trạng thái
+            if (dscv.Columns[e.ColumnIndex].Name == "trangthai")
+            {
+                DataGridViewRow row = dscv.Rows[e.RowIndex];
+                int soNgayHetHan = Convert.ToInt32(row.Cells["songayhethan"].Value);
                 if (soNgayHetHan < 0 && string.Equals(e.Value.ToString(), "Trễ hạn", StringComparison.OrdinalIgnoreCase))
                 {
                     e.CellStyle.ForeColor = Color.Red;
@@ -658,6 +675,54 @@ namespace QuanLyCongViec
                 else if (string.Equals(e.Value.ToString(), "Hoàn thành sớm", StringComparison.OrdinalIgnoreCase))
                 {
                     e.CellStyle.ForeColor = Color.Blue;
+                }
+            }
+        }
+        private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsnv.EnableHeadersVisualStyles = false;
+            dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsnv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
+        }
+        private void thongtinkh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            thongtinkh.EnableHeadersVisualStyles = false;
+            thongtinkh.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in thongtinkh.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    thongtinkh.Columns[i].HeaderCell.Style.SelectionBackColor = thongtinkh.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
+        }
+        private void dsmanv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsmanv.EnableHeadersVisualStyles = false;
+            dsmanv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsmanv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsmanv.Columns[i].HeaderCell.Style.SelectionBackColor = dsmanv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
                 }
             }
         }

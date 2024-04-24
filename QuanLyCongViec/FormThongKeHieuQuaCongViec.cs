@@ -29,43 +29,42 @@ namespace QuanLyCongViec
             labelDeMucBieuDo.Hide();
             labelDeMucBieuDo2.Hide();
             comboBoThongKe1.SelectedIndex = comboBoThongKe2.SelectedIndex = comboBoxPB.SelectedIndex = 0;
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-            //dataGridView1.CellFormatting += dataGridView1_CellFormatting;
-            //dataGridView2.CellFormatting += dataGridView2_CellFormatting;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView2.CellFormatting += dataGridView2_CellFormatting;
         }
 
-        //private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dataGridView1.EnableHeadersVisualStyles = false;
-        //    dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(246, 191, 2);
-        //    foreach (DataGridViewRow row in dataGridView1.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dataGridView1.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView1.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(175, 2, 0);
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dataGridView1.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView1.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
 
-        //            row.Cells[i].Style.BackColor = Color.White;
-        //            row.Cells[i].Style.ForeColor = Color.Black;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
-        //private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dataGridView2.EnableHeadersVisualStyles = false;
-        //    dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(246, 191, 2);
-        //    foreach (DataGridViewRow row in dataGridView2.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dataGridView2.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView2.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(175, 2, 0);
+                }
+            }
+        }
+        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dataGridView2.Columns[i].HeaderCell.Style.SelectionBackColor = dataGridView2.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
 
-        //            row.Cells[i].Style.BackColor = Color.White;
-        //            row.Cells[i].Style.ForeColor = Color.Black;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
+                }
+            }
+        }
 
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]

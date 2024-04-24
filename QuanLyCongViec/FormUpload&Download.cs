@@ -19,24 +19,24 @@ namespace QuanLyCongViec
         {
             InitializeComponent();
             LoadPdfList();
-            //dsTaiLieu.CellFormatting += dsTaiLieu_CellFormatting;
+            dsTaiLieu.CellFormatting += dsTaiLieu_CellFormatting;
         }
-        //private void dsTaiLieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsTaiLieu.EnableHeadersVisualStyles = false;
-        //    dsTaiLieu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dsTaiLieu.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsTaiLieu.Columns[i].HeaderCell.Style.SelectionBackColor = dsTaiLieu.Columns[i].HeaderCell.Style.BackColor = Color.Firebrick;
+        private void dsTaiLieu_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsTaiLieu.EnableHeadersVisualStyles = false;
+            dsTaiLieu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsTaiLieu.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsTaiLieu.Columns[i].HeaderCell.Style.SelectionBackColor = dsTaiLieu.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
+                }
+            }
+        }
 
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]

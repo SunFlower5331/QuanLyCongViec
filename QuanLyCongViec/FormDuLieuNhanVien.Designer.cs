@@ -43,15 +43,25 @@ namespace QuanLyCongViec
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDuLieuNhanVien));
             this.tabDulieu = new System.Windows.Forms.TabControl();
             this.Quyen = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF = new System.Windows.Forms.Button();
+            this.buttonExportExcel = new System.Windows.Forms.Button();
             this.dslshd = new System.Windows.Forms.DataGridView();
             this.TaiKhoan = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF2 = new System.Windows.Forms.Button();
+            this.buttonExportExcel2 = new System.Windows.Forms.Button();
             this.dstk = new System.Windows.Forms.DataGridView();
             this.NhanVien = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF3 = new System.Windows.Forms.Button();
+            this.buttonExportExcel3 = new System.Windows.Forms.Button();
             this.dsnv = new System.Windows.Forms.DataGridView();
             this.PhongBan = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF4 = new System.Windows.Forms.Button();
+            this.buttonExportExcel4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dspb = new System.Windows.Forms.DataGridView();
             this.DsUyQuyenCV = new System.Windows.Forms.TabPage();
+            this.buttonXuatPDF5 = new System.Windows.Forms.Button();
+            this.buttonExportExcel5 = new System.Windows.Forms.Button();
             this.dsuqcv = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.timkiem = new System.Windows.Forms.Button();
@@ -64,16 +74,6 @@ namespace QuanLyCongViec
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonXuatPDF = new System.Windows.Forms.Button();
-            this.buttonExportExcel = new System.Windows.Forms.Button();
-            this.buttonXuatPDF2 = new System.Windows.Forms.Button();
-            this.buttonExportExcel2 = new System.Windows.Forms.Button();
-            this.buttonXuatPDF3 = new System.Windows.Forms.Button();
-            this.buttonExportExcel3 = new System.Windows.Forms.Button();
-            this.buttonXuatPDF4 = new System.Windows.Forms.Button();
-            this.buttonExportExcel4 = new System.Windows.Forms.Button();
-            this.buttonXuatPDF5 = new System.Windows.Forms.Button();
-            this.buttonExportExcel5 = new System.Windows.Forms.Button();
             this.tabDulieu.SuspendLayout();
             this.Quyen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dslshd)).BeginInit();
@@ -122,6 +122,32 @@ namespace QuanLyCongViec
             this.Quyen.TabIndex = 5;
             this.Quyen.Text = "Quyền hạn";
             // 
+            // buttonXuatPDF
+            // 
+            this.buttonXuatPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF.Location = new System.Drawing.Point(733, 12);
+            this.buttonXuatPDF.Name = "buttonXuatPDF";
+            this.buttonXuatPDF.Size = new System.Drawing.Size(100, 30);
+            this.buttonXuatPDF.TabIndex = 37;
+            this.buttonXuatPDF.Text = "Xuất PDF";
+            this.buttonXuatPDF.UseVisualStyleBackColor = false;
+            this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
+            // 
+            // buttonExportExcel
+            // 
+            this.buttonExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel.Location = new System.Drawing.Point(615, 12);
+            this.buttonExportExcel.Name = "buttonExportExcel";
+            this.buttonExportExcel.Size = new System.Drawing.Size(100, 30);
+            this.buttonExportExcel.TabIndex = 36;
+            this.buttonExportExcel.Text = "Xuất Excel";
+            this.buttonExportExcel.UseVisualStyleBackColor = false;
+            this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click_1);
+            // 
             // dslshd
             // 
             this.dslshd.AllowUserToAddRows = false;
@@ -141,7 +167,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dslshd.DefaultCellStyle = dataGridViewCellStyle2;
@@ -167,6 +193,32 @@ namespace QuanLyCongViec
             this.TaiKhoan.Text = "Tài khoản";
             this.TaiKhoan.UseVisualStyleBackColor = true;
             // 
+            // buttonXuatPDF2
+            // 
+            this.buttonXuatPDF2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF2.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF2.Location = new System.Drawing.Point(735, 14);
+            this.buttonXuatPDF2.Name = "buttonXuatPDF2";
+            this.buttonXuatPDF2.Size = new System.Drawing.Size(100, 30);
+            this.buttonXuatPDF2.TabIndex = 37;
+            this.buttonXuatPDF2.Text = "Xuất PDF";
+            this.buttonXuatPDF2.UseVisualStyleBackColor = false;
+            this.buttonXuatPDF2.Click += new System.EventHandler(this.buttonXuatPDF2_Click);
+            // 
+            // buttonExportExcel2
+            // 
+            this.buttonExportExcel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel2.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel2.Location = new System.Drawing.Point(617, 14);
+            this.buttonExportExcel2.Name = "buttonExportExcel2";
+            this.buttonExportExcel2.Size = new System.Drawing.Size(100, 30);
+            this.buttonExportExcel2.TabIndex = 36;
+            this.buttonExportExcel2.Text = "Xuất Excel";
+            this.buttonExportExcel2.UseVisualStyleBackColor = false;
+            this.buttonExportExcel2.Click += new System.EventHandler(this.buttonExportExcel2_Click);
+            // 
             // dstk
             // 
             this.dstk.AllowUserToAddRows = false;
@@ -186,7 +238,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dstk.DefaultCellStyle = dataGridViewCellStyle4;
@@ -212,6 +264,32 @@ namespace QuanLyCongViec
             this.NhanVien.Text = "Nhân viên";
             this.NhanVien.UseVisualStyleBackColor = true;
             // 
+            // buttonXuatPDF3
+            // 
+            this.buttonXuatPDF3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF3.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF3.Location = new System.Drawing.Point(734, 14);
+            this.buttonXuatPDF3.Name = "buttonXuatPDF3";
+            this.buttonXuatPDF3.Size = new System.Drawing.Size(100, 30);
+            this.buttonXuatPDF3.TabIndex = 37;
+            this.buttonXuatPDF3.Text = "Xuất PDF";
+            this.buttonXuatPDF3.UseVisualStyleBackColor = false;
+            this.buttonXuatPDF3.Click += new System.EventHandler(this.buttonXuatPDF3_Click);
+            // 
+            // buttonExportExcel3
+            // 
+            this.buttonExportExcel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel3.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel3.Location = new System.Drawing.Point(619, 14);
+            this.buttonExportExcel3.Name = "buttonExportExcel3";
+            this.buttonExportExcel3.Size = new System.Drawing.Size(100, 30);
+            this.buttonExportExcel3.TabIndex = 36;
+            this.buttonExportExcel3.Text = "Xuất Excel";
+            this.buttonExportExcel3.UseVisualStyleBackColor = false;
+            this.buttonExportExcel3.Click += new System.EventHandler(this.buttonExportExcel3_Click);
+            // 
             // dsnv
             // 
             this.dsnv.AllowUserToAddRows = false;
@@ -231,7 +309,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dsnv.DefaultCellStyle = dataGridViewCellStyle6;
@@ -258,6 +336,32 @@ namespace QuanLyCongViec
             this.PhongBan.Size = new System.Drawing.Size(846, 487);
             this.PhongBan.TabIndex = 2;
             this.PhongBan.Text = "Phòng ban";
+            // 
+            // buttonXuatPDF4
+            // 
+            this.buttonXuatPDF4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF4.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF4.Location = new System.Drawing.Point(733, 13);
+            this.buttonXuatPDF4.Name = "buttonXuatPDF4";
+            this.buttonXuatPDF4.Size = new System.Drawing.Size(100, 30);
+            this.buttonXuatPDF4.TabIndex = 37;
+            this.buttonXuatPDF4.Text = "Xuất PDF";
+            this.buttonXuatPDF4.UseVisualStyleBackColor = false;
+            this.buttonXuatPDF4.Click += new System.EventHandler(this.buttonXuatPDF4_Click);
+            // 
+            // buttonExportExcel4
+            // 
+            this.buttonExportExcel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel4.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel4.Location = new System.Drawing.Point(614, 13);
+            this.buttonExportExcel4.Name = "buttonExportExcel4";
+            this.buttonExportExcel4.Size = new System.Drawing.Size(100, 30);
+            this.buttonExportExcel4.TabIndex = 36;
+            this.buttonExportExcel4.Text = "Xuất Excel";
+            this.buttonExportExcel4.UseVisualStyleBackColor = false;
+            this.buttonExportExcel4.Click += new System.EventHandler(this.buttonExportExcel4_Click);
             // 
             // groupBox1
             // 
@@ -287,7 +391,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dspb.DefaultCellStyle = dataGridViewCellStyle8;
@@ -313,6 +417,32 @@ namespace QuanLyCongViec
             this.DsUyQuyenCV.Text = "Danh sách ủy quyền công việc";
             this.DsUyQuyenCV.UseVisualStyleBackColor = true;
             // 
+            // buttonXuatPDF5
+            // 
+            this.buttonXuatPDF5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF5.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF5.Location = new System.Drawing.Point(735, 14);
+            this.buttonXuatPDF5.Name = "buttonXuatPDF5";
+            this.buttonXuatPDF5.Size = new System.Drawing.Size(100, 30);
+            this.buttonXuatPDF5.TabIndex = 37;
+            this.buttonXuatPDF5.Text = "Xuất PDF";
+            this.buttonXuatPDF5.UseVisualStyleBackColor = false;
+            this.buttonXuatPDF5.Click += new System.EventHandler(this.buttonXuatPDF5_Click);
+            // 
+            // buttonExportExcel5
+            // 
+            this.buttonExportExcel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel5.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel5.Location = new System.Drawing.Point(623, 14);
+            this.buttonExportExcel5.Name = "buttonExportExcel5";
+            this.buttonExportExcel5.Size = new System.Drawing.Size(100, 30);
+            this.buttonExportExcel5.TabIndex = 36;
+            this.buttonExportExcel5.Text = "Xuất Excel";
+            this.buttonExportExcel5.UseVisualStyleBackColor = false;
+            this.buttonExportExcel5.Click += new System.EventHandler(this.buttonExportExcel5_Click);
+            // 
             // dsuqcv
             // 
             this.dsuqcv.AllowUserToAddRows = false;
@@ -332,7 +462,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dsuqcv.DefaultCellStyle = dataGridViewCellStyle10;
@@ -348,10 +478,10 @@ namespace QuanLyCongViec
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
+            this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(58, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 31);
@@ -360,11 +490,11 @@ namespace QuanLyCongViec
             // 
             // timkiem
             // 
-            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.timkiem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
             this.timkiem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
             this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
             this.timkiem.Location = new System.Drawing.Point(212, 96);
             this.timkiem.Margin = new System.Windows.Forms.Padding(2);
@@ -379,10 +509,10 @@ namespace QuanLyCongViec
             // 
             this.txbtimkiem.BackColor = System.Drawing.Color.White;
             this.txbtimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbtimkiem.Location = new System.Drawing.Point(9, 99);
+            this.txbtimkiem.Location = new System.Drawing.Point(39, 99);
             this.txbtimkiem.Margin = new System.Windows.Forms.Padding(2);
             this.txbtimkiem.Name = "txbtimkiem";
-            this.txbtimkiem.Size = new System.Drawing.Size(195, 23);
+            this.txbtimkiem.Size = new System.Drawing.Size(165, 23);
             this.txbtimkiem.TabIndex = 2;
             this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -484,7 +614,7 @@ namespace QuanLyCongViec
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.timkiem);
             this.panel1.Controls.Add(this.btnxoa);
@@ -497,106 +627,6 @@ namespace QuanLyCongViec
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(246, 525);
             this.panel1.TabIndex = 28;
-            // 
-            // buttonXuatPDF
-            // 
-            this.buttonXuatPDF.Location = new System.Drawing.Point(763, 16);
-            this.buttonXuatPDF.Name = "buttonXuatPDF";
-            this.buttonXuatPDF.Size = new System.Drawing.Size(68, 25);
-            this.buttonXuatPDF.TabIndex = 37;
-            this.buttonXuatPDF.Text = "Xuất PDF";
-            this.buttonXuatPDF.UseVisualStyleBackColor = true;
-            this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
-            // 
-            // buttonExportExcel
-            // 
-            this.buttonExportExcel.Location = new System.Drawing.Point(679, 16);
-            this.buttonExportExcel.Name = "buttonExportExcel";
-            this.buttonExportExcel.Size = new System.Drawing.Size(68, 25);
-            this.buttonExportExcel.TabIndex = 36;
-            this.buttonExportExcel.Text = "Xuất Excel";
-            this.buttonExportExcel.UseVisualStyleBackColor = true;
-            this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click_1);
-            // 
-            // buttonXuatPDF2
-            // 
-            this.buttonXuatPDF2.Location = new System.Drawing.Point(766, 18);
-            this.buttonXuatPDF2.Name = "buttonXuatPDF2";
-            this.buttonXuatPDF2.Size = new System.Drawing.Size(68, 25);
-            this.buttonXuatPDF2.TabIndex = 37;
-            this.buttonXuatPDF2.Text = "Xuất PDF";
-            this.buttonXuatPDF2.UseVisualStyleBackColor = true;
-            this.buttonXuatPDF2.Click += new System.EventHandler(this.buttonXuatPDF2_Click);
-            // 
-            // buttonExportExcel2
-            // 
-            this.buttonExportExcel2.Location = new System.Drawing.Point(682, 18);
-            this.buttonExportExcel2.Name = "buttonExportExcel2";
-            this.buttonExportExcel2.Size = new System.Drawing.Size(68, 25);
-            this.buttonExportExcel2.TabIndex = 36;
-            this.buttonExportExcel2.Text = "Xuất Excel";
-            this.buttonExportExcel2.UseVisualStyleBackColor = true;
-            this.buttonExportExcel2.Click += new System.EventHandler(this.buttonExportExcel2_Click);
-            // 
-            // buttonXuatPDF3
-            // 
-            this.buttonXuatPDF3.Location = new System.Drawing.Point(765, 19);
-            this.buttonXuatPDF3.Name = "buttonXuatPDF3";
-            this.buttonXuatPDF3.Size = new System.Drawing.Size(68, 25);
-            this.buttonXuatPDF3.TabIndex = 37;
-            this.buttonXuatPDF3.Text = "Xuất PDF";
-            this.buttonXuatPDF3.UseVisualStyleBackColor = true;
-            this.buttonXuatPDF3.Click += new System.EventHandler(this.buttonXuatPDF3_Click);
-            // 
-            // buttonExportExcel3
-            // 
-            this.buttonExportExcel3.Location = new System.Drawing.Point(681, 19);
-            this.buttonExportExcel3.Name = "buttonExportExcel3";
-            this.buttonExportExcel3.Size = new System.Drawing.Size(68, 25);
-            this.buttonExportExcel3.TabIndex = 36;
-            this.buttonExportExcel3.Text = "Xuất Excel";
-            this.buttonExportExcel3.UseVisualStyleBackColor = true;
-            this.buttonExportExcel3.Click += new System.EventHandler(this.buttonExportExcel3_Click);
-            // 
-            // buttonXuatPDF4
-            // 
-            this.buttonXuatPDF4.Location = new System.Drawing.Point(767, 18);
-            this.buttonXuatPDF4.Name = "buttonXuatPDF4";
-            this.buttonXuatPDF4.Size = new System.Drawing.Size(68, 25);
-            this.buttonXuatPDF4.TabIndex = 37;
-            this.buttonXuatPDF4.Text = "Xuất PDF";
-            this.buttonXuatPDF4.UseVisualStyleBackColor = true;
-            this.buttonXuatPDF4.Click += new System.EventHandler(this.buttonXuatPDF4_Click);
-            // 
-            // buttonExportExcel4
-            // 
-            this.buttonExportExcel4.Location = new System.Drawing.Point(683, 18);
-            this.buttonExportExcel4.Name = "buttonExportExcel4";
-            this.buttonExportExcel4.Size = new System.Drawing.Size(68, 25);
-            this.buttonExportExcel4.TabIndex = 36;
-            this.buttonExportExcel4.Text = "Xuất Excel";
-            this.buttonExportExcel4.UseVisualStyleBackColor = true;
-            this.buttonExportExcel4.Click += new System.EventHandler(this.buttonExportExcel4_Click);
-            // 
-            // buttonXuatPDF5
-            // 
-            this.buttonXuatPDF5.Location = new System.Drawing.Point(763, 17);
-            this.buttonXuatPDF5.Name = "buttonXuatPDF5";
-            this.buttonXuatPDF5.Size = new System.Drawing.Size(68, 25);
-            this.buttonXuatPDF5.TabIndex = 37;
-            this.buttonXuatPDF5.Text = "Xuất PDF";
-            this.buttonXuatPDF5.UseVisualStyleBackColor = true;
-            this.buttonXuatPDF5.Click += new System.EventHandler(this.buttonXuatPDF5_Click);
-            // 
-            // buttonExportExcel5
-            // 
-            this.buttonExportExcel5.Location = new System.Drawing.Point(679, 17);
-            this.buttonExportExcel5.Name = "buttonExportExcel5";
-            this.buttonExportExcel5.Size = new System.Drawing.Size(68, 25);
-            this.buttonExportExcel5.TabIndex = 36;
-            this.buttonExportExcel5.Text = "Xuất Excel";
-            this.buttonExportExcel5.UseVisualStyleBackColor = true;
-            this.buttonExportExcel5.Click += new System.EventHandler(this.buttonExportExcel5_Click);
             // 
             // FormDuLieuNhanVien
             // 

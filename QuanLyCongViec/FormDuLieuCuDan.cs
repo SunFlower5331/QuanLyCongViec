@@ -24,111 +24,111 @@ namespace QuanLyCongViec
         public FormDuLieuCuDan()
         {
             InitializeComponent();
-            
-            //dscudan.CellFormatting += dscudan_CellFormatting;
-            //dsch.CellFormatting += dsch_CellFormatting;
-            //dsqh.CellFormatting += dsqh_CellFormatting;
-            //dstk.CellFormatting += dstk_CellFormatting;
-            //dsnv.CellFormatting += dsnv_CellFormatting;
-            //dspb.CellFormatting += dspb_CellFormatting;
+
+            dscudan.CellFormatting += dscudan_CellFormatting;
+            dsch.CellFormatting += dsch_CellFormatting;
+            dsqh.CellFormatting += dsqh_CellFormatting;
+            dstk.CellFormatting += dstk_CellFormatting;
+            dsnv.CellFormatting += dsnv_CellFormatting;
+            dspb.CellFormatting += dspb_CellFormatting;
         }
 
-        //private void dscudan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dscudan.EnableHeadersVisualStyles = false;
-        //    dscudan.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dscudan.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dscudan.Columns[i].HeaderCell.Style.SelectionBackColor = dscudan.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+        private void dscudan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscudan.EnableHeadersVisualStyles = false;
+            dscudan.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dscudan.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscudan.Columns[i].HeaderCell.Style.SelectionBackColor = dscudan.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
-        //private void dsch_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsch.EnableHeadersVisualStyles = false;
-        //    dsch.ColumnHeadersDefaultCellStyle.ForeColor = Color.Red;
-        //    foreach (DataGridViewRow row in dsch.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsch.Columns[i].HeaderCell.Style.SelectionBackColor = dsch.Columns[i].HeaderCell.Style.BackColor = Color.Black;
+                }
+            }
+        }
+        private void dsch_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsch.EnableHeadersVisualStyles = false;
+            dsch.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsch.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsch.Columns[i].HeaderCell.Style.SelectionBackColor = dsch.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
-        //private void dsqh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsqh.EnableHeadersVisualStyles = false;
-        //    dsqh.ColumnHeadersDefaultCellStyle.ForeColor = Color.Red;
-        //    foreach (DataGridViewRow row in dsqh.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsqh.Columns[i].HeaderCell.Style.SelectionBackColor = dsqh.Columns[i].HeaderCell.Style.BackColor = Color.Black;
+                }
+            }
+        }
+        private void dsqh_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsqh.EnableHeadersVisualStyles = false;
+            dsqh.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsqh.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsqh.Columns[i].HeaderCell.Style.SelectionBackColor = dsqh.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
-        //private void dstk_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dstk.EnableHeadersVisualStyles = false;
-        //    dstk.ColumnHeadersDefaultCellStyle.ForeColor = Color.Red;
-        //    foreach (DataGridViewRow row in dstk.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dstk.Columns[i].HeaderCell.Style.SelectionBackColor = dstk.Columns[i].HeaderCell.Style.BackColor = Color.Black;
+                }
+            }
+        }
+        private void dstk_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dstk.EnableHeadersVisualStyles = false;
+            dstk.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dstk.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dstk.Columns[i].HeaderCell.Style.SelectionBackColor = dstk.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166); ;
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
-        //private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsnv.EnableHeadersVisualStyles = false;
-        //    dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Red;
-        //    foreach (DataGridViewRow row in dsnv.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.Black;
+                }
+            }
+        }
+        private void dsnv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsnv.EnableHeadersVisualStyles = false;
+            dsnv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsnv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
-        //private void dspb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dspb.EnableHeadersVisualStyles = false;
-        //    dspb.ColumnHeadersDefaultCellStyle.ForeColor = Color.Red;
-        //    foreach (DataGridViewRow row in dspb.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dspb.Columns[i].HeaderCell.Style.SelectionBackColor = dspb.Columns[i].HeaderCell.Style.BackColor = Color.Black;
+                }
+            }
+        }
+        private void dspb_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dspb.EnableHeadersVisualStyles = false;
+            dspb.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dspb.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dspb.Columns[i].HeaderCell.Style.SelectionBackColor = dspb.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
 
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //            row.Cells[i].Style.ForeColor = Color.White;
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
 
-        //        }
-        //    }
-        //}
+                }
+            }
+        }
 
 
         private void FormDuLieu_Load(object sender, EventArgs e)
@@ -1431,9 +1431,7 @@ namespace QuanLyCongViec
                 btnsua.Text = "Sửa";
                 btnluu.Text = "Lưu";
                 btnCapNhat.Text = "Cập Nhật";
-                timkiem.Text = "Tìm Kiếm";
 
-                label1.Text = "Ngôn Ngữ:";
                 txbtimkiem.Text = "Nhập từ khóa...";
                 
 
@@ -1521,9 +1519,7 @@ namespace QuanLyCongViec
                 btnsua.Text = "Edit";
                 btnluu.Text = "Save";
                 btnCapNhat.Text = "Update";
-                timkiem.Text = "Search";
 
-                label1.Text = "Language:";
                 txbtimkiem.Text = "Enter keyword...";
 
                 // Datagrid "dscudan"

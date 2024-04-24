@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThongKeHieuQuaCongViec));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -106,22 +107,28 @@
             // 
             // buttonXuatPDF
             // 
-            this.buttonXuatPDF.Location = new System.Drawing.Point(519, 6);
+            this.buttonXuatPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF.Location = new System.Drawing.Point(616, 6);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
             this.buttonXuatPDF.Size = new System.Drawing.Size(76, 31);
             this.buttonXuatPDF.TabIndex = 23;
             this.buttonXuatPDF.Text = "Xuất PDF";
-            this.buttonXuatPDF.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF.UseVisualStyleBackColor = false;
             this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
             // 
             // buttonExportExcel
             // 
-            this.buttonExportExcel.Location = new System.Drawing.Point(416, 6);
+            this.buttonExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel.Location = new System.Drawing.Point(513, 6);
             this.buttonExportExcel.Name = "buttonExportExcel";
             this.buttonExportExcel.Size = new System.Drawing.Size(76, 31);
             this.buttonExportExcel.TabIndex = 22;
             this.buttonExportExcel.Text = "Xuất Excel";
-            this.buttonExportExcel.UseVisualStyleBackColor = true;
+            this.buttonExportExcel.UseVisualStyleBackColor = false;
             this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click);
             // 
             // groupBox1
@@ -136,7 +143,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textboxMaNV);
             this.groupBox1.Controls.Add(this.dateTimePickerStart);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(2)))), ((int)(((byte)(0)))));
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.groupBox1.Location = new System.Drawing.Point(713, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(370, 153);
@@ -208,13 +215,13 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(191)))), ((int)(((byte)(2)))));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(259, 19);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(259, 16);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 24);
+            this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 4;
             this.button1.Text = "Thống kê";
             this.button1.UseVisualStyleBackColor = false;
@@ -258,14 +265,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(6, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(688, 390);
@@ -283,28 +290,34 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1086, 442);
+            this.tabPage1.Size = new System.Drawing.Size(1092, 445);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bộ phận";
             // 
             // buttonXuatPDF2
             // 
-            this.buttonXuatPDF2.Location = new System.Drawing.Point(519, 6);
+            this.buttonXuatPDF2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF2.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF2.Location = new System.Drawing.Point(618, 6);
             this.buttonXuatPDF2.Name = "buttonXuatPDF2";
             this.buttonXuatPDF2.Size = new System.Drawing.Size(76, 31);
             this.buttonXuatPDF2.TabIndex = 26;
             this.buttonXuatPDF2.Text = "Xuất PDF";
-            this.buttonXuatPDF2.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF2.UseVisualStyleBackColor = false;
             this.buttonXuatPDF2.Click += new System.EventHandler(this.buttonXuatPDF2_Click);
             // 
             // buttonExportExcel2
             // 
-            this.buttonExportExcel2.Location = new System.Drawing.Point(416, 6);
+            this.buttonExportExcel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel2.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel2.Location = new System.Drawing.Point(515, 6);
             this.buttonExportExcel2.Name = "buttonExportExcel2";
             this.buttonExportExcel2.Size = new System.Drawing.Size(76, 31);
             this.buttonExportExcel2.TabIndex = 25;
             this.buttonExportExcel2.Text = "Xuất Excel";
-            this.buttonExportExcel2.UseVisualStyleBackColor = true;
+            this.buttonExportExcel2.UseVisualStyleBackColor = false;
             this.buttonExportExcel2.Click += new System.EventHandler(this.buttonExportExcel2_Click);
             // 
             // groupBox2
@@ -319,7 +332,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.dateTimePickerStart2);
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(2)))), ((int)(((byte)(0)))));
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.groupBox2.Location = new System.Drawing.Point(713, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(370, 153);
@@ -407,10 +420,10 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(191)))), ((int)(((byte)(2)))));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(259, 19);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 24);
@@ -450,6 +463,14 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Location = new System.Drawing.Point(6, 43);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(688, 390);

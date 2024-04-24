@@ -176,7 +176,7 @@ namespace QuanLyCongViec
             if (user.Text == "User ID" || user.Text == "Tên người dùng")
             {
                 user.Text = "";
-                user.ForeColor = Color.Black;
+                user.ForeColor = Color.White;
             }
         }
         private void pass_Enter(object sender, EventArgs e)
@@ -184,7 +184,7 @@ namespace QuanLyCongViec
             if (pass.Text == "Mật khẩu" || pass.Text == "Password")
             {
                 pass.Text = "";
-                pass.ForeColor = Color.Black;
+                pass.ForeColor = Color.White;
             }
         }
 
@@ -201,7 +201,7 @@ namespace QuanLyCongViec
                 {
                     user.Text = "User ID";
                 }
-                user.ForeColor = Color.DimGray;
+                user.ForeColor = Color.LightGray;
             }
         }
 
@@ -217,7 +217,7 @@ namespace QuanLyCongViec
                 {
                     pass.Text = "Password";
                 }
-                pass.ForeColor = Color.DimGray;
+                pass.ForeColor = Color.LightGray;
             }
         }
 
@@ -231,44 +231,11 @@ namespace QuanLyCongViec
             this.WindowState = FormWindowState.Minimized;
         }
 
-      
-        private void buttonOut_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void quenPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FormQuenMatKhau form = new FormQuenMatKhau();
             form.Show();
             this.Hide();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loginForm_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void user_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         // Xử lý sự kiện khi chọn ngôn ngữ
@@ -291,32 +258,43 @@ namespace QuanLyCongViec
             {
                 // Đặt lại tất cả các văn bản trong form thành tiếng Việt
                 user.Text = "Tên người dùng";
-                label4.Text = "Chào mừng trở lại";
-                label5.Text = "với";
+                label4.Text = "Chào mừng trở lại!";
+                //label5.Text = "với";
                 pass.Text = "Mật khẩu";
                 checkBoxHTMK.Text = "Hiện mật khẩu";
                 dangnhap.Text = "Đăng nhập";
                 quenPass.Text = "Quên mật khẩu";
-                label3.Text = "Đăng nhập";
+                //label3.Text = "Đăng nhập";
                 // Cập nhật các văn bản khác tương ứng nếu cần
             }
             else if (selectedLanguage == "English")
             {
 
-                label4.Text = "Welcome Back";
-                label5.Text = "To";
+                label4.Text = "Welcome Back!";
+                //label5.Text = "To";
                 // Đặt lại tất cả các văn bản trong form thành tiếng Anh
                 user.Text = "User ID";
                 pass.Text = "Password";
                 checkBoxHTMK.Text = "Show password";
                 dangnhap.Text = "Login";
                 quenPass.Text = "Forget password";
-                label3.Text = "Sign In";
+                //label3.Text = "Sign In";
                 // Cập nhật các văn bản khác tương ứng nếu cần
             }
         }
 
-        // Các sự kiện và phương thức khác của form
+        
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
 
 }

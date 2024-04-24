@@ -41,49 +41,43 @@ namespace QuanLyCongViec
             this.ngonngu = new System.Windows.Forms.ComboBox();
             this.underlineUser = new System.Windows.Forms.Label();
             this.underlinePass = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.quenPass = new System.Windows.Forms.LinkLabel();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
-            this.loginForm = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // user
             // 
-            this.user.BackColor = System.Drawing.Color.White;
+            this.user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.user.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.user.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user.ForeColor = System.Drawing.Color.DimGray;
-            this.user.Location = new System.Drawing.Point(29, 130);
-            this.user.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.user.ForeColor = System.Drawing.Color.LightGray;
+            this.user.Location = new System.Drawing.Point(59, 180);
+            this.user.Margin = new System.Windows.Forms.Padding(2);
             this.user.Name = "user";
             this.user.Size = new System.Drawing.Size(281, 20);
             this.user.TabIndex = 1;
             this.user.Text = "ID tài khoản";
-            this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
             this.user.Enter += new System.EventHandler(this.user_Enter);
             this.user.Leave += new System.EventHandler(this.user_Leave);
             // 
             // pass
             // 
-            this.pass.BackColor = System.Drawing.Color.White;
+            this.pass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.pass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.pass.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pass.ForeColor = System.Drawing.Color.DimGray;
-            this.pass.Location = new System.Drawing.Point(29, 192);
-            this.pass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pass.ForeColor = System.Drawing.Color.LightGray;
+            this.pass.Location = new System.Drawing.Point(59, 241);
+            this.pass.Margin = new System.Windows.Forms.Padding(2);
             this.pass.Name = "pass";
             this.pass.Size = new System.Drawing.Size(281, 20);
             this.pass.TabIndex = 2;
@@ -95,11 +89,11 @@ namespace QuanLyCongViec
             // checkBoxHTMK
             // 
             this.checkBoxHTMK.AutoSize = true;
-            this.checkBoxHTMK.BackColor = System.Drawing.Color.White;
+            this.checkBoxHTMK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.checkBoxHTMK.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxHTMK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.checkBoxHTMK.Location = new System.Drawing.Point(29, 227);
-            this.checkBoxHTMK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxHTMK.ForeColor = System.Drawing.Color.White;
+            this.checkBoxHTMK.Location = new System.Drawing.Point(59, 287);
+            this.checkBoxHTMK.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxHTMK.Name = "checkBoxHTMK";
             this.checkBoxHTMK.Size = new System.Drawing.Size(118, 17);
             this.checkBoxHTMK.TabIndex = 3;
@@ -109,12 +103,12 @@ namespace QuanLyCongViec
             // 
             // dangnhap
             // 
-            this.dangnhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.dangnhap.BackColor = System.Drawing.Color.White;
             this.dangnhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dangnhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dangnhap.ForeColor = System.Drawing.Color.White;
+            this.dangnhap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.dangnhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dangnhap.Location = new System.Drawing.Point(27, 261);
+            this.dangnhap.Location = new System.Drawing.Point(59, 340);
             this.dangnhap.Name = "dangnhap";
             this.dangnhap.Size = new System.Drawing.Size(283, 40);
             this.dangnhap.TabIndex = 4;
@@ -125,12 +119,13 @@ namespace QuanLyCongViec
             // ngonngu
             // 
             this.ngonngu.AllowDrop = true;
+            this.ngonngu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.ngonngu.FormattingEnabled = true;
             this.ngonngu.Items.AddRange(new object[] {
             "Vietnamese",
             "English"});
-            this.ngonngu.Location = new System.Drawing.Point(230, 312);
-            this.ngonngu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ngonngu.Location = new System.Drawing.Point(261, 394);
+            this.ngonngu.Margin = new System.Windows.Forms.Padding(2);
             this.ngonngu.Name = "ngonngu";
             this.ngonngu.Size = new System.Drawing.Size(80, 21);
             this.ngonngu.TabIndex = 5;
@@ -138,43 +133,31 @@ namespace QuanLyCongViec
             // 
             // underlineUser
             // 
-            this.underlineUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(64)))), ((int)(((byte)(89)))));
+            this.underlineUser.BackColor = System.Drawing.Color.White;
             this.underlineUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.underlineUser.Location = new System.Drawing.Point(27, 153);
+            this.underlineUser.Location = new System.Drawing.Point(57, 203);
             this.underlineUser.Name = "underlineUser";
             this.underlineUser.Size = new System.Drawing.Size(283, 2);
             this.underlineUser.TabIndex = 12;
             // 
             // underlinePass
             // 
-            this.underlinePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(64)))), ((int)(((byte)(89)))));
+            this.underlinePass.BackColor = System.Drawing.Color.White;
             this.underlinePass.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.underlinePass.Location = new System.Drawing.Point(29, 214);
+            this.underlinePass.Location = new System.Drawing.Point(59, 263);
             this.underlinePass.Name = "underlinePass";
             this.underlinePass.Size = new System.Drawing.Size(281, 2);
             this.underlinePass.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(201)))), ((int)(((byte)(5)))));
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
-            this.label1.Location = new System.Drawing.Point(165, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 50);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "TasMana!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // quenPass
             // 
             this.quenPass.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
             this.quenPass.AutoSize = true;
-            this.quenPass.BackColor = System.Drawing.Color.White;
+            this.quenPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.quenPass.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quenPass.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.quenPass.Location = new System.Drawing.Point(227, 228);
+            this.quenPass.ForeColor = System.Drawing.Color.White;
+            this.quenPass.LinkColor = System.Drawing.Color.Silver;
+            this.quenPass.Location = new System.Drawing.Point(251, 288);
             this.quenPass.Name = "quenPass";
             this.quenPass.Size = new System.Drawing.Size(86, 13);
             this.quenPass.TabIndex = 0;
@@ -185,7 +168,7 @@ namespace QuanLyCongViec
             // 
             // minimize
             // 
-            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(201)))), ((int)(((byte)(5)))));
+            this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(685, 5);
             this.minimize.Name = "minimize";
@@ -197,7 +180,7 @@ namespace QuanLyCongViec
             // 
             // logout
             // 
-            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(201)))), ((int)(((byte)(5)))));
+            this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(720, 5);
             this.logout.Name = "logout";
@@ -207,146 +190,97 @@ namespace QuanLyCongViec
             this.logout.TabStop = false;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
-            // loginForm
+            // label1
             // 
-            this.loginForm.BackColor = System.Drawing.Color.White;
-            this.loginForm.Location = new System.Drawing.Point(-35, -46);
-            this.loginForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.loginForm.Name = "loginForm";
-            this.loginForm.Size = new System.Drawing.Size(866, 532);
-            this.loginForm.TabIndex = 10;
-            this.loginForm.TabStop = false;
-            this.loginForm.Click += new System.EventHandler(this.loginForm_Click);
-            this.loginForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonOut_MouseDown);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(64)))), ((int)(((byte)(89)))));
-            this.label3.Location = new System.Drawing.Point(77, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(189, 45);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Đăng nhập";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(201)))), ((int)(((byte)(5)))));
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(340, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 378);
-            this.panel1.TabIndex = 19;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(46, 106);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 50);
-            this.label5.TabIndex = 41;
-            this.label5.Text = "trở lại";
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Location = new System.Drawing.Point(203, 260);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 2);
-            this.label2.TabIndex = 21;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(46, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 40);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "TasMana";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(42, 56);
+            this.label4.Location = new System.Drawing.Point(48, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(234, 50);
+            this.label4.Size = new System.Drawing.Size(229, 32);
             this.label4.TabIndex = 40;
-            this.label4.Text = "Chào mừng ";
+            this.label4.Text = "Chào mừng trở lại!";
             // 
-            // label6
+            // pictureBox1
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(203, 262);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 17);
-            this.label6.TabIndex = 39;
-            this.label6.Text = "BCMP - BEST CM PARTNER";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(368, 483);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
-            // label7
+            // panel1
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(48, 200);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(233, 17);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "\"Changing the Face can change nothing,";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.user);
+            this.panel1.Controls.Add(this.ngonngu);
+            this.panel1.Controls.Add(this.quenPass);
+            this.panel1.Controls.Add(this.dangnhap);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.underlineUser);
+            this.panel1.Controls.Add(this.underlinePass);
+            this.panel1.Controls.Add(this.checkBoxHTMK);
+            this.panel1.Controls.Add(this.pass);
+            this.panel1.Location = new System.Drawing.Point(367, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(384, 486);
+            this.panel1.TabIndex = 43;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // label8
+            // label2
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(48, 223);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(274, 17);
-            this.label8.TabIndex = 38;
-            this.label8.Text = " But Facing the Change can change everything.\"";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(176, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 28);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "Ver.0";
             // 
             // FormLogin
             // 
             this.AcceptButton = this.dangnhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(750, 376);
+            this.ClientSize = new System.Drawing.Size(750, 483);
             this.Controls.Add(this.minimize);
             this.Controls.Add(this.logout);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.quenPass);
-            this.Controls.Add(this.underlinePass);
-            this.Controls.Add(this.underlineUser);
-            this.Controls.Add(this.ngonngu);
-            this.Controls.Add(this.dangnhap);
-            this.Controls.Add(this.checkBoxHTMK);
-            this.Controls.Add(this.pass);
-            this.Controls.Add(this.user);
-            this.Controls.Add(this.loginForm);
+            this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormLogin";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.FormLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -360,19 +294,14 @@ namespace QuanLyCongViec
         private System.Windows.Forms.ComboBox ngonngu;
         private System.Windows.Forms.Label underlineUser;
         private System.Windows.Forms.Label underlinePass;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox logout;
-        private System.Windows.Forms.PictureBox loginForm;
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.LinkLabel quenPass;
-        private Label label3;
-        private Panel panel1;
-        private Label label6;
-        private Label label7;
-        private Label label8;
+        private Label label1;
         private Label label4;
+        private PictureBox pictureBox1;
+        private Panel panel1;
         private Label label2;
-        private Label label5;
     }
 }
 

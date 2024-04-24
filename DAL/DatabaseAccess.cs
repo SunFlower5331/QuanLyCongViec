@@ -17,7 +17,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=HUYENDIEU;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -1107,7 +1107,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error uploading PDF to database: " + ex.Message);
+                Console.WriteLine("Lỗi khi tải lên PDF từ cơ sở dữ liệu: " + ex.Message);
                 return false;
             }
         }
@@ -1173,5 +1173,159 @@ namespace DAL
 
             return dataTable;
         }
+
+        public static int getTongCV()
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM DsCongViec";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                return soluong;
+            }
+        }
+
+        public static int getTongNV()
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM NhanVien";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                return soluong;
+            }
+        }
+
+        public static int getSoCVKhongHoanThanh()
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) FROM DsUyQuyenCV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                return soluong;
+            }
+        }
+        public static int getSoCVHoanThanh()
+        {
+            int soluong = 0;
+            string sql = "SELECT count(*) from CTCV where trangthai != N'Chưa hoàn thành'";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                return soluong;
+            }
+        }
+        public static int getDoanhThu()
+        {
+            int soluong = 0;
+            int soluong1 = 0;
+            int soluong2 = 0;
+            string sql = "select sum(TongphiQuanLy) from Chiphicanho";
+            string sql1 = "select sum(TongChiPhiDienNuoc) from Chiphicanho";
+            string sql2 = "select sum(TongPhiDichVu) from Chiphicanho";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+                SqlCommand command1 = new SqlCommand(sql1, con);
+                SqlCommand command2 = new SqlCommand(sql2, con);
+                try
+                {
+                    con.Open();
+
+                    // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
+                    object result = command.ExecuteScalar();
+                    object result1 = command.ExecuteScalar();
+                    object result2= command.ExecuteScalar();
+                    if (result != null && result1 != null && result2 != null)
+                    {
+                        // Convert kết quả sang kiểu int
+                        soluong = Convert.ToInt32(result);
+                        soluong1 = Convert.ToInt32(result1);
+                        soluong2 = Convert.ToInt32(result2);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu có
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                return soluong + soluong1 + soluong2;
+            }
+        }
+        
     }
 }

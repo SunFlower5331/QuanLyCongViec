@@ -40,11 +40,11 @@ namespace QuanLyCongViec
             {
                 for (int i = 0; i < row.Cells.Count; i++)
                 {
-                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
                     if (row.Cells[i].Value != null)
                     {
-                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                        row.Cells[i].Style.ForeColor = Color.White;
+                        row.Cells[i].Style.BackColor = Color.White;
+                        row.Cells[i].Style.ForeColor = Color.Black;
                     }
                 }
             }
@@ -58,11 +58,11 @@ namespace QuanLyCongViec
             {
                 for (int i = 0; i < row.Cells.Count; i++)
                 {
-                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    dsnv.Columns[i].HeaderCell.Style.SelectionBackColor = dsnv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
                     if (row.Cells[i].Value != null)
                     {
-                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                        row.Cells[i].Style.ForeColor = Color.White;
+                        row.Cells[i].Style.BackColor = Color.White;
+                        row.Cells[i].Style.ForeColor = Color.Black;
                     }
                 }
             }
@@ -76,11 +76,11 @@ namespace QuanLyCongViec
             {
                 for (int i = 0; i < row.Cells.Count; i++)
                 {
-                    dsdpc.Columns[i].HeaderCell.Style.SelectionBackColor = dsdpc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
+                    dsdpc.Columns[i].HeaderCell.Style.SelectionBackColor = dsdpc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
                     if (row.Cells[i].Value != null)
                     {
-                        row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-                        row.Cells[i].Style.ForeColor = Color.White;
+                        row.Cells[i].Style.BackColor = Color.White;
+                        row.Cells[i].Style.ForeColor = Color.Black;
                     }
                 }
             }
@@ -1010,15 +1010,10 @@ namespace QuanLyCongViec
                 groupBox2.Text = "Danh sách nhân viên";
                 label2.Text = "Mã công việc:";
                 label1.Text = "Tên công việc:";
-                btnluu.Text = "Lưu";
-                btncapnhat.Text = "Cập nhật";
-                btnxoa.Text = "Xóa";
-                btnthem.Text = "Thêm";
                 label4.Text = "Thời hạn:";
                 label3.Text = "Phòng ban:";
                 label5.Text = "Tên nhân viên:";
                 groupBox3.Text = "Danh sách công việc đã phân công";
-                tongquat.Text = "Thông tin tổng quát";
                 label6.Text = "Mã nhân viên:";
                 label7.Text = "Tùy chọn chia sẻ:";
                 btnphancong.Text = "Phân công";
@@ -1067,15 +1062,10 @@ namespace QuanLyCongViec
                 groupBox2.Text = "List of employee";
                 label2.Text = "Task ID:";
                 label1.Text = "Task Name:";
-                btnluu.Text = "Save";
-                btncapnhat.Text = "Update";
-                btnxoa.Text = "Delete";
-                btnthem.Text = "Add";
                 label4.Text = "Deadline:";
                 label3.Text = "Department:";
                 label5.Text = "Employee Name:";
                 groupBox3.Text = "List of assigned work";
-                tongquat.Text = "General Information";
                 label6.Text = "Employee ID:";
                 label7.Text = "Share option:";
                 btnphancong.Text = "Assign";
@@ -1269,6 +1259,12 @@ namespace QuanLyCongViec
             return pdfFile;
         }
 
+        private void FormCongViec_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
+        }
     }
 }
 

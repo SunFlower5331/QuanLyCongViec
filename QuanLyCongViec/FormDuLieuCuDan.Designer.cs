@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDuLieuCuDan));
             this.tabDulieu = new System.Windows.Forms.TabControl();
             this.CuDan = new System.Windows.Forms.TabPage();
@@ -128,22 +128,28 @@
             // 
             // buttonXuatPDF
             // 
-            this.buttonXuatPDF.Location = new System.Drawing.Point(680, 18);
+            this.buttonXuatPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF.Location = new System.Drawing.Point(677, 16);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
-            this.buttonXuatPDF.Size = new System.Drawing.Size(96, 25);
+            this.buttonXuatPDF.Size = new System.Drawing.Size(100, 30);
             this.buttonXuatPDF.TabIndex = 39;
             this.buttonXuatPDF.Text = "Xuất PDF";
-            this.buttonXuatPDF.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF.UseVisualStyleBackColor = false;
             this.buttonXuatPDF.Click += new System.EventHandler(this.buttonXuatPDF_Click);
             // 
             // buttonExportExcel
             // 
-            this.buttonExportExcel.Location = new System.Drawing.Point(561, 18);
+            this.buttonExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel.Location = new System.Drawing.Point(558, 15);
             this.buttonExportExcel.Name = "buttonExportExcel";
-            this.buttonExportExcel.Size = new System.Drawing.Size(101, 25);
+            this.buttonExportExcel.Size = new System.Drawing.Size(100, 30);
             this.buttonExportExcel.TabIndex = 38;
             this.buttonExportExcel.Text = "Xuất Excel";
-            this.buttonExportExcel.UseVisualStyleBackColor = true;
+            this.buttonExportExcel.UseVisualStyleBackColor = false;
             this.buttonExportExcel.Click += new System.EventHandler(this.buttonExportExcel_Click);
             // 
             // dscudan
@@ -153,23 +159,23 @@
             this.dscudan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dscudan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dscudan.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dscudan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dscudan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dscudan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dscudan.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dscudan.DefaultCellStyle = dataGridViewCellStyle2;
             this.dscudan.Location = new System.Drawing.Point(14, 58);
             this.dscudan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dscudan.Name = "dscudan";
@@ -194,22 +200,28 @@
             // 
             // buttonXuatPDF2
             // 
-            this.buttonXuatPDF2.Location = new System.Drawing.Point(671, 17);
+            this.buttonXuatPDF2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF2.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF2.Location = new System.Drawing.Point(676, 17);
             this.buttonXuatPDF2.Name = "buttonXuatPDF2";
-            this.buttonXuatPDF2.Size = new System.Drawing.Size(105, 25);
+            this.buttonXuatPDF2.Size = new System.Drawing.Size(100, 30);
             this.buttonXuatPDF2.TabIndex = 41;
             this.buttonXuatPDF2.Text = "Xuất PDF";
-            this.buttonXuatPDF2.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF2.UseVisualStyleBackColor = false;
             this.buttonXuatPDF2.Click += new System.EventHandler(this.buttonXuatPDF2_Click);
             // 
             // buttonExportExcel2
             // 
-            this.buttonExportExcel2.Location = new System.Drawing.Point(557, 17);
+            this.buttonExportExcel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel2.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel2.Location = new System.Drawing.Point(562, 17);
             this.buttonExportExcel2.Name = "buttonExportExcel2";
-            this.buttonExportExcel2.Size = new System.Drawing.Size(108, 25);
+            this.buttonExportExcel2.Size = new System.Drawing.Size(100, 30);
             this.buttonExportExcel2.TabIndex = 40;
             this.buttonExportExcel2.Text = "Xuất Excel";
-            this.buttonExportExcel2.UseVisualStyleBackColor = true;
+            this.buttonExportExcel2.UseVisualStyleBackColor = false;
             this.buttonExportExcel2.Click += new System.EventHandler(this.buttonExportExcel2_Click);
             // 
             // dsch
@@ -218,23 +230,23 @@
             this.dsch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsch.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsch.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dsch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dsch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dsch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsch.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsch.DefaultCellStyle = dataGridViewCellStyle4;
             this.dsch.Location = new System.Drawing.Point(14, 58);
             this.dsch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dsch.Name = "dsch";
@@ -259,22 +271,28 @@
             // 
             // buttonXuatPDF3
             // 
-            this.buttonXuatPDF3.Location = new System.Drawing.Point(664, 14);
+            this.buttonXuatPDF3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF3.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF3.Location = new System.Drawing.Point(676, 15);
             this.buttonXuatPDF3.Name = "buttonXuatPDF3";
-            this.buttonXuatPDF3.Size = new System.Drawing.Size(113, 25);
+            this.buttonXuatPDF3.Size = new System.Drawing.Size(100, 30);
             this.buttonXuatPDF3.TabIndex = 41;
             this.buttonXuatPDF3.Text = "Xuất PDF";
-            this.buttonXuatPDF3.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF3.UseVisualStyleBackColor = false;
             this.buttonXuatPDF3.Click += new System.EventHandler(this.buttonXuatPDF3_Click);
             // 
             // buttonExportExcel3
             // 
-            this.buttonExportExcel3.Location = new System.Drawing.Point(544, 14);
+            this.buttonExportExcel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel3.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel3.Location = new System.Drawing.Point(556, 15);
             this.buttonExportExcel3.Name = "buttonExportExcel3";
-            this.buttonExportExcel3.Size = new System.Drawing.Size(114, 25);
+            this.buttonExportExcel3.Size = new System.Drawing.Size(100, 30);
             this.buttonExportExcel3.TabIndex = 40;
             this.buttonExportExcel3.Text = "Xuất Excel";
-            this.buttonExportExcel3.UseVisualStyleBackColor = true;
+            this.buttonExportExcel3.UseVisualStyleBackColor = false;
             this.buttonExportExcel3.Click += new System.EventHandler(this.buttonExportExcel3_Click);
             // 
             // dsqh
@@ -283,23 +301,23 @@
             this.dsqh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsqh.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsqh.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dsqh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dsqh.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dsqh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsqh.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsqh.DefaultCellStyle = dataGridViewCellStyle6;
             this.dsqh.Location = new System.Drawing.Point(14, 58);
             this.dsqh.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dsqh.Name = "dsqh";
@@ -324,22 +342,28 @@
             // 
             // buttonXuatPDF4
             // 
-            this.buttonXuatPDF4.Location = new System.Drawing.Point(672, 17);
+            this.buttonXuatPDF4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF4.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF4.Location = new System.Drawing.Point(677, 14);
             this.buttonXuatPDF4.Name = "buttonXuatPDF4";
-            this.buttonXuatPDF4.Size = new System.Drawing.Size(105, 25);
+            this.buttonXuatPDF4.Size = new System.Drawing.Size(100, 30);
             this.buttonXuatPDF4.TabIndex = 41;
             this.buttonXuatPDF4.Text = "Xuất PDF";
-            this.buttonXuatPDF4.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF4.UseVisualStyleBackColor = false;
             this.buttonXuatPDF4.Click += new System.EventHandler(this.buttonXuatPDF4_Click);
             // 
             // buttonExportExcel4
             // 
-            this.buttonExportExcel4.Location = new System.Drawing.Point(544, 17);
+            this.buttonExportExcel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel4.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel4.Location = new System.Drawing.Point(561, 14);
             this.buttonExportExcel4.Name = "buttonExportExcel4";
-            this.buttonExportExcel4.Size = new System.Drawing.Size(107, 25);
+            this.buttonExportExcel4.Size = new System.Drawing.Size(100, 30);
             this.buttonExportExcel4.TabIndex = 40;
             this.buttonExportExcel4.Text = "Xuất Excel";
-            this.buttonExportExcel4.UseVisualStyleBackColor = true;
+            this.buttonExportExcel4.UseVisualStyleBackColor = false;
             this.buttonExportExcel4.Click += new System.EventHandler(this.buttonExportExcel4_Click);
             // 
             // dstk
@@ -348,23 +372,23 @@
             this.dstk.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dstk.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dstk.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dstk.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dstk.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dstk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dstk.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dstk.DefaultCellStyle = dataGridViewCellStyle8;
             this.dstk.Location = new System.Drawing.Point(14, 58);
             this.dstk.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dstk.Name = "dstk";
@@ -390,22 +414,28 @@
             // 
             // buttonXuatPDF5
             // 
-            this.buttonXuatPDF5.Location = new System.Drawing.Point(675, 16);
+            this.buttonXuatPDF5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF5.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF5.Location = new System.Drawing.Point(677, 16);
             this.buttonXuatPDF5.Name = "buttonXuatPDF5";
-            this.buttonXuatPDF5.Size = new System.Drawing.Size(101, 25);
+            this.buttonXuatPDF5.Size = new System.Drawing.Size(100, 30);
             this.buttonXuatPDF5.TabIndex = 41;
             this.buttonXuatPDF5.Text = "Xuất PDF";
-            this.buttonXuatPDF5.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF5.UseVisualStyleBackColor = false;
             this.buttonXuatPDF5.Click += new System.EventHandler(this.buttonXuatPDF5_Click);
             // 
             // buttonExportExcel5
             // 
-            this.buttonExportExcel5.Location = new System.Drawing.Point(567, 16);
+            this.buttonExportExcel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel5.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel5.Location = new System.Drawing.Point(569, 16);
             this.buttonExportExcel5.Name = "buttonExportExcel5";
-            this.buttonExportExcel5.Size = new System.Drawing.Size(102, 25);
+            this.buttonExportExcel5.Size = new System.Drawing.Size(100, 30);
             this.buttonExportExcel5.TabIndex = 40;
             this.buttonExportExcel5.Text = "Xuất Excel";
-            this.buttonExportExcel5.UseVisualStyleBackColor = true;
+            this.buttonExportExcel5.UseVisualStyleBackColor = false;
             this.buttonExportExcel5.Click += new System.EventHandler(this.buttonExportExcel5_Click);
             // 
             // dsnv
@@ -414,23 +444,23 @@
             this.dsnv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsnv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsnv.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dsnv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dsnv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dsnv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsnv.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsnv.DefaultCellStyle = dataGridViewCellStyle10;
             this.dsnv.Location = new System.Drawing.Point(14, 58);
             this.dsnv.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dsnv.Name = "dsnv";
@@ -455,22 +485,28 @@
             // 
             // buttonXuatPDF6
             // 
-            this.buttonXuatPDF6.Location = new System.Drawing.Point(669, 16);
+            this.buttonXuatPDF6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(6)))), ((int)(((byte)(6)))));
+            this.buttonXuatPDF6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonXuatPDF6.ForeColor = System.Drawing.Color.White;
+            this.buttonXuatPDF6.Location = new System.Drawing.Point(677, 15);
             this.buttonXuatPDF6.Name = "buttonXuatPDF6";
-            this.buttonXuatPDF6.Size = new System.Drawing.Size(109, 25);
+            this.buttonXuatPDF6.Size = new System.Drawing.Size(100, 30);
             this.buttonXuatPDF6.TabIndex = 41;
             this.buttonXuatPDF6.Text = "Xuất PDF";
-            this.buttonXuatPDF6.UseVisualStyleBackColor = true;
+            this.buttonXuatPDF6.UseVisualStyleBackColor = false;
             this.buttonXuatPDF6.Click += new System.EventHandler(this.buttonXuatPDF6_Click);
             // 
             // buttonExportExcel6
             // 
-            this.buttonExportExcel6.Location = new System.Drawing.Point(536, 16);
+            this.buttonExportExcel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(65)))));
+            this.buttonExportExcel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportExcel6.ForeColor = System.Drawing.Color.White;
+            this.buttonExportExcel6.Location = new System.Drawing.Point(558, 15);
             this.buttonExportExcel6.Name = "buttonExportExcel6";
-            this.buttonExportExcel6.Size = new System.Drawing.Size(113, 25);
+            this.buttonExportExcel6.Size = new System.Drawing.Size(100, 30);
             this.buttonExportExcel6.TabIndex = 40;
             this.buttonExportExcel6.Text = "Xuất Excel";
-            this.buttonExportExcel6.UseVisualStyleBackColor = true;
+            this.buttonExportExcel6.UseVisualStyleBackColor = false;
             this.buttonExportExcel6.Click += new System.EventHandler(this.buttonExportExcel6_Click);
             // 
             // dspb
@@ -479,23 +515,23 @@
             this.dspb.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dspb.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dspb.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dspb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dspb.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dspb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dspb.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dspb.DefaultCellStyle = dataGridViewCellStyle12;
             this.dspb.Location = new System.Drawing.Point(14, 58);
             this.dspb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dspb.Name = "dspb";
@@ -574,11 +610,11 @@
             // 
             // timkiem
             // 
-            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
-            this.timkiem.Location = new System.Drawing.Point(210, 103);
+            this.timkiem.Location = new System.Drawing.Point(229, 104);
             this.timkiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.timkiem.Name = "timkiem";
             this.timkiem.Size = new System.Drawing.Size(38, 29);
@@ -589,7 +625,7 @@
             // txbtimkiem
             // 
             this.txbtimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbtimkiem.Location = new System.Drawing.Point(34, 106);
+            this.txbtimkiem.Location = new System.Drawing.Point(52, 110);
             this.txbtimkiem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txbtimkiem.Name = "txbtimkiem";
             this.txbtimkiem.Size = new System.Drawing.Size(173, 23);
@@ -623,11 +659,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
-            this.label1.Location = new System.Drawing.Point(82, 26);
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(73, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 31);
             this.label1.TabIndex = 32;
@@ -635,7 +671,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(5)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txbtimkiem);
             this.panel1.Controls.Add(this.btnthem);
@@ -655,7 +691,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(1095, 528);
+            this.ClientSize = new System.Drawing.Size(1103, 528);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.minimize);
             this.Controls.Add(this.logout);

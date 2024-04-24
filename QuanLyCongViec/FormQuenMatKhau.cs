@@ -64,7 +64,7 @@ namespace QuanLyCongViec
                 string mk = DatabaseAccess.getMK(email.Text);
                 if (mk != null)
                 {
-                    guiEmail(email.Text, "Mật khẩu của bạn là - My password is : " + mk);
+                    guiEmail(email.Text, "Mật khẩu của bạn là: " + mk);
                 }
               
             }
@@ -81,7 +81,7 @@ namespace QuanLyCongViec
                 MailMessage mail = new MailMessage();
                 mail.To.Add(to);
                 mail.From = new MailAddress(from);
-                mail.Subject = "GỬI LẠI MẬT KHẨU -RESEND PASSWORD ";
+                mail.Subject = "GỬI LẠI MẬT KHẨU ";
                 mail.Body = content;
 
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com");

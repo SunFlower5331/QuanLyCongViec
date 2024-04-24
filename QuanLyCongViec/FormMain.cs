@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using DAL;
 using DTO;
@@ -23,7 +24,49 @@ namespace QuanLyCongViec
             InitializeNotifyIcon();
             InitializeComponent();
             menuStrip2.Renderer = new MyRenderer();
+            labelTongNV.Parent = labelSoNV.Parent = pictureBoxTongNV;
+            c.Parent = labelSoCV.Parent = pictureBoxTongCV;
+            labelHieuSuat.Parent = labelSoHieuSuat.Parent = label3.Parent = pictureBoxHieuSuat;
+            labelDoanhThu.Parent = labelSoDoanhThu.Parent = pictureBoxDoanhThu;
+            dscvcty.CellFormatting += dscvcty_CellFormatting;
+            dscvpban.CellFormatting += dscvpban_CellFormatting;
+            labelSoCV.Text = DatabaseAccess.getTongCV().ToString();
+            labelSoNV.Text = DatabaseAccess.getTongNV().ToString();
+            labelSoHieuSuat.Text = ((DatabaseAccess.getSoCVHoanThanh() * 100) / (DatabaseAccess.getSoCVHoanThanh() + DatabaseAccess.getSoCVKhongHoanThanh())).ToString();
+            labelSoDoanhThu.Text = DatabaseAccess.getDoanhThu().ToString();
+        }
 
+        private void dscvcty_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscvcty.EnableHeadersVisualStyles = false;
+            dscvcty.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            foreach (DataGridViewRow row in dscvcty.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscvcty.Columns[i].HeaderCell.Style.SelectionBackColor = dscvcty.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(170, 170, 255);
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
+        }
+        private void dscvpban_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dscvpban.EnableHeadersVisualStyles = false;
+            dscvpban.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            foreach (DataGridViewRow row in dscvpban.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dscvpban.Columns[i].HeaderCell.Style.SelectionBackColor = dscvpban.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(170, 170, 255);
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
         }
 
         private void thongbaocv()
@@ -97,16 +140,21 @@ namespace QuanLyCongViec
             dscvcty.DataSource = DatabaseAccess.GetCTCVCty().Tables[0];
             dscvcty.AutoGenerateColumns = false;
             dscvcty.Columns["phongban"].HeaderText = "Phòng ban";
+            dscvcty.Columns["phongban"].Width = 65;
             dscvcty.Columns["chucvu"].HeaderText = "Chức vụ";
             dscvcty.Columns["maCV"].HeaderText = "  Mã công việc";
+            dscvcty.Columns["maCV"].Width = 75;
             dscvcty.Columns["ten"].HeaderText = "Tên công việc";
             dscvcty.Columns["maNV"].HeaderText = "Mã nhân viên";
+            dscvcty.Columns["maNV"].Width = 75;
             dscvcty.Columns["hoten"].HeaderText = "Tên nhân viên";
 
             dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
             dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
             dscvcty.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
+            dscvcty.Columns["ngaycapnhat"].Width = 80;
+
 
         }
         private void loadCTCVPban()
@@ -115,11 +163,14 @@ namespace QuanLyCongViec
             dscvpban.DataSource = DatabaseAccess.GetCTCVPban(Program.getUserIDPB()).Tables[0];
             dscvpban.AutoGenerateColumns = false;
             dscvpban.Columns["phongban"].HeaderText = "Phòng ban";
+            dscvpban.Columns["phongban"].Width = 65;
             dscvpban.Columns["chucvu"].HeaderText = "Chức vụ";
             dscvpban.Columns["maCV"].HeaderText = "Mã công việc";
+            dscvpban.Columns["maCV"].Width = 75;
             dscvpban.Columns["ten"].HeaderText = "Tên công việc";
             dscvpban.Columns["maNV"].HeaderText = "Mã nhân viên";
             dscvpban.Columns["hoten"].HeaderText = "Tên nhân viên";
+            dscvpban.Columns["maNV"].Width = 75;
 
             dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
             dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
@@ -128,22 +179,6 @@ namespace QuanLyCongViec
         }
 
 
-        //private void dscv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dscv.EnableHeadersVisualStyles = false;
-        //    dscv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dscv.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dscv.Columns[i].HeaderCell.Style.SelectionBackColor = dscv.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
-
-        //            row.Cells[i].Style.BackColor = Color.White;
-        //            row.Cells[i].Style.ForeColor = Color.Black;
-
-        //        }
-        //    }
-        //}
 
         // Chỉnh sửa màu menustrip
         private class MyRenderer : ToolStripProfessionalRenderer
@@ -154,11 +189,11 @@ namespace QuanLyCongViec
         {
             public override Color MenuItemPressedGradientBegin
             {
-                get { return Color.FromArgb(246, 191, 2); }
+                get { return Color.FromArgb(18, 57, 166); }
             }
             public override Color MenuItemPressedGradientEnd
             {
-                get { return Color.FromArgb(175, 0, 0); }
+                get { return Color.FromArgb(37, 37, 37); }
             }
             public override Color MenuBorder
             {
@@ -184,27 +219,6 @@ namespace QuanLyCongViec
 
 
         }
-
-        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            string selectedLanguage = GlobalSettings.Language;
-
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                DialogResult result = MessageBox.Show(selectedLanguage == "Vietnamese" ? "Bạn có muốn thoát chương trình không?" : "Do you want to exit the program?",
-                                                      selectedLanguage == "Vietnamese" ? "Xác nhận" : "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
 
         private void côngViệcToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -271,13 +285,7 @@ namespace QuanLyCongViec
         {
             string selectedLanguage = GlobalSettings.Language;
 
-            DialogResult result = MessageBox.Show(selectedLanguage == "Vietnamese" ? "Bạn có muốn thoát chương trình không?" : "Do you want to exit the program?",
-                                                  selectedLanguage == "Vietnamese" ? "Xác nhận" : "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            
         }
 
         // Dùng để kéo thả cửa sổ
@@ -311,7 +319,7 @@ namespace QuanLyCongViec
                 ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
                 ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
                 congviecMenuItem.Enabled = false;
-                dulieunhanvien.Enabled = false;
+                congviec.Enabled = false;
 
             }
             else if (quyen == 3)
@@ -322,7 +330,7 @@ namespace QuanLyCongViec
                 ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
                 ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
                 congviecMenuItem.Enabled = false;
-                dulieunhanvien.Enabled = false;
+                congviec.Enabled = false;
 
 
             }
@@ -362,14 +370,14 @@ namespace QuanLyCongViec
             {
                 tabControl1.TabPages[0].Text = "Công ty";
                 tabControl1.TabPages[1].Text = "Phòng ban";
-                groupBox1.Text = "Tìm kiếm";
-                label1.Text = "Danh sách công việc";
+                label2.Text = "     Danh sách công việc phòng ban";
+                label1.Text = "     Danh sách công việc công ty";
                 hethong.Text = "Hệ thống";
                 thêmToolStripMenuItem.Text = "Thông tin cá nhân";
                 quanly.Text = "Quản lý";
                 thongke.Text = "Thống kê";
                 đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-                dulieunhanvien.Text = "Dữ liệu nhân viên";
+                congviec.Text = "Công việc";
                 trogiup.Text = "Ngôn ngữ";
                 tacvu.Text = "Tác vụ";
                 chưaHoànThànhToolStripMenuItem.Text = "Báo cáo công việc";
@@ -378,7 +386,7 @@ namespace QuanLyCongViec
                 vietnamToolStripMenuItem.Text = "Tiếng Việt";
                 tiendocongviec.Text = "Tiến độ công việc cá nhân";
                 dulieucudan.Text = "Dữ liệu cư dân";
-                congviec.Text = "Công việc";
+                dulieunhanvien.Text = "Dữ liệu nhân viên";
                 nhậpXuấtToolStripMenuItem.Text = "Upload/ Download tài liệu";
                 hiệuQuảCôngViệcToolStripMenuItem.Text = "Hiệu Quả Công Việc";
                 gửiThôngBáoToolStripMenuItem.Text = "Gửi Thông Báo";
@@ -403,20 +411,28 @@ namespace QuanLyCongViec
                 dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
                 dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dscvcty.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật"; 
+
+                textBox1.Text = "Tìm kiếm";
+                c.Text = "Tổng công việc";
+                labelHieuSuat.Text = "Hiệu suất";
+                labelDoanhThu.Text = "Doanh thu";
+                labelTongNV.Text = "Tổng nhân viên";
+                
 
             }
             else if (selectedLanguage == "English")
             {
                 tabControl1.TabPages[0].Text = "Company";
                 tabControl1.TabPages[1].Text = "Department";
-                groupBox1.Text = "Search";
-                label1.Text = "Work list";
+                label1.Text = "     Company Work list";
+                label2.Text = "     Department Work list";
                 hethong.Text = "System";
                 thêmToolStripMenuItem.Text = "Personal information";
                 quanly.Text = "Manage";
                 thongke.Text = "Statistics";
                 đăngXuấtToolStripMenuItem.Text = "Log out";
-                dulieunhanvien.Text = "Employee Data";
+                congviec.Text = "Tasks";
                 trogiup.Text = "Language";
                 tacvu.Text = "Tasks";
                 chưaHoànThànhToolStripMenuItem.Text = "Work report";
@@ -425,7 +441,7 @@ namespace QuanLyCongViec
                 vietnamToolStripMenuItem.Text = "Vietnamese";
                 tiendocongviec.Text = "Personal work progress";
                 dulieucudan.Text = "Resident Data";
-                congviec.Text = "Tasks";
+                dulieunhanvien.Text = "Employee Data";
                 nhậpXuấtToolStripMenuItem.Text = "Upload/Download documents";
                 hiệuQuảCôngViệcToolStripMenuItem.Text = "Task Efficiency";
                 gửiThôngBáoToolStripMenuItem.Text = "Send Notification";
@@ -451,6 +467,14 @@ namespace QuanLyCongViec
                 dscvpban.Columns["trangthai"].HeaderText = "Status";
                 dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+                dscvcty.Columns["ngaycapnhat"].HeaderText = "Update date";
+
+                textBox1.Text = "Search";
+                c.Text = "Total work";
+                labelHieuSuat.Text = "Performance";
+                labelDoanhThu.Text = "revenue";
+
+                labelTongNV.Text = "General staff";
 
 
             }
@@ -481,6 +505,68 @@ namespace QuanLyCongViec
         }
 
         private void timkiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMain_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            string selectedLanguage = GlobalSettings.Language;
+
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show(selectedLanguage == "Vietnamese" ? "Bạn có muốn thoát chương trình không?" : "Do you want to exit the program?",
+                                                      selectedLanguage == "Vietnamese" ? "Xác nhận" : "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void EndResponsive()
+        {
+            if (this.Width < 925)
+            {
+                labelTongNV.Location = new Point(24, 24);
+                labelTongNV.Font = new Font("Segoe UI Semibold", 11, FontStyle.Bold);
+                c.Location = new Point(24, 24);
+                c.Font = new Font("Segoe UI Semibold", 11, FontStyle.Bold);
+                labelHieuSuat.Location = new Point(24, 24);
+                labelHieuSuat.Font = new Font("Segoe UI Semibold", 11, FontStyle.Bold);
+                labelDoanhThu.Location = new Point(24, 24);
+                labelDoanhThu.Font = new Font("Segoe UI Semibold", 11, FontStyle.Bold);
+            }
+            else 
+            {
+                labelTongNV.Location = new Point(44, 24);
+                labelTongNV.Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold);
+                c.Location = new Point(44, 24);
+                c.Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold);
+                labelHieuSuat.Location = new Point(44, 24);
+                labelHieuSuat.Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold);
+                labelDoanhThu.Location = new Point(44, 24);
+                labelDoanhThu.Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold);
+            }
+        }
+
+        private void labelDoanhThu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            EndResponsive();
+        }
+
+        private void quanly_Click(object sender, EventArgs e)
         {
 
         }

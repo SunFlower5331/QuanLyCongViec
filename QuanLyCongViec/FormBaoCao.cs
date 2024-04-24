@@ -25,55 +25,44 @@ namespace QuanLyCongViec
         {
             InitializeComponent();
 
-            //dsch.CellFormatting += dsch_CellFormatting;
-            //dsyc.CellFormatting += dsyc_CellFormatting;
+            dsch.CellFormatting += dsch_CellFormatting;
+            dsyc.CellFormatting += dsyc_CellFormatting;
         }
 
 
-        //private void dsch_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsch.EnableHeadersVisualStyles = false;
-        //    dsch.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dsch.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsch.Columns[i].HeaderCell.Style.SelectionBackColor = dsch.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
-
-        //            row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //                row.Cells[i].Style.ForeColor = Color.White;
-
-        //        }
-        //    }
-        //}
-        //private void dsyc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    dsyc.EnableHeadersVisualStyles = false;
-        //    dsyc.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        //    foreach (DataGridViewRow row in dsyc.Rows)
-        //    {
-        //        for (int i = 0; i < row.Cells.Count; i++)
-        //        {
-        //            dsyc.Columns[i].HeaderCell.Style.SelectionBackColor = dsyc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(160, 0, 0);
-
-        //                row.Cells[i].Style.BackColor = Color.FromArgb(56, 56, 56);
-        //                row.Cells[i].Style.ForeColor = Color.White;
-
-        //        }
-        //    }
-        //}
-
-        private void minimize_Click(object sender, EventArgs e)
+        private void dsch_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            dsch.EnableHeadersVisualStyles = false;
+            dsch.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsch.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsch.Columns[i].HeaderCell.Style.SelectionBackColor = dsch.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
+        }
+        private void dsyc_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dsyc.EnableHeadersVisualStyles = false;
+            dsyc.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            foreach (DataGridViewRow row in dsyc.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dsyc.Columns[i].HeaderCell.Style.SelectionBackColor = dsyc.Columns[i].HeaderCell.Style.BackColor = Color.FromArgb(18, 57, 166);
+
+                    row.Cells[i].Style.BackColor = Color.White;
+                    row.Cells[i].Style.ForeColor = Color.Black;
+
+                }
+            }
         }
 
-        private void logout_Click(object sender, EventArgs e)
-        {
-            FormMain form = new FormMain();
-            form.Show();
-            this.Hide();
-        }
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -191,7 +180,7 @@ namespace QuanLyCongViec
 
         private void textBoxTimKiem_Enter(object sender, EventArgs e)
         {
-            if (textBoxTimKiem.Text == "Tìm kiếm theo mã căn hộ")
+            if (textBoxTimKiem.Text == "Tìm kiếm theo mã căn hộ" || textBoxTimKiem.Text == "Search apartment code")
             {
                 textBoxTimKiem.Text = "";
                 textBoxTimKiem.ForeColor = Color.Black;
@@ -199,9 +188,14 @@ namespace QuanLyCongViec
         }
         private void textBoxTimKiem_Leave(object sender, EventArgs e)
         {
-            if (textBoxTimKiem.Text == "")
+            if (textBoxTimKiem.Text == "" && GlobalSettings.Language == "Vietnamese")
             {
                 textBoxTimKiem.Text = "Tìm kiếm theo mã căn hộ";
+                textBoxTimKiem.ForeColor = Color.DimGray;
+            }
+            if (textBoxTimKiem.Text == "" && GlobalSettings.Language == "English")
+            {
+                textBoxTimKiem.Text = "Search apartment code";
                 textBoxTimKiem.ForeColor = Color.DimGray;
             }
         }
@@ -438,7 +432,7 @@ namespace QuanLyCongViec
                 groupBox2.Text = "Danh sách yêu cầu";
                 groupBox3.Text = "Tùy chọn";
 
-                checkBoxTongChiPhi.Text = "Tổng chi hí";
+                checkBoxTongChiPhi.Text = "Tổng chi phí";
                 checkBoxCongNo.Text = "Công nợ";
                 checkBoxNVPT.Text = "Nhân viên phụ trách";
                 checkBoxTinhTrangXuLy.Text = "Tình trạng xử lý";
@@ -446,9 +440,9 @@ namespace QuanLyCongViec
                 checkBoxQuocTich.Text = "Quốc tịch";
                 checkBoxThoiGian.Text = "Ngày yêu cầu";
                 checkBoxTinhTrangCanHo.Text = "Tình trạng căn hộ";
-                label2.Text = "CHọn ngày bắt đầu:";
+                label2.Text = "Chọn ngày bắt đầu:";
                 label3.Text = "Chọn ngày kết thúc";
-                textBoxTimKiem.Text = "Tìm kiếm";
+                textBoxTimKiem.Text = "Tìm kiếm theo mã căn hộ";
 
                 buttonXacNhan.Text = "Xác nhận";
                 buttonExportExcel.Text = "Xuất Excel";
@@ -473,7 +467,7 @@ namespace QuanLyCongViec
                 checkBoxTinhTrangCanHo.Text = "Apartment status";
                 label2.Text = "Choose start date:";
                 label3.Text = "Select end date";
-                textBoxTimKiem.Text = "Search";
+                textBoxTimKiem.Text = "Search apartment code";
 
                 buttonXacNhan.Text = "Confirm";
                 buttonExportExcel.Text = "Export Excel";
@@ -603,6 +597,22 @@ namespace QuanLyCongViec
             }
         }
 
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormBaoCao_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
+        }
     }
 
 
