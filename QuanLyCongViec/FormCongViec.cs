@@ -91,15 +91,14 @@ namespace QuanLyCongViec
             dtpthoihan.Format = DateTimePickerFormat.Short;
             dtpthoihan.CustomFormat = "dd/MM/yyyy";
             loadDsCongViec();
-            cbotrangthai.SelectedIndex = 0;
-            cbotuychonchiase.SelectedIndex = 0;
-            cbotuychonhienthi.SelectedIndex = 0;
+            loadCTCV();
+            loadDsNv();
             tuychonhienthi();
-            UpdateLanguage();
             comboBoxLanguage_SelectedIndexChanged();
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
             dsdpc.CurrentCell = null;
+            UpdateLanguage();
 
 
         }
@@ -207,7 +206,7 @@ namespace QuanLyCongViec
                 if (dgvRow.Cells["songayhethan"].Value != null && dgvRow.Cells["trangthai"].Value != null)
                 {
                     int soNgayHetHan;
-                   
+
                     if (int.TryParse(dgvRow.Cells["songayhethan"].Value.ToString(), out soNgayHetHan))
                     {
                         if (soNgayHetHan < 0 && string.Equals(dgvRow.Cells["trangthai"].Value.ToString(), "Trễ hạn", StringComparison.OrdinalIgnoreCase))
@@ -1003,6 +1002,7 @@ namespace QuanLyCongViec
         private void UpdateLanguage()
         {
             string selectedLanguage = GlobalSettings.Language;
+
             // Use selectedLanguage instead of getting language from GlobalSettings or other source
             if (selectedLanguage == "Vietnamese")
             {
@@ -1055,7 +1055,7 @@ namespace QuanLyCongViec
                 buttonXuatPDF.Text = "Xuất PDF";
                 buttonExportExcel.Text = "Xuất Excel";
             }
-            else if (selectedLanguage == "English")
+            else
             {
 
                 //UpdateLanguageInComboBox(selectedLanguage == "English");
@@ -1103,6 +1103,7 @@ namespace QuanLyCongViec
 
                 dscv.Columns["maCV"].HeaderText = "Job ID";
                 dscv.Columns["ten"].HeaderText = "Job Name";
+                dscv.Columns["ngayYC"].HeaderText = "Request Date";
 
                 buttonXuatPDF.Text = "Export PDF";
                 buttonExportExcel.Text = "Export Excel";
@@ -1113,33 +1114,10 @@ namespace QuanLyCongViec
         private void comboBoxLanguage_SelectedIndexChanged()
         {
             string selectedLanguage = GlobalSettings.Language;
-
-            if (selectedLanguage == "English")
+           
+            if (selectedLanguage == "Vietnamese")
             {
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Anh
-                cbotuychonhienthi.Items.Clear();
-                cbotrangthai.Items.Clear();
-                cbotuychonchiase.Items.Clear();
-                cbotuychonhienthi.Items.Add("All Employees");
-                cbotuychonhienthi.Items.Add("DV");
-                cbotuychonhienthi.Items.Add("TC");
-                cbotuychonhienthi.Items.Add("VS");
-                cbotuychonhienthi.Items.Add("AN");
-                cbotuychonhienthi.Items.Add("KT");
-                cbotuychonhienthi.Items.Add("XD");
-
-
-                cbotuychonchiase.Items.Add("Công việc chung");
-                cbotuychonchiase.Items.Add("Bộ phận");
-
-
-                cbotrangthai.Items.Add("Chưa hoàn thành");
-                cbotrangthai.Items.Add("Hoàn thành");
-                // Cập nhật các thành phần khác tương ứng nếu cần
-            }
-            else if (selectedLanguage == "Vietnamese")
-            {
-                // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
                 cbotuychonhienthi.Items.Clear();
                 cbotrangthai.Items.Clear();
                 cbotuychonchiase.Items.Clear();
@@ -1151,11 +1129,41 @@ namespace QuanLyCongViec
                 cbotuychonhienthi.Items.Add("KT");
                 cbotuychonhienthi.Items.Add("XD");
 
+
+                cbotuychonchiase.Items.Add("Công việc chung");
+                cbotuychonchiase.Items.Add("Bộ phận");
+               
+                cbotrangthai.Items.Add("Chưa hoàn thành");
+                cbotrangthai.Items.Add("Hoàn thành");
+                // Cập nhật các thành phần khác tương ứng nếu cần
+                cbotrangthai.SelectedIndex = 0;
+                cbotuychonchiase.SelectedIndex = 0;
+                cbotuychonhienthi.SelectedIndex = 0;
+
+            }
+            else if (selectedLanguage == "English")
+            {
+                // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
+                cbotuychonhienthi.Items.Clear();
+                cbotrangthai.Items.Clear();
+                cbotuychonchiase.Items.Clear();
+                cbotuychonhienthi.Items.Add("All Employees");
+                cbotuychonhienthi.Items.Add("DV");
+                cbotuychonhienthi.Items.Add("TC");
+                cbotuychonhienthi.Items.Add("VS");
+                cbotuychonhienthi.Items.Add("AN");
+                cbotuychonhienthi.Items.Add("KT");
+                cbotuychonhienthi.Items.Add("XD");
+
                 cbotuychonchiase.Items.Add("Joint work");
                 cbotuychonchiase.Items.Add("Part");
 
                 cbotrangthai.Items.Add("Unfinished");
                 cbotrangthai.Items.Add("Accomplished");
+                cbotrangthai.SelectedIndex = 0;
+                cbotuychonchiase.SelectedIndex = 0;
+                cbotuychonhienthi.SelectedIndex = 0;
+
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
         }
@@ -1163,7 +1171,7 @@ namespace QuanLyCongViec
         {
             string selectedLanguage = GlobalSettings.Language;
 
-            if (selectedLanguage == "English")
+            if (selectedLanguage == "Vietnamese")
             {
 
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Anh
@@ -1173,9 +1181,13 @@ namespace QuanLyCongViec
                 cbotuychonchiase.Items.Add("Công việc chung");
                 cbotuychonchiase.Items.Add("Bộ phận");
 
+              
+                cbotuychonchiase.SelectedIndex = 0;
+              
+
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
-            else if (selectedLanguage == "Vietnamese")
+            else if (selectedLanguage == "English")
             {
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
 
@@ -1184,6 +1196,11 @@ namespace QuanLyCongViec
                 cbotuychonchiase.Items.Add("Joint work");
                 cbotuychonchiase.Items.Add("Part");
 
+              
+                cbotuychonchiase.SelectedIndex = 0;
+               
+
+
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
         }
@@ -1191,7 +1208,7 @@ namespace QuanLyCongViec
         {
             string selectedLanguage = GlobalSettings.Language;
 
-            if (selectedLanguage == "English")
+            if (selectedLanguage == "Vietnamese")
             {
 
                 cbotrangthai.Items.Clear();
@@ -1199,9 +1216,12 @@ namespace QuanLyCongViec
 
                 cbotrangthai.Items.Add("Chưa hoàn thành");
                 cbotrangthai.Items.Add("Hoàn thành");
+                cbotrangthai.SelectedIndex = 0;
+               
+
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
-            else if (selectedLanguage == "Vietnamese")
+            else if (selectedLanguage == "English")
             {
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
 
@@ -1209,6 +1229,9 @@ namespace QuanLyCongViec
 
                 cbotrangthai.Items.Add("Unfinished");
                 cbotrangthai.Items.Add("Accomplished");
+                cbotrangthai.SelectedIndex = 0;
+              
+
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
         }

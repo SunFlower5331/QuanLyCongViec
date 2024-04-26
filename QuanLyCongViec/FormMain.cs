@@ -276,18 +276,6 @@ namespace QuanLyCongViec
             this.Hide();
         }
 
-        private void minimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void logout_Click(object sender, EventArgs e)
-        {
-            string selectedLanguage = GlobalSettings.Language;
-
-            
-        }
-
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -456,6 +444,7 @@ namespace QuanLyCongViec
                 dscvcty.Columns["trangthai"].HeaderText = "Status";
                 dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dscvcty.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+                 dscvcty.Columns["ngaycapnhat"].HeaderText = "Update day";
 
                 // DataGridView trong tabPage2
                 dscvpban.Columns["phongban"].HeaderText = "Department";

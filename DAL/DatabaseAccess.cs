@@ -981,7 +981,7 @@ namespace DAL
         {
 
             DataSet data = new DataSet();
-            string query = "select CD.* from DVCanHo DVCH,DsCongViec DSCV,CanHo CH,CuDan CD where DVCH.maCV=DSCV.maCV and DVCH.maCH=CH.maCH and CH.maCD=CD.maCD and DSCV.maCV=@maCV";
+            string query = "select DISTINCT CD.* from DVCanHo DVCH,DsCongViec DSCV,CanHo CH,CuDan CD where DVCH.maCV=DSCV.maCV and DVCH.maCH=CH.maCH and CH.maCD=CD.maCD and DSCV.maCV=@maCV";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {

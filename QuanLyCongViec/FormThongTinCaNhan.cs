@@ -47,7 +47,7 @@ namespace QuanLyCongViec
                 // Gắn dữ liệu vào các ô
                 txtHoTen.Text = nv.hoten;
                 dtpNgaySinh.Value = nv.ngaysinh;
-                cboGioiTinh.SelectedItem = nv.gioitinh;
+                cboGioiTinh.Text = nv.gioitinh;
                 txtDiaChi.Text = nv.diachi;
                 txtDienThoai.Text = nv.didong;
                 txtEmail.Text = nv.email;
@@ -188,7 +188,7 @@ namespace QuanLyCongViec
             string manv = txbmnv.Text;
             string hoten = txtHoTen.Text;
             DateTime ngaysinh = dtpNgaySinh.Value;
-            string gioitinh = cboGioiTinh.SelectedItem.ToString();
+            string gioitinh = cboGioiTinh.Text;
             string diachi = txtDiaChi.Text;
 
             string chucvu = txtChucVu.Text;
@@ -313,52 +313,68 @@ namespace QuanLyCongViec
             {
                 groupBox3.Text = "Thông tin tài khoản";
                 groupBox1.Text = "Thông tin cá nhân";
-                macanho.Text = "Mã căn hộ:";
-                maphanquyen.Text = "Mã phân quyền:";
-                manhanvien.Text = "Mã nhân viên:";
-                label1.Text = "Họ và tên:";
-                label2.Text = "Địa chỉ:";
-                label4.Text = "Trình độ học vấn:";
+                groupBox2.Text = "Thông tin hợp đồng";
+
+
+                didong.Text = "Di động:";
+                ngaysinh.Text = "Ngày sinh:";
+                hoten.Text = "Họ tên:";
+                email.Text = "Email:";
+                diachi.Text = "Địa chỉ:";
+                trinhdohocvan.Text = "Trình độ học vấn:";
                 gioitinh.Text = "Giới tính:";
-                label3.Text = "Ngày sinh:";
-                groupBox2.Text = "Thông tin công ty";
-                label7.Text = "Phòng ban:";
-                label9.Text = "Lương:";
-                label10.Text = "Chức vụ:";
-                label11.Text = "Mã nhân viên:";
-                label12.Text = "Trạng thái:";
+                loaihinh.Text = "Loại hình:";
+
+                phongban.Text = "Phòng ban:";
+                luong.Text = "Lương:";
+                trangthai.Text = "Trạng thái:";
+                chucvu.Text = "Chức vụ:";
+                manv.Text = "Mã nhân viên:";
                 button1.Text = "Lưu";
-                label5.Text = "Tên tài khoản:";
-                label6.Text = "Mật khẩu:";
-                label8.Text = "Quyền hạn:";
+                capquyenhan.Text = "Cấp quyền hạn:";
+                matkhau.Text = "Mật khẩu:";
+                tendangnhap.Text = "Tên đăng nhập:";
                 button3.Text = "Sửa";
                 hienmk.Text = "Hiện mật khẩu";
             }
             else if (selectedLanguage == "English")
             {
-                groupBox3.Text = "account information";
+                groupBox3.Text = "Account Information";
                 groupBox1.Text = "Personal Information";
-                macanho.Text = "Apartment code:";
-                maphanquyen.Text = "Permission code:";
-                manhanvien.Text = "Employee code:";
-                label1.Text = "Full Name:";
-                label2.Text = "Address:";
-                label4.Text = "Educational Level:";
+                groupBox2.Text = "Contract Information";
+
+                didong.Text = "Mobile:";
+                ngaysinh.Text = "Date of Birth:";
+                hoten.Text = "Full Name:";
+                email.Text = "Email:";
+                diachi.Text = "Address:";
+                trinhdohocvan.Text = "Education Level:";
                 gioitinh.Text = "Gender:";
-                label3.Text = "Date of Birth:";
-                groupBox2.Text = "Company Information";
-                label7.Text = "Department:";
-                label9.Text = "Salary:";
-                label10.Text = "Position:";
-                label11.Text = "Employee code:";
-                label12.Text = "Status:";
+                loaihinh.Text = "Type:";
+
+                phongban.Text = "Department:";
+                luong.Text = "Salary:";
+                trangthai.Text = "Status:";
+                chucvu.Text = "Position:";
+                manv.Text = "Employee Code:";
                 button1.Text = "Save";
-                label5.Text = "Username:";
-                label6.Text = "Password:";
-                label8.Text = "Permission:";
-                button3.Text = "Fix";
+                capquyenhan.Text = "Permission:";
+                matkhau.Text = "Password:";
+                tendangnhap.Text = "UserID:";
+                button3.Text = "Edit";
                 hienmk.Text = "Show password";
             }
+
+        }
+
+        private void txtPhongBan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
