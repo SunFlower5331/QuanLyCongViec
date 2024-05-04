@@ -224,7 +224,7 @@
             this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF.Location = new System.Drawing.Point(802, 11);
-            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(2);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
             this.buttonXuatPDF.Size = new System.Drawing.Size(70, 30);
             this.buttonXuatPDF.TabIndex = 35;
@@ -239,7 +239,7 @@
             this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel.Location = new System.Drawing.Point(707, 11);
-            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonExportExcel.Name = "buttonExportExcel";
             this.buttonExportExcel.Size = new System.Drawing.Size(76, 30);
             this.buttonExportExcel.TabIndex = 34;
@@ -335,7 +335,7 @@
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 314);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -351,7 +351,7 @@
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -367,7 +367,7 @@
             this.panel1.Controls.Add(this.btnchinhsuaphancong);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(716, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(546, 250);
             this.panel1.TabIndex = 0;
@@ -394,9 +394,9 @@
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
             this.groupBox4.Location = new System.Drawing.Point(8, 2);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(529, 176);
             this.groupBox4.TabIndex = 51;
             this.groupBox4.TabStop = false;
@@ -419,6 +419,7 @@
             this.cbotuychonhienthi.Name = "cbotuychonhienthi";
             this.cbotuychonhienthi.Size = new System.Drawing.Size(135, 21);
             this.cbotuychonhienthi.TabIndex = 49;
+            this.cbotuychonhienthi.SelectedIndexChanged += new System.EventHandler(this.cbotuychonhienthi_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -626,6 +627,7 @@
             this.button1.TabIndex = 50;
             this.button1.Text = "Uỷ quyền";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnphancong
             // 
@@ -639,6 +641,7 @@
             this.btnphancong.TabIndex = 44;
             this.btnphancong.Text = "Phân công";
             this.btnphancong.UseVisualStyleBackColor = true;
+            this.btnphancong.Click += new System.EventHandler(this.btnphancong_Click_1);
             // 
             // btnchinhsuaphancong
             // 
@@ -653,6 +656,7 @@
             this.btnchinhsuaphancong.TabIndex = 46;
             this.btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
             this.btnchinhsuaphancong.UseVisualStyleBackColor = true;
+            this.btnchinhsuaphancong.Click += new System.EventHandler(this.btnchinhsuaphancong_Click_1);
             // 
             // FormCongViec
             // 
@@ -669,7 +673,6 @@
             this.Text = "FormCongViec";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCongViec_FormClosing);
             this.Load += new System.EventHandler(this.FormCongViec_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormCongViec_MouseDown);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsnv)).EndInit();
             this.groupBox3.ResumeLayout(false);
