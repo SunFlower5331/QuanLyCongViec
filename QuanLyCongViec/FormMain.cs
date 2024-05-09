@@ -32,7 +32,7 @@ namespace QuanLyCongViec
             dscvpban.CellFormatting += dscvpban_CellFormatting;
             labelSoCV.Text = DatabaseAccess.getTongCV().ToString();
             labelSoNV.Text = DatabaseAccess.getTongNV().ToString();
-            labelSoHieuSuat.Text = ((DatabaseAccess.getSoCVHoanThanh() * 100) / (DatabaseAccess.getSoCVHoanThanh() + DatabaseAccess.getSoCVKhongHoanThanh())).ToString();
+            //labelSoHieuSuat.Text = ((DatabaseAccess.getSoCVHoanThanh() * 100) / (DatabaseAccess.getSoCVHoanThanh() + DatabaseAccess.getSoCVKhongHoanThanh())).ToString();
             labelSoDoanhThu.Text = DatabaseAccess.getDoanhThu().ToString();
         }
 

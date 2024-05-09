@@ -144,7 +144,7 @@ namespace QuanLyCongViec
             dsnv.Columns["trangthai"].HeaderText = "Trạng thái";
             dsnv.Columns["trinhdohocvan"].HeaderText = "Trình độ học vấn";
             dsnv.Columns["loaihinh"].HeaderText = "Loại hình";
-            dsnv.Columns["quyenhan"].HeaderText = "Quyền hạn";
+           
         }
         private void loadDsUyQuyenCV()
         {
@@ -265,7 +265,7 @@ namespace QuanLyCongViec
               
             }
         }
-
+        //HG
         private void SaveLastRowData(DataGridView dgv, string tableName)
         {
             string selectedLanguage = GlobalSettings.Language;
@@ -332,21 +332,31 @@ namespace QuanLyCongViec
 
         private bool CheckDataGridViewData(DataGridView dgv)
         {
+            // Kiểm tra xem DataGridView và ngôn ngữ được chọn có tồn tại không
+            if (dgv == null || string.IsNullOrEmpty(GlobalSettings.Language))
+            {
+                // Xử lý lỗi hoặc trả về false nếu không thể kiểm tra dữ liệu
+                return false;
+            }
+
             string selectedLanguage = GlobalSettings.Language;
+
+            // Kiểm tra xem có hàng được chọn và có phải là hàng cuối cùng không
             if (dgv.CurrentRow != null && dgv.CurrentCell.RowIndex == dgv.Rows.Count - 1)
             {
+                // Lặp qua từng ô trong hàng cuối cùng
                 foreach (DataGridViewCell cell in dgv.Rows[dgv.CurrentCell.RowIndex].Cells)
                 {
+                    // Kiểm tra xem ô đó có giá trị null hoặc rỗng không
                     if (string.IsNullOrEmpty(cell.Value?.ToString()))
                     {
-                        if (selectedLanguage == "Vietnamese")
-                        {
-                            MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (selectedLanguage == "English")
-                        {
-                            MessageBox.Show("Please enter complete information for the last row!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        // Hiển thị thông báo dựa trên ngôn ngữ được chọn
+                        string message = selectedLanguage == "Vietnamese" ?
+                            "Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!" :
+                            "Please enter complete information for the last row!";
+                        MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        // Đặt ô hiện tại và bắt đầu chỉnh sửa
                         dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0];
                         dgv.BeginEdit(true);
                         return false;
@@ -354,6 +364,7 @@ namespace QuanLyCongViec
                 }
             }
 
+            // Trả về true nếu không có ô nào rỗng
             return true;
         }
 
@@ -841,7 +852,7 @@ namespace QuanLyCongViec
                 dsnv.Columns["trangthai"].HeaderText = "Trạng thái";
                 dsnv.Columns["trinhdohocvan"].HeaderText = "Trình độ học vấn";
                 dsnv.Columns["loaihinh"].HeaderText = "Loại hình";
-                dsnv.Columns["quyenhan"].HeaderText = "Quyền hạn";
+              
 
                 dsuqcv.Columns["maNV_cu"].HeaderText = "Mã nhân viên";
                 dsuqcv.Columns["maCV"].HeaderText = "Họ và tên";
@@ -901,7 +912,7 @@ namespace QuanLyCongViec
                 dsnv.Columns["trangthai"].HeaderText = "Status";
                 dsnv.Columns["trinhdohocvan"].HeaderText = "Educational Background";
                 dsnv.Columns["loaihinh"].HeaderText = "Type";
-                dsnv.Columns["quyenhan"].HeaderText = "Authority";
+               
 
                 dsuqcv.Columns["maNV_cu"].HeaderText = "Previous Employee ID";
                 dsuqcv.Columns["maCV"].HeaderText = "Full Name";
@@ -1210,6 +1221,11 @@ namespace QuanLyCongViec
             process.WaitForExit();
 
             return pdfFile;
+        }
+
+        private void dsnv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -158,7 +158,7 @@ namespace QuanLyCongViec
             dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             dsdpc.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
             dsdpc.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
-        }     
+        }
 
         private void loadDsNv()
         {
@@ -246,7 +246,7 @@ namespace QuanLyCongViec
             if (uy1 != null && uy2 != null)
             {
                 DatabaseAccess.InsertData("DsUyQuyenCV", new string[] { "maNV_cu", "maCV", "maNV_moi", "trangthai", "thoiGianHoanThanh", "Tuychonchiase", "ngayBanGiao" },
-                                            new object[] { uy1.maNV, uy1.maCV, uy2.maNV, uy1.trangthai, uy1.thoiGianHoanThanh, uy1.Tuychonchiase , uy1.ngayBanGiao});
+                                            new object[] { uy1.maNV, uy1.maCV, uy2.maNV, uy1.trangthai, uy1.thoiGianHoanThanh, uy1.Tuychonchiase, uy1.ngayBanGiao });
 
             }
         }
@@ -271,7 +271,7 @@ namespace QuanLyCongViec
                 DataGridViewRow row2 = dsnv.CurrentRow;
                 uy2 = null;
                 uy2 = new UyQuyen(tbomacv.Text, tbotencv.Text, tbobophan.Text, tbotennv.Text, tbomanv.Text, dtpthoihan.Text, cbotuychonchiase.Text, cbotrangthai.Text, DateTime.Now.Date);
-              
+
             }
         }
 
@@ -295,7 +295,7 @@ namespace QuanLyCongViec
                 cbotrangthai.Text = row1.Cells["trangthai"].Value.ToString();
                 uy1 = null;
                 uy1 = new UyQuyen(tbomacv.Text, tbotencv.Text, tbobophan.Text, tbotennv.Text, tbomanv.Text, dtpthoihan.Text, cbotuychonchiase.Text, cbotrangthai.Text, DateTime.Now.Date);
-            
+
             }
         }
 
@@ -369,7 +369,7 @@ namespace QuanLyCongViec
             dscv.CurrentCell = null;
             dsdpc.CurrentCell = null;
 
-            
+
         }
 
         private void btnxoa_Click(object sender, EventArgs e)
@@ -377,14 +377,28 @@ namespace QuanLyCongViec
             string selectedLanguage = GlobalSettings.Language;
             try
             {
-
                 dscv.Enabled = true;
-                if (dscv.CurrentRow != null && dscv.SelectedRows.Count >= 0)
+                if (dscv.SelectedRows.Count > 0)
                 {
-                    DataGridViewRow selectedRow = dscv.CurrentRow;
+                    DataGridViewRow selectedRow = dscv.SelectedRows[0];
                     string maCV = selectedRow.Cells["maCV"].Value.ToString();
                     string ten = selectedRow.Cells["ten"].Value.ToString();
                     string ngayYC = selectedRow.Cells["ngayYC"].Value.ToString();
+
+                    // Kiểm tra xem mã công việc có bắt đầu bằng "CD" hay không
+                    if (maCV.StartsWith("CD"))
+                    {
+                        // Hiển thị thông báo nếu mã công việc bắt đầu bằng "CD"
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Đây là yêu cầu từ cư dân,nếu bạn muốn xóa dữ liệu,Vui lòng truy cập dữ liệu cư dân để xóa dữ liệu", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("This is a request from residents, if you want to delete the data, please visit resident data to delete the data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        return; // Dừng hàm ở đây
+                    }
 
                     string[] conditionColumns = { "maCV", "ten", "ngayYC" };
                     object[] conditionValues = { maCV, ten, ngayYC };
@@ -401,9 +415,9 @@ namespace QuanLyCongViec
                         MessageBox.Show("Data deleted successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else if (dsdpc.CurrentRow != null && dsdpc.SelectedRows.Count >= 0)
+                else if (dsdpc.SelectedRows.Count > 0)
                 {
-                    DataGridViewRow selectedRow = dsdpc.CurrentRow;
+                    DataGridViewRow selectedRow = dsdpc.SelectedRows[0];
                     int maCV = Convert.ToInt32(selectedRow.Cells["maCV"].Value);
                     DatabaseAccess.delCTCV(maCV);
 
@@ -558,86 +572,112 @@ namespace QuanLyCongViec
         private void btncapnhat_Click(object sender, EventArgs e)
         {
             string selectedLanguage = GlobalSettings.Language;
-            // Lấy thông tin từ hàng được chọn trong DataGridView
+
+            // Kiểm tra xem dòng được chọn có tồn tại không
             if (dscv.CurrentRow != null)
             {
+                // Lấy dòng được chọn
                 DataGridViewRow selectedRow = dscv.CurrentRow;
-                string maCV = selectedRow.Cells["maCV"].Value.ToString(); // Giả sử cột maCV là cột chứa mã công việc
-                                                                          // Lấy thông tin cập nhật từ các điều khiển khác trên form
-                string tenMoi = selectedRow.Cells["ten"].Value.ToString(); // Ví dụ, txtTenMoi là TextBox chứa tên mới cần cập nhật
-                                                                           // Kiểm tra xem mã công việc có phải là một số hay không
-                if (!int.TryParse(maCV, out _))
-                {
-                    if (selectedLanguage == "Vietnamese")
-                    {
-                        MessageBox.Show("Mã công việc phải là một số!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (selectedLanguage == "English")
-                    {
-                        MessageBox.Show("Job code must be a number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    return;
-                }
 
-                if (!int.TryParse(maCV, out _) || int.Parse(maCV) <= 0)
+                // Kiểm tra xem cột "maCV" có tồn tại không
+                if (selectedRow.Cells["maCV"] != null && selectedRow.Cells["maCV"].Value != null)
                 {
-                    if (selectedLanguage == "Vietnamese")
-                    {
-                        MessageBox.Show("Mã công việc phải là một số nguyên dương!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if (selectedLanguage == "English")
-                    {
-                        MessageBox.Show("Job code must be a positive integer!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    return;
-                }
+                    string maCV = selectedRow.Cells["maCV"].Value.ToString();
 
-                DateTime ngayYC = DateTime.Now.Date;
-                // Cập nhật dữ liệu trong cơ sở dữ liệu
-                try
-                {
-                    // Gọi phương thức UpdateData để cập nhật dữ liệu
-                    DatabaseAccess.UpdateData("DsCongViec", new string[] { "ten", "ngayYC" }, new object[] { tenMoi }, new string[] { "maCV" }, new object[] { maCV });
-                    if (selectedLanguage == "Vietnamese")
+                    // Kiểm tra xem mã công việc có bắt đầu bằng "CD" hay không
+                    if (maCV.StartsWith("CD"))
                     {
-                        MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (selectedLanguage == "English")
-                    {
-                        MessageBox.Show("Data updated successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Hiển thị thông báo nếu mã công việc bắt đầu bằng "CD"
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Đây là yêu cầu từ cư dân,nếu bạn muốn cập nhật dữ liệu,Vui lòng truy cập dữ liệu cư dân để thay đổi dữ liệu", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("This is a request from residents, if you want to update the data, please visit resident data to change the data", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        loadDsCongViec();
+                        return; // Dừng hàm ở đây
                     }
 
-                    // Cập nhật lại DataGridView để hiển thị dữ liệu mới
-                    loadDsCongViec(); // Gọi phương thức loadDsCongViec để làm mới dữ liệu trong DataGridView
+                    // Tiếp tục thực hiện các hành động cập nhật dữ liệu cho các trường hợp khác
+
+                    // Kiểm tra xem cột "ten" có tồn tại không
+                    else if (selectedRow.Cells["ten"] != null && selectedRow.Cells["ten"].Value != null)
+                    {
+
+                        string tenMoi = selectedRow.Cells["ten"].Value.ToString();
+
+                        // Cập nhật dữ liệu trong cơ sở dữ liệu
+                        try
+                        {
+                            // Gọi phương thức UpdateData để cập nhật dữ liệu
+                            DatabaseAccess.UpdateData("DsCongViec", new string[] { "ten" }, new object[] { tenMoi }, new string[] { "maCV" }, new object[] { maCV });
+
+                            // Hiển thị thông báo thành công
+                            if (selectedLanguage == "Vietnamese")
+                            {
+                                MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else if (selectedLanguage == "English")
+                            {
+                                MessageBox.Show("Data updated successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+                            // Cập nhật lại DataGridView để hiển thị dữ liệu mới
+                            loadDsCongViec(); // Gọi phương thức loadDsCongViec để làm mới dữ liệu trong DataGridView
+                        }
+                        catch (Exception ex)
+                        {
+                            // Hiển thị thông báo lỗi nếu có lỗi xảy ra
+                            if (selectedLanguage == "Vietnamese")
+                            {
+                                MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else if (selectedLanguage == "English")
+                            {
+                                MessageBox.Show($"An error occurred while updating data!\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Tên công việc không tồn tại hoặc giá trị rỗng!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            {
+                                MessageBox.Show("Job name does not exist or is null!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
+                        }
+                    }
+
+
                 }
-                catch (Exception ex)
+                else
                 {
+                    // Hiển thị thông báo nếu không có hàng nào được chọn
                     if (selectedLanguage == "Vietnamese")
                     {
-                        MessageBox.Show($"Đã xảy ra lỗi khi cập nhật dữ liệu!\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Vui lòng chọn một hàng để cập nhật!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else if (selectedLanguage == "English")
                     {
-                        MessageBox.Show($"An error occurred while updating data!\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Please select a row to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
-            else
-            {
-                if (selectedLanguage == "Vietnamese")
-                {
-                    MessageBox.Show("Vui lòng chọn một hàng để cập nhật!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else if (selectedLanguage == "English")
-                {
-                    MessageBox.Show("Please select a row to update!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+
+            // Xóa bôi đen các ô trên các DataGridView khác
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
             dsdpc.CurrentCell = null;
         }
-        
+
+
 
         private void buttonExportExcel_Click(object sender, EventArgs e)
         {
@@ -815,7 +855,7 @@ namespace QuanLyCongViec
         private void comboBoxLanguage_SelectedIndexChanged()
         {
             string selectedLanguage = GlobalSettings.Language;
-           
+
             if (selectedLanguage == "Vietnamese")
             {
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Anh
@@ -833,7 +873,7 @@ namespace QuanLyCongViec
 
                 cbotuychonchiase.Items.Add("Công việc chung");
                 cbotuychonchiase.Items.Add("Bộ phận");
-               
+
                 cbotrangthai.Items.Add("Chưa hoàn thành");
                 cbotrangthai.Items.Add("Hoàn thành");
                 // Cập nhật các thành phần khác tương ứng nếu cần
@@ -882,9 +922,9 @@ namespace QuanLyCongViec
                 cbotuychonchiase.Items.Add("Công việc chung");
                 cbotuychonchiase.Items.Add("Bộ phận");
 
-              
+
                 cbotuychonchiase.SelectedIndex = 0;
-              
+
 
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
@@ -893,13 +933,13 @@ namespace QuanLyCongViec
                 // Cập nhật ngôn ngữ của các mục trong ComboBox sang tiếng Việt
 
                 cbotuychonchiase.Items.Clear();
-  
+
                 cbotuychonchiase.Items.Add("Joint work");
                 cbotuychonchiase.Items.Add("Part");
 
-              
+
                 cbotuychonchiase.SelectedIndex = 0;
-               
+
 
 
                 // Cập nhật các thành phần khác tương ứng nếu cần
@@ -913,12 +953,12 @@ namespace QuanLyCongViec
             {
 
                 cbotrangthai.Items.Clear();
- 
+
 
                 cbotrangthai.Items.Add("Chưa hoàn thành");
                 cbotrangthai.Items.Add("Hoàn thành");
                 cbotrangthai.SelectedIndex = 0;
-               
+
 
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }
@@ -931,7 +971,7 @@ namespace QuanLyCongViec
                 cbotrangthai.Items.Add("Unfinished");
                 cbotrangthai.Items.Add("Accomplished");
                 cbotrangthai.SelectedIndex = 0;
-              
+
 
                 // Cập nhật các thành phần khác tương ứng nếu cần
             }

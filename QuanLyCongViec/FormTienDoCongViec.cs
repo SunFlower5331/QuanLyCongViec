@@ -95,8 +95,8 @@ namespace QuanLyCongViec
             try
             {
                 dscv.CurrentCell = null;
-                string maNV = Program.UserID;
-                dscv.DataSource = DatabaseAccess.GetTienDoCongViec(maNV).Tables[0];
+               
+                dscv.DataSource = DatabaseAccess.GetTienDoCongViec(Program.UserID).Tables[0];
 
                 dscv.Columns["maCV"].HeaderText = "Mã công việc";
                 dscv.Columns["ten"].HeaderText = "Tên công việc";
@@ -726,5 +726,7 @@ namespace QuanLyCongViec
                 }
             }
         }
+
+
     }
 }

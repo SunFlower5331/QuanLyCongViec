@@ -213,7 +213,7 @@ namespace QuanLyCongViec
             dsqh.DataSource = DatabaseAccess.GetDVCH().Tables[0];
             dsqh.Columns["maCH"].HeaderText = "Mã căn hộ";
             dsqh.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
-            dsqh.Columns["maCV"].HeaderText = "Mã công việc";
+           
 
 
         }
@@ -250,22 +250,57 @@ namespace QuanLyCongViec
 
             if (dgv != null)
             {
-                dgv.AllowUserToAddRows = true;
+        
                 dgv.ReadOnly = false;
-
-                dgv.ClearSelection();
-                dgv.Rows[dgv.Rows.Count - 1].Selected = true;
-
-                if (dgv.Columns.Count > 0)
-                    dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
-
-
-                dgv.AllowUserToAddRows = false;
+            
             }
         }
 
 
+        private void insertdscv(DataGridView dgv, string tableName)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+           
+                    DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 2];
+                    string maCV = lastRow.Cells[0].Value?.ToString();
+                    string ten = lastRow.Cells[2].Value?.ToString();
+                    string ngayYC = lastRow.Cells[3].Value?.ToString();
+                    DatabaseAccess.insertCV(maCV, ten, ngayYC);
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy cột Ngày Yêu Cầu trong DataGridView!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            
+        }
 
+        private void updatedscv(DataGridView dgv, string tableName)
+        {
+            if (dgv.SelectedRows.Count >0)
+            {
+                DataGridViewRow selectedRow = dgv.SelectedRows[0];
+                string maCV = selectedRow.Cells[0].Value?.ToString();
+                string ten = selectedRow.Cells[2].Value?.ToString();
+                string ngayYC = selectedRow.Cells[3].Value?.ToString();
+
+                    DatabaseAccess.updateCV(maCV, ten, ngayYC);
+                
+                
+            }
+            
+        }
+
+        private void deldscv(DataGridView dgv, string tableName)
+        {
+         if (dgv.SelectedRows.Count >0)
+            {
+                DataGridViewRow selectedRow = dgv.SelectedRows[0];
+                string maCV = selectedRow.Cells[0].Value?.ToString();
+                    DatabaseAccess.deleteCV(maCV);
+              
+            }
+        }
 
         private void btnluu_Click(object sender, EventArgs e)
         {
@@ -286,19 +321,21 @@ namespace QuanLyCongViec
                 }
                 else if (tabDulieu.SelectedTab == DangKyDoXe)
                 {
-                    SaveLastRowData(dsnv, "NhanVien");
+                    SaveLastRowData(dsnv, "DangKyDoXe");
                 }
                 else if (tabDulieu.SelectedTab == Chiphicanho)
                 {
-                    SaveLastRowData(dspb, "PhongBan");
+                    SaveLastRowData(dspb, "Chiphicanho");
                 }
                 else if (tabDulieu.SelectedTab == ThanhVienCanHo)
                 {
-                    SaveLastRowData(dstk, "TaiKhoan");
+                    SaveLastRowData(dstk, "ThanhVienCanHo");
                 }
                 else if (tabDulieu.SelectedTab == DVCanHo)
                 {
-                    SaveLastRowData(dsqh, "Quyen");
+                    SaveLastRowData(dsqh, "DVCanHo");
+                    insertdscv(dsqh, "DVCanHo");
+
                 }
                 else if (tabDulieu.SelectedTab == CanHo)
                 {
@@ -310,64 +347,78 @@ namespace QuanLyCongViec
         private void SaveLastRowData(DataGridView dgv, string tableName)
         {
             string selectedLanguage = GlobalSettings.Language;
-            DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 1];
-            object[] rowData = new object[lastRow.Cells.Count];
-            for (int i = 0; i < lastRow.Cells.Count; i++)
-            {
-                rowData[i] = lastRow.Cells[i].Value;
-            }
 
-            try
+            // Kiểm tra xem DataGridView có hàng nào không
+            if (dgv.Rows.Count >=0)
             {
-                DatabaseAccess.InsertData(tableName, dgv.Columns.Cast<DataGridViewColumn>().Select(c => c.DataPropertyName).ToArray(), rowData);
+                // Lấy dữ liệu từ hàng cuối cùng của DataGridView
+                DataGridViewRow lastRow = dgv.Rows[dgv.Rows.Count - 2];
+                object[] rowData = new object[lastRow.Cells.Count];
+                for (int i = 0; i < lastRow.Cells.Count; i++)
+                {
 
-                if (selectedLanguage == "Vietnamese")
-                {
-                    MessageBox.Show("Dữ liệu đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (selectedLanguage == "English")
-                {
-                    MessageBox.Show("Data has been saved to database!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    rowData[i] = lastRow.Cells[i].Value;
+                  
                 }
 
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627)
+                try
                 {
+                    // Thực hiện thêm dữ liệu vào cơ sở dữ liệu
+                    DatabaseAccess.InsertData(tableName, dgv.Columns.Cast<DataGridViewColumn>().Select(c => c.DataPropertyName).ToArray(), rowData);
+
                     if (selectedLanguage == "Vietnamese")
                     {
-                        MessageBox.Show("Giá trị đã tồn tại trong cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Dữ liệu đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (selectedLanguage == "English")
                     {
-                        MessageBox.Show("The value already exists in the database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Data has been saved to the database!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else
+                catch (SqlException ex)
+                {
+                    if (ex.Number == 2627)
+                    {
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Giá trị đã tồn tại trong cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("The value already exists in the database!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        if (selectedLanguage == "Vietnamese")
+                        {
+                            MessageBox.Show("Lỗi không xác định xảy ra. Vui lòng thử lại sau.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (selectedLanguage == "English")
+                        {
+                            MessageBox.Show("An unknown error occurred. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception)
                 {
                     if (selectedLanguage == "Vietnamese")
                     {
-                        MessageBox.Show("Lỗi không xác định xảy ra. Vui lòng thử lại sau.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Đã xảy ra lỗi. Vui lòng thử lại sau.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (selectedLanguage == "English")
                     {
-                        MessageBox.Show("An unknown error occurred. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("An error occurred. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            catch (Exception)
+            else
             {
-                if (selectedLanguage == "Vietnamese")
-                {
-                    MessageBox.Show("Đã xảy ra lỗi. Vui lòng thử lại sau.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (selectedLanguage == "English")
-                {
-                    MessageBox.Show("An error occurred. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Nếu không có hàng nào trong DataGridView, thông báo người dùng thêm dữ liệu trước
+                MessageBox.Show("Please add data to the DataGridView first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
 
 
@@ -376,62 +427,33 @@ namespace QuanLyCongViec
             string selectedLanguage = GlobalSettings.Language;
             if (dgv.CurrentRow != null && dgv.CurrentCell.RowIndex == dgv.Rows.Count - 1)
             {
-                foreach (DataGridViewCell cell in dgv.Rows[dgv.CurrentCell.RowIndex].Cells)
-                {
-                    if (string.IsNullOrEmpty(cell.Value?.ToString()))
-                    {
-                        if (selectedLanguage == "Vietnamese")
-                        {
-                            MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (selectedLanguage == "English")
-                        {
-                            MessageBox.Show("Please enter complete information for the last row!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0];
-                        dgv.BeginEdit(true);
-                        return false;
-                    }
-                }
-
-                // Kiểm tra dữ liệu cụ thể của DataGridView nếu cần
-                /*   bool isDataValid = true;
-                   if (dgv == dscudan)
-                   {
-                       isDataValid &= CheckCuDanData(dgv);
-                   }
-                   // Thêm các kiểm tra dữ liệu của DataGridView khác nếu cần
-
-                   if (!isDataValid)
-                   {
-                       return false;
-                   }
               
-            
-            */
+                    foreach (DataGridViewCell cell in dgv.Rows[dgv.CurrentCell.RowIndex].Cells)
+                    {
+
+                        if (string.IsNullOrEmpty(cell.Value?.ToString()))
+
+                        {
+                            {
+                                if (selectedLanguage == "Vietnamese")
+                                {
+                                    MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho hàng cuối cùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                else if (selectedLanguage == "English")
+                                {
+                                    MessageBox.Show("Please enter complete information for the last row!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                dgv.CurrentCell = dgv.Rows[dgv.CurrentCell.RowIndex].Cells[0];
+                                dgv.BeginEdit(true);
+                                return false;
+                            }
+                        }
+                    
+                }
             }
 
             return true;
         }
-        private bool CheckCuDanData(DataGridView dgv)
-        {
-
-            /*int maCD = Convert.ToInt32(dgv.Rows[dgv.Rows.Count - 1].Cells["maCD"].Value);
-            string tenCH = dgv.Rows[dgv.Rows.Count - 1].Cells["tenCH"].Value.ToString();
-            DateTime ngaySinh = Convert.ToDateTime(dgv.Rows[dgv.Rows.Count - 1].Cells["ngaySinh"].Value);
-       
-            if (ngaySinh > DateTime.Now)
-            {
-                MessageBox.Show("Ngày sinh không được lớn hơn ngày hiện tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells["ngaySinh"];
-                return false;
-            }
-*/
-            // Các kiểm tra logic khác ở đây...
-
-            return true;
-        }
-
         private void btnxoa_Click(object sender, EventArgs e)
         {
             string selectedLanguage = GlobalSettings.Language;
@@ -474,10 +496,23 @@ namespace QuanLyCongViec
 
                 string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
 
+                if (dgv == dsqh)
+                {
+                     primaryKeyColumn = dgv.Columns[0].DataPropertyName;
+
+                }
+
                 try
                 {
 
-                    DatabaseAccess.DeleteData(tabDulieu.SelectedTab.Name, new string[] { primaryKeyColumn }, new object[] { rowData[0] });
+                    DatabaseAccess.DeleteData(tabDulieu.SelectedTab.Name, new string[] { primaryKeyColumn }, new object[] { rowData[0]});
+                    if (tabDulieu.SelectedTab == DVCanHo)
+                    {
+                   
+                        deldscv(dsqh, "DVCanHo");
+                        loadDsQuyen();
+                    }
+
                     if (tabDulieu.SelectedTab == CuDan)
                     {
                         loadDsCuDan();
@@ -536,6 +571,19 @@ namespace QuanLyCongViec
                 }
             }
         }
+        public static void deleteCV(string maCV)
+        {
+            // Gọi phương thức DeleteData từ lớp DatabaseAccess để thực hiện xóa dữ liệu
+            try
+            {
+                DatabaseAccess.DeleteData("DsCongViec", new string[] { "maCV" }, new object[] { maCV });
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi (nếu cần thiết)
+                ex.ToString();
+            }
+        }
 
         private void btnCapNhat_Click_1(object sender, EventArgs e)
         {
@@ -565,6 +613,7 @@ namespace QuanLyCongViec
             else if (tabDulieu.SelectedTab == DVCanHo)
             {
                 dgv = dsqh;
+               
 
             }
             else if (tabDulieu.SelectedTab == CanHo)
@@ -611,9 +660,12 @@ namespace QuanLyCongViec
 
 
                         DatabaseAccess.UpdateData(tableName, columnNames.ToArray(), values.ToArray(), conditionColumns, conditionValues);
+                        if (tabDulieu.SelectedTab == DVCanHo)
+                        {
+                            updatedscv(dsqh, "DVCanHo");
+                        }
 
-
-                        row.DataGridView.UpdateCellValue(row.Cells[0].ColumnIndex, row.Index);
+                            row.DataGridView.UpdateCellValue(row.Cells[0].ColumnIndex, row.Index);
                     }
                     catch (Exception ex)
                     {
@@ -1484,7 +1536,10 @@ namespace QuanLyCongViec
                 // Datagrid "dsqh"
                 dsqh.Columns["maCH"].HeaderText = "Mã căn hộ";
                 dsqh.Columns["DV_dinhky"].HeaderText = "Dịch vụ định kỳ";
-                dsqh.Columns["maCV"].HeaderText = "Mã công việc";
+                dsqh.Columns["DV_dinhky"].HeaderText = "Dịch vụ ";
+                dsqh.Columns["maCV"].HeaderText = "Mã công viec";
+                dsqh.Columns["ngayYC"].HeaderText = "Ngày yêu cầu";
+
 
                 dstk.Columns["maTV"].HeaderText = "Mã thành viên";
                 dstk.Columns["maCD"].HeaderText = "Mã cư dân";
@@ -1572,6 +1627,8 @@ namespace QuanLyCongViec
                 dsqh.Columns["maCH"].HeaderText = "Apartment ID";
                 dsqh.Columns["DV_dinhky"].HeaderText = "Periodic Service";
                 dsqh.Columns["maCV"].HeaderText = "Job ID";
+                dsqh.Columns["ngayYC"].HeaderText = "Request date ";
+              
 
                 dstk.Columns["maTV"].HeaderText = "Member ID";
                 dstk.Columns["maCD"].HeaderText = "Resident ID";

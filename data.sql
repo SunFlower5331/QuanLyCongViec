@@ -28,8 +28,7 @@ CREATE TABLE NhanVien (
     luong FLOAT,
     trangthai NVARCHAR(255),
     trinhdohocvan NVARCHAR(255),
-    loaihinh NVARCHAR(255),
-    quyenhan INT FOREIGN KEY REFERENCES Quyen(id)
+    loaihinh NVARCHAR(255)
 );
 
 CREATE TABLE Taikhoan (
@@ -72,15 +71,23 @@ CREATE TABLE CanHo (
 	nuocngaynhan FLOAT,
 	
 );
-select *from Taikhoan
+
+-- Tạo hàm để tạo giá trị cho cột maCV
+
+-- Tạo bảng DVCanHo
 CREATE TABLE DVCanHo (
+	maCV VARCHAR(50) PRIMARY KEY,
     maCH VARCHAR(50),
     DV_dinhky NVARCHAR(255),
-    maCV VARCHAR(50),
-    FOREIGN KEY (maCH) REFERENCES CanHo(maCH),
-    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV)
+    ngayYC DATE,
+    FOREIGN KEY (maCH) REFERENCES CanHo(maCH)
 );
+select * from DVCanHo
 
+-- Thêm dữ liệu vào bảng DVCanHo
+INSERT INTO DVCanHo (maCH, DV_dinhky, ngayYC)
+VALUES ('W2910',  N'Vệ sinh','2024-01-01');
+SELECT * FROM DVCanHo
 CREATE TABLE CTCV (
     maCV VARCHAR(50),
     maNV VARCHAR(50),  
@@ -150,23 +157,7 @@ CREATE TABLE Chiphicanho(
     TongPhiDichVu FLOAT,
     TongChiPhiDienNuoc FLOAT
 ); 
--- go
---CREATE TRIGGER UpdateTongChiPhiDienNuoc
---ON Chiphicanho
----AFTER INSERT, UPDATE
---AS
---BEGIN
-  --  UPDATE c
-    --SET c.sodien = i.sodien,
-      --  c.phidien = i.phidien,
-        --c.sonuoc = i.sonuoc,
-        --c.phinuoc = i.phinuoc,
-        --c.TongphiQuanLy = i.TongphiQuanLy,
-        --c.TongPhiDichVu = i.TongPhiDichVu
-    --FROM Chiphicanho c
-    --INNER JOIN inserted i ON c.maCD = i.maCD AND c.maCH = i.maCH;
---END;
---GO
+
 
 CREATE TABLE UyQuyen(
 	maUQ VARCHAR(50) PRIMARY KEY,
@@ -176,7 +167,7 @@ CREATE TABLE DsUyQuyen(
 	maUQ VARCHAR(50) FOREIGN KEY REFERENCES UyQuyen(maUQ),
 	maNV VARCHAR(50) FOREIGN KEY REFERENCES NhanVien(maNV)
 );
-SELECT * FROM DsUyQuyenCV;
+
 
 CREATE TABLE TinhTrangCanHo(
 	maCH VARCHAR(50) PRIMARY KEY,
@@ -227,7 +218,6 @@ VALUES (1, N'CEO'),
 -- Thêm dữ liệu vào bảng NhanVien
 INSERT INTO NhanVien (manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan)
 VALUES ('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Đã nghĩ việc', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
-('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Chưa bắt đầu', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
        ('KT-501', N'Phạm Văn Hùng', '03/01/1990', N'Nam', N'Đà Nẵng', '0381276137', 'embemay772023@gmail.com', N'Nhân viên kỹ thuật', 'KT', 20000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
 	   ('XD-603', N'Quách Minh Toàn', '21/12/1989', N'Nam', N'Lâm Đồng', '0356798212', 'parkjihyun187@gmail.com', N'Nhân viên xây dựng', 'XD', 15000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
 	   ('XD-601', N'Ngô Ngọc Trọng', '24/10/1997', N'Nam', N'Tiền Giang', '0327431639', 'npminhtri24102004@gmail.com', N'Nhân viên xây dựng', 'XD', 10000000, N'Hẹn lại khách', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
@@ -239,8 +229,6 @@ VALUES ('VS-301', '123', 1),
 	   ('XD-603', '123', 3),
 	   ('XD-601', '123', 3),
 	   ('KT-502', '123', 3)
-SELECT * FROM Taikhoan
--- Thêm dữ liệu vào bảng DsCongViec
 
 INSERT INTO DsCongViec (maCV, ten, ngayYC)
 VALUES ('1', N'Kiểm tra hệ thống thoát nước', '2024-01-01'),
@@ -264,11 +252,11 @@ VALUES ('W2910', 'CD1', '01/02/2023', '02/02/2023', NULL, 500000, 100000, 100, 5
        ('W3508', 'CD2', '15/02/2024', '17/02/2024', NULL, 600000, 120000, 150, 70)
 
 -- Thêm dữ liệu vào bảng DVCanHo
-INSERT INTO DVCanHo (maCH, DV_dinhky, maCV)
-VALUES ('W2910',  N'Vệ sinh','2'),
-('W2910', N'Vệ sinh','4'),
-       ('W3508', N'Kiểm tra hệ thống công tắc','9')
-SELECT * FROM DVCanHo
+INSERT INTO DVCanHo (maCH, DV_dinhky,ngayYC)
+VALUES ('W2910',  N'Vệ sinh','CD-1','1/1/2024'),
+('W2910', N'Vệ sinh','CD-2','1/1/2024'),
+       ('W3508', N'Kiểm tra hệ thống công tắc','CD-3','1/1/2024')
+
 -- Thêm dữ liệu vào bảng CTCV
 INSERT INTO CTCV
 VALUES ('4', 'VS-301', N'Chưa hoàn thành', '10/02/2024',  N'Công việc chung', '2024-02-09'),

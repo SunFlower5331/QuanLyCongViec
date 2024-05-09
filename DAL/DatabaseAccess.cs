@@ -17,13 +17,15 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
     }
     public class DatabaseAccess
     {
+        public static object MessageBox { get; private set; }
+
         public static string CheckLogicDTO(TaiKhoan tk)
         {
             string user = null;
@@ -502,6 +504,80 @@ namespace DAL
                 return rowsAffected > 0;
             }
         }
+        public static void insertCV(string maCV, string ten, string ngayYC) { 
+        
+            string sql = "INSERT INTO DsCongViec (maCV, ten, ngayYC) VALUES (@maCV, @ten, @ngayYC)";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+
+                // Thêm các tham số với tên đúng
+                command.Parameters.AddWithValue("@maCV", maCV);
+                command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@ngayYC", ngayYC); // Truyền giá trị của biến ngayYC vào tham số @ngayYC
+
+                con.Open();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Hiển thị thông báo lỗi
+                   ex.ToString();
+                }
+            }
+        }
+ 
+        public static void updateCV(string maCV, string ten, string ngayYC)
+        {
+            string sql = "UPDATE DsCongViec SET ten = @ten, ngayYC = @ngayYC WHERE maCV = @maCV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+
+                // Thêm các tham số với tên đúng
+                command.Parameters.AddWithValue("@maCV", maCV);
+                command.Parameters.AddWithValue("@ten", ten);
+                command.Parameters.AddWithValue("@ngayYC", ngayYC); // Truyền giá trị của biến ngayYC vào tham số @ngayYC
+
+                con.Open();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    
+                    ex.ToString();
+                }
+            }
+        }
+
+        public static void deleteCV(string maCV)
+        {
+            string sql = "DELETE FROM DsCongViec WHERE maCV = @maCV";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+
+                // Thêm tham số với tên đúng
+                command.Parameters.AddWithValue("@maCV", maCV);
+
+                con.Open();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi (nếu cần thiết)
+                    ex.ToString();
+                }
+            }
+        }
+
+
         public static void InsertData(string tableName, string[] columnNames, object[] values)
         {
             string[] parameterNames = new string[columnNames.Length];
