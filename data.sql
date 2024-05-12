@@ -6,176 +6,168 @@ GO
 SET DATEFORMAT DMY;
 
 CREATE TABLE PhongBan (
-    id VARCHAR(50) PRIMARY KEY,
-    ten NVARCHAR(255)
+    id VARCHAR(50) PRIMARY KEY NOT NULL,
+    ten NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Quyen (
-    id INT PRIMARY KEY,
-    ten NVARCHAR(255)
+    id INT PRIMARY KEY NOT NULL,
+    ten NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE NhanVien (
-    manv VARCHAR(50) PRIMARY KEY,
-    hoten NVARCHAR(255),
-    ngaysinh DATE,
-    gioitinh NVARCHAR(10),
-    diachi NVARCHAR(255),
-    didong VARCHAR(20),
-    email VARCHAR(255),
-    chucvu NVARCHAR(255),
-    phongban VARCHAR(50) FOREIGN KEY REFERENCES PhongBan(id),
-    luong FLOAT,
-    trangthai NVARCHAR(255),
-    trinhdohocvan NVARCHAR(255),
-    loaihinh NVARCHAR(255)
+    manv VARCHAR(50) PRIMARY KEY NOT NULL,
+    hoten NVARCHAR(255) NOT NULL,
+    ngaysinh DATE NOT NULL,
+    gioitinh NVARCHAR(10) NOT NULL,
+    diachi NVARCHAR(255) NOT NULL,
+    didong VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    chucvu NVARCHAR(255) NOT NULL,
+    phongban VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES PhongBan(id),
+    luong FLOAT NOT NULL,
+    trangthai NVARCHAR(255) NOT NULL,
+    trinhdohocvan NVARCHAR(255) NOT NULL,
+    loaihinh NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Taikhoan (
-    id VARCHAR(50) PRIMARY KEY FOREIGN KEY REFERENCES NhanVien(manv),
-    mk VARCHAR(255),
-    loaiTK INT REFERENCES Quyen(id)
+    id VARCHAR(50) PRIMARY KEY NOT NULL FOREIGN KEY REFERENCES NhanVien(manv),
+    mk VARCHAR(255) NOT NULL,
+    loaiTK INT NOT NULL REFERENCES Quyen(id)
 );
 
-
 CREATE TABLE DsCongViec (
-    maCV VARCHAR(50) PRIMARY KEY,
-    ten NVARCHAR(255),
-	ngayYC DATE
+    maCV VARCHAR(50) PRIMARY KEY NOT NULL,
+    ten NVARCHAR(255) NOT NULL,
+	ngayYC DATE NOT NULL
 );
 
 CREATE TABLE CuDan (
-    maCD VARCHAR(50) PRIMARY KEY,
-    hinhthuc NVARCHAR(50),
-    tenCH NVARCHAR(255),
-    ngaysinh DATE,
-    cccd VARCHAR(20),
-    sdt VARCHAR(20),
-    email VARCHAR(255),
-    quoctich NVARCHAR(50),
-    sothetamtru VARCHAR(20),
-    sdt_nguoithan VARCHAR(20),
-    tinhtrangcongno FLOAT,
-    dk_thucung NVARCHAR(255)
+    maCD VARCHAR(50) PRIMARY KEY NOT NULL,
+    hinhthuc NVARCHAR(50) NOT NULL,
+    tenCH NVARCHAR(255) NOT NULL,
+    ngaysinh DATE NOT NULL,
+    cccd VARCHAR(20) NOT NULL,
+    sdt VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    quoctich NVARCHAR(50) NOT NULL,
+    sothetamtru VARCHAR(20) NOT NULL,
+    sdt_nguoithan VARCHAR(20) NOT NULL,
+    tinhtrangcongno FLOAT NOT NULL,
+    dk_thucung NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE CanHo (
-    maCH VARCHAR(50) PRIMARY KEY,
-    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD),
-    ngaynhan DATE,
-    ngaychuyenvao DATE,
-    ngaychuyendi DATE,
-    phidv FLOAT,
-    phiql FLOAT,
-    dienngaynhan FLOAT,
-	nuocngaynhan FLOAT,
-	
+    maCH VARCHAR(50) PRIMARY KEY NOT NULL,
+    maCD VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES CuDan(maCD),
+    ngaynhan DATE NOT NULL,
+    ngaychuyenvao DATE NOT NULL,
+    ngaychuyendi DATE NOT NULL,
+    phidv FLOAT NOT NULL,
+    phiql FLOAT NOT NULL,
+    dienngaynhan FLOAT NOT NULL,
+	nuocngaynhan FLOAT NOT NULL
 );
 
 -- Tạo hàm để tạo giá trị cho cột maCV
 
 -- Tạo bảng DVCanHo
 CREATE TABLE DVCanHo (
-	maCV VARCHAR(50) PRIMARY KEY,
-    maCH VARCHAR(50),
-    DV_dinhky NVARCHAR(255),
-    ngayYC DATE,
+	maCV VARCHAR(50) PRIMARY KEY NOT NULL,
+    maCH VARCHAR(50) NOT NULL,
+    DV_dinhky NVARCHAR(255) NOT NULL,
+    ngayYC DATE NOT NULL,
     FOREIGN KEY (maCH) REFERENCES CanHo(maCH)
 );
 
-
-
 CREATE TABLE CTCV (
-    maCV VARCHAR(50) PRIMARY KEY,
-    maNV VARCHAR(50),
-    trangthai NVARCHAR(50),
-    thoiGianHoanThanh DATE,
+    maCV VARCHAR(50) PRIMARY KEY NOT NULL,
+    maNV VARCHAR(50) NOT NULL,
+    trangthai NVARCHAR(50) NOT NULL,
+    thoiGianHoanThanh DATE NOT NULL,
     songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
-    Tuychonchiase NVARCHAR(50),
-    ngaycapnhat DATE,
+    Tuychonchiase NVARCHAR(50) NOT NULL,
+    ngaycapnhat DATE NOT NULL,
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv), 
-    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV),
+    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV)
 );
 
 CREATE TABLE DsUyQuyenCV (
-	maNV_cu VARCHAR(50),
-    maCV VARCHAR(50),
-    maNV_moi VARCHAR(50),  
-    trangthai NVARCHAR(50),
-    thoiGianHoanThanh DATE,
+	maNV_cu VARCHAR(50) NOT NULL,
+    maCV VARCHAR(50) NOT NULL,
+    maNV_moi VARCHAR(50) NOT NULL,  
+    trangthai NVARCHAR(50) NOT NULL,
+    thoiGianHoanThanh DATE NOT NULL,
     songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
-    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE,
-	ngayBanGiao DATE
+    Tuychonchiase NVARCHAR(50) NOT NULL,
+	ngayBanGiao DATE NOT NULL,
     FOREIGN KEY (maNV_moi) REFERENCES NhanVien(manv), 
 	FOREIGN KEY (maNV_cu) REFERENCES NhanVien(manv), 
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
 );
+
 CREATE TABLE Tuychonchiase_MaNV (
-    maCV VARCHAR(50),
-    maNV VARCHAR(50),
-    maNV_duocchiase VARCHAR(50),
+    maCV VARCHAR(50) NOT NULL,
+    maNV VARCHAR(50) NOT NULL,
+    maNV_duocchiase VARCHAR(50) NOT NULL,
     PRIMARY KEY (maCV, maNV), -- Khóa chính kết hợp
     FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV),
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv),
     FOREIGN KEY (maNV_duocchiase) REFERENCES NhanVien(manv)
 );
 
-
 CREATE TABLE ThanhVienCanHo (
-    maTV VARCHAR(50) PRIMARY KEY,
-    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD),
-    tenTV NVARCHAR(255),
-    MoiQuanHe NVARCHAR(50)
+    maTV VARCHAR(50) PRIMARY KEY NOT NULL,
+    maCD VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES CuDan(maCD),
+    tenTV NVARCHAR(255) NOT NULL,
+    MoiQuanHe NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE DangKyDoXe (
-    maDK VARCHAR(50) PRIMARY KEY,
-    maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),
-    bienso NVARCHAR(20),
-    chungloai NVARCHAR(50),
-    loai NVARCHAR(50),
-	
+    maDK VARCHAR(50) PRIMARY KEY NOT NULL,
+    maCH VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES CanHo(maCH),
+    bienso NVARCHAR(20) NOT NULL,
+    chungloai NVARCHAR(50) NOT NULL,
+    loai NVARCHAR(50) NOT NULL
 );
-
 
 --bảng này để nhập/xuất về phần chi phí cư dân hàng tháng(Khánh)
 
-
 CREATE TABLE Chiphicanho(
-    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD), 
-    maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH),
-    ngaybatdau DATE,
-    ngayketthuc DATE,
-    sodien FLOAT,
-    sonuoc FLOAT,
-	phidien FLOAT,
-	phinuoc Float,
-    CongNo FLOAT,
-    TongphiQuanLy FLOAT,
-    TongPhiDichVu FLOAT,
-    TongChiPhiDienNuoc FLOAT
+    maCD VARCHAR(50) FOREIGN KEY REFERENCES CuDan(maCD) NOT NULL, 
+    maCH VARCHAR(50) FOREIGN KEY REFERENCES CanHo(maCH) NOT NULL,
+    ngaybatdau DATE NOT NULL,
+    ngayketthuc DATE NOT NULL,
+    sodien FLOAT NOT NULL,
+    sonuoc FLOAT NOT NULL,
+	phidien FLOAT NOT NULL,
+	phinuoc Float NOT NULL,
+    CongNo FLOAT NOT NULL,
+    TongphiQuanLy FLOAT NOT NULL,
+    TongPhiDichVu FLOAT NOT NULL,
+    TongChiPhiDienNuoc FLOAT NOT NULL
 ); 
 
 
 CREATE TABLE UyQuyen(
-	maUQ VARCHAR(50) PRIMARY KEY,
-	tenchucnang NVARCHAR(255),
+	maUQ VARCHAR(50) PRIMARY KEY NOT NULL,
+	tenchucnang NVARCHAR(255) NOT NULL
 );
 CREATE TABLE DsUyQuyen(
-	maUQ VARCHAR(50) FOREIGN KEY REFERENCES UyQuyen(maUQ),
-	maNV VARCHAR(50) FOREIGN KEY REFERENCES NhanVien(maNV)
+	maUQ VARCHAR(50) FOREIGN KEY REFERENCES UyQuyen(maUQ) NOT NULL,
+	maNV VARCHAR(50) FOREIGN KEY REFERENCES NhanVien(maNV) NOT NULL
 );
 
-
 CREATE TABLE TinhTrangCanHo(
-	maCH VARCHAR(50) PRIMARY KEY,
-	tinhTrangNguoiO NVARCHAR(50),
-	tinhTrangBanGiao NVARCHAR(50),
-	tinhTrangNoiThat NVARCHAR(50)
+	maCH VARCHAR(50) PRIMARY KEY FOREIGN KEY REFERENCES CanHo(maCH) NOT NULL,
+	tinhTrangNguoiO NVARCHAR(50) NOT NULL,
+	tinhTrangBanGiao NVARCHAR(50) NOT NULL,
+	tinhTrangNoiThat NVARCHAR(50) NOT NULL
 );
 
 CREATE TABLE DsTaiLieu (
-    Id INT PRIMARY KEY IDENTITY,
+    Id INT PRIMARY KEY IDENTITY NOT NULL,
     FileName NVARCHAR(255) NOT NULL,
     PdfData VARBINARY(MAX) NOT NULL
 );
