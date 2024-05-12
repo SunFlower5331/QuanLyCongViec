@@ -1123,49 +1123,80 @@ namespace QuanLyCongViec
                     }
                     else
                     {
-                        trangthai = "Trễ hạn";
+                        trangthai = " Đã hoàn thành trễ hạn";
                     }
 
                 }
 
-                DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai", "ngaycapnhat" },
-                  new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai, ngaycapnhat }, conditionColumns, conditionValues);
-                loadCTCV();
-                tbomacv.Text = "";
-                tbotencv.Text = "";
-                tbobophan.Text = "";
-                tbotennv.Text = "";
-                tbomanv.Text = "";
-                dtpthoihan.Text = "";
-                cbotuychonchiase.Text = "";
-                cbotrangthai.Text = "";
-                dsnv.CurrentCell = null;
-                dscv.CurrentCell = null;
-                dsdpc.CurrentCell = null;
-                dsnv.CurrentCell = null;
-                dscv.CurrentCell = null;
-                dsdpc.CurrentCell = null;
-                if (selectedLanguage == "Vietnamese")
+
+                if (DatabaseAccess.CheckCV(maCV, maNV) == false && maNV != null)
+
                 {
-                    MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string maNV_cu = DatabaseAccess.getManv(maCV);
+                    DatabaseAccess.insertDsUyQuyenCV(maNV_cu, maCV, maNV, trangthai, thoiGianHoanThanh, tuyChonChiaSe, ngaycapnhat);
+                    DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai", "ngaycapnhat" },
+                       new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai, ngaycapnhat }, conditionColumns, conditionValues);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Data updated successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    this.FormCongViec_Load(null, null);
+
+                    string emailll = DatabaseAccess.getEmail(maNV);
+                    string contenttt = "ỦY QUYỀN CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
+
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        contenttt = "ỦY QUYỀN CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        contenttt = "JOB AUTHORIZATION \nJob code: " + maCV + "\nEmployee code: " + maNV + "\nCompletion time: " + thoiGianHoanThanh + "\nSharing options: " + tuyChonChiaSe + " \nStatus: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
+                    }
+                    guiEmail(emailll, contenttt);
+
                 }
-                else if (selectedLanguage == "English")
+                else
                 {
-                    MessageBox.Show("Data updated successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DatabaseAccess.UpdateData("CTCV", new string[] { "maNV", "thoiGianHoanThanh", "Tuychonchiase", "trangthai", "ngaycapnhat" },
+                       new object[] { maNV, thoiGianHoanThanh, tuyChonChiaSe, trangthai, ngaycapnhat }, conditionColumns, conditionValues);
+
+
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Đã cập nhật dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("Data updated successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    this.FormCongViec_Load(null, null);
+
+                    string content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
+
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        content = "UPDATE JOB \nJob code: " + maCV + "\nEmployee code: " + maNV + "\nCompletion time: " + thoiGianHoanThanh + "\nSharing options: " + tuyChonChiaSe + "\nStatus: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
+                    }
+
+                    List<string> emails = DatabaseAccess.getEmailsByRole(1);
+                    foreach (string email in emails)
+                    {
+                        guiEmail(email, content);
+                    }
+
                 }
 
-                string email = DatabaseAccess.getEmail(maNV);
-                string content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
 
-                if (selectedLanguage == "Vietnamese")
-                {
-                    content = "CẬP NHẬT CÔNG VIỆC  \nMã công việc: " + maCV + "\nMã nhân viên: " + maNV + "\nThời gian hoàn thành: " + thoiGianHoanThanh + "\nTùy chọn chia sẽ: " + tuyChonChiaSe + "\nTrạng thái: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
-                }
-                else if (selectedLanguage == "English")
-                {
-                    content = "JOB UPDATE \nJob code: " + maCV + "\nEmployee code: " + maNV + "\nCompletion time: " + thoiGianHoanThanh + "\nSharing options: " + tuyChonChiaSe + "\nStatus: " + trangthai + "\nNgày cập nhật: " + ngaycapnhat;
-                }
-                guiEmail(email, content);
 
             }
             catch (Exception ex)
@@ -1180,10 +1211,20 @@ namespace QuanLyCongViec
                 }
 
             }
+
+
+
+            tbomacv.Text = "";
+            tbotencv.Text = "";
+          
+            tbotennv.Text = "";
+            tbomanv.Text = "";
+            dtpthoihan.Text = "";
+            cbotuychonchiase.Text = "";
+            cbotrangthai.Text = "";
+            btnluu.Enabled = false;
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
-            dsdpc.CurrentCell = null;
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)

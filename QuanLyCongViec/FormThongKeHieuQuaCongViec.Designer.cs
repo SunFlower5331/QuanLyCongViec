@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThongKeHieuQuaCongViec));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -84,7 +84,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 30);
             this.tabControl1.Location = new System.Drawing.Point(1, 4);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1467, 594);
@@ -100,9 +100,9 @@
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1459, 556);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nhân viên";
@@ -113,7 +113,7 @@
             this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF.Location = new System.Drawing.Point(821, 7);
-            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
             this.buttonXuatPDF.Size = new System.Drawing.Size(101, 38);
             this.buttonXuatPDF.TabIndex = 23;
@@ -127,7 +127,7 @@
             this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel.Location = new System.Drawing.Point(684, 7);
-            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel.Name = "buttonExportExcel";
             this.buttonExportExcel.Size = new System.Drawing.Size(101, 38);
             this.buttonExportExcel.TabIndex = 22;
@@ -149,9 +149,9 @@
             this.groupBox1.Controls.Add(this.dateTimePickerStart);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.groupBox1.Location = new System.Drawing.Point(951, 7);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(493, 188);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
@@ -161,14 +161,12 @@
             // 
             this.comboBoThongKe1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoThongKe1.FormattingEnabled = true;
-            this.comboBoThongKe1.Items.AddRange(new object[] {
-            "Tổng quan",
-            "Chi tiết"});
             this.comboBoThongKe1.Location = new System.Drawing.Point(160, 149);
-            this.comboBoThongKe1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoThongKe1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoThongKe1.Name = "comboBoThongKe1";
             this.comboBoThongKe1.Size = new System.Drawing.Size(317, 24);
             this.comboBoThongKe1.TabIndex = 14;
+            this.comboBoThongKe1.SelectedIndexChanged += new System.EventHandler(this.comboBoThongKe1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -196,7 +194,7 @@
             // dateTimePickerEnd
             // 
             this.dateTimePickerEnd.Location = new System.Drawing.Point(160, 106);
-            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerEnd.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(317, 22);
             this.dateTimePickerEnd.TabIndex = 12;
@@ -232,7 +230,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(345, 20);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 34);
             this.button1.TabIndex = 4;
@@ -243,7 +241,7 @@
             // textboxMaNV
             // 
             this.textboxMaNV.Location = new System.Drawing.Point(160, 26);
-            this.textboxMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textboxMaNV.Margin = new System.Windows.Forms.Padding(4);
             this.textboxMaNV.Name = "textboxMaNV";
             this.textboxMaNV.Size = new System.Drawing.Size(144, 22);
             this.textboxMaNV.TabIndex = 3;
@@ -251,7 +249,7 @@
             // dateTimePickerStart
             // 
             this.dateTimePickerStart.Location = new System.Drawing.Point(160, 65);
-            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerStart.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(317, 22);
             this.dateTimePickerStart.TabIndex = 10;
@@ -272,7 +270,7 @@
             // 
             this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(1055, 203);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 277);
             this.panel1.TabIndex = 7;
@@ -282,16 +280,16 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(8, 53);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(917, 480);
@@ -307,10 +305,10 @@
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1381, 556);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1459, 556);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bộ phận";
             // 
@@ -320,7 +318,7 @@
             this.buttonXuatPDF2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF2.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF2.Location = new System.Drawing.Point(824, 7);
-            this.buttonXuatPDF2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF2.Name = "buttonXuatPDF2";
             this.buttonXuatPDF2.Size = new System.Drawing.Size(101, 38);
             this.buttonXuatPDF2.TabIndex = 26;
@@ -334,7 +332,7 @@
             this.buttonExportExcel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel2.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel2.Location = new System.Drawing.Point(687, 7);
-            this.buttonExportExcel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel2.Name = "buttonExportExcel2";
             this.buttonExportExcel2.Size = new System.Drawing.Size(101, 38);
             this.buttonExportExcel2.TabIndex = 25;
@@ -356,9 +354,9 @@
             this.groupBox2.Controls.Add(this.dateTimePickerStart2);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.groupBox2.Location = new System.Drawing.Point(951, 7);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(493, 188);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
@@ -369,7 +367,7 @@
             this.comboBoxPB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPB.FormattingEnabled = true;
             this.comboBoxPB.Location = new System.Drawing.Point(160, 26);
-            this.comboBoxPB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxPB.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPB.Name = "comboBoxPB";
             this.comboBoxPB.Size = new System.Drawing.Size(148, 24);
             this.comboBoxPB.TabIndex = 17;
@@ -379,11 +377,8 @@
             // 
             this.comboBoThongKe2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoThongKe2.FormattingEnabled = true;
-            this.comboBoThongKe2.Items.AddRange(new object[] {
-            "Tổng quan",
-            "Chi tiết"});
             this.comboBoThongKe2.Location = new System.Drawing.Point(160, 148);
-            this.comboBoThongKe2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoThongKe2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoThongKe2.Name = "comboBoThongKe2";
             this.comboBoThongKe2.Size = new System.Drawing.Size(317, 24);
             this.comboBoThongKe2.TabIndex = 16;
@@ -414,7 +409,7 @@
             // dateTimePickerEnd2
             // 
             this.dateTimePickerEnd2.Location = new System.Drawing.Point(160, 106);
-            this.dateTimePickerEnd2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerEnd2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerEnd2.Name = "dateTimePickerEnd2";
             this.dateTimePickerEnd2.Size = new System.Drawing.Size(317, 22);
             this.dateTimePickerEnd2.TabIndex = 12;
@@ -450,7 +445,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(345, 23);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 30);
             this.button2.TabIndex = 14;
@@ -461,7 +456,7 @@
             // dateTimePickerStart2
             // 
             this.dateTimePickerStart2.Location = new System.Drawing.Point(160, 65);
-            this.dateTimePickerStart2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerStart2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerStart2.Name = "dateTimePickerStart2";
             this.dateTimePickerStart2.Size = new System.Drawing.Size(317, 22);
             this.dateTimePickerStart2.TabIndex = 10;
@@ -482,7 +477,7 @@
             // 
             this.panel2.ForeColor = System.Drawing.Color.White;
             this.panel2.Location = new System.Drawing.Point(1055, 203);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 277);
             this.panel2.TabIndex = 16;
@@ -492,16 +487,16 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.Location = new System.Drawing.Point(8, 53);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(917, 480);
@@ -512,7 +507,7 @@
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(1380, 4);
-            this.minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 31);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -525,7 +520,7 @@
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(1427, 4);
-            this.logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(33, 31);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -544,7 +539,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormThongKeHieuQuaCongViec";
             this.Text = "FormThongKeHieuQuaCongViec";
             this.Load += new System.EventHandler(this.FormThongKeHieuQuaCongViec_Load);

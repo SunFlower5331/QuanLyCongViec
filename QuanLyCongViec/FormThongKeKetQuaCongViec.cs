@@ -21,7 +21,7 @@ namespace QuanLyCongViec
         public FormThongKeKetQuaCongViec()
         {
             InitializeComponent();
-            comboBoxTrangThai.SelectedIndex = 0;
+          
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
@@ -221,7 +221,7 @@ namespace QuanLyCongViec
         {
             // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
             string selectedLanguage = GlobalSettings.Language;
-
+           
             // Cập nhật ngôn ngữ cho các thành phần giao diện dựa trên ngôn ngữ đã chọn
             if (selectedLanguage == "Vietnamese")
             {
@@ -231,6 +231,13 @@ namespace QuanLyCongViec
 
                 buttonXuatPDF.Text = "Xuất PDF";
                 buttonExportExcel.Text = "Xuất Excel";
+                comboBoxTrangThai.Items.Add("Tất cả");
+                comboBoxTrangThai.Items.Add("Hoàn thành đúng hạn");
+                comboBoxTrangThai.Items.Add("Hoàn thành sớm");
+                comboBoxTrangThai.Items.Add("Trễ hạn");
+                comboBoxTrangThai.Items.Add("Chưa hoàn thành");
+                comboBoxTrangThai.Items.Add("Không hoàn thành");
+                comboBoxTrangThai.SelectedIndex = 0;
             }
             else if (selectedLanguage == "English")
             {
@@ -240,7 +247,15 @@ namespace QuanLyCongViec
 
                 buttonXuatPDF.Text = "Export PDF";
                 buttonExportExcel.Text = "Export Excel";
+                comboBoxTrangThai.Items.Add("All");
+                comboBoxTrangThai.Items.Add("On time");
+                comboBoxTrangThai.Items.Add("Early completion");
+                comboBoxTrangThai.Items.Add("Delayed");
+                comboBoxTrangThai.Items.Add("Not completed");
+                comboBoxTrangThai.Items.Add("Incomplete");
+                comboBoxTrangThai.SelectedIndex = 0;
             }
+          
         }
         private void UpdateLanguage1()
         {
@@ -256,6 +271,8 @@ namespace QuanLyCongViec
                 dataGridView1.Columns["TenCongViec"].HeaderText = "Tên Công Việc";
                 dataGridView1.Columns["TongTG"].HeaderText = "Tổng Thời Gian";
                 dataGridView1.Columns["BanGiao"].HeaderText = "Bàn Giao";
+                
+
             }
             else if (selectedLanguage == "English")
             {
@@ -264,6 +281,8 @@ namespace QuanLyCongViec
                 dataGridView1.Columns["TenCongViec"].HeaderText = "Job Title";
                 dataGridView1.Columns["TongTG"].HeaderText = "Total Time";
                 dataGridView1.Columns["BanGiao"].HeaderText = "Handover";
+             
+
             }
         }
 
@@ -314,6 +333,11 @@ namespace QuanLyCongViec
             process.WaitForExit();
 
             return pdfFile;
+        }
+
+        private void comboBoxTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -93,7 +93,7 @@ namespace QuanLyCongViec
         private void loadThongKeHieuQuaCVNV(string maPB, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             dataGridView1.Columns.Clear();
-            if (comboBoThongKe1.Text == "Tổng quan")
+            if (comboBoThongKe1.Text == "Tổng quan"|| comboBoThongKe1.Text == "Overview")
             {
                 dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVNVTongQuan(maPB, NgayBatDau, NgayKetThuc).Tables[0];
 
@@ -117,7 +117,7 @@ namespace QuanLyCongViec
         private void loadThongKeHieuQuaCVPB(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             dataGridView2.Columns.Clear();
-            if (comboBoThongKe2.Text == "Tổng quan")
+            if (comboBoThongKe2.Text == "Tổng quan" || comboBoThongKe2.Text == "Overview")
             {
                 dataGridView2.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVPBTongQuan(maNV, NgayBatDau, NgayKetThuc).Tables[0];
 
@@ -493,6 +493,11 @@ namespace QuanLyCongViec
                 groupBox1.Text = "Thống kê theo";
                 groupBox2.Text = "Thống kê";
 
+                comboBoThongKe1.Items.Add("Tổng quan");
+                comboBoThongKe1.Items.Add("Chi tiết");
+                comboBoThongKe2.Items.Add("Tổng quan");
+                comboBoThongKe2.Items.Add("Chi tiết");
+
 
                 buttonXuatPDF.Text = "Xuất PDF";
                 buttonExportExcel.Text = "Xuất Excel";
@@ -517,6 +522,10 @@ namespace QuanLyCongViec
                 labelDeMucBieuDo.Text = "Chart Title";
                 labelNgayKetThuc.Text = "End Date";
                 groupBox1.Text = "Statistics";
+                comboBoThongKe1.Items.Add("Overview");
+                comboBoThongKe1.Items.Add("Detail");
+                comboBoThongKe2.Items.Add("Overview");
+                comboBoThongKe2.Items.Add("Detail");
 
                 buttonXuatPDF.Text = "Export PDF";
                 buttonExportExcel.Text = "Export Excel";
@@ -544,6 +553,11 @@ namespace QuanLyCongViec
             }
         }
         private void comboBoxPB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoThongKe1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

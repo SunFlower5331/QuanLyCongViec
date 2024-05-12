@@ -154,13 +154,15 @@ namespace QuanLyCongViec
             dsuqcv.DataSource = DatabaseAccess.GetDSUYCV().Tables[0];
             dsuqcv.AutoGenerateColumns = false;
             dsuqcv.Columns["maNV_cu"].HeaderText = "Mã nhân viên cũ";
-            dsuqcv.Columns["maCV"].HeaderText = "Tên công việc";
-            dsuqcv.Columns["maNV_moi"].HeaderText = "Mã nhân viên mới";
+            dsuqcv.Columns["maCV"].HeaderText = "Mã công việc";
+            dsuqcv.Columns["maNV_moi"].HeaderText = "Mã nhân viên được ủy quyền";
             dsuqcv.Columns["trangthai"].HeaderText = "Trạng thái";
             dsuqcv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
             dsuqcv.Columns["songayhethan"].HeaderText = "Số ngày hết hạn";
-            dsuqcv.Columns["Tuychonchiase"].HeaderText = "Phân loại";
+            dsuqcv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
             dsuqcv.Columns["ngayBanGiao"].HeaderText = "Ngày bàn giao";
+            btnthem.Enabled = false;
+            btnluu.Enabled = false;
         }
         private void loadDsPhongBan()
         {
@@ -248,23 +250,29 @@ namespace QuanLyCongViec
                 if (tabDulieu.SelectedTab == NhanVien)
                 {
                     SaveLastRowData(dsnv, "NhanVien");
+                    loadDsNv();
                 }
                 else if (tabDulieu.SelectedTab == PhongBan)
                 {
                     SaveLastRowData(dspb, "PhongBan");
+                    loadDsPhongBan();
                 }
                 else if (tabDulieu.SelectedTab == TaiKhoan)
                 {
                     SaveLastRowData(dstk, "TaiKhoan");
+                    loadDsTK();
                 }
                 else if (tabDulieu.SelectedTab == Quyen)
                 {
                     SaveLastRowData(dslshd, "Quyen");
+                    loadDsQuyen();
                 }else if(tabDulieu.SelectedTab == DsUyQuyenCV)
                 {
-                    SaveLastRowData(dslshd, "DsUyQuyenCV");
+                    SaveLastRowData(dsuqcv, "DsUyQuyenCV");
+                    loadDsUyQuyenCV();
 
                 }
+                
               
             }
         }
@@ -294,33 +302,58 @@ namespace QuanLyCongViec
 
             try
             {
-                string email = lastRow.Cells["email"].Value.ToString();
-
-                // Kiểm tra định dạng email
-                if (IsEmailValid(email))
+                if (dgv.Columns.Contains("email"))
                 {
-                    DatabaseAccess.InsertData(tableName, dgv.Columns.Cast<DataGridViewColumn>().Select(c => c.DataPropertyName).ToArray(), rowData);
+                    string email = lastRow.Cells["email"].Value?.ToString() ?? null;
 
-                    if (tableName == "NhanVien")
+                    if (string.IsNullOrEmpty(email) && dgv == dsnv)
                     {
-                        string id = lastRow.Cells["manv"].Value.ToString();
+                        MessageBox.Show("Định dạng mail không chính xác | Email format is incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    else
+                    {
+
+                            string id = lastRow.Cells["manv"].Value.ToString();
+                        DatabaseAccess.InsertData(tableName, dgv.Columns.Cast<DataGridViewColumn>().Select(c => c.DataPropertyName).ToArray(), rowData);
                         DatabaseAccess.insertTK(id);
                         loadDsTK();
+                       
+                       
+                        
                     }
 
-                    if (selectedLanguage == "Vietnamese")
+                   
+                }
+                else if (dgv == dsuqcv)
+                {
+                    // Thêm dữ liệu vào database, bỏ qua cột "songayhethan" khi dgv là dsuqcv
+                    List<string> columnNames = new List<string>();
+                    List<object> values = new List<object>();
+
+                    for (int i = 1; i < dgv.Columns.Count; i++)
                     {
-                        MessageBox.Show("Dữ liệu đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Bỏ qua cột "songayhethan"
+                        if (dgv.Columns[i].DataPropertyName != "songayhethan")
+                        {
+                            columnNames.Add(dgv.Columns[i].DataPropertyName);
+                            values.Add(rowData[i]);
+                        }
                     }
-                    else if (selectedLanguage == "English")
-                    {
-                        MessageBox.Show("Data has been saved to database!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    DatabaseAccess.InsertData(tableName, columnNames.ToArray(), values.ToArray());
                 }
                 else
                 {
-                    MessageBox.Show("Định dạng mail không chính xác | Email format is incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    // Thêm dữ liệu vào database cho các trường hợp khác
+                    DatabaseAccess.InsertData(tableName, dgv.Columns.Cast<DataGridViewColumn>().Select(c => c.DataPropertyName).ToArray(), rowData);
+                }
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Dữ liệu đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Data has been saved to database!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (SqlException ex)
@@ -360,6 +393,7 @@ namespace QuanLyCongViec
                 }
             }
         }
+
 
 
 
@@ -567,9 +601,41 @@ namespace QuanLyCongViec
                         }
 
                         string primaryKeyColumn = dgv.Columns[0].DataPropertyName;
+                        if (dgv.Columns.Contains("email"))
+                        {
 
-                        string email = selectedRow.Cells["email"].Value?.ToString();
-                        if (!string.IsNullOrEmpty(email) && IsEmailValid(email))
+                            string email = selectedRow.Cells["email"].Value?.ToString() ?? null;
+
+                            if (string.IsNullOrEmpty(email) && !IsEmailValid(email) && dgv == dsnv)
+                            {
+                                MessageBox.Show("Định dạng mail không chính xác | Email format is incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+
+                            }
+                        }else if (dgv == dsuqcv)
+                        {
+                            List<string> columnNames = new List<string>();
+                            List<object> values = new List<object>();
+
+                            for (int i = 1; i < dgv.Columns.Count; i++)
+                            {
+                                // Bỏ qua cột "songayhethan"
+                                if (dgv.Columns[i].DataPropertyName != "songayhethan")
+                                {
+                                    columnNames.Add(dgv.Columns[i].DataPropertyName);
+                                    values.Add(rowData[i]);
+                                }
+                            }
+
+                            string[] conditionColumns = { primaryKeyColumn };
+                            object[] conditionValues = { rowData[0] };
+
+                            // Thực hiện cập nhật dữ liệu
+                            DatabaseAccess.UpdateData(tabDulieu.SelectedTab.Name, columnNames.ToArray(), values.ToArray(), conditionColumns, conditionValues);
+                            MessageBox.Show(selectedLanguage == "Vietnamese" ? "Đã cập nhật dữ liệu thành công!" : "Data updated successfully!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        else
                         {
                             string tableName = tabDulieu.SelectedTab.Name;
 
@@ -590,18 +656,14 @@ namespace QuanLyCongViec
 
                             dgv.ReadOnly = true;
                             btnCapNhat.Enabled = false;
-                            btnluu.Enabled = true;
+                           
                             btnsua.Enabled = true;
                             btnxoa.Enabled = true;
                             btnthem.Enabled = true;
 
                             MessageBox.Show(selectedLanguage == "Vietnamese" ? "Đã cập nhật dữ liệu thành công!" : "Data updated successfully!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        else
-                        {
-                            MessageBox.Show("Định dạng mail không chính xác | Email format is incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -619,34 +681,6 @@ namespace QuanLyCongViec
             }
         }
 
-
-        private List<int> GetChangedRowsIndexes(DataGridView dataGridView)
-        {
-            List<int> changedRowsIndexes = new List<int>();
-
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    bool rowChanged = false;
-                    for (int i = 0; i < row.Cells.Count; i++)
-                    {
-                        if (row.Cells[i].Value != null && !row.Cells[i].Value.Equals(row.Cells[i].Tag))
-                        {
-                            rowChanged = true;
-                            break;
-                        }
-                    }
-
-                    if (rowChanged)
-                    {
-                        changedRowsIndexes.Add(row.Index);
-                    }
-                }
-            }
-
-            return changedRowsIndexes;
-        }
 
 
 

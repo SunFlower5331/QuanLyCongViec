@@ -491,7 +491,6 @@ namespace QuanLyCongViec
             this.txbtimkiem.Name = "txbtimkiem";
             this.txbtimkiem.Size = new System.Drawing.Size(219, 27);
             this.txbtimkiem.TabIndex = 2;
-            this.txbtimkiem.Text = "Tìm kiếm";
             this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnCapNhat
