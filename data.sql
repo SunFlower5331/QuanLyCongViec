@@ -214,12 +214,12 @@ VALUES (1, N'CEO'),
 	   (3, N'Nhân viên')
 
 -- Thêm dữ liệu vào bảng NhanVien
-INSERT INTO NhanVien (manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan)
-VALUES ('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Đã nghĩ việc', N'Tốt nghiệp 12', N'Nhân viên Thử việc', 3),
-       ('KT-501', N'Phạm Văn Hùng', '03/01/1990', N'Nam', N'Đà Nẵng', '0381276137', 'embemay772023@gmail.com', N'Nhân viên kỹ thuật', 'KT', 20000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
-	   ('XD-603', N'Quách Minh Toàn', '21/12/1989', N'Nam', N'Lâm Đồng', '0356798212', 'parkjihyun187@gmail.com', N'Nhân viên xây dựng', 'XD', 15000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
-	   ('XD-601', N'Ngô Ngọc Trọng', '24/10/1997', N'Nam', N'Tiền Giang', '0327431639', 'npminhtri24102004@gmail.com', N'Nhân viên xây dựng', 'XD', 10000000, N'Hẹn lại khách', N'Tốt nghiệp đại học', N'Nhân viên Full-time', 3),
-	   ('KT-502', N'Lê Quang Hải', '22/11/1999', N'Nam', N'Lâm Đồng', '0342671089', 'trinhletuyetnhung.hvt@gmail.com', N'Nhân viên kỹ thuật', 'KT', 5000000, N'Đã xong', N'Tốt nghiệp đại học', N'Nhân viên Part-time', 3)
+INSERT INTO NhanVien (manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh)
+VALUES ('VS-301', N'Nguyễn Thị Quyên', '15/04/1993', N'Nữ', N'Hà Nội', '0987654321', 'trinhnhung183@gmail.com', N'Nhân viên vệ sinh', 'VS', 5000000, N'Đã nghĩ việc', N'Tốt nghiệp 12', N'Nhân viên Thử việc'),
+       ('KT-501', N'Phạm Văn Hùng', '03/01/1990', N'Nam', N'Đà Nẵng', '0381276137', 'embemay772023@gmail.com', N'Nhân viên kỹ thuật', 'KT', 20000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time'),
+	   ('XD-603', N'Quách Minh Toàn', '21/12/1989', N'Nam', N'Lâm Đồng', '0356798212', 'parkjihyun187@gmail.com', N'Nhân viên xây dựng', 'XD', 15000000, N'Đang làm', N'Tốt nghiệp đại học', N'Nhân viên Full-time'),
+	   ('XD-601', N'Ngô Ngọc Trọng', '24/10/1997', N'Nam', N'Tiền Giang', '0327431639', 'npminhtri24102004@gmail.com', N'Nhân viên xây dựng', 'XD', 10000000, N'Hẹn lại khách', N'Tốt nghiệp đại học', N'Nhân viên Full-time'),
+	   ('KT-502', N'Lê Quang Hải', '22/11/1999', N'Nam', N'Lâm Đồng', '0342671089', 'trinhletuyetnhung.hvt@gmail.com', N'Nhân viên kỹ thuật', 'KT', 5000000, N'Đã xong', N'Tốt nghiệp đại học', N'Nhân viên Part-time')
 -- Thêm dữ liệu vào bảng Taikhoan
 INSERT INTO Taikhoan (id, mk, loaiTK)
 VALUES ('VS-301', '123', 1),
@@ -248,18 +248,6 @@ VALUES ('CD1', N'Căn hộ FS', N'Nguyễn Văn A', '01/01/1993', '123456789', '
 INSERT INTO CanHo (maCH, maCD, ngaynhan, ngaychuyenvao, ngaychuyendi, phidv, phiql, dienngaynhan, nuocngaynhan)
 VALUES ('W2910', 'CD1', '01/02/2023', '02/02/2023', NULL, 500000, 100000, 100, 50),
        ('W3508', 'CD2', '15/02/2024', '17/02/2024', NULL, 600000, 120000, 150, 70)
-
--- Thêm dữ liệu vào bảng DVCanHo
-INSERT INTO DVCanHo (maCH, DV_dinhky,ngayYC)
-VALUES ('W2910',  N'Vệ sinh','CD-1','1/1/2024'),
-('W2910', N'Vệ sinh','CD-2','1/1/2024'),
-       ('W3508', N'Kiểm tra hệ thống công tắc','CD-3','1/1/2024')
-
--- Thêm dữ liệu vào bảng CTCV
-INSERT INTO CTCV
-VALUES ('4', 'VS-301', N'Chưa hoàn thành', '10/02/2024',  N'Công việc chung', '2024-02-09'),
-	   ('2', 'KT-502', N'Đã hoàn thành', '02/02/2024', N'Bộ phận', '2024-04-20')
-
 
 -- Thêm dữ liệu vào bảng ThanhVienCanHo
 INSERT INTO ThanhVienCanHo(maTV, maCD, tenTV, MoiQuanHe) 
