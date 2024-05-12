@@ -42,7 +42,7 @@ namespace QuanLyCongViec
             dataGridView1.Columns.Clear();
             string selectedLanguage = GlobalSettings.Language;
 
-            if (comboBoxTrangThai.Text != "Không hoàn thành")
+            if (comboBoxTrangThai.Text != "Không hoàn thành" && comboBoxTrangThai.Text != "Incomplete")
             {
                 dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeKetQuaCVHoanThanh(maNV, trangthai).Tables[0];
                 if (selectedLanguage == "Vietnamese")
@@ -55,7 +55,7 @@ namespace QuanLyCongViec
                 }
                 
             }
-            else if (comboBoxTrangThai.Text == "Không hoàn thành")
+            else if (comboBoxTrangThai.Text == "Không hoàn thành" || comboBoxTrangThai.Text == "Incomplete")
             {
                 dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeKetQuaCVKhongHoanThanh(maNV).Tables[0];
                 if (selectedLanguage == "Vietnamese")
@@ -117,7 +117,32 @@ namespace QuanLyCongViec
 
         private void button1_Click(object sender, EventArgs e)
         {
-            loadThongKeKetQuaCV(textBoxMaNV.Text, comboBoxTrangThai.Text);
+            string trangthai = comboBoxTrangThai.Text;
+            if (comboBoxTrangThai.Text == "All")
+            {
+                trangthai = "Tất cả";
+            }
+            else if (comboBoxTrangThai.Text == "On time")
+            {
+                trangthai = "Hoàn thành đúng hạn";
+            }
+            else if (comboBoxTrangThai.Text == "Early completion")
+            {
+                trangthai = "Hoàn thành sớm";
+            }
+            else if (comboBoxTrangThai.Text == "Delayed")
+            {
+                trangthai = "Trễ hạn";
+            }
+            else if (comboBoxTrangThai.Text == "Not completed")
+            {
+                trangthai = "Chưa hoàn thành";
+            }
+            else if (comboBoxTrangThai.Text == "Incompleted")
+            {
+                trangthai = "Không hoàn thành";
+            }
+            loadThongKeKetQuaCV(textBoxMaNV.Text, trangthai);
         }
 
         private void buttonExportExcel_Click(object sender, EventArgs e)
@@ -207,7 +232,7 @@ namespace QuanLyCongViec
                 }
                 else if (selectedLanguage == "English")
                 {
-                    MessageBox.Show("You do not have permission to access the application!");
+                    MessageBox.Show("No data found to export PDF!", "Info");
                 }
             }
         }
@@ -272,7 +297,7 @@ namespace QuanLyCongViec
             {
                 dataGridView1.Columns["MaNV"].HeaderText = "Employee ID";
                 dataGridView1.Columns["TenNV"].HeaderText = "Employee Name";
-                dataGridView1.Columns["TenCongViec"].HeaderText = "Job Title";
+                dataGridView1.Columns["TenCongViec"].HeaderText = "Task Name";
                 dataGridView1.Columns["TongTG"].HeaderText = "Total Time";
                 dataGridView1.Columns["BanGiao"].HeaderText = "Handover";
              

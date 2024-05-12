@@ -85,8 +85,9 @@ namespace QuanLyCongViec
 
         private void loadThongKeHieuQuaCVNV(string maPB, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
+            string selectedLanguage = GlobalSettings.Language;
             dataGridView1.Columns.Clear();
-            if (comboBoThongKe1.Text == "Tổng quan"|| comboBoThongKe1.Text == "Overview")
+            if (comboBoThongKe1.Text == "Tổng quan" || comboBoThongKe1.Text == "Overview")
             {
                 dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVNVTongQuan(maPB, NgayBatDau, NgayKetThuc).Tables[0];
 
@@ -94,49 +95,93 @@ namespace QuanLyCongViec
             else
             {
                 dataGridView1.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVNVChiTiet(maPB, NgayBatDau, NgayKetThuc).Tables[0];
-
-                dataGridView1.Columns["maCV"].HeaderText = "Mã công việc";
-                dataGridView1.Columns["ten"].HeaderText = "Tên công việc";
-                dataGridView1.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                if (selectedLanguage == "Vietnamese")
+                {
+                    dataGridView1.Columns["maCV"].HeaderText = "Mã công việc";
+                    dataGridView1.Columns["ten"].HeaderText = "Tên công việc";
+                    dataGridView1.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
+                }
+                else if (selectedLanguage == "English")
+                {
+                    dataGridView1.Columns["maCV"].HeaderText = "Task ID";
+                    dataGridView1.Columns["ten"].HeaderText = "Task name";
+                    dataGridView1.Columns["thoiGianHoanThanh"].HeaderText = "Completion time";
+                }
             }
-            dataGridView1.Columns["solanchuahoanthanh"].HeaderText = "Chưa hoàn thành";
-            dataGridView1.Columns["solantrehan"].HeaderText = "Trễ hạn";
-            dataGridView1.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
-            dataGridView1.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
-            dataGridView1.Columns["solanhoanthanhsom"].HeaderText = "Hoàn thành sớm";
-
+            if (selectedLanguage == "Vietnamese")
+            {
+                dataGridView1.Columns["solanchuahoanthanh"].HeaderText = "Chưa hoàn thành";
+                dataGridView1.Columns["solantrehan"].HeaderText = "Trễ hạn";
+                dataGridView1.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
+                dataGridView1.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
+                dataGridView1.Columns["solanhoanthanhsom"].HeaderText = "Hoàn thành sớm";
+            }
+            else if (selectedLanguage == "English")
+            {
+                dataGridView1.Columns["solanchuahoanthanh"].HeaderText = "Not completed";
+                dataGridView1.Columns["solantrehan"].HeaderText = "Delayed";
+                dataGridView1.Columns["solankhonghoanthanh"].HeaderText = "Incompleted";
+                dataGridView1.Columns["solanhoanthanhdunghan"].HeaderText = "On time";
+                dataGridView1.Columns["solanhoanthanhsom"].HeaderText = "Early completion";
+            }
         }
 
         private void loadThongKeHieuQuaCVPB(string maNV, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
+            string selectedLanguage = GlobalSettings.Language;
             dataGridView2.Columns.Clear();
             if (comboBoThongKe2.Text == "Tổng quan" || comboBoThongKe2.Text == "Overview")
             {
                 dataGridView2.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVPBTongQuan(maNV, NgayBatDau, NgayKetThuc).Tables[0];
+                if (selectedLanguage == "Vietnamese")
+                {
+                    dataGridView2.Columns["doanhthu"].HeaderText = "Doanh thu";
+                }
+                else if (selectedLanguage == "English")
+                {
+                    dataGridView2.Columns["doanhthu"].HeaderText = "Revenue";
+                }
 
-                dataGridView2.Columns["doanhthu"].HeaderText = "Doanh thu";
             }
             else
             {
                 dataGridView2.DataSource = DatabaseAccess.GetDuLieuThongKeHieuQuaCVPBChiTiet(maNV, NgayBatDau, NgayKetThuc).Tables[0];
-
-                dataGridView2.Columns["maNV"].HeaderText = "Mã nhân viên";
-                dataGridView2.Columns["hoten"].HeaderText = "Họ tên";
-                dataGridView2.Columns["luong"].HeaderText = "Lương";
+                if (selectedLanguage == "Vietnamese")
+                {
+                    dataGridView2.Columns["maNV"].HeaderText = "Mã nhân viên";
+                    dataGridView2.Columns["hoten"].HeaderText = "Họ tên";
+                    dataGridView2.Columns["luong"].HeaderText = "Lương";
+                }
+                else if (selectedLanguage == "English")
+                {
+                    dataGridView2.Columns["maNV"].HeaderText = "Employee ID";
+                    dataGridView2.Columns["hoten"].HeaderText = "Name";
+                    dataGridView2.Columns["luong"].HeaderText = "Salary";
+                }
             }
-            dataGridView2.Columns["solanchuahoanthanh"].HeaderText = "Chưa hoàn thành";
-            dataGridView2.Columns["solantrehan"].HeaderText = "Trễ hạn";
-            dataGridView2.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
-            dataGridView2.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
-            dataGridView2.Columns["solanhoanthanhsom"].HeaderText = "Hoàn thành sớm";
-
+            if (selectedLanguage == "Vietnamese")
+            {
+                dataGridView2.Columns["solanchuahoanthanh"].HeaderText = "Chưa hoàn thành";
+                dataGridView2.Columns["solantrehan"].HeaderText = "Trễ hạn";
+                dataGridView2.Columns["solankhonghoanthanh"].HeaderText = "Không hoàn thành";
+                dataGridView2.Columns["solanhoanthanhdunghan"].HeaderText = "Hoàn thành đúng hạn";
+                dataGridView2.Columns["solanhoanthanhsom"].HeaderText = "Hoàn thành sớm";
+            }
+            else if (selectedLanguage == "English")
+            {
+                dataGridView2.Columns["solanchuahoanthanh"].HeaderText = "Not completed";
+                dataGridView2.Columns["solantrehan"].HeaderText = "Delayed";
+                dataGridView2.Columns["solankhonghoanthanh"].HeaderText = "Incompleted";
+                dataGridView2.Columns["solanhoanthanhdunghan"].HeaderText = "On time";
+                dataGridView2.Columns["solanhoanthanhsom"].HeaderText = "Early completion";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //show table
             loadThongKeHieuQuaCVNV(textboxMaNV.Text, dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
-
+            string selectedLanguage = GlobalSettings.Language;
             //show chart
             DataSet data = GetDataFromSQLNV(textboxMaNV.Text, dateTimePickerStart.Value.AddDays(-1), dateTimePickerEnd.Value);
             if (data.Tables[0].Rows.Count > 0)
@@ -149,36 +194,72 @@ namespace QuanLyCongViec
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 DataRow row = data.Tables[0].Rows[0];
-                seriesCollection.Add(new PieSeries
+                if (selectedLanguage == "Vietnamese")
                 {
-                    Title = "Chưa hoàn thành",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Chưa hoàn thành",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
+                        DataLabels = true
+                    }); ;
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Trễ hạn",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solantrehan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Không hoàn thành",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solankhonghoanthanh"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Hoàn thành đúng hạn",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhdunghan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Hoàn thành sớm",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhsom"]) },
+                        DataLabels = true
+                    });
+                }
+                else if (selectedLanguage == "English")
                 {
-                    Title = "Trễ hạn",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solantrehan"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
-                {
-                    Title = "Không hoàn thành",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solankhonghoanthanh"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
-                {
-                    Title = "Hoàn thành đúng hạn",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhdunghan"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
-                {
-                    Title = "Hoàn thành sớm",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhsom"]) },
-                    DataLabels = true
-                });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Not completed",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
+                        DataLabels = true
+                    }); ;
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Delayed",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solantrehan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Incompleted",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solankhonghoanthanh"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "On time",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhdunghan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Early completion",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhsom"]) },
+                        DataLabels = true
+                    });
+                }
 
                 pieChart.Series = seriesCollection;
                 this.panel1.Controls.Clear();
@@ -191,7 +272,7 @@ namespace QuanLyCongViec
         {
             // show table
             loadThongKeHieuQuaCVPB(comboBoxPB.Text, dateTimePickerStart2.Value.AddDays(-1), dateTimePickerEnd2.Value);
-
+            string selectedLanguage = GlobalSettings.Language;
             //show chart
             DataSet data = GetDataFromSQLPB(comboBoxPB.Text, dateTimePickerStart2.Value.AddDays(-1), dateTimePickerEnd2.Value);
             if (data.Tables[0].Rows.Count > 0)
@@ -204,36 +285,72 @@ namespace QuanLyCongViec
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 DataRow row = data.Tables[0].Rows[0];
-                seriesCollection.Add(new PieSeries
+                if (selectedLanguage == "Vietnamese")
                 {
-                    Title = "Chưa hoàn thành",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Chưa hoàn thành",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
+                        DataLabels = true
+                    }); ;
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Trễ hạn",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solantrehan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Không hoàn thành",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solankhonghoanthanh"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Hoàn thành đúng hạn",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhdunghan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Hoàn thành sớm",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhsom"]) },
+                        DataLabels = true
+                    });
+                }
+                else if (selectedLanguage == "English")
                 {
-                    Title = "Trễ hạn",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solantrehan"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
-                {
-                    Title = "Không hoàn thành",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solankhonghoanthanh"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
-                {
-                    Title = "Hoàn thành đúng hạn",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhdunghan"]) },
-                    DataLabels = true
-                });
-                seriesCollection.Add(new PieSeries
-                {
-                    Title = "Hoàn thành sớm",
-                    Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhsom"]) },
-                    DataLabels = true
-                });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Not completed",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanchuahoanthanh"]) },
+                        DataLabels = true
+                    }); ;
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Delayed",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solantrehan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Incompleted",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solankhonghoanthanh"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "On time",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhdunghan"]) },
+                        DataLabels = true
+                    });
+                    seriesCollection.Add(new PieSeries
+                    {
+                        Title = "Early completion",
+                        Values = new ChartValues<int> { Convert.ToInt32(row["solanhoanthanhsom"]) },
+                        DataLabels = true
+                    });
+                }
 
                 pieChart.Series = seriesCollection;
                 this.panel2.Controls.Clear();
@@ -475,15 +592,19 @@ namespace QuanLyCongViec
             {
                 tabControl1.TabPages[0].Text = "Nhân viên";
                 tabControl1.TabPages[1].Text = "Bộ phận";
-                minimize.Text = "Thu nhỏ";
-                logout.Text = "Đăng xuất";
                 labelNgayBatDau.Text = "Ngày bắt đầu";
-                labelMaNV.Text = "Mã NV";
+                labelNgayBatDau2.Text = "Ngày bắt đầu";
+                labelMaNV.Text = "Mã nhân viên";
+                labelMaPB.Text = "Mã phòng ban";
                 button1.Text = "Thống kê";
-                textboxMaNV.Text = "Mã NV";
-                labelDeMucBieuDo.Text = "Đề mục biểu đồ";
+                button2.Text = "Thống kê";
+                labelDeMucBieuDo.Text = "Tỉ lệ hoàn thành công việc của nhân viên";
+                labelDeMucBieuDo2.Text = "Tỉ lệ hoàn thành công việc của phòng ban";
                 labelNgayKetThuc.Text = "Ngày kết thúc";
-                groupBox1.Text = "Thống kê theo";
+                labelNgayKetThuc2.Text = "Ngày kết thúc";
+                labelThongKe.Text = "Thống kê theo";
+                labelThongKe2.Text = "Thống kê theo";
+                groupBox1.Text = "Thống kê";
                 groupBox2.Text = "Thống kê";
 
                 comboBoThongKe1.Items.Add("Tổng quan");
@@ -503,18 +624,22 @@ namespace QuanLyCongViec
             else if (selectedLanguage == "English")
             {
                 labelDeMucBieuDo.Text = "Employee work completion rate";
+                labelDeMucBieuDo2.Text = "Department work completion rate";
                 tabControl1.TabPages[0].Text = "Employee";
                 tabControl1.TabPages[1].Text = "Department";
-                minimize.Text = "Minimize";
-                logout.Text = "Logout";
-
                 labelNgayBatDau.Text = "Start Date";
+                labelNgayBatDau2.Text = "Start Date";
                 labelMaNV.Text = "Employee ID";
+                labelMaPB.Text = "Department ID";
                 button1.Text = "Statistic";
-                textboxMaNV.Text = "Employee ID";
-                labelDeMucBieuDo.Text = "Chart Title";
+                button2.Text = "Statistic";
                 labelNgayKetThuc.Text = "End Date";
+                labelNgayKetThuc2.Text = "End Date";
                 groupBox1.Text = "Statistics";
+                groupBox2.Text = "Statistics";
+                labelThongKe.Text = "Statistics by";
+                labelThongKe2.Text = "Statistics by";
+
                 comboBoThongKe1.Items.Add("Overview");
                 comboBoThongKe1.Items.Add("Detail");
                 comboBoThongKe2.Items.Add("Overview");
@@ -544,15 +669,6 @@ namespace QuanLyCongViec
 
                 comboBoxPB.Items.Add(item);
             }
-        }
-        private void comboBoxPB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoThongKe1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -17,7 +17,7 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
             SqlConnection con = new SqlConnection(conStr);
             return con;
         }
@@ -1082,7 +1082,7 @@ namespace DAL
         {
             DataSet data = new DataSet();
             string query;
-            if (trangthai == "Tất cả")
+            if (trangthai == "Tất cả" || trangthai == "All")
             {
                 query = "SELECT CTCV.maNV, hoten, ten, (DATEDIFF(day, ngayYC, ngaycapnhat) + 1) AS thoigianlam " +
                 "FROM NhanVien, CTCV, DsCongViec " +

@@ -119,8 +119,8 @@ namespace QuanLyCongViec
             this.trogiup});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(1685, 41);
+            this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip2.Size = new System.Drawing.Size(1028, 33);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip2_MouseDown);
@@ -135,7 +135,7 @@ namespace QuanLyCongViec
             this.hethong.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hethong.ForeColor = System.Drawing.Color.White;
             this.hethong.Name = "hethong";
-            this.hethong.Size = new System.Drawing.Size(87, 37);
+            this.hethong.Size = new System.Drawing.Size(69, 29);
             this.hethong.Text = "Hệ thống";
             // 
             // thêmToolStripMenuItem
@@ -143,7 +143,7 @@ namespace QuanLyCongViec
             this.thêmToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.thêmToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.thêmToolStripMenuItem.Name = "thêmToolStripMenuItem";
-            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.thêmToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.thêmToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thêmToolStripMenuItem.Click += new System.EventHandler(this.thêmToolStripMenuItem_Click);
             // 
@@ -152,7 +152,7 @@ namespace QuanLyCongViec
             this.gửiThôngBáoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.gửiThôngBáoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.gửiThôngBáoToolStripMenuItem.Name = "gửiThôngBáoToolStripMenuItem";
-            this.gửiThôngBáoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gửiThôngBáoToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.gửiThôngBáoToolStripMenuItem.Text = "Gửi thông báo";
             this.gửiThôngBáoToolStripMenuItem.Click += new System.EventHandler(this.gửiThôngBáoToolStripMenuItem_Click);
             // 
@@ -161,7 +161,7 @@ namespace QuanLyCongViec
             this.đăngXuấtToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.đăngXuấtToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -174,7 +174,7 @@ namespace QuanLyCongViec
             this.tacvu.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tacvu.ForeColor = System.Drawing.Color.White;
             this.tacvu.Name = "tacvu";
-            this.tacvu.Size = new System.Drawing.Size(66, 37);
+            this.tacvu.Size = new System.Drawing.Size(53, 29);
             this.tacvu.Text = "Tác vụ";
             // 
             // chưaHoànThànhToolStripMenuItem
@@ -182,7 +182,7 @@ namespace QuanLyCongViec
             this.chưaHoànThànhToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.chưaHoànThànhToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.chưaHoànThànhToolStripMenuItem.Name = "chưaHoànThànhToolStripMenuItem";
-            this.chưaHoànThànhToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.chưaHoànThànhToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.chưaHoànThànhToolStripMenuItem.Text = "Báo cáo công việc";
             this.chưaHoànThànhToolStripMenuItem.Click += new System.EventHandler(this.chưaHoànThànhToolStripMenuItem_Click);
             // 
@@ -191,7 +191,7 @@ namespace QuanLyCongViec
             this.nhậpXuấtToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.nhậpXuấtToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.nhậpXuấtToolStripMenuItem.Name = "nhậpXuấtToolStripMenuItem";
-            this.nhậpXuấtToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.nhậpXuấtToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.nhậpXuấtToolStripMenuItem.Text = "Danh sách tài liệu";
             this.nhậpXuấtToolStripMenuItem.Click += new System.EventHandler(this.nhậpXuấtToolStripMenuItem_Click);
             // 
@@ -204,7 +204,7 @@ namespace QuanLyCongViec
             this.thongke.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thongke.ForeColor = System.Drawing.Color.White;
             this.thongke.Name = "thongke";
-            this.thongke.Size = new System.Drawing.Size(87, 37);
+            this.thongke.Size = new System.Drawing.Size(69, 29);
             this.thongke.Text = "Thống kê";
             // 
             // côngViệcToolStripMenuItem1
@@ -212,7 +212,7 @@ namespace QuanLyCongViec
             this.côngViệcToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.côngViệcToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.côngViệcToolStripMenuItem1.Name = "côngViệcToolStripMenuItem1";
-            this.côngViệcToolStripMenuItem1.Size = new System.Drawing.Size(223, 26);
+            this.côngViệcToolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
             this.côngViệcToolStripMenuItem1.Text = "Kết quả công việc";
             this.côngViệcToolStripMenuItem1.Click += new System.EventHandler(this.côngViệcToolStripMenuItem1_Click);
             // 
@@ -221,7 +221,7 @@ namespace QuanLyCongViec
             this.hiệuQuảCôngViệcToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.hiệuQuảCôngViệcToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.hiệuQuảCôngViệcToolStripMenuItem.Name = "hiệuQuảCôngViệcToolStripMenuItem";
-            this.hiệuQuảCôngViệcToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.hiệuQuảCôngViệcToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.hiệuQuảCôngViệcToolStripMenuItem.Text = "Hiệu quả công việc";
             this.hiệuQuảCôngViệcToolStripMenuItem.Click += new System.EventHandler(this.hiệuQuảCôngViệcToolStripMenuItem_Click);
             // 
@@ -236,16 +236,15 @@ namespace QuanLyCongViec
             this.quanly.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quanly.ForeColor = System.Drawing.Color.White;
             this.quanly.Name = "quanly";
-            this.quanly.Size = new System.Drawing.Size(76, 37);
+            this.quanly.Size = new System.Drawing.Size(60, 29);
             this.quanly.Text = "Quản lý";
-         
             // 
             // congviec
             // 
             this.congviec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.congviec.ForeColor = System.Drawing.Color.White;
             this.congviec.Name = "congviec";
-            this.congviec.Size = new System.Drawing.Size(270, 26);
+            this.congviec.Size = new System.Drawing.Size(213, 22);
             this.congviec.Text = "Công việc";
             this.congviec.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
             // 
@@ -254,7 +253,7 @@ namespace QuanLyCongViec
             this.dulieunhanvien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.dulieunhanvien.ForeColor = System.Drawing.Color.White;
             this.dulieunhanvien.Name = "dulieunhanvien";
-            this.dulieunhanvien.Size = new System.Drawing.Size(270, 26);
+            this.dulieunhanvien.Size = new System.Drawing.Size(213, 22);
             this.dulieunhanvien.Text = "Dữ liệu nhân viên";
             this.dulieunhanvien.Click += new System.EventHandler(this.côngViệcToolStripMenuItem_Click);
             // 
@@ -263,7 +262,7 @@ namespace QuanLyCongViec
             this.tiendocongviec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.tiendocongviec.ForeColor = System.Drawing.Color.White;
             this.tiendocongviec.Name = "tiendocongviec";
-            this.tiendocongviec.Size = new System.Drawing.Size(270, 26);
+            this.tiendocongviec.Size = new System.Drawing.Size(213, 22);
             this.tiendocongviec.Text = "Tiến độ công việc cá nhân";
             this.tiendocongviec.Click += new System.EventHandler(this.tiếnĐộCôngViệcToolStripMenuItem_Click);
             // 
@@ -272,7 +271,7 @@ namespace QuanLyCongViec
             this.dulieucudan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.dulieucudan.ForeColor = System.Drawing.Color.White;
             this.dulieucudan.Name = "dulieucudan";
-            this.dulieucudan.Size = new System.Drawing.Size(270, 26);
+            this.dulieucudan.Size = new System.Drawing.Size(213, 22);
             this.dulieucudan.Text = "Dữ liệu cư dân";
             this.dulieucudan.Click += new System.EventHandler(this.dulieucudan_Click);
             // 
@@ -285,16 +284,15 @@ namespace QuanLyCongViec
             this.trogiup.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trogiup.ForeColor = System.Drawing.Color.White;
             this.trogiup.Name = "trogiup";
-            this.trogiup.Size = new System.Drawing.Size(93, 37);
+            this.trogiup.Size = new System.Drawing.Size(73, 29);
             this.trogiup.Text = "Ngôn ngữ";
-        
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.englishToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
@@ -303,7 +301,7 @@ namespace QuanLyCongViec
             this.vietnamToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.vietnamToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.vietnamToolStripMenuItem.Name = "vietnamToolStripMenuItem";
-            this.vietnamToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
+            this.vietnamToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.vietnamToolStripMenuItem.Text = "Vietnam";
             this.vietnamToolStripMenuItem.Click += new System.EventHandler(this.vietnamToolStripMenuItem_Click);
             // 
@@ -313,13 +311,12 @@ namespace QuanLyCongViec
             this.txbtimkiem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbtimkiem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbtimkiem.ForeColor = System.Drawing.Color.DimGray;
-            this.txbtimkiem.Location = new System.Drawing.Point(16, 35);
-            this.txbtimkiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbtimkiem.Location = new System.Drawing.Point(12, 28);
+            this.txbtimkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbtimkiem.Name = "txbtimkiem";
-            this.txbtimkiem.Size = new System.Drawing.Size(220, 19);
+            this.txbtimkiem.Size = new System.Drawing.Size(165, 15);
             this.txbtimkiem.TabIndex = 2;
             this.txbtimkiem.Text = "Tìm kiếm";
-           
             this.txbtimkiem.Enter += new System.EventHandler(this.textBox1_Enter);
             this.txbtimkiem.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
@@ -329,11 +326,11 @@ namespace QuanLyCongViec
             this.tabControl1.Controls.Add(this.phongban);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.Location = new System.Drawing.Point(0, 407);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 259);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1685, 431);
+            this.tabControl1.Size = new System.Drawing.Size(1028, 350);
             this.tabControl1.TabIndex = 8;
             // 
             // congty
@@ -341,11 +338,11 @@ namespace QuanLyCongViec
             this.congty.BackColor = System.Drawing.Color.White;
             this.congty.Controls.Add(this.dscvcty);
             this.congty.Controls.Add(this.label1);
-            this.congty.Location = new System.Drawing.Point(4, 25);
-            this.congty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.congty.Location = new System.Drawing.Point(4, 22);
+            this.congty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.congty.Name = "congty";
-            this.congty.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.congty.Size = new System.Drawing.Size(1677, 402);
+            this.congty.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.congty.Size = new System.Drawing.Size(1020, 324);
             this.congty.TabIndex = 0;
             this.congty.Text = "Công ty";
             // 
@@ -364,12 +361,12 @@ namespace QuanLyCongViec
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dscvcty.DefaultCellStyle = dataGridViewCellStyle1;
             this.dscvcty.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dscvcty.Location = new System.Drawing.Point(3, 53);
-            this.dscvcty.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dscvcty.Location = new System.Drawing.Point(2, 40);
+            this.dscvcty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dscvcty.Name = "dscvcty";
             this.dscvcty.RowHeadersWidth = 51;
             this.dscvcty.RowTemplate.Height = 24;
-            this.dscvcty.Size = new System.Drawing.Size(1671, 347);
+            this.dscvcty.Size = new System.Drawing.Size(1016, 282);
             this.dscvcty.TabIndex = 8;
             // 
             // label1
@@ -381,9 +378,10 @@ namespace QuanLyCongViec
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(3, 2);
+            this.label1.Location = new System.Drawing.Point(2, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1671, 44);
+            this.label1.Size = new System.Drawing.Size(1016, 36);
             this.label1.TabIndex = 7;
             this.label1.Text = "     Danh sách công việc công ty";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -393,11 +391,11 @@ namespace QuanLyCongViec
             this.phongban.BackColor = System.Drawing.Color.White;
             this.phongban.Controls.Add(this.label2);
             this.phongban.Controls.Add(this.dscvpban);
-            this.phongban.Location = new System.Drawing.Point(4, 25);
-            this.phongban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.phongban.Location = new System.Drawing.Point(4, 22);
+            this.phongban.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.phongban.Name = "phongban";
-            this.phongban.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.phongban.Size = new System.Drawing.Size(1677, 402);
+            this.phongban.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.phongban.Size = new System.Drawing.Size(1256, 324);
             this.phongban.TabIndex = 1;
             this.phongban.Text = "Phòng ban";
             // 
@@ -410,9 +408,10 @@ namespace QuanLyCongViec
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(3, 2);
+            this.label2.Location = new System.Drawing.Point(2, 2);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1671, 44);
+            this.label2.Size = new System.Drawing.Size(1252, 36);
             this.label2.TabIndex = 8;
             this.label2.Text = "     Danh sách công việc phòng ban";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -432,12 +431,12 @@ namespace QuanLyCongViec
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dscvpban.DefaultCellStyle = dataGridViewCellStyle2;
             this.dscvpban.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dscvpban.Location = new System.Drawing.Point(3, 53);
-            this.dscvpban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dscvpban.Location = new System.Drawing.Point(2, 40);
+            this.dscvpban.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dscvpban.Name = "dscvpban";
             this.dscvpban.RowHeadersWidth = 51;
             this.dscvpban.RowTemplate.Height = 24;
-            this.dscvpban.Size = new System.Drawing.Size(1671, 347);
+            this.dscvpban.Size = new System.Drawing.Size(1252, 282);
             this.dscvpban.TabIndex = 0;
             // 
             // notifyIcon1
@@ -456,10 +455,10 @@ namespace QuanLyCongViec
             this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.timkiem.ForeColor = System.Drawing.Color.White;
             this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
-            this.timkiem.Location = new System.Drawing.Point(241, 22);
-            this.timkiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.timkiem.Location = new System.Drawing.Point(181, 18);
+            this.timkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.timkiem.Name = "timkiem";
-            this.timkiem.Size = new System.Drawing.Size(41, 39);
+            this.timkiem.Size = new System.Drawing.Size(31, 32);
             this.timkiem.TabIndex = 6;
             this.timkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.timkiem.UseVisualStyleBackColor = false;
@@ -470,9 +469,8 @@ namespace QuanLyCongViec
             this.pictureBoxTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTimKiem.Image")));
             this.pictureBoxTimKiem.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxTimKiem.Name = "pictureBoxTimKiem";
-            this.pictureBoxTimKiem.Size = new System.Drawing.Size(301, 93);
+            this.pictureBoxTimKiem.Size = new System.Drawing.Size(226, 76);
             this.pictureBoxTimKiem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxTimKiem.TabIndex = 21;
             this.pictureBoxTimKiem.TabStop = false;
@@ -482,16 +480,15 @@ namespace QuanLyCongViec
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 309F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 41);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1685, 101);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 82);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
             // panel1
@@ -500,10 +497,9 @@ namespace QuanLyCongViec
             this.panel1.Controls.Add(this.txbtimkiem);
             this.panel1.Controls.Add(this.pictureBoxTimKiem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(692, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(401, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(301, 93);
+            this.panel1.Size = new System.Drawing.Size(226, 76);
             this.panel1.TabIndex = 23;
             // 
             // tableLayoutPanel2
@@ -518,12 +514,11 @@ namespace QuanLyCongViec
             this.tableLayoutPanel2.Controls.Add(this.panel4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel5, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 142);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 115);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1685, 215);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1028, 175);
             this.tableLayoutPanel2.TabIndex = 23;
             // 
             // panel2
@@ -532,10 +527,9 @@ namespace QuanLyCongViec
             this.panel2.Controls.Add(this.labelTongNV);
             this.panel2.Controls.Add(this.pictureBoxTongNV);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(413, 207);
+            this.panel2.Size = new System.Drawing.Size(251, 169);
             this.panel2.TabIndex = 0;
             // 
             // labelSoNV
@@ -543,10 +537,9 @@ namespace QuanLyCongViec
             this.labelSoNV.BackColor = System.Drawing.Color.Transparent;
             this.labelSoNV.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoNV.ForeColor = System.Drawing.Color.White;
-            this.labelSoNV.Location = new System.Drawing.Point(53, 81);
-            this.labelSoNV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSoNV.Location = new System.Drawing.Point(40, 66);
             this.labelSoNV.Name = "labelSoNV";
-            this.labelSoNV.Size = new System.Drawing.Size(92, 66);
+            this.labelSoNV.Size = new System.Drawing.Size(69, 54);
             this.labelSoNV.TabIndex = 2;
             this.labelSoNV.Text = "10";
             // 
@@ -559,10 +552,9 @@ namespace QuanLyCongViec
             this.labelTongNV.BackColor = System.Drawing.Color.Transparent;
             this.labelTongNV.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTongNV.ForeColor = System.Drawing.Color.White;
-            this.labelTongNV.Location = new System.Drawing.Point(59, 30);
-            this.labelTongNV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTongNV.Location = new System.Drawing.Point(44, 24);
             this.labelTongNV.Name = "labelTongNV";
-            this.labelTongNV.Size = new System.Drawing.Size(207, 37);
+            this.labelTongNV.Size = new System.Drawing.Size(161, 30);
             this.labelTongNV.TabIndex = 1;
             this.labelTongNV.Text = "Tổng nhân viên";
             // 
@@ -571,9 +563,8 @@ namespace QuanLyCongViec
             this.pictureBoxTongNV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxTongNV.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTongNV.Image")));
             this.pictureBoxTongNV.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxTongNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxTongNV.Name = "pictureBoxTongNV";
-            this.pictureBoxTongNV.Size = new System.Drawing.Size(413, 207);
+            this.pictureBoxTongNV.Size = new System.Drawing.Size(251, 169);
             this.pictureBoxTongNV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTongNV.TabIndex = 0;
             this.pictureBoxTongNV.TabStop = false;
@@ -584,10 +575,9 @@ namespace QuanLyCongViec
             this.panel3.Controls.Add(this.c);
             this.panel3.Controls.Add(this.pictureBoxTongCV);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(425, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(260, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(413, 207);
+            this.panel3.Size = new System.Drawing.Size(251, 169);
             this.panel3.TabIndex = 1;
             // 
             // labelSoCV
@@ -595,10 +585,9 @@ namespace QuanLyCongViec
             this.labelSoCV.BackColor = System.Drawing.Color.Transparent;
             this.labelSoCV.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoCV.ForeColor = System.Drawing.Color.White;
-            this.labelSoCV.Location = new System.Drawing.Point(53, 81);
-            this.labelSoCV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSoCV.Location = new System.Drawing.Point(40, 66);
             this.labelSoCV.Name = "labelSoCV";
-            this.labelSoCV.Size = new System.Drawing.Size(92, 66);
+            this.labelSoCV.Size = new System.Drawing.Size(69, 54);
             this.labelSoCV.TabIndex = 2;
             this.labelSoCV.Text = "10";
             // 
@@ -611,10 +600,9 @@ namespace QuanLyCongViec
             this.c.BackColor = System.Drawing.Color.Transparent;
             this.c.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c.ForeColor = System.Drawing.Color.White;
-            this.c.Location = new System.Drawing.Point(59, 30);
-            this.c.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.c.Location = new System.Drawing.Point(44, 24);
             this.c.Name = "c";
-            this.c.Size = new System.Drawing.Size(203, 37);
+            this.c.Size = new System.Drawing.Size(160, 30);
             this.c.TabIndex = 1;
             this.c.Text = "Tổng công việc";
             // 
@@ -623,9 +611,8 @@ namespace QuanLyCongViec
             this.pictureBoxTongCV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxTongCV.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTongCV.Image")));
             this.pictureBoxTongCV.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxTongCV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxTongCV.Name = "pictureBoxTongCV";
-            this.pictureBoxTongCV.Size = new System.Drawing.Size(413, 207);
+            this.pictureBoxTongCV.Size = new System.Drawing.Size(251, 169);
             this.pictureBoxTongCV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTongCV.TabIndex = 0;
             this.pictureBoxTongCV.TabStop = false;
@@ -638,10 +625,9 @@ namespace QuanLyCongViec
             this.panel4.Controls.Add(this.pictureBoxHieuSuat);
             this.panel4.Controls.Add(this.dateTimePicker1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(846, 4);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(517, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(413, 207);
+            this.panel4.Size = new System.Drawing.Size(251, 169);
             this.panel4.TabIndex = 2;
             // 
             // label3
@@ -650,10 +636,9 @@ namespace QuanLyCongViec
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(128, 81);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(96, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 67);
+            this.label3.Size = new System.Drawing.Size(58, 54);
             this.label3.TabIndex = 4;
             this.label3.Text = "%";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -664,10 +649,9 @@ namespace QuanLyCongViec
             this.labelSoHieuSuat.BackColor = System.Drawing.Color.Transparent;
             this.labelSoHieuSuat.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoHieuSuat.ForeColor = System.Drawing.Color.White;
-            this.labelSoHieuSuat.Location = new System.Drawing.Point(55, 81);
-            this.labelSoHieuSuat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSoHieuSuat.Location = new System.Drawing.Point(41, 66);
             this.labelSoHieuSuat.Name = "labelSoHieuSuat";
-            this.labelSoHieuSuat.Size = new System.Drawing.Size(87, 67);
+            this.labelSoHieuSuat.Size = new System.Drawing.Size(69, 54);
             this.labelSoHieuSuat.TabIndex = 3;
             this.labelSoHieuSuat.Text = "10";
             this.labelSoHieuSuat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -681,10 +665,9 @@ namespace QuanLyCongViec
             this.labelHieuSuat.BackColor = System.Drawing.Color.Transparent;
             this.labelHieuSuat.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHieuSuat.ForeColor = System.Drawing.Color.White;
-            this.labelHieuSuat.Location = new System.Drawing.Point(59, 30);
-            this.labelHieuSuat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelHieuSuat.Location = new System.Drawing.Point(44, 24);
             this.labelHieuSuat.Name = "labelHieuSuat";
-            this.labelHieuSuat.Size = new System.Drawing.Size(133, 37);
+            this.labelHieuSuat.Size = new System.Drawing.Size(102, 30);
             this.labelHieuSuat.TabIndex = 3;
             this.labelHieuSuat.Text = "Hiệu suất";
             // 
@@ -693,9 +676,8 @@ namespace QuanLyCongViec
             this.pictureBoxHieuSuat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxHieuSuat.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHieuSuat.Image")));
             this.pictureBoxHieuSuat.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxHieuSuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxHieuSuat.Name = "pictureBoxHieuSuat";
-            this.pictureBoxHieuSuat.Size = new System.Drawing.Size(413, 207);
+            this.pictureBoxHieuSuat.Size = new System.Drawing.Size(251, 169);
             this.pictureBoxHieuSuat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxHieuSuat.TabIndex = 1;
             this.pictureBoxHieuSuat.TabStop = false;
@@ -703,9 +685,8 @@ namespace QuanLyCongViec
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(0, 0);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // panel5
@@ -714,10 +695,9 @@ namespace QuanLyCongViec
             this.panel5.Controls.Add(this.labelDoanhThu);
             this.panel5.Controls.Add(this.pictureBoxDoanhThu);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(1267, 4);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(774, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(414, 207);
+            this.panel5.Size = new System.Drawing.Size(251, 169);
             this.panel5.TabIndex = 3;
             // 
             // labelSoDoanhThu
@@ -725,10 +705,9 @@ namespace QuanLyCongViec
             this.labelSoDoanhThu.BackColor = System.Drawing.Color.Transparent;
             this.labelSoDoanhThu.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.labelSoDoanhThu.Location = new System.Drawing.Point(53, 81);
-            this.labelSoDoanhThu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSoDoanhThu.Location = new System.Drawing.Point(40, 66);
             this.labelSoDoanhThu.Name = "labelSoDoanhThu";
-            this.labelSoDoanhThu.Size = new System.Drawing.Size(92, 66);
+            this.labelSoDoanhThu.Size = new System.Drawing.Size(69, 54);
             this.labelSoDoanhThu.TabIndex = 4;
             this.labelSoDoanhThu.Text = "10";
             // 
@@ -741,44 +720,40 @@ namespace QuanLyCongViec
             this.labelDoanhThu.BackColor = System.Drawing.Color.Transparent;
             this.labelDoanhThu.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.labelDoanhThu.Location = new System.Drawing.Point(59, 30);
-            this.labelDoanhThu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDoanhThu.Location = new System.Drawing.Point(44, 24);
             this.labelDoanhThu.Name = "labelDoanhThu";
-            this.labelDoanhThu.Size = new System.Drawing.Size(147, 37);
+            this.labelDoanhThu.Size = new System.Drawing.Size(114, 30);
             this.labelDoanhThu.TabIndex = 4;
             this.labelDoanhThu.Text = "Doanh thu";
-         
             // 
             // pictureBoxDoanhThu
             // 
             this.pictureBoxDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxDoanhThu.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDoanhThu.Image")));
             this.pictureBoxDoanhThu.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxDoanhThu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxDoanhThu.Name = "pictureBoxDoanhThu";
-            this.pictureBoxDoanhThu.Size = new System.Drawing.Size(414, 207);
+            this.pictureBoxDoanhThu.Size = new System.Drawing.Size(251, 169);
             this.pictureBoxDoanhThu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxDoanhThu.TabIndex = 0;
             this.pictureBoxDoanhThu.TabStop = false;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(1685, 838);
+            this.ClientSize = new System.Drawing.Size(1028, 609);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(847, 789);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(639, 597);
             this.Name = "FormMain";
             this.Text = "MÀN HÌNH CHÍNH";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing_1);
             this.Load += new System.EventHandler(this.FormMain_Load);
-          
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
