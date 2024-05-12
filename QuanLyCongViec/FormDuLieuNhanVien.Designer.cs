@@ -169,7 +169,7 @@ namespace QuanLyCongViec
             this.dslshd.RowTemplate.Height = 24;
             this.dslshd.Size = new System.Drawing.Size(1095, 506);
             this.dslshd.TabIndex = 1;
-            this.dslshd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dslshd_CellContentClick);
+          
             // 
             // TaiKhoan
             // 
@@ -305,9 +305,7 @@ namespace QuanLyCongViec
             this.dsnv.RowHeadersWidth = 51;
             this.dsnv.RowTemplate.Height = 24;
             this.dsnv.Size = new System.Drawing.Size(1095, 506);
-            this.dsnv.TabIndex = 0;
-            this.dsnv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsnv_CellContentClick);
-            // 
+            this.dsnv.TabIndex = 0; // 
             // PhongBan
             // 
             this.PhongBan.BackColor = System.Drawing.Color.White;
@@ -449,7 +447,7 @@ namespace QuanLyCongViec
             this.dsuqcv.RowTemplate.Height = 24;
             this.dsuqcv.Size = new System.Drawing.Size(1095, 506);
             this.dsuqcv.TabIndex = 2;
-            this.dsuqcv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsuqcv_CellContentClick);
+         
             // 
             // label1
             // 
@@ -491,7 +489,7 @@ namespace QuanLyCongViec
             this.txbtimkiem.Name = "txbtimkiem";
             this.txbtimkiem.Size = new System.Drawing.Size(219, 27);
             this.txbtimkiem.TabIndex = 2;
-            this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+          
             // 
             // btnCapNhat
             // 

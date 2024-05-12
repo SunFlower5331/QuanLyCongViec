@@ -238,7 +238,7 @@ namespace QuanLyCongViec
             this.quanly.Name = "quanly";
             this.quanly.Size = new System.Drawing.Size(76, 37);
             this.quanly.Text = "Quản lý";
-            this.quanly.Click += new System.EventHandler(this.quanly_Click);
+         
             // 
             // congviec
             // 
@@ -287,7 +287,7 @@ namespace QuanLyCongViec
             this.trogiup.Name = "trogiup";
             this.trogiup.Size = new System.Drawing.Size(93, 37);
             this.trogiup.Text = "Ngôn ngữ";
-            this.trogiup.Click += new System.EventHandler(this.trogiup_Click);
+        
             // 
             // englishToolStripMenuItem
             // 
@@ -319,7 +319,7 @@ namespace QuanLyCongViec
             this.txbtimkiem.Size = new System.Drawing.Size(220, 19);
             this.txbtimkiem.TabIndex = 2;
             this.txbtimkiem.Text = "Tìm kiếm";
-            this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+           
             this.txbtimkiem.Enter += new System.EventHandler(this.textBox1_Enter);
             this.txbtimkiem.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
@@ -747,7 +747,7 @@ namespace QuanLyCongViec
             this.labelDoanhThu.Size = new System.Drawing.Size(147, 37);
             this.labelDoanhThu.TabIndex = 4;
             this.labelDoanhThu.Text = "Doanh thu";
-            this.labelDoanhThu.Click += new System.EventHandler(this.labelDoanhThu_Click);
+         
             // 
             // pictureBoxDoanhThu
             // 
@@ -778,7 +778,7 @@ namespace QuanLyCongViec
             this.Text = "MÀN HÌNH CHÍNH";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing_1);
             this.Load += new System.EventHandler(this.FormMain_Load);
-            this.Resize += new System.EventHandler(this.FormMain_Resize);
+          
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.tabControl1.ResumeLayout(false);

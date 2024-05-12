@@ -2,23 +2,14 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net.Mail;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Diagnostics.Eventing.Reader;
 
 namespace QuanLyCongViec
 {
@@ -30,8 +21,8 @@ namespace QuanLyCongViec
             dscv.CellFormatting += dscv_CellFormatting;
             dsnv.CellFormatting += dsnv_CellFormatting;
             dsdpc.CellFormatting += dsdpc_CellFormatting;
-            
-        
+
+
         }
         // Chỉnh sửa màu của 3 dataGridView
         private void LoadDataIntoComboBox()
@@ -39,7 +30,7 @@ namespace QuanLyCongViec
             List<string> data = DatabaseAccess.GetPhongBanData();
             foreach (string item in data)
             {
-             
+
                 cbotuychonhienthi.Items.Add(item);
             }
         }
@@ -210,7 +201,7 @@ namespace QuanLyCongViec
         }
         private void dscv_Click(Object sender, EventArgs e)
         {
-            
+
             btnchinhsuaphancong.Enabled = false;
             btnphancong.Enabled = true;
             if (dscv.CurrentRow != null && dscv.CurrentRow.Index >= 0)
@@ -351,14 +342,14 @@ namespace QuanLyCongViec
                 dscv.Enabled = true;
                 if (dscv.SelectedRows.Count > 0)
                 {
-                    
+
                     DataGridViewRow selectedRow = dscv.SelectedRows[0];
                     string maCV = selectedRow.Cells["maCV"].Value.ToString();
                     string ten = selectedRow.Cells["ten"].Value.ToString();
                     string ngayYC = selectedRow.Cells["ngayYC"].Value.ToString();
 
                     // Kiểm tra xem mã công việc có bắt đầu bằng "CD" hay không
-                  
+
                     string[] conditionColumns = { "maCV", "ten", "ngayYC" };
                     object[] conditionValues = { maCV, ten, ngayYC };
                     if (maCV.StartsWith("CD"))
@@ -540,8 +531,8 @@ namespace QuanLyCongViec
                     MessageBox.Show($"An error occurred while adding new data!\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        
-        
+
+
 
             dsnv.CurrentCell = null;
             dscv.CurrentCell = null;
@@ -785,7 +776,7 @@ namespace QuanLyCongViec
                 label8.Text = "Status:";
                 groupBox1.Text = "Task List";
                 label9.Text = "Display options:";
-              //  xoacv.Text = "Delete job";
+                //  xoacv.Text = "Delete job";
 
                 dsnv.Columns["phongban"].HeaderText = "Department";
                 dsnv.Columns["chucvu"].HeaderText = "Position";
@@ -834,7 +825,7 @@ namespace QuanLyCongViec
                 cbotrangthai.Items.Clear();
                 cbotuychonchiase.Items.Clear();
                 cbotuychonhienthi.Items.Add("Tất cả nhân viên");
-              
+
 
 
                 cbotuychonchiase.Items.Add("Công việc chung");
@@ -845,7 +836,7 @@ namespace QuanLyCongViec
                 // Cập nhật các thành phần khác tương ứng nếu cần
                 cbotrangthai.SelectedIndex = 0;
                 cbotuychonchiase.SelectedIndex = 0;
-               
+
                 cbotuychonhienthi.SelectedIndex = 0;
 
             }
@@ -856,7 +847,7 @@ namespace QuanLyCongViec
                 cbotrangthai.Items.Clear();
                 cbotuychonchiase.Items.Clear();
                 cbotuychonhienthi.Items.Add("All Employees");
-              
+
 
                 cbotuychonchiase.Items.Add("Joint work");
                 cbotuychonchiase.Items.Add("Part");
@@ -1216,7 +1207,7 @@ namespace QuanLyCongViec
 
             tbomacv.Text = "";
             tbotencv.Text = "";
-          
+
             tbotennv.Text = "";
             tbomanv.Text = "";
             dtpthoihan.Text = "";
@@ -1229,20 +1220,20 @@ namespace QuanLyCongViec
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
+
             string maCV = tbomacv.Text;
-           
 
-            
 
-            if (maCV!=null)
+
+
+            if (maCV != null)
 
             {
                 DatabaseAccess.delCTCV(maCV);
-              
-               MessageBox.Show("Xóa công việc thành công! | Deleted job successfully! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Xóa công việc thành công! | Deleted job successfully! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadCTCV();
-              
+
 
             }
         }
@@ -1257,7 +1248,7 @@ namespace QuanLyCongViec
             loadData(selectedOption);
             UpdateLanguage();
 
-            if (cbotuychonhienthi.SelectedIndex ==0)
+            if (cbotuychonhienthi.SelectedIndex == 0)
             {
                 loadCTCV();
                 loadDsNv();

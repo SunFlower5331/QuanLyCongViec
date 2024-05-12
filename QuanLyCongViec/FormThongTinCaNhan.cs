@@ -1,15 +1,9 @@
 ﻿using DAL;
 using DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyCongViec
@@ -263,10 +257,6 @@ namespace QuanLyCongViec
                 }
             }
         }
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void minimize_Click(object sender, EventArgs e)
         {
@@ -354,15 +344,7 @@ namespace QuanLyCongViec
 
         }
 
-        private void txtPhongBan_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
 

@@ -112,7 +112,7 @@
             this.dscv.RowTemplate.Height = 24;
             this.dscv.Size = new System.Drawing.Size(832, 290);
             this.dscv.TabIndex = 0;
-            this.dscv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dscv_CellContentClick);
+           
             this.dscv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dscv_CellFormatting);
             this.dscv.Click += new System.EventHandler(this.dscv_Click);
             // 

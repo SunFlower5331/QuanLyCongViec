@@ -606,7 +606,7 @@
             this.label1.Size = new System.Drawing.Size(166, 39);
             this.label1.TabIndex = 32;
             this.label1.Text = "TasMana";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+          
             // 
             // panel1
             // 

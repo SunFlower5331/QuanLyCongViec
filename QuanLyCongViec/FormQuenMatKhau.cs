@@ -1,17 +1,11 @@
 ﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Mail;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DTO;
+using System;
+using System.Drawing;
+using System.Net;
+using System.Net.Mail;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace QuanLyCongViec
 {
@@ -23,10 +17,7 @@ namespace QuanLyCongViec
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -53,10 +44,7 @@ namespace QuanLyCongViec
         }
         //
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (email != null)
@@ -143,16 +131,7 @@ namespace QuanLyCongViec
             f.Show();
         }
 
-        private void email_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

@@ -2,15 +2,10 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyCongViec
@@ -341,10 +336,7 @@ namespace QuanLyCongViec
 
         }
 
-        private void dsnv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
 
 
         private void minimize_Click(object sender, EventArgs e)
@@ -768,14 +760,6 @@ namespace QuanLyCongViec
             }
         }
 
-        private void dscv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using DAL;
+﻿using DAL;
 using DTO;
+using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 namespace QuanLyCongViec
 {
 
@@ -469,11 +461,7 @@ namespace QuanLyCongViec
             }
         }
 
-        private void trogiup_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GlobalSettings.Language = "English"; // Cập nhật ngôn ngữ thành tiếng Anh
@@ -623,24 +611,6 @@ namespace QuanLyCongViec
             }
         }
 
-        private void labelDoanhThu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormMain_Resize(object sender, EventArgs e)
-        {
-            EndResponsive();
-        }
-
-        private void quanly_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+   
     }
 }
