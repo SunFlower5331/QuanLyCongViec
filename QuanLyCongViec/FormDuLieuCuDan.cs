@@ -31,6 +31,7 @@ namespace QuanLyCongViec
             dstk.CellFormatting += dstk_CellFormatting;
             dsnv.CellFormatting += dsnv_CellFormatting;
             dspb.CellFormatting += dspb_CellFormatting;
+            txbtimkiem.KeyDown += new KeyEventHandler(txbtimkiem_KeyDown);
         }
 
         private void dscudan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -813,6 +814,14 @@ namespace QuanLyCongViec
         {
 
         }
+        private void txbtimkiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Gọi hàm tìm kiếm khi người dùng nhấn phím Enter
+                timkiem_Click(sender, e);
+            }
+        }
 
         private void timkiem_Click(object sender, EventArgs e)
         {
@@ -833,7 +842,6 @@ namespace QuanLyCongViec
             }
 
             DataGridView dgv = null;
-
 
             if (tabDulieu.SelectedTab == CuDan)
             {
@@ -866,24 +874,46 @@ namespace QuanLyCongViec
 
                 foreach (DataGridViewRow row in dgv.Rows)
                 {
+                    bool rowContainsKeyword = false;
+
                     foreach (DataGridViewCell cell in row.Cells)
                     {
                         if (cell.Value != null && cell.Value.ToString().ToLower().Contains(keyword))
                         {
-                            dgv.Rows[row.Index].Selected = true;
-                            dgv.FirstDisplayedScrollingRowIndex = row.Index;
-                            return;
+                            rowContainsKeyword = true;
+                            break;
                         }
+                    }
+
+                    if (rowContainsKeyword)
+                    {
+                        dgv.Rows[row.Index].Selected = true;
+                        dgv.FirstDisplayedScrollingRowIndex = row.Index;
                     }
                 }
 
-                if (selectedLanguage == "Vietnamese")
+                int matchCount = dgv.SelectedRows.Count;
+                if (matchCount == 0)
                 {
-                    MessageBox.Show("Không tìm thấy kết quả phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("No matches found", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else if (selectedLanguage == "English")
+                else
                 {
-                    MessageBox.Show("No matches found", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show($"Đã tìm thấy {matchCount} kết quả phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show($"Found {matchCount} matches", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             else
@@ -1484,7 +1514,7 @@ namespace QuanLyCongViec
                 btnluu.Text = "Lưu";
                 btnCapNhat.Text = "Cập Nhật";
 
-                txbtimkiem.Text = "Nhập từ khóa...";
+              
                 
 
                 // Datagrid "dscudan"
@@ -1646,11 +1676,21 @@ namespace QuanLyCongViec
 
                 buttonXuatPDF4.Text = "Export PDF";
                 buttonExportExcel4.Text = "Export Excel";
+                buttonXuatPDF5.Text = "Export PDF";
+                buttonExportExcel5.Text = "Export Excel";
+
+                buttonXuatPDF6.Text = "Export PDF";
+                buttonExportExcel6.Text = "Export Excel";
 
 
 
             }
 
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

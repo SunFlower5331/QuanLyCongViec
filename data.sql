@@ -82,23 +82,21 @@ CREATE TABLE DVCanHo (
     ngayYC DATE,
     FOREIGN KEY (maCH) REFERENCES CanHo(maCH)
 );
-select * from DVCanHo
 
--- Thêm dữ liệu vào bảng DVCanHo
-INSERT INTO DVCanHo (maCH, DV_dinhky, ngayYC)
-VALUES ('W2910',  N'Vệ sinh','2024-01-01');
-SELECT * FROM DVCanHo
+
+
 CREATE TABLE CTCV (
-    maCV VARCHAR(50),
-    maNV VARCHAR(50),  
+    maCV VARCHAR(50) PRIMARY KEY,
+    maNV VARCHAR(50),
     trangthai NVARCHAR(50),
     thoiGianHoanThanh DATE,
     songayhethan AS (DATEDIFF(day, GETDATE(), thoiGianHoanThanh)),
-    Tuychonchiase NVARCHAR(50),--PUBLIC /PRIVATE,
-	ngaycapnhat DATE
+    Tuychonchiase NVARCHAR(50),
+    ngaycapnhat DATE,
     FOREIGN KEY (maNV) REFERENCES NhanVien(manv), 
-    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV) 
+    FOREIGN KEY (maCV) REFERENCES DsCongViec(maCV),
 );
+
 CREATE TABLE DsUyQuyenCV (
 	maNV_cu VARCHAR(50),
     maCV VARCHAR(50),

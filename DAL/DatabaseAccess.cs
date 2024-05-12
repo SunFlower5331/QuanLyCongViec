@@ -54,6 +54,38 @@ namespace DAL
             return user;
 
         }
+        public static List<string> GetPhongBanData()
+        {
+            List<string> data = new List<string>();
+            string query = "SELECT id FROM PhongBan";
+            
+            try
+            {
+                using (SqlConnection con = SqlConnectionData.connect())
+                {
+                    con.Open();
+                    using (SqlCommand command = new SqlCommand(query, con))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string id = reader["id"].ToString();
+                                
+                               
+                                data.Add(id);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading data from database: " + ex.Message);
+            }
+
+            return data;
+        }
         public static bool CheckCV(string maCV,string maNV)
         {
            
@@ -121,9 +153,9 @@ namespace DAL
         public static DataSet GetTienDoCongViec(string maNV)
         {
             DataSet data = new DataSet();
-            string query = "SELECT C.maCV, DSCV.ten, DVCH.maCH, C.trangthai, C.thoiGianHoanThanh, C.songayhethan, C.Tuychonchiase, C.ngaycapnhat " +
-               "FROM CTCV C, DsCongViec DSCV, DVCanHo DVCH " +
-               "WHERE C.maNV = @maNV AND C.maCV = DSCV.maCV AND DVCH.maCV = C.maCV";
+            string query = "SELECT C.maCV, DSCV.ten,  C.trangthai, C.thoiGianHoanThanh, C.songayhethan, C.Tuychonchiase, C.ngaycapnhat " +
+               "FROM CTCV C, DsCongViec DSCV " +
+               "WHERE C.maNV = @maNV AND C.maCV = DSCV.maCV ";
 
 
             using (SqlConnection con = SqlConnectionData.connect())
@@ -140,7 +172,7 @@ namespace DAL
         public static DataSet GetNhanVienTheoPhongBan(string phongban)
         {
             DataSet data = new DataSet();
-            string query = "select chucvu,manv,hoten from NhanVien WHERE @phongban=phongban";
+            string query = "select phongban,chucvu,manv,hoten from NhanVien WHERE @phongban=phongban";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
@@ -153,10 +185,34 @@ namespace DAL
 
             return data;
         }
+        public static string getManv(string jobCode)
+        {
+            string employeeID = null;
+            string query = "SELECT manv FROM CTCV WHERE macv = @macv";
+
+            using (SqlConnection connection = SqlConnectionData.connect())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@macv", jobCode);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            employeeID = reader["manv"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return employeeID;
+        }
+
         public static DataSet GetCTCVTheoPhongBan(string phongban)
         {
             DataSet data = new DataSet();
-            string query = "select  NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase, C.ngaycapnhat " +
+            string query = "select  NV.phongban,NV.chucvu,DSCV.maCV,DSCV.ten,NV.maNV,NV.hoten,C.trangthai,C.thoiGianHoanThanh,C.Tuychonchiase, C.ngaycapnhat " +
                 "from CTCV C,DsCongViec DSCV,NhanVien NV " +
                 "WHERE C.maCV=DSCV.maCV AND C.maNV=NV.maNV and NV.phongban=@phongban";
 
@@ -448,20 +504,20 @@ namespace DAL
                         nhanVien.trangthai = reader["trangthai"].ToString();
                         nhanVien.trinhdohocvan = reader["trinhdohocvan"].ToString();
                         nhanVien.loaihinh = reader["loaihinh"].ToString();
-                        nhanVien.quyenhan =Convert.ToInt32(reader["quyenhan"]);
+                      
 
                         tk.id = reader["id"].ToString();
                         tk.mk = reader["mk"].ToString();
-                        
+                        tk.loaiTK= Convert.ToInt32(reader["loaiTK"]);
                     }
                 }
             }
 
             return (nhanVien, tk);
         }
-        public static bool CapNhatThongTinNhanVien(string manv, string hoten, DateTime ngaysinh, string gioitinh, string diachi, string didong, string email, string chucvu, string phongban, double luong, string trangthai, string trinhdohocvan, string loaihinh,int quyenhan)
+        public static bool CapNhatThongTinNhanVien(string manv, string hoten, DateTime ngaysinh, string gioitinh, string diachi, string didong, string email, string chucvu, string phongban, double luong, string trangthai, string trinhdohocvan, string loaihinh)
         {
-            string query = "UPDATE NhanVien SET hoten = @hoten, ngaysinh = @ngaysinh, gioitinh = @gioitinh, diachi = @diachi, didong = @didong, email = @email,quyenhan=@quyenhan, ";
+            string query = "UPDATE NhanVien SET hoten = @hoten, ngaysinh = @ngaysinh, gioitinh = @gioitinh, diachi = @diachi, didong = @didong, email = @email,";
             query += "chucvu = @chucvu, phongban = @phongban, luong = @luong, trangthai = @trangthai, trinhdohocvan = @trinhdohocvan, loaihinh = @loaihinh WHERE manv = @manv";
 
             using (SqlConnection con = SqlConnectionData.connect())
@@ -481,7 +537,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@trangthai", trangthai);
                 cmd.Parameters.AddWithValue("@trinhdohocvan", trinhdohocvan);
                 cmd.Parameters.AddWithValue("@loaihinh", loaihinh);
-                cmd.Parameters.AddWithValue("@quyenhan", quyenhan);
+                
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected > 0;
@@ -553,7 +609,98 @@ namespace DAL
                 }
             }
         }
+        public static void insertTK(string id)
+        {
+            string sql = "INSERT INTO TaiKhoan (id, mk, loaiTK) VALUES (@id, '123', 1)";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
 
+                // Thêm các tham số với tên đúng
+                command.Parameters.AddWithValue("@id", id);
+
+                con.Open();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ tại đây nếu cần
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+        public static void insertDsUyQuyenCV(string maNV_cu, string maCV, string maNV_moi, string trangthai, DateTime thoiGianHoanThanh,string Tuychonchiase, DateTime ngayBanGiao )
+        {
+            string sql = "INSERT INTO DsUyQuyenCV VALUES (@maNV_cu,@maCV, @maNV_moi,@trangthai,@thoiGianHoanThanh,@Tuychonchiase,@ngayBanGiao)";
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                SqlCommand command = new SqlCommand(sql, con);
+
+                // Thêm các tham số với tên đúng
+                command.Parameters.AddWithValue("@maNV_cu", maNV_cu);
+                command.Parameters.AddWithValue("@maCV", maCV);
+                command.Parameters.AddWithValue("@maNV_moi", maNV_moi);
+                command.Parameters.AddWithValue("@trangthai", trangthai);
+                command.Parameters.AddWithValue("@thoiGianHoanThanh", thoiGianHoanThanh);
+                command.Parameters.AddWithValue("@Tuychonchiase", Tuychonchiase);
+                command.Parameters.AddWithValue("@ngayBanGiao", ngayBanGiao);
+
+                con.Open();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ tại đây nếu cần
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        public static void UpdateDVCanHo(string maCV, string DV_dinhky, string ngayYC)
+        {
+            // Xây dựng câu truy vấn SQL INSERT
+            string sql = "UPDATE  DVCanHo SET  DV_dinhky= @DV_dinhky, ngayYC=@ngayYC WHERE maCV=@maCV";
+
+            // Tạo kết nối
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                // Mở kết nối
+                con.Open();
+                    SqlCommand command = new SqlCommand(sql, con);
+                    // Thêm các tham số vào câu truy vấn
+                    command.Parameters.AddWithValue("@maCV", maCV);
+                    command.Parameters.AddWithValue("@DV_dinhky", DV_dinhky);
+                    command.Parameters.AddWithValue("@ngayYC", ngayYC);
+
+                    // Thực thi câu truy vấn INSERT
+                    command.ExecuteNonQuery();
+                
+            }
+        }
+        public static void DeleteDVCanHo(string maCV)
+        {
+            // Xây dựng câu truy vấn SQL DELETE
+            string sql = "DELETE FROM DVCanHo WHERE maCV = @maCV";
+
+            // Tạo kết nối
+            using (SqlConnection con = SqlConnectionData.connect())
+            {
+                // Mở kết nối
+                con.Open();
+                SqlCommand command = new SqlCommand(sql, con);
+
+                // Thêm tham số vào câu truy vấn
+                command.Parameters.AddWithValue("@maCV", maCV);
+
+                // Thực thi câu truy vấn DELETE
+                command.ExecuteNonQuery();
+
+            }
+        }
         public static void deleteCV(string maCV)
         {
             string sql = "DELETE FROM DsCongViec WHERE maCV = @maCV";
@@ -576,6 +723,7 @@ namespace DAL
                 }
             }
         }
+     
 
 
         public static void InsertData(string tableName, string[] columnNames, object[] values)
@@ -609,7 +757,7 @@ namespace DAL
                 }
             }
         }
-        public static void delCTCV(int maCV)
+        public static void delCTCV(string maCV)
         {
             string sql = "DELETE FROM CTCV WHERE maCV =@maCV";
             using (SqlConnection con = SqlConnectionData.connect())
@@ -1028,31 +1176,33 @@ namespace DAL
             }
             return email;
         }
-        public static string getEmailCEO()
+        public static List<string> getEmailsByRole(int loaiTK)
         {
-            string email = "";
-            string sql = "SELECT email FROM NhanVien  WHERE quyenhan='1'";
+            List<string> emails = new List<string>();
+            string sql = "SELECT email FROM NhanVien NV,TaiKhoan TK  WHERE loaiTK=@loaiTK AND TK.id=NV.maNV";
             using (SqlConnection con = SqlConnectionData.connect())
             {
                 SqlCommand command = new SqlCommand(sql, con);
+                command.Parameters.AddWithValue("@loaiTK", loaiTK);
                 try
                 {
                     con.Open();
-
-                    object result = command.ExecuteScalar();
-                    if (result != null)
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        email = result.ToString();
+                        string email = reader["email"].ToString();
+                        emails.Add(email);
                     }
+                    reader.Close();
                 }
                 catch (Exception ex)
                 {
-
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
-            return email;
+            return emails;
         }
+
         public static DataSet getThongtinkh(string macv)
         {
 

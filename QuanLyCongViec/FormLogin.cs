@@ -16,8 +16,9 @@ namespace QuanLyCongViec
         public FormLogin()
         {
             InitializeComponent();
-            //minimize.Parent = logout.Parent = panel1;
-            
+            user.KeyDown += user_KeyDown;
+            pass.KeyDown += pass_KeyDown;
+
         }
         // Dùng để kéo thả cửa sổ
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -282,8 +283,24 @@ namespace QuanLyCongViec
                 // Cập nhật các văn bản khác tương ứng nếu cần
             }
         }
+        private void user_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                pass.Focus(); // Di chuyển tới textBox mật khẩu nếu phím mũi tên xuống được nhấn
+            }
+        }
 
-        
+        private void pass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                user.Focus(); // Di chuyển tới textBox tên người dùng nếu phím mũi tên lên được nhấn
+            }
+        }
+
+
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

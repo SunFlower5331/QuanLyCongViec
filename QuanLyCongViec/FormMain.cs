@@ -32,7 +32,7 @@ namespace QuanLyCongViec
             dscvpban.CellFormatting += dscvpban_CellFormatting;
             labelSoCV.Text = DatabaseAccess.getTongCV().ToString();
             labelSoNV.Text = DatabaseAccess.getTongNV().ToString();
-            //labelSoHieuSuat.Text = ((DatabaseAccess.getSoCVHoanThanh() * 100) / (DatabaseAccess.getSoCVHoanThanh() + DatabaseAccess.getSoCVKhongHoanThanh())).ToString();
+            txbtimkiem.KeyDown += new KeyEventHandler(txbtimkiem_KeyDown);
             labelSoDoanhThu.Text = DatabaseAccess.getDoanhThu().ToString();
         }
 
@@ -306,8 +306,8 @@ namespace QuanLyCongViec
                 ToolStripMenuItem quanliMenuItem = (ToolStripMenuItem)menuStrip2.Items["quanly"];
                 ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
                 ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
-                congviecMenuItem.Enabled = false;
-                congviec.Enabled = false;
+                congviecMenuItem.Enabled=dulieunhanvienMenuItem.Enabled = false;
+              //  congviec.Enabled = false;
 
             }
             else if (quyen == 3)
@@ -317,8 +317,8 @@ namespace QuanLyCongViec
                 ToolStripMenuItem quanliMenuItem = (ToolStripMenuItem)menuStrip2.Items["quanly"];
                 ToolStripDropDownItem congviecMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["congviec"];
                 ToolStripDropDownItem dulieunhanvienMenuItem = (ToolStripDropDownItem)quanliMenuItem.DropDownItems["dulieunhanvien"];
-                congviecMenuItem.Enabled = false;
-                congviec.Enabled = false;
+                congviecMenuItem.Enabled = dulieunhanvienMenuItem.Enabled = false;
+              //  congviec.Enabled = false;
 
 
             }
@@ -332,19 +332,19 @@ namespace QuanLyCongViec
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (txbtimkiem.Text == "")
             {
-                textBox1.Text = "Tìm kiếm";
-                textBox1.ForeColor = Color.DimGray;
+                txbtimkiem.Text = "Tìm kiếm";
+                txbtimkiem.ForeColor = Color.DimGray;
             }
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Tìm kiếm")
+            if (txbtimkiem.Text == "Tìm kiếm")
             {
-                textBox1.Text = "";
-                textBox1.ForeColor = Color.Black;
+                txbtimkiem.Text = "";
+                txbtimkiem.ForeColor = Color.Black;
             }
 
         }
@@ -401,7 +401,7 @@ namespace QuanLyCongViec
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
                 dscvcty.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật"; 
 
-                textBox1.Text = "Tìm kiếm";
+                txbtimkiem.Text = "Tìm kiếm";
                 c.Text = "Tổng công việc";
                 labelHieuSuat.Text = "Hiệu suất";
                 labelDoanhThu.Text = "Doanh thu";
@@ -458,7 +458,7 @@ namespace QuanLyCongViec
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
                 dscvcty.Columns["ngaycapnhat"].HeaderText = "Update date";
 
-                textBox1.Text = "Search";
+                txbtimkiem.Text = "Search";
                 c.Text = "Total work";
                 labelHieuSuat.Text = "Performance";
                 labelDoanhThu.Text = "Revenue";
@@ -492,11 +492,89 @@ namespace QuanLyCongViec
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+        private void txbtimkiem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Gọi hàm tìm kiếm khi người dùng nhấn phím Enter
+                timkiem_Click(sender, e);
+            }
+        }
+
 
         private void timkiem_Click(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
+            string keyword = txbtimkiem.Text.Trim().ToLower();
 
+            if (string.IsNullOrEmpty(keyword))
+            {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("Please enter search keywords", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                return;
+            }
+
+            DataGridView dgv = null;
+
+            if (tabControl1.SelectedTab == congty)
+            {
+                dgv = dscvcty;
+            }
+            else if (tabControl1.SelectedTab == phongban)
+            {
+                dgv = dscvpban;
+            }
+       
+            if (dgv != null)
+            {
+                dgv.ClearSelection();
+                bool found = false;
+
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Value != null && cell.Value.ToString().ToLower().Contains(keyword))
+                        {
+                            dgv.Rows[row.Index].Selected = true;
+                            dgv.FirstDisplayedScrollingRowIndex = row.Index;
+                            found = true;
+                            // Không dừng ngay sau khi tìm thấy một hàng
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    if (selectedLanguage == "Vietnamese")
+                    {
+                        MessageBox.Show("Không tìm thấy kết quả phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (selectedLanguage == "English")
+                    {
+                        MessageBox.Show("No matches found", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            else
+            {
+                if (selectedLanguage == "Vietnamese")
+                {
+                    MessageBox.Show("Không có DataGridView nào được chọn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (selectedLanguage == "English")
+                {
+                    MessageBox.Show("No DataGridView selected", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
+
 
         private void FormMain_FormClosing_1(object sender, FormClosingEventArgs e)
         {
@@ -556,6 +634,11 @@ namespace QuanLyCongViec
         }
 
         private void quanly_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

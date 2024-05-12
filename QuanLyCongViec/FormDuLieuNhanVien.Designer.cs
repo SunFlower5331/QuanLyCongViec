@@ -123,7 +123,7 @@ namespace QuanLyCongViec
             this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF.Location = new System.Drawing.Point(977, 15);
-            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
             this.buttonXuatPDF.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF.TabIndex = 37;
@@ -137,7 +137,7 @@ namespace QuanLyCongViec
             this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel.Location = new System.Drawing.Point(820, 15);
-            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel.Name = "buttonExportExcel";
             this.buttonExportExcel.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel.TabIndex = 36;
@@ -169,6 +169,7 @@ namespace QuanLyCongViec
             this.dslshd.RowTemplate.Height = 24;
             this.dslshd.Size = new System.Drawing.Size(1095, 506);
             this.dslshd.TabIndex = 1;
+            this.dslshd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dslshd_CellContentClick);
             // 
             // TaiKhoan
             // 
@@ -189,7 +190,7 @@ namespace QuanLyCongViec
             this.buttonXuatPDF2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF2.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF2.Location = new System.Drawing.Point(980, 17);
-            this.buttonXuatPDF2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF2.Name = "buttonXuatPDF2";
             this.buttonXuatPDF2.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF2.TabIndex = 37;
@@ -203,7 +204,7 @@ namespace QuanLyCongViec
             this.buttonExportExcel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel2.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel2.Location = new System.Drawing.Point(823, 17);
-            this.buttonExportExcel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel2.Name = "buttonExportExcel2";
             this.buttonExportExcel2.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel2.TabIndex = 36;
@@ -255,7 +256,7 @@ namespace QuanLyCongViec
             this.buttonXuatPDF3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF3.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF3.Location = new System.Drawing.Point(979, 17);
-            this.buttonXuatPDF3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF3.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF3.Name = "buttonXuatPDF3";
             this.buttonXuatPDF3.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF3.TabIndex = 37;
@@ -269,7 +270,7 @@ namespace QuanLyCongViec
             this.buttonExportExcel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel3.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel3.Location = new System.Drawing.Point(825, 17);
-            this.buttonExportExcel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel3.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel3.Name = "buttonExportExcel3";
             this.buttonExportExcel3.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel3.TabIndex = 36;
@@ -279,10 +280,13 @@ namespace QuanLyCongViec
             // 
             // dsnv
             // 
+            this.dsnv.AllowDrop = true;
             this.dsnv.AllowUserToAddRows = false;
+            this.dsnv.AllowUserToOrderColumns = true;
             this.dsnv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dsnv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dsnv.BackgroundColor = System.Drawing.Color.White;
+            this.dsnv.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dsnv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -293,6 +297,7 @@ namespace QuanLyCongViec
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dsnv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dsnv.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dsnv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dsnv.Location = new System.Drawing.Point(19, 71);
             this.dsnv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dsnv.Name = "dsnv";
@@ -323,7 +328,7 @@ namespace QuanLyCongViec
             this.buttonXuatPDF4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF4.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF4.Location = new System.Drawing.Point(977, 16);
-            this.buttonXuatPDF4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF4.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF4.Name = "buttonXuatPDF4";
             this.buttonXuatPDF4.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF4.TabIndex = 37;
@@ -337,7 +342,7 @@ namespace QuanLyCongViec
             this.buttonExportExcel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel4.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel4.Location = new System.Drawing.Point(819, 16);
-            this.buttonExportExcel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel4.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel4.Name = "buttonExportExcel4";
             this.buttonExportExcel4.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel4.TabIndex = 36;
@@ -348,9 +353,9 @@ namespace QuanLyCongViec
             // groupBox1
             // 
             this.groupBox1.Location = new System.Drawing.Point(-5, -33);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1187, 27);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -390,7 +395,7 @@ namespace QuanLyCongViec
             this.DsUyQuyenCV.Name = "DsUyQuyenCV";
             this.DsUyQuyenCV.Size = new System.Drawing.Size(1131, 608);
             this.DsUyQuyenCV.TabIndex = 6;
-            this.DsUyQuyenCV.Text = "Danh sách ủy quyền công việc";
+            this.DsUyQuyenCV.Text = " Ủy quyền công việc";
             this.DsUyQuyenCV.UseVisualStyleBackColor = true;
             // 
             // buttonXuatPDF5
@@ -399,7 +404,7 @@ namespace QuanLyCongViec
             this.buttonXuatPDF5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF5.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF5.Location = new System.Drawing.Point(980, 17);
-            this.buttonXuatPDF5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF5.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF5.Name = "buttonXuatPDF5";
             this.buttonXuatPDF5.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF5.TabIndex = 37;
@@ -413,7 +418,7 @@ namespace QuanLyCongViec
             this.buttonExportExcel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel5.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel5.Location = new System.Drawing.Point(831, 17);
-            this.buttonExportExcel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel5.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel5.Name = "buttonExportExcel5";
             this.buttonExportExcel5.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel5.TabIndex = 36;
@@ -444,6 +449,7 @@ namespace QuanLyCongViec
             this.dsuqcv.RowTemplate.Height = 24;
             this.dsuqcv.Size = new System.Drawing.Size(1095, 506);
             this.dsuqcv.TabIndex = 2;
+            this.dsuqcv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsuqcv_CellContentClick);
             // 
             // label1
             // 
@@ -485,6 +491,7 @@ namespace QuanLyCongViec
             this.txbtimkiem.Name = "txbtimkiem";
             this.txbtimkiem.Size = new System.Drawing.Size(219, 27);
             this.txbtimkiem.TabIndex = 2;
+            this.txbtimkiem.Text = "Tìm kiếm";
             this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnCapNhat
@@ -564,7 +571,7 @@ namespace QuanLyCongViec
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(1387, 4);
-            this.minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 31);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -577,7 +584,7 @@ namespace QuanLyCongViec
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(1433, 4);
-            this.logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(33, 31);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -597,7 +604,7 @@ namespace QuanLyCongViec
             this.panel1.Controls.Add(this.btnluu);
             this.panel1.Controls.Add(this.btnCapNhat);
             this.panel1.Location = new System.Drawing.Point(3, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(328, 646);
             this.panel1.TabIndex = 28;

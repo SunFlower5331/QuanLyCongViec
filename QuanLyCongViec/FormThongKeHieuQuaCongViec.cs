@@ -28,7 +28,7 @@ namespace QuanLyCongViec
             InitializeComponent();
             labelDeMucBieuDo.Hide();
             labelDeMucBieuDo2.Hide();
-            comboBoThongKe1.SelectedIndex = comboBoThongKe2.SelectedIndex = comboBoxPB.SelectedIndex = 0;
+            
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView2.CellFormatting += dataGridView2_CellFormatting;
         }
@@ -531,6 +531,21 @@ namespace QuanLyCongViec
         private void FormThongKeHieuQuaCongViec_Load(object sender, EventArgs e)
         {
             UpdateLanguage();
+            LoadDataIntoComboBox();
+            comboBoThongKe1.SelectedIndex = comboBoThongKe2.SelectedIndex = comboBoxPB.SelectedIndex = 0;
+        }
+        private void LoadDataIntoComboBox()
+        {
+            List<string> data = DatabaseAccess.GetPhongBanData();
+            foreach (string item in data)
+            {
+
+                comboBoxPB.Items.Add(item);
+            }
+        }
+        private void comboBoxPB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

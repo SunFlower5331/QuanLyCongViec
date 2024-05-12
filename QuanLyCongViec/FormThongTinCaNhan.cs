@@ -58,7 +58,7 @@ namespace QuanLyCongViec
                 txtTrinhDoHocVan.Text = nv.trinhdohocvan;
                 txtLoaiHinh.Text = nv.loaihinh;
                 txbmnv.Text = nv.manv;
-                cboquyenhan.Text = nv.quyenhan.ToString();
+                cboquyenhan.Text =tk.loaiTK.ToString();
                 txbtentk.Text = tk.id;
                 mk.Text = tk.mk;
 
@@ -126,8 +126,7 @@ namespace QuanLyCongViec
             }
             // check sđt
             string didong = txtDienThoai.Text;
-            didong = new string(didong.Where(char.IsDigit).ToArray()); // Loại bỏ các ký tự không phải số
-            if (didong.Length != 10) // Kiểm tra độ dài phải là 10 (ví dụ cho số điện thoại di động)
+            if (didong.Any(c => !char.IsDigit(c))) // Kiểm tra xem chuỗi có chứa ít nhất một ký tự không phải số hay không
             {
                 if (selectedLanguage == "Vietnamese")
                 {
@@ -140,19 +139,7 @@ namespace QuanLyCongViec
 
                 return;
             }
-            if (!int.TryParse(didong, out _))
-            {
-                if (selectedLanguage == "Vietnamese")
-                {
-                    MessageBox.Show("Vui lòng nhập một số điện thoại hợp lệ!");
-                }
-                else if (selectedLanguage == "English")
-                {
-                    MessageBox.Show("Please enter a valid phone number!");
-                }
 
-                return;
-            }
             //check email
             string email = txtEmail.Text;
             if (!IsValidEmail(email))
@@ -201,7 +188,7 @@ namespace QuanLyCongViec
 
             int loaitaikhoan = Convert.ToInt32(cboquyenhan.Text);
             // Gọi phương thức cập nhật dữ liệu trong cơ sở dữ liệu
-            bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh, quyenhan);
+            bool result = DatabaseAccess.CapNhatThongTinNhanVien(manv, hoten, ngaysinh, gioitinh, diachi, didong, email, chucvu, phongban, luong, trangthai, trinhdohocvan, loaihinh);
             bool result2 = DatabaseAccess.CapNhatThongTinTaiKhoan(tendangnhap, matkhau, loaitaikhoan);
 
             // Kiểm tra kết quả và hiển thị thông báo
@@ -217,9 +204,9 @@ namespace QuanLyCongViec
                 }
 
                 button1.Enabled = false;
-                txtHoTen.Enabled = dtpNgaySinh.Enabled = txtDiaChi.Enabled = cboGioiTinh.Enabled = txtDienThoai.Enabled = txtEmail.Enabled = false;
-                txbmnv.Enabled = txtChucVu.Enabled = txtLuong.Enabled = txtLoaiHinh.Enabled = txtPhongBan.Enabled = txtTrangThai.Enabled = txtTrinhDoHocVan.Enabled = cboquyenhan.Enabled = false;
-                mk.Enabled = false;
+                txtHoTen.ReadOnly =  txtDiaChi.ReadOnly  = txtDienThoai.ReadOnly = txtEmail.ReadOnly = false;
+                txbmnv.ReadOnly = txtChucVu.ReadOnly = txtLuong.ReadOnly = txtLoaiHinh.ReadOnly = txtPhongBan.ReadOnly = txtTrangThai.ReadOnly = txtTrinhDoHocVan.ReadOnly = cboquyenhan.ReadOnly = false;
+                mk.ReadOnly = false;
             }
             else
             {

@@ -65,12 +65,12 @@
             this.btnsua = new System.Windows.Forms.Button();
             this.btnluu = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
-            this.timkiem = new System.Windows.Forms.Button();
-            this.txbtimkiem = new System.Windows.Forms.TextBox();
             this.minimize = new System.Windows.Forms.PictureBox();
             this.logout = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txbtimkiem = new System.Windows.Forms.TextBox();
+            this.timkiem = new System.Windows.Forms.Button();
             this.tabDulieu.SuspendLayout();
             this.CuDan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dscudan)).BeginInit();
@@ -126,7 +126,7 @@
             this.buttonXuatPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF.Location = new System.Drawing.Point(903, 20);
-            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF.Name = "buttonXuatPDF";
             this.buttonXuatPDF.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF.TabIndex = 39;
@@ -140,7 +140,7 @@
             this.buttonExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel.Location = new System.Drawing.Point(744, 18);
-            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel.Name = "buttonExportExcel";
             this.buttonExportExcel.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel.TabIndex = 38;
@@ -192,7 +192,7 @@
             this.buttonXuatPDF2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF2.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF2.Location = new System.Drawing.Point(901, 21);
-            this.buttonXuatPDF2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF2.Name = "buttonXuatPDF2";
             this.buttonXuatPDF2.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF2.TabIndex = 41;
@@ -206,7 +206,7 @@
             this.buttonExportExcel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel2.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel2.Location = new System.Drawing.Point(749, 21);
-            this.buttonExportExcel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel2.Name = "buttonExportExcel2";
             this.buttonExportExcel2.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel2.TabIndex = 40;
@@ -257,7 +257,7 @@
             this.buttonXuatPDF3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF3.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF3.Location = new System.Drawing.Point(901, 18);
-            this.buttonXuatPDF3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF3.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF3.Name = "buttonXuatPDF3";
             this.buttonXuatPDF3.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF3.TabIndex = 41;
@@ -271,7 +271,7 @@
             this.buttonExportExcel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel3.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel3.Location = new System.Drawing.Point(741, 18);
-            this.buttonExportExcel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel3.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel3.Name = "buttonExportExcel3";
             this.buttonExportExcel3.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel3.TabIndex = 40;
@@ -323,7 +323,7 @@
             this.buttonXuatPDF4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF4.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF4.Location = new System.Drawing.Point(903, 17);
-            this.buttonXuatPDF4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF4.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF4.Name = "buttonXuatPDF4";
             this.buttonXuatPDF4.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF4.TabIndex = 41;
@@ -337,7 +337,7 @@
             this.buttonExportExcel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel4.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel4.Location = new System.Drawing.Point(748, 17);
-            this.buttonExportExcel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel4.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel4.Name = "buttonExportExcel4";
             this.buttonExportExcel4.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel4.TabIndex = 40;
@@ -389,7 +389,7 @@
             this.buttonXuatPDF5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF5.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF5.Location = new System.Drawing.Point(903, 20);
-            this.buttonXuatPDF5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF5.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF5.Name = "buttonXuatPDF5";
             this.buttonXuatPDF5.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF5.TabIndex = 41;
@@ -403,7 +403,7 @@
             this.buttonExportExcel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel5.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel5.Location = new System.Drawing.Point(759, 20);
-            this.buttonExportExcel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel5.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel5.Name = "buttonExportExcel5";
             this.buttonExportExcel5.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel5.TabIndex = 40;
@@ -454,7 +454,7 @@
             this.buttonXuatPDF6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonXuatPDF6.ForeColor = System.Drawing.Color.White;
             this.buttonXuatPDF6.Location = new System.Drawing.Point(903, 18);
-            this.buttonXuatPDF6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonXuatPDF6.Margin = new System.Windows.Forms.Padding(4);
             this.buttonXuatPDF6.Name = "buttonXuatPDF6";
             this.buttonXuatPDF6.Size = new System.Drawing.Size(133, 37);
             this.buttonXuatPDF6.TabIndex = 41;
@@ -468,7 +468,7 @@
             this.buttonExportExcel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExportExcel6.ForeColor = System.Drawing.Color.White;
             this.buttonExportExcel6.Location = new System.Drawing.Point(744, 18);
-            this.buttonExportExcel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonExportExcel6.Margin = new System.Windows.Forms.Padding(4);
             this.buttonExportExcel6.Name = "buttonExportExcel6";
             this.buttonExportExcel6.Size = new System.Drawing.Size(133, 37);
             this.buttonExportExcel6.TabIndex = 40;
@@ -567,36 +567,12 @@
             this.btnCapNhat.UseVisualStyleBackColor = true;
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click_1);
             // 
-            // timkiem
-            // 
-            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
-            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
-            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
-            this.timkiem.Location = new System.Drawing.Point(305, 128);
-            this.timkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.timkiem.Name = "timkiem";
-            this.timkiem.Size = new System.Drawing.Size(51, 36);
-            this.timkiem.TabIndex = 6;
-            this.timkiem.UseVisualStyleBackColor = false;
-            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
-            // 
-            // txbtimkiem
-            // 
-            this.txbtimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbtimkiem.Location = new System.Drawing.Point(69, 135);
-            this.txbtimkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txbtimkiem.Name = "txbtimkiem";
-            this.txbtimkiem.Size = new System.Drawing.Size(229, 27);
-            this.txbtimkiem.TabIndex = 2;
-            this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // minimize
             // 
             this.minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.Location = new System.Drawing.Point(1376, 4);
-            this.minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimize.Margin = new System.Windows.Forms.Padding(4);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(33, 31);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -609,7 +585,7 @@
             this.logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
             this.logout.Location = new System.Drawing.Point(1423, 4);
-            this.logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(33, 31);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -630,6 +606,7 @@
             this.label1.Size = new System.Drawing.Size(166, 39);
             this.label1.TabIndex = 32;
             this.label1.Text = "TasMana";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -643,10 +620,35 @@
             this.panel1.Controls.Add(this.btnluu);
             this.panel1.Controls.Add(this.btnCapNhat);
             this.panel1.Location = new System.Drawing.Point(3, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(383, 649);
             this.panel1.TabIndex = 33;
+            // 
+            // txbtimkiem
+            // 
+            this.txbtimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbtimkiem.Location = new System.Drawing.Point(69, 135);
+            this.txbtimkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txbtimkiem.Name = "txbtimkiem";
+            this.txbtimkiem.Size = new System.Drawing.Size(229, 27);
+            this.txbtimkiem.TabIndex = 2;
+            this.txbtimkiem.Text = "Tìm kiếm";
+            this.txbtimkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // timkiem
+            // 
+            this.timkiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
+            this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timkiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
+            this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
+            this.timkiem.Location = new System.Drawing.Point(305, 128);
+            this.timkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.timkiem.Name = "timkiem";
+            this.timkiem.Size = new System.Drawing.Size(51, 36);
+            this.timkiem.TabIndex = 6;
+            this.timkiem.UseVisualStyleBackColor = false;
+            this.timkiem.Click += new System.EventHandler(this.timkiem_Click);
             // 
             // FormDuLieuCuDan
             // 
@@ -707,8 +709,6 @@
         private System.Windows.Forms.DataGridView dsch;
         private System.Windows.Forms.DataGridView dsqh;
         private System.Windows.Forms.Button btnCapNhat;
-        private System.Windows.Forms.Button timkiem;
-        private System.Windows.Forms.TextBox txbtimkiem;
         private System.Windows.Forms.PictureBox minimize;
         private System.Windows.Forms.PictureBox logout;
         private System.Windows.Forms.Label label1;
@@ -725,5 +725,7 @@
         private System.Windows.Forms.Button buttonExportExcel5;
         private System.Windows.Forms.Button buttonXuatPDF6;
         private System.Windows.Forms.Button buttonExportExcel6;
+        private System.Windows.Forms.TextBox txbtimkiem;
+        private System.Windows.Forms.Button timkiem;
     }
 }
