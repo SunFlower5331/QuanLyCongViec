@@ -63,7 +63,7 @@ CREATE TABLE CanHo (
     maCD VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES CuDan(maCD),
     ngaynhan DATE NOT NULL,
     ngaychuyenvao DATE NOT NULL,
-    ngaychuyendi DATE NOT NULL,
+    ngaychuyendi DATE NULL,
     phidv FLOAT NOT NULL,
     phiql FLOAT NOT NULL,
     dienngaynhan FLOAT NOT NULL,
@@ -250,4 +250,31 @@ VALUES ('TV1', 'CD1', N'Nguyễn Thị Hồng', N'Vợ'),
 INSERT INTO DangKyDoXe (maDK, maCH, bienSo, chungloai, loai) 
 VALUES (01, 'W2910', '48AD- 17456', N'xe tay ga', N'Vision'),
 	   (02, 'W3508', '456XYZ', N'Oto', N'Công ty')
+
+INSERT INTO Chiphicanho (maCD, maCH, ngaybatdau, ngayketthuc, sodien, sonuoc, phidien, phinuoc, CongNo, TongphiQuanLy, TongPhiDichVu, TongChiPhiDienNuoc)
+VALUES ('CD1', 'W2910', '2024-01-01', '2024-01-02', 120, 60, 200000, 300000, 50000, 100000, 500000, 500000),
+	('CD2', 'W3508', '2024-01-01', '2024-01-02', 170, 85, 200000, 400000, 0, 120000, 600000, 600000)
+
+INSERT INTO CTCV (maCV, maNV, trangthai, thoiGianHoanThanh, Tuychonchiase, ngaycapnhat)
+VALUES 
+('1', 'XD-601', N'Chưa hoàn thành', '2024-05-29', N'Công việc chung', '2024-05-13'),
+('2', 'KT-502', N'Chưa hoàn thành', '2024-05-13', N'Công việc chung', '2024-05-13'),
+('3', 'KT-501', N'Chưa hoàn thành', '2024-05-15', N'Công việc chung', '2024-05-13'),
+('4', 'VS-301', N'Hoàn thành đúng hạn', '2024-05-13', N'Công việc chung', '2024-05-13'),
+('5', 'KT-501', N'Chưa hoàn thành', '2024-06-08', N'Công việc chung', '2024-05-13'),
+('6', 'KT-502', N'Chưa hoàn thành', '2024-05-13', N'Công việc chung', '2024-05-13'),
+('7', 'KT-502', N'Chưa hoàn thành', '2024-05-16', N'Công việc chung', '2024-05-13'),
+('8', 'KT-502', N'Chưa hoàn thành', '2024-05-13', N'Công việc chung', '2024-05-13'),
+('9', 'XD-603', N'Chưa hoàn thành', '2024-05-16', N'Công việc chung', '2024-05-13');
+
+INSERT INTO DVCanHo (maCV, maCH, DV_dinhky, ngayYC)
+VALUES
+('1', 'W2910', N'vệ sinh phòng', '2024-01-01'),
+('2', 'W3508', N'cung cấp báo', '2024-01-30')
+
+INSERT INTO TinhTrangCanHo (maCH, tinhTrangNguoiO, tinhTrangBanGiao, tinhTrangNoiThat)
+VALUES 
+('W2910', N'đang có người ở', N'đã bàn giao', N'chưa làm nội thất'),
+('W3508', N'đang trống', N'chưa bàn giao', N'đang thi công nội thất')
+
 
