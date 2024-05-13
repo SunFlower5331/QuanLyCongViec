@@ -220,16 +220,7 @@ VALUES ('VS-301', '123', 1),
 	   ('XD-601', '123', 3),
 	   ('KT-502', '123', 3)
 
-INSERT INTO DsCongViec (maCV, ten, ngayYC)
-VALUES ('1', N'Kiểm tra hệ thống thoát nước', '2024-01-01'),
-	   ('2', N'Sửa chuông cửa', '2024-01-30'),
-	   ('3', N'Bảo dưỡng máy lạnh', '2024-02-01'),
-	   ('4', N'Vệ sinh', '2024-02-05'),
-	   ('5', N'Kiểm tra Sàn gỗ', '2024-02-07'),
-	   ('6', N'Sửa điện', '2024-02-08'),
-	   ('7', N'Chốt chỉ số điện', '2024-02-10'),
-	   ('8', N'Chốt chỉ số nước', '2024-02-11'),
-	   ('9', N'Kiểm tra hệ thống công tắc', '2024-02-13')
+
 -- Thêm dữ liệu vào bảng CuDan
 INSERT INTO CuDan (maCD, hinhthuc, tenCH,  ngaysinh, cccd, sdt, email, quoctich, sothetamtru, sdt_nguoithan, tinhtrangcongno, dk_thucung)
 VALUES ('CD1', N'Căn hộ FS', N'Nguyễn Văn A', '01/01/1993', '123456789', '0123456788', 'nva@gmail.com', N'Việt Nam', 'c', '0987654322', 0, N'Không'),
@@ -255,22 +246,7 @@ INSERT INTO Chiphicanho (maCD, maCH, ngaybatdau, ngayketthuc, sodien, sonuoc, ph
 VALUES ('CD1', 'W2910', '2024-01-01', '2024-01-02', 120, 60, 200000, 300000, 50000, 100000, 500000, 500000),
 	('CD2', 'W3508', '2024-01-01', '2024-01-02', 170, 85, 200000, 400000, 0, 120000, 600000, 600000)
 
-INSERT INTO CTCV (maCV, maNV, trangthai, thoiGianHoanThanh, Tuychonchiase, ngaycapnhat)
-VALUES 
-('1', 'XD-601', N'Chưa hoàn thành', '2024-05-29', N'Công việc chung', '2024-05-13'),
-('2', 'KT-502', N'Chưa hoàn thành', '2024-05-13', N'Công việc chung', '2024-05-13'),
-('3', 'KT-501', N'Chưa hoàn thành', '2024-05-15', N'Công việc chung', '2024-05-13'),
-('4', 'VS-301', N'Hoàn thành đúng hạn', '2024-05-13', N'Công việc chung', '2024-05-13'),
-('5', 'KT-501', N'Chưa hoàn thành', '2024-06-08', N'Công việc chung', '2024-05-13'),
-('6', 'KT-502', N'Chưa hoàn thành', '2024-05-13', N'Công việc chung', '2024-05-13'),
-('7', 'KT-502', N'Chưa hoàn thành', '2024-05-16', N'Công việc chung', '2024-05-13'),
-('8', 'KT-502', N'Chưa hoàn thành', '2024-05-13', N'Công việc chung', '2024-05-13'),
-('9', 'XD-603', N'Chưa hoàn thành', '2024-05-16', N'Công việc chung', '2024-05-13');
 
-INSERT INTO DVCanHo (maCV, maCH, DV_dinhky, ngayYC)
-VALUES
-('1', 'W2910', N'vệ sinh phòng', '2024-01-01'),
-('2', 'W3508', N'cung cấp báo', '2024-01-30')
 
 INSERT INTO TinhTrangCanHo (maCH, tinhTrangNguoiO, tinhTrangBanGiao, tinhTrangNoiThat)
 VALUES 

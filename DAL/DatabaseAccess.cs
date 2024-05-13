@@ -17,8 +17,10 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-            string conStr = "Data Source=ADMIN-PC\\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
-            SqlConnection con = new SqlConnection(conStr);
+
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+            SqlConnection con = new SqlConnection(connectionString);
+           
             return con;
         }
     }
