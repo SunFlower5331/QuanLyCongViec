@@ -999,9 +999,9 @@ namespace DAL
         public static DataSet GetDuLieuBaoCaoYeuCau(DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT DVCanHo.maCH, CuDan.tenCH, DV_dinhky, ngayYC, ten, CTCV.trangthai, hoten " +
+            string query = "SELECT DVCanHo.maCH, CuDan.tenCH, DV_dinhky, DsCongViec.ngayYC, ten, CTCV.trangthai, hoten " +
                 "FROM DVCanHo, DsCongViec, CanHo, CTCV, NhanVien, CuDan " +
-                "WHERE  DVCanHo.maCV = DsCongViec.maCV AND DVCanHo.maCH = CanHo.maCH AND CanHo.maCD = CuDan.maCD AND DVCanHo.maCV = CTCV.maCV AND CTCV.maNV = NhanVien.manv AND ngayYC >= @NgayBatDau AND ngayYC <= @Ngayketthuc;";
+                "WHERE  DVCanHo.maCV = DsCongViec.maCV AND DVCanHo.maCH = CanHo.maCH AND CanHo.maCD = CuDan.maCD AND DVCanHo.maCV = CTCV.maCV AND CTCV.maNV = NhanVien.manv AND DsCongViec.ngayYC >= @NgayBatDau AND DsCongViec.ngayYC <= @Ngayketthuc;";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
@@ -1017,9 +1017,9 @@ namespace DAL
         public static DataSet GetDuLieuBaoCaoTimKiemYC(string maCH, DateTime NgayBatDau, DateTime NgayKetThuc)
         {
             DataSet data = new DataSet();
-            string query = "SELECT DVCanHo.maCH, CuDan.tenCH, DV_dinhky, ngayYC, ten, CTCV.trangthai, hoten " +
+            string query = "SELECT DVCanHo.maCH, CuDan.tenCH, DV_dinhky, DsCongViec.ngayYC, ten, CTCV.trangthai, hoten " +
             "FROM DVCanHo, DsCongViec, CanHo, CTCV, NhanVien, CuDan " +
-            "WHERE  DVCanHo.maCV = DsCongViec.maCV AND DVCanHo.maCH = CanHo.maCH AND CanHo.maCD = CuDan.maCD AND DVCanHo.maCV = CTCV.maCV AND CTCV.maNV = NhanVien.manv AND ngayYC >= @NgayBatDau AND ngayYC <= @Ngayketthuc AND DVCanHo.maCH = @maCH;";
+            "WHERE  DVCanHo.maCV = DsCongViec.maCV AND DVCanHo.maCH = CanHo.maCH AND CanHo.maCD = CuDan.maCD AND DVCanHo.maCV = CTCV.maCV AND CTCV.maNV = NhanVien.manv AND DsCongViec.ngayYC >= @NgayBatDau AND DsCongViec.ngayYC <= @Ngayketthuc AND DVCanHo.maCH = @maCH;";
 
             using (SqlConnection con = SqlConnectionData.connect())
             {
@@ -1533,8 +1533,8 @@ namespace DAL
 
                     // Sử dụng ExecuteScalar để lấy giá trị trả về của câu truy vấn
                     object result = command.ExecuteScalar();
-                    object result1 = command.ExecuteScalar();
-                    object result2= command.ExecuteScalar();
+                    object result1 = command1.ExecuteScalar();
+                    object result2= command2.ExecuteScalar();
                     if (result != null && result1 != null && result2 != null)
                     {
                         // Convert kết quả sang kiểu int

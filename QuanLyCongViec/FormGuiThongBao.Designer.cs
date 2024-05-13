@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGuiThongBao));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkedLisdsnv = new System.Windows.Forms.CheckedListBox();
@@ -62,20 +63,25 @@
             // 
             // checkedLisdsnv
             // 
+            this.checkedLisdsnv.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedLisdsnv.FormattingEnabled = true;
-            this.checkedLisdsnv.Location = new System.Drawing.Point(486, 30);
-            this.checkedLisdsnv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedLisdsnv.Location = new System.Drawing.Point(402, 30);
+            this.checkedLisdsnv.Margin = new System.Windows.Forms.Padding(2);
             this.checkedLisdsnv.Name = "checkedLisdsnv";
-            this.checkedLisdsnv.Size = new System.Drawing.Size(306, 349);
+            this.checkedLisdsnv.Size = new System.Drawing.Size(306, 334);
             this.checkedLisdsnv.TabIndex = 4;
             this.checkedLisdsnv.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedLisdsnv_ItemCheck);
             // 
             // content
             // 
+            this.content.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.content.Location = new System.Drawing.Point(20, 163);
-            this.content.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.content.Margin = new System.Windows.Forms.Padding(2);
             this.content.Name = "content";
-            this.content.Size = new System.Drawing.Size(428, 258);
+            this.content.Size = new System.Drawing.Size(349, 265);
             this.content.TabIndex = 5;
             this.content.Text = "";
             // 
@@ -92,29 +98,34 @@
             // 
             // email
             // 
-            this.email.Location = new System.Drawing.Point(20, 95);
-            this.email.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.email.Location = new System.Drawing.Point(20, 92);
+            this.email.Margin = new System.Windows.Forms.Padding(2);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(428, 35);
+            this.email.Size = new System.Drawing.Size(349, 35);
             this.email.TabIndex = 8;
             this.email.Text = "";
             // 
             // tieude
             // 
+            this.tieude.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tieude.Location = new System.Drawing.Point(20, 33);
-            this.tieude.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tieude.Margin = new System.Windows.Forms.Padding(2);
             this.tieude.Name = "tieude";
-            this.tieude.Size = new System.Drawing.Size(428, 36);
+            this.tieude.Size = new System.Drawing.Size(349, 36);
             this.tieude.TabIndex = 9;
             this.tieude.Text = "";
             // 
             // gui
             // 
+            this.gui.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gui.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.gui.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gui.ForeColor = System.Drawing.Color.White;
-            this.gui.Location = new System.Drawing.Point(671, 399);
-            this.gui.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gui.Location = new System.Drawing.Point(587, 406);
+            this.gui.Margin = new System.Windows.Forms.Padding(2);
             this.gui.Name = "gui";
             this.gui.Size = new System.Drawing.Size(121, 35);
             this.gui.TabIndex = 10;
@@ -126,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 454);
+            this.ClientSize = new System.Drawing.Size(734, 461);
             this.Controls.Add(this.gui);
             this.Controls.Add(this.tieude);
             this.Controls.Add(this.email);
@@ -135,7 +146,9 @@
             this.Controls.Add(this.checkedLisdsnv);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(639, 482);
             this.Name = "FormGuiThongBao";
             this.Text = "FormGuiThongBao";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormGuiThongBao_FormClosing);

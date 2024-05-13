@@ -717,32 +717,9 @@ namespace QuanLyCongViec
 
         private void FormDuLieu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string selectedLanguage = GlobalSettings.Language;
-
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-         
-                DialogResult result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                
-                if (selectedLanguage == "Vietnamese")
-                {
-                    result = MessageBox.Show("Bạn có muốn thoát chương trình không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                }
-                else if (selectedLanguage == "English")
-                {
-                    result = MessageBox.Show("Do you want to exit the program?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                }
-
-                if (result == DialogResult.Yes)
-                {
-        
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
         }
 
       
@@ -838,30 +815,6 @@ namespace QuanLyCongViec
                 }
             }
         }
-
-
-        private void minimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void logout_Click(object sender, EventArgs e)
-        {
-            FormMain form = new FormMain();
-            form.Show();
-            this.Hide();
-        }
-        // Dùng để kéo thả cửa sổ
-        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-        private void FormDuLieuNhanVien_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-        //
         private void UpdateLanguage()
         {
             // Lấy ngôn ngữ đã chọn từ biến global hoặc một cơ chế khác
@@ -905,6 +858,7 @@ namespace QuanLyCongViec
                 dsuqcv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dsuqcv.Columns["songayhethan"].HeaderText = "Số ngày hết hạn";
                 dsuqcv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dsuqcv.Columns["ngaybangiao"].HeaderText = "Ngày bàn giao";
 
                 dspb.Columns["id"].HeaderText = "Mã phòng ban";
                 dspb.Columns["ten"].HeaderText = "Tên phòng ban";
@@ -965,7 +919,7 @@ namespace QuanLyCongViec
                 dsuqcv.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dsuqcv.Columns["songayhethan"].HeaderText = "Days Overdue";
                 dsuqcv.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
-
+                dsuqcv.Columns["ngaybangiao"].HeaderText = "Handover date";
 
                 dspb.Columns["id"].HeaderText = "Department ID";
                 dspb.Columns["ten"].HeaderText = "Department Name";

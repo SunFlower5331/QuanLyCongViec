@@ -312,7 +312,7 @@ namespace QuanLyCongViec
             this.txbtimkiem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbtimkiem.ForeColor = System.Drawing.Color.DimGray;
             this.txbtimkiem.Location = new System.Drawing.Point(12, 28);
-            this.txbtimkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbtimkiem.Margin = new System.Windows.Forms.Padding(2);
             this.txbtimkiem.Name = "txbtimkiem";
             this.txbtimkiem.Size = new System.Drawing.Size(165, 15);
             this.txbtimkiem.TabIndex = 2;
@@ -326,8 +326,8 @@ namespace QuanLyCongViec
             this.tabControl1.Controls.Add(this.phongban);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.Location = new System.Drawing.Point(0, 259);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Location = new System.Drawing.Point(0, 292);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1028, 350);
@@ -339,9 +339,9 @@ namespace QuanLyCongViec
             this.congty.Controls.Add(this.dscvcty);
             this.congty.Controls.Add(this.label1);
             this.congty.Location = new System.Drawing.Point(4, 22);
-            this.congty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.congty.Margin = new System.Windows.Forms.Padding(2);
             this.congty.Name = "congty";
-            this.congty.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.congty.Padding = new System.Windows.Forms.Padding(2);
             this.congty.Size = new System.Drawing.Size(1020, 324);
             this.congty.TabIndex = 0;
             this.congty.Text = "Công ty";
@@ -362,7 +362,7 @@ namespace QuanLyCongViec
             this.dscvcty.DefaultCellStyle = dataGridViewCellStyle1;
             this.dscvcty.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dscvcty.Location = new System.Drawing.Point(2, 40);
-            this.dscvcty.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dscvcty.Margin = new System.Windows.Forms.Padding(2);
             this.dscvcty.Name = "dscvcty";
             this.dscvcty.RowHeadersWidth = 51;
             this.dscvcty.RowTemplate.Height = 24;
@@ -392,10 +392,10 @@ namespace QuanLyCongViec
             this.phongban.Controls.Add(this.label2);
             this.phongban.Controls.Add(this.dscvpban);
             this.phongban.Location = new System.Drawing.Point(4, 22);
-            this.phongban.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.phongban.Margin = new System.Windows.Forms.Padding(2);
             this.phongban.Name = "phongban";
-            this.phongban.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.phongban.Size = new System.Drawing.Size(1256, 324);
+            this.phongban.Padding = new System.Windows.Forms.Padding(2);
+            this.phongban.Size = new System.Drawing.Size(1020, 324);
             this.phongban.TabIndex = 1;
             this.phongban.Text = "Phòng ban";
             // 
@@ -411,7 +411,7 @@ namespace QuanLyCongViec
             this.label2.Location = new System.Drawing.Point(2, 2);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1252, 36);
+            this.label2.Size = new System.Drawing.Size(1016, 36);
             this.label2.TabIndex = 8;
             this.label2.Text = "     Danh sách công việc phòng ban";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -432,11 +432,11 @@ namespace QuanLyCongViec
             this.dscvpban.DefaultCellStyle = dataGridViewCellStyle2;
             this.dscvpban.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dscvpban.Location = new System.Drawing.Point(2, 40);
-            this.dscvpban.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dscvpban.Margin = new System.Windows.Forms.Padding(2);
             this.dscvpban.Name = "dscvpban";
             this.dscvpban.RowHeadersWidth = 51;
             this.dscvpban.RowTemplate.Height = 24;
-            this.dscvpban.Size = new System.Drawing.Size(1252, 282);
+            this.dscvpban.Size = new System.Drawing.Size(1016, 282);
             this.dscvpban.TabIndex = 0;
             // 
             // notifyIcon1
@@ -455,8 +455,8 @@ namespace QuanLyCongViec
             this.timkiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.timkiem.ForeColor = System.Drawing.Color.White;
             this.timkiem.Image = ((System.Drawing.Image)(resources.GetObject("timkiem.Image")));
-            this.timkiem.Location = new System.Drawing.Point(181, 18);
-            this.timkiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timkiem.Location = new System.Drawing.Point(185, 20);
+            this.timkiem.Margin = new System.Windows.Forms.Padding(2);
             this.timkiem.Name = "timkiem";
             this.timkiem.Size = new System.Drawing.Size(31, 32);
             this.timkiem.TabIndex = 6;
@@ -535,7 +535,7 @@ namespace QuanLyCongViec
             // labelSoNV
             // 
             this.labelSoNV.BackColor = System.Drawing.Color.Transparent;
-            this.labelSoNV.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSoNV.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoNV.ForeColor = System.Drawing.Color.White;
             this.labelSoNV.Location = new System.Drawing.Point(40, 66);
             this.labelSoNV.Name = "labelSoNV";
@@ -583,7 +583,7 @@ namespace QuanLyCongViec
             // labelSoCV
             // 
             this.labelSoCV.BackColor = System.Drawing.Color.Transparent;
-            this.labelSoCV.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSoCV.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoCV.ForeColor = System.Drawing.Color.White;
             this.labelSoCV.Location = new System.Drawing.Point(40, 66);
             this.labelSoCV.Name = "labelSoCV";
@@ -634,11 +634,11 @@ namespace QuanLyCongViec
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(96, 66);
+            this.label3.Location = new System.Drawing.Point(85, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 54);
+            this.label3.Size = new System.Drawing.Size(40, 37);
             this.label3.TabIndex = 4;
             this.label3.Text = "%";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -647,11 +647,11 @@ namespace QuanLyCongViec
             // 
             this.labelSoHieuSuat.AutoSize = true;
             this.labelSoHieuSuat.BackColor = System.Drawing.Color.Transparent;
-            this.labelSoHieuSuat.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSoHieuSuat.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoHieuSuat.ForeColor = System.Drawing.Color.White;
             this.labelSoHieuSuat.Location = new System.Drawing.Point(41, 66);
             this.labelSoHieuSuat.Name = "labelSoHieuSuat";
-            this.labelSoHieuSuat.Size = new System.Drawing.Size(69, 54);
+            this.labelSoHieuSuat.Size = new System.Drawing.Size(49, 37);
             this.labelSoHieuSuat.TabIndex = 3;
             this.labelSoHieuSuat.Text = "10";
             this.labelSoHieuSuat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -702,12 +702,13 @@ namespace QuanLyCongViec
             // 
             // labelSoDoanhThu
             // 
+            this.labelSoDoanhThu.AutoSize = true;
             this.labelSoDoanhThu.BackColor = System.Drawing.Color.Transparent;
-            this.labelSoDoanhThu.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSoDoanhThu.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSoDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.labelSoDoanhThu.Location = new System.Drawing.Point(40, 66);
+            this.labelSoDoanhThu.Location = new System.Drawing.Point(42, 66);
             this.labelSoDoanhThu.Name = "labelSoDoanhThu";
-            this.labelSoDoanhThu.Size = new System.Drawing.Size(69, 54);
+            this.labelSoDoanhThu.Size = new System.Drawing.Size(49, 37);
             this.labelSoDoanhThu.TabIndex = 4;
             this.labelSoDoanhThu.Text = "10";
             // 
@@ -742,18 +743,19 @@ namespace QuanLyCongViec
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1028, 642);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MinimumSize = new System.Drawing.Size(639, 597);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(639, 648);
             this.Name = "FormMain";
             this.Text = "MÀN HÌNH CHÍNH";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing_1);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.tabControl1.ResumeLayout(false);

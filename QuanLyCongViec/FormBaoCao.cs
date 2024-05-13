@@ -502,7 +502,7 @@ namespace QuanLyCongViec
                 dsch.Columns["TongChiPhiDienNuoc"].HeaderText = "Total electricity and water costs";
                 dsch.Columns["TongphiQuanLy"].HeaderText = "Total management costs";
                 dsch.Columns["TongPhiDichVu"].HeaderText = "Total service fee";
-
+                dsch.Columns["quoctich"].HeaderText = "Nationality";
             }
         }
         private void UpdateLanguage2()
@@ -587,17 +587,6 @@ namespace QuanLyCongViec
 
             }
         }
-
-        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormBaoCao_FormClosing(object sender, FormClosingEventArgs e)
         {
             FormMain form = new FormMain();

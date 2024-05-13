@@ -144,15 +144,16 @@
             // 
             // buttonTaiLen
             // 
+            this.buttonTaiLen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
             this.buttonTaiLen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTaiLen.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTaiLen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(57)))), ((int)(((byte)(166)))));
+            this.buttonTaiLen.ForeColor = System.Drawing.Color.White;
             this.buttonTaiLen.Location = new System.Drawing.Point(493, 29);
             this.buttonTaiLen.Name = "buttonTaiLen";
             this.buttonTaiLen.Size = new System.Drawing.Size(149, 25);
             this.buttonTaiLen.TabIndex = 2;
             this.buttonTaiLen.Text = "Tải lên";
-            this.buttonTaiLen.UseVisualStyleBackColor = true;
+            this.buttonTaiLen.UseVisualStyleBackColor = false;
             this.buttonTaiLen.Click += new System.EventHandler(this.buttonTaiLen_Click);
             // 
             // buttonChonFile

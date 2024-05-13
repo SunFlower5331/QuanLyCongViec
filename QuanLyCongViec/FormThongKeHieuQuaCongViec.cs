@@ -574,7 +574,7 @@ namespace QuanLyCongViec
                 }
                 else if (selectedLanguage == "English")
                 {
-                    MessageBox.Show("You do not have permission to access the application!");
+                    MessageBox.Show("No data found to export to PDF!");
                 }
             }
         }

@@ -276,7 +276,6 @@
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tùy chọn";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // buttonXacNhan
             // 
@@ -454,7 +453,6 @@
             this.textBoxTimKiem.Size = new System.Drawing.Size(164, 15);
             this.textBoxTimKiem.TabIndex = 7;
             this.textBoxTimKiem.Text = "Tìm kiếm theo mã căn hộ";
-            this.textBoxTimKiem.TextChanged += new System.EventHandler(this.textBoxTimKiem_TextChanged);
             this.textBoxTimKiem.Enter += new System.EventHandler(this.textBoxTimKiem_Enter);
             this.textBoxTimKiem.Leave += new System.EventHandler(this.textBoxTimKiem_Leave);
             // 

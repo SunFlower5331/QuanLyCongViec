@@ -324,16 +324,24 @@ namespace QuanLyCongViec
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
+            string selectedLanguage = GlobalSettings.Language;
             if (txbtimkiem.Text == "")
             {
-                txbtimkiem.Text = "Tìm kiếm";
+                if (selectedLanguage == "Vietnamese")
+                {
+                    txbtimkiem.Text = "Tìm kiếm";
+                }
+                else if (selectedLanguage == "English")
+                {
+                    txbtimkiem.Text = "Search";
+                }
                 txbtimkiem.ForeColor = Color.DimGray;
             }
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (txbtimkiem.Text == "Tìm kiếm")
+            if (txbtimkiem.Text == "Tìm kiếm" || txbtimkiem.Text == "Search")
             {
                 txbtimkiem.Text = "";
                 txbtimkiem.ForeColor = Color.Black;
@@ -380,6 +388,7 @@ namespace QuanLyCongViec
                 dscvcty.Columns["trangthai"].HeaderText = "Trạng thái";
                 dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dscvcty.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dscvcty.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
 
                 // DataGridView trong tabPage2
                 dscvpban.Columns["phongban"].HeaderText = "Phòng ban";
@@ -391,9 +400,9 @@ namespace QuanLyCongViec
                 dscvpban.Columns["trangthai"].HeaderText = "Trạng thái";
                 dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
-                dscvcty.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật"; 
+                dscvpban.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật"; 
 
-                txbtimkiem.Text = "Tìm kiếm";
+
                 c.Text = "Tổng công việc";
                 labelHieuSuat.Text = "Hiệu suất";
                 labelDoanhThu.Text = "Doanh thu";
@@ -436,7 +445,7 @@ namespace QuanLyCongViec
                 dscvcty.Columns["trangthai"].HeaderText = "Status";
                 dscvcty.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dscvcty.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
-                 dscvcty.Columns["ngaycapnhat"].HeaderText = "Update day";
+                dscvcty.Columns["ngaycapnhat"].HeaderText = "Update day";
 
                 // DataGridView trong tabPage2
                 dscvpban.Columns["phongban"].HeaderText = "Department";
@@ -448,9 +457,9 @@ namespace QuanLyCongViec
                 dscvpban.Columns["trangthai"].HeaderText = "Status";
                 dscvpban.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dscvpban.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
-                dscvcty.Columns["ngaycapnhat"].HeaderText = "Update date";
+                dscvpban.Columns["ngaycapnhat"].HeaderText = "Update date";
 
-                txbtimkiem.Text = "Search";
+
                 c.Text = "Total work";
                 labelHieuSuat.Text = "Performance";
                 labelDoanhThu.Text = "Revenue";
@@ -597,6 +606,7 @@ namespace QuanLyCongViec
                 labelHieuSuat.Font = new Font("Segoe UI Semibold", 11, FontStyle.Bold);
                 labelDoanhThu.Location = new Point(24, 24);
                 labelDoanhThu.Font = new Font("Segoe UI Semibold", 11, FontStyle.Bold);
+                labelSoDoanhThu.Location = new Point(21, 66);
             }
             else 
             {
@@ -608,9 +618,13 @@ namespace QuanLyCongViec
                 labelHieuSuat.Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold);
                 labelDoanhThu.Location = new Point(44, 24);
                 labelDoanhThu.Font = new Font("Segoe UI Semibold", 16, FontStyle.Bold);
+                labelSoDoanhThu.Location = new Point(42, 66);
             }
         }
 
-   
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            EndResponsive();
+        }
     }
 }

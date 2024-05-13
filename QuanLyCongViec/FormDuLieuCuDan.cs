@@ -782,33 +782,9 @@ namespace QuanLyCongViec
 
         private void FormDuLieu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string selectedLanguage = GlobalSettings.Language;
-
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                DialogResult result = MessageBox.Show(selectedLanguage == "Vietnamese" ? "Bạn có muốn thoát chương trình không?" : "Do you want to exit the program?",
-                                                      selectedLanguage == "Vietnamese" ? "Xác nhận" : "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CuDan_Click(object sender, EventArgs e)
-        {
-
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
         }
         private void txbtimkiem_KeyDown(object sender, KeyEventArgs e)
         {
@@ -924,29 +900,6 @@ namespace QuanLyCongViec
                 }
             }
         }
-
-        private void minimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void logout_Click(object sender, EventArgs e)
-        {
-            FormMain form = new FormMain();
-            form.Show();
-            this.Hide();
-        }
-        // Dùng để kéo thả cửa sổ
-        [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.dll", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-        private void FormDuLieuCuDan_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void dspb_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string selectedLanguage = GlobalSettings.Language;
@@ -1601,7 +1554,6 @@ namespace QuanLyCongViec
                 btnluu.Text = "Save";
                 btnCapNhat.Text = "Update";
 
-                txbtimkiem.Text = "Enter keyword...";
 
                 // Datagrid "dscudan"
                 dscudan.Columns["maCD"].HeaderText = "Resident ID";

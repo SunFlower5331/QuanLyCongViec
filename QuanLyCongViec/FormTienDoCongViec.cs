@@ -50,40 +50,17 @@ namespace QuanLyCongViec
         private void loadthongtinkhachhang(string macv)
         {
             thongtinkh.DataSource = DatabaseAccess.getThongtinkh(macv).Tables[0];
-            thongtinkh.Columns["maCD"].HeaderText = "Mã cư dân";
-            thongtinkh.Columns["hinhthuc"].HeaderText = "Hình thức";
-            thongtinkh.Columns["tenCH"].HeaderText = "Tên căn hộ";
-            thongtinkh.Columns["ngaysinh"].HeaderText = "Ngày sinh";
-            thongtinkh.Columns["cccd"].HeaderText = "CCCD";
-            thongtinkh.Columns["sdt"].HeaderText = "Số điện thoại";
-            thongtinkh.Columns["email"].HeaderText = "Email";
-            thongtinkh.Columns["quoctich"].HeaderText = "Quốc tịch";
-            thongtinkh.Columns["sothetamtru"].HeaderText = "Số thẻ tạm trú";
-            thongtinkh.Columns["sdt_nguoithan"].HeaderText = "Số điện thoại người thân";
-            thongtinkh.Columns["tinhtrangcongno"].HeaderText = "Tỉnh trạng công nợ";
-            thongtinkh.Columns["dk_thucung"].HeaderText = "Đăng ký thú cưng";
+            UpdateLanguage1();
         }
         private void loadData(string phongBan)
         {
             dsnv.DataSource = DatabaseAccess.GetNhanVienTheoPhongBan(phongBan).Tables[0];
             dsnv.AutoGenerateColumns = false;
-            dsnv.Columns["phongban"].HeaderText = "Phòng ban";
-            dsnv.Columns["chucvu"].HeaderText = "Chức vụ";
-            dsnv.Columns["manv"].HeaderText = "Mã nhân viên";
-            dsnv.Columns["hoten"].HeaderText = "Họ và tên";
+            UpdateLanguage2();
 
             dsmanv.DataSource = DatabaseAccess.GetCTCVTheoPhongBan(phongBan).Tables[0];
             dsmanv.AutoGenerateColumns = false;
-            dsmanv.Columns["phongban"].HeaderText = "Phòng ban";
-            dsmanv.Columns["chucvu"].HeaderText = "Chức vụ";
-            dsmanv.Columns["maCV"].HeaderText = "Mã công việc";
-            dsmanv.Columns["ten"].HeaderText = "Tên công việc";
-            dsmanv.Columns["maNV"].HeaderText = "Mã nhân viên";
-            dsmanv.Columns["hoten"].HeaderText = "Tên nhân viên";
-            dsmanv.Columns["trangthai"].HeaderText = "Trạng thái";
-            dsmanv.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
-            dsmanv.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
-            dsmanv.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
+            UpdateLanguage3();
         }
         private void loadTienDoCongViec()
         {
@@ -221,17 +198,18 @@ namespace QuanLyCongViec
 
                 if (trangthai == "Đã hoàn thành")
                 {
-                    if (ngaycapnhat < thoiGianHoanThanh)
+                    TimeSpan ts = ngaycapnhat - thoiGianHoanThanh;
+                    if (ts.Days < 0)
                     {
                         trangthai = "Hoàn thành sớm";
                     }
-                    else if (ngaycapnhat == thoiGianHoanThanh)
+                    else if (ts.Days == 0)
                     {
                         trangthai = "Hoàn thành đúng hạn";
                     }
                     else
                     {
-                        trangthai = " Đã hoàn thành trễ hạn";
+                        trangthai = "Trễ hạn";
                     }
 
                 }
@@ -449,17 +427,17 @@ namespace QuanLyCongViec
                 // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Việt
                 groupBox1.Text = "Thông tin nhân viên";
                 groupBox2.Text = "Chia sẻ công việc";
-                label1.Text = "Mã nhân viên:";
-                label2.Text = "Thời hạn:";
+                label1.Text = "Thời hạn:";
+                label2.Text = "Chức vụ:";
                 label3.Text = "Mã công việc:";
                 label4.Text = "Tên công việc:";
-                label5.Text = "Chức vụ:";
-                label6.Text = "Họ và tên:";
+                label5.Text = "Tên nhân viên:";
+                label6.Text = "Mã nhân viên:";
                 label7.Text = "Tùy chọn chia sẻ:";
                 label8.Text = "Trạng thái:";
                 btnluu.Text = "Lưu";
                 btncapnhat.Text = "Cập nhật";
-                btnthongtinkh.Text = "Thông tin khác hàng";
+                btnthongtinkh.Text = "Thông tin khách hàng";
                 btnxemcvpb.Text = "Xem công việc theo phòng ban";
                 groupBox3.Text = "Danh sách nhân viên";
 
@@ -472,12 +450,12 @@ namespace QuanLyCongViec
                 // Cập nhật các nhãn và điều khiển trong giao diện với ngôn ngữ tiếng Anh
                 groupBox1.Text = "Employee Information";
                 groupBox2.Text = "Share Job";
-                label1.Text = "Employee ID:";
-                label2.Text = "Deadline:";
+                label1.Text = "Deadline:";
+                label2.Text = "Position:";
                 label3.Text = "Job ID:";
                 label4.Text = "Job Name:";
-                label5.Text = "Position:";
-                label6.Text = "Full Name:";
+                label5.Text = "Full Name:";
+                label6.Text = "Employee ID:";
                 label7.Text = "Share Option:";
                 label8.Text = "Status:";
                 btnluu.Text = "Save";
@@ -759,7 +737,11 @@ namespace QuanLyCongViec
                 }
             }
         }
-
-
+        private void FormTienDoCongViec_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            this.Hide();
+        }
     }
 }

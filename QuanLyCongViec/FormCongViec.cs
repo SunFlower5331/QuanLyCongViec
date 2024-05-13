@@ -722,8 +722,7 @@ namespace QuanLyCongViec
                 btnchinhsuaphancong.Text = "Chỉnh sửa phân công";
                 label8.Text = "Trạng thái:";
                 groupBox1.Text = "Danh sách công việc";
-                label9.Text = "Tùy chọn hiển thị:";
-                //xoacv.Text = "Xóa công việc";
+                groupBox4.Text = "Chi tiết công việc";
 
                 dsnv.Columns["phongban"].HeaderText = "Phòng ban";
                 dsnv.Columns["chucvu"].HeaderText = "Chức vụ";
@@ -738,18 +737,10 @@ namespace QuanLyCongViec
                 dsdpc.Columns["trangthai"].HeaderText = "Trạng thái";
                 dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dsdpc.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
-
                 dsdpc.Columns["phongban"].HeaderText = "Phòng ban";
-                dsdpc.Columns["chucvu"].HeaderText = "Chức vụ";
-                dsdpc.Columns["maCV"].HeaderText = "Mã công việc";
-                dsdpc.Columns["ten"].HeaderText = "Tên công việc";
-                dsdpc.Columns["maNV"].HeaderText = "Mã nhân viên";
-                dsdpc.Columns["hoten"].HeaderText = "Tên nhân viên";
-
-                dsdpc.Columns["trangthai"].HeaderText = "Trạng thái";
-                dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Thời gian hoàn thành";
                 dsdpc.Columns["songayhethan"].HeaderText = "Thời gian còn lại";
-                dsdpc.Columns["Tuychonchiase"].HeaderText = "Tùy chọn chia sẻ";
+                dsdpc.Columns["ngaycapnhat"].HeaderText = "Ngày cập nhật";
+
 
                 dscv.Columns["maCV"].HeaderText = "Mã công việc";
                 dscv.Columns["ten"].HeaderText = "Tên công việc";
@@ -775,8 +766,7 @@ namespace QuanLyCongViec
                 xoacv.Text = "Delete job";
                 label8.Text = "Status:";
                 groupBox1.Text = "Task List";
-                label9.Text = "Display options:";
-                //  xoacv.Text = "Delete job";
+                groupBox4.Text = "Task detail";
 
                 dsnv.Columns["phongban"].HeaderText = "Department";
                 dsnv.Columns["chucvu"].HeaderText = "Position";
@@ -791,18 +781,9 @@ namespace QuanLyCongViec
                 dsdpc.Columns["trangthai"].HeaderText = "Status";
                 dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dsdpc.Columns["Tuychonchiase"].HeaderText = "Share Options";
-
                 dsdpc.Columns["phongban"].HeaderText = "Department";
-                dsdpc.Columns["chucvu"].HeaderText = "Position";
-                dsdpc.Columns["maCV"].HeaderText = "Job ID";
-                dsdpc.Columns["ten"].HeaderText = "Job Name";
-                dsdpc.Columns["maNV"].HeaderText = "Employee ID";
-                dsdpc.Columns["hoten"].HeaderText = "Employee Name";
-
-                dsdpc.Columns["trangthai"].HeaderText = "Status";
-                dsdpc.Columns["thoiGianHoanThanh"].HeaderText = "Completion Time";
                 dsdpc.Columns["songayhethan"].HeaderText = "Remaining Time";
-                dsdpc.Columns["Tuychonchiase"].HeaderText = "Sharing Options";
+                dsdpc.Columns["ngaycapnhat"].HeaderText = "Update day";
 
                 dscv.Columns["maCV"].HeaderText = "Job ID";
                 dscv.Columns["ten"].HeaderText = "Job Name";
@@ -1254,9 +1235,6 @@ namespace QuanLyCongViec
                 loadDsNv();
             }
         }
-
-
-
     }
 }
 
