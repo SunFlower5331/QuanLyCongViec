@@ -17,12 +17,11 @@ namespace DAL
     {
         public static SqlConnection connect()
         {
-
-            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(connectionString);
-           
+            string conStr = "Data Source=ONG;Initial Catalog=QuanLyCongViec;Integrated Security=True;integrated security=True";
+            SqlConnection con = new SqlConnection(conStr);
             return con;
         }
+
     }
     public class DatabaseAccess
     {
