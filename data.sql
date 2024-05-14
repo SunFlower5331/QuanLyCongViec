@@ -1,7 +1,7 @@
-CREATE DATABASE QuanlyCongViec;
+CREATE DATABASE QuanlyCongViec3;
 GO
 
-USE QuanLyCongViec;
+USE QuanLyCongViec3;
 GO
 SET DATEFORMAT DMY;
 

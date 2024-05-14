@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{53EFF25E-A9CF-4C68-A416-DA7FD5E34683}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TasMana", "TasMana\TasMana.vdproj", "{1247763D-CCE1-4203-A9D5-904731885AE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{53EFF25E-A9CF-4C68-A416-DA7FD5E34683}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53EFF25E-A9CF-4C68-A416-DA7FD5E34683}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53EFF25E-A9CF-4C68-A416-DA7FD5E34683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1247763D-CCE1-4203-A9D5-904731885AE6}.Debug|Any CPU.ActiveCfg = Debug
+		{1247763D-CCE1-4203-A9D5-904731885AE6}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
