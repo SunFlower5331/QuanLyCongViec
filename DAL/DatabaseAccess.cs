@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class SqlConnectionData
+/*    public class SqlConnectionData
     {
         public static SqlConnection connect()
         {
@@ -16,7 +16,7 @@ namespace DAL
             return con;
         }
 
-    }
+    }*/
     public class DatabaseAccess
     {
         public static object MessageBox { get; private set; }
